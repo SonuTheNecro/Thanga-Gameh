@@ -3,7 +3,8 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Thanga")
+define t = Character("Thanga")
+define k = Character("Kody")
 
 
 # The game starts here.
@@ -22,9 +23,9 @@ label start:
 
     # These display lines of dialogue.
 
-    e "live thang reaction"
+    t "live thang reaction"
 
-    e "my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend!"
+    t "my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend!"
     menu:
 
         "rent a girlfriend is awesome":
@@ -35,7 +36,7 @@ label start:
 
     label good:
 
-        e "LETS GOOOO"
+        t "LETS GOOOO"
 
         scene black
         with fade
@@ -47,7 +48,7 @@ label start:
 
     label bad:
 
-        e "KILL YOURSELF NOW"
+        t "KILL YOURSELF NOW"
 
         scene black
         with fade
