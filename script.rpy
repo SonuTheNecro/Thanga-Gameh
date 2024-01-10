@@ -30,6 +30,8 @@ label start:
 
     e "My name is thang"
 
+    e "hello bhaarat"
+
     # This ends the game.
 
     return
