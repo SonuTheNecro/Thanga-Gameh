@@ -3,7 +3,7 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
+define e = Character("Thanga")
 
 
 # The game starts here.
@@ -20,19 +20,44 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show eileen happy
-
     # These display lines of dialogue.
 
-    e "You've created a new Ren'Py game."
+    e "live thang reaction"
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    e "my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend!"
+    menu:
 
-    e "My name is thang"
+        "rent a girlfriend is awesome":
+            jump good
 
-    e "hello bhaarat"
+        "rent a girlfriend sucks":
+            jump bad
 
-    e "Hello Mario!"
+    label good:
+
+        e "LETS GOOOO"
+
+        scene black
+        with fade
+        "you now like rent a girlfriend"
+
+        "the bad end"
+
+        return
+
+    label bad:
+
+        e "KILL YOURSELF NOW"
+
+        scene black
+        with fade
+        "you kill yourself"
+
+        "the good end"
+
+        $ raise Exception(" youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape % youらは逃canれなnot%影escape  you影か%らcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  %youらは逃canれなnot影escape%  you影からcanい %影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape%  youらは逃canれなnot影%escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは%逃canれなnot影escape  you影か%らcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape % youらは逃canれなnot影escape % you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape  you影からcanい 影notなたはescape  youらは逃canれなnot影escape %you影からcanい 影notなたはescape")
+
+        return
 
     # This ends the game.
 
