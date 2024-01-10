@@ -32,6 +32,8 @@ label start:
 
     e "hello bhaarat"
 
+    e "Hello Mario!"
+
     # This ends the game.
 
     return
