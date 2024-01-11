@@ -4,7 +4,7 @@
 # name of the character.
 
 define t = Character("Thanga")
-define k = Character("Kody")
+define k = Character("Kody", "Kody.png")
 define jj = Character("PillowR")
 
 
