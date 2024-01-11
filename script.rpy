@@ -4,7 +4,7 @@
 # name of the character.
 
 define t = Character("Thanga")
-define c = Character("Cody")
+define k = Character("Kody")
 define jj = Character("PillowR")
 
 
@@ -68,7 +68,7 @@ label start:
         t "woah is that my smash bros top 1 in the entire universe thanks to me and not zade"
         jj "Kill yourself NOW MULTIVERSUS WAS BETTER"
         show kody
-        c "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
+        k "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
 
     # This ends the game.
 
