@@ -4,7 +4,7 @@
 # name of the character.
 
 define t = Character("Thanga")
-define k = Character("Kody")
+define c = Character("Cody")
 define jj = Character("PillowR")
 
 
@@ -63,12 +63,12 @@ label start:
         return
 
     label scene2:
-        scene Thanga3
+        scene Thanga6
         with fade
         t "woah is that my smash bros top 1 in the entire universe thanks to me and not zade"
         jj "Kill yourself NOW MULTIVERSUS WAS BETTER"
         show Kody
-        k "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
+        c "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
 
     # This ends the game.
 
