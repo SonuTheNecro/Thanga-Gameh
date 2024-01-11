@@ -67,7 +67,7 @@ label start:
         with fade
         t "woah is that my smash bros top 1 in the entire universe thanks to me and not zade"
         jj "Kill yourself NOW MULTIVERSUS WAS BETTER"
-        show KODY
+        show Kody
         k "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
 
     # This ends the game.
