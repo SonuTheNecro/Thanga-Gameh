@@ -63,16 +63,19 @@ label start:
         return
 
     label scene2:
-        scene thanga6
+        scene thanga7
         with fade
         t "woah is that my smash bros top 1 in the entire universe thanks to me and not zade"
         jj "Kill yourself NOW MULTIVERSUS WAS BETTER"
-<<<<<<< HEAD
-        show kody
-=======
-        show Cody1
->>>>>>> 90a2a1251d37265d99789402bb36399084ee873e
+        show kody:
+            xalign 0.0
+            linear 0.05 xalign 1.0
+            repeat
+
         c "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
+
+        show jj1
+        jj "KILL YOURSELF"
 
     # This ends the game.
 
