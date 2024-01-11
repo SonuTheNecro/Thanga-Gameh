@@ -77,6 +77,8 @@ label start:
         show jj1
         jj "KILL YOURSELF"
 
+        t "oof"
+
     # This ends the game.
 
     return
