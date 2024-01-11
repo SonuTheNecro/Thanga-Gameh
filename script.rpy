@@ -63,11 +63,11 @@ label start:
         return
 
     label scene2:
-        scene Thanga6
+        scene thanga6
         with fade
         t "woah is that my smash bros top 1 in the entire universe thanks to me and not zade"
         jj "Kill yourself NOW MULTIVERSUS WAS BETTER"
-        show Kody
+        show kody
         c "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
 
     # This ends the game.
