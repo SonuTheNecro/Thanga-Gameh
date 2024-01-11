@@ -1,10 +1,10 @@
-﻿﻿# The script of the game goes in this file.
+﻿# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
 define t = Character("Thanga")
-define c = Character("Cody")
+define k = Character("Kody")
 define jj = Character("PillowR")
 
 
@@ -71,8 +71,7 @@ label start:
             xalign 0.0
             linear 0.05 xalign 1.0
             repeat
-
-        c "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
+        k "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
 
         show jj1
         jj "KILL YOURSELF"
