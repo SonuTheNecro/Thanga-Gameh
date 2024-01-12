@@ -6,6 +6,8 @@
 define t = Character("Thanga")
 define k = Character("Kody")
 define jj = Character("PillowR")
+define c = Character("Cody")
+define b = Character("B-Bop")
 
 
 # The game starts here.
@@ -69,14 +71,32 @@ label start:
         jj "Kill yourself NOW MULTIVERSUS WAS BETTER"
         show kody:
             xalign 0.0
-            linear 0.05 xalign 1.0
+            linear 10000 xalign 1.0
             repeat
         k "WAIT THANG I NEED CHICKEN NUGGETS PLZ"
+        t "Fine here is your nuggets you fatass"
+        hide kody
 
+        show kody:
+            xalign 0.5
+            linear 0.01 xalign 1.0
+            repeat
         show jj1
         jj "KILL YOURSELF"
 
         t "oof"
+        
+        show cody at right:
+        c "YOU SHOULD KILL YOURSELF NOW" 
+
+        hide jj1
+        with fade
+        hide Kody
+
+        show brian1 at left:
+        b "Where is the pokemon :("
+
+    
 
     # This ends the game.
 
