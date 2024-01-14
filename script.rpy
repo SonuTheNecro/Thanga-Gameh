@@ -230,12 +230,12 @@ label start:
             show kody:
                 xzoom 0.5
                 yzoom 0.2
-                yalign 0.4
+                yalign 0.65
                 xalign 0.25
             show sword1:
                 xzoom 0.2
                 yzoom 0.2
-                yalign 0.6
+                yalign 0.5
                 xalign 0.75
                 linear 0.1 xalign 0.0
 
