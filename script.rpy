@@ -194,7 +194,7 @@ label start:
 
             t "NO KODY"
 
-            jump sonuhenryreaction
+            return
 
         label right:
             show sword1:
@@ -209,7 +209,7 @@ label start:
 
             t "NO KODY"
 
-            jump sonuhenryreaction
+            return
 
         label duck:
             if learned:
@@ -228,7 +228,7 @@ label start:
                 hide sword1
 
                 t "NO KODY"
-                jump sonuhenryreaction
+                return
                 
 
         label finish:
