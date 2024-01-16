@@ -8,8 +8,18 @@ define c = Character("Cody")
 define b = Character("B-Bop")
 define stn = Character("SonuTheNecro")
 define tv = Character("TacticalVortex")
+define mcde = Character("Mcdonalds Cashier")
+# NOTES FOR ME AND HENRY
+# Uh why did we put labels in labels, that needs to be fixed...
+# Did we just not consider proper grammer?
+# Uh figure out audio and get some ncs anime school music or smth
+# Update Brian pictures to avoid a Privacy Complaint on the Repo
 
-
+#BASIS for the story
+#Kody is super angry when he goes to McDonalds since there is NO IceCream, Kody has an Edgeworth monologue and splits into two beings
+# Plot the actual story like Slice-Of-Life with evil Kody being a dick
+# Cody fights evil Kody to the death at the end
+# Creators react and get pissed off (plottwist: Jesus, Allah, and Mohammad React to them)
 
 
 label start:
@@ -33,10 +43,21 @@ label start:
     t "You realize it is really hard to gain muscle while also trying to lose weight..."
     t "You are actually a dumb fuck, shut up so we can get there without me getting a headache"
 
-    scene mcdonalds_outside
+    scene mcdonalds_outside:
+        xzoom 3.2
+        yzoom 2.6
 
-    show thanag2
-    show kody
+    show thanga2:
+        xzoom 1.3
+        yzoom 1.3
+        xalign 0.3
+        yalign 0.9
+    show kody:
+        xzoom 1.3
+        yzoom 1.3
+        xalign 0.8
+        yalign 0.9
+    
 
     t "well alright"
     t "here we are... the worst place in America"
@@ -48,8 +69,42 @@ label start:
 
     k "BRO I AIN'T GAY I JUST LOVE MCDONALDS NOW LETS GO I AM HUNGRY"
 
-    scene mcdonalds_inside
+    scene mcdonalds_inside:
+        xzoom 1.9
+        yzoom 1.9
     t "Alright what do you even want to eat?"
+
+    k "uhhhhhh"
+    k "I'll have two number nines"
+    k "a number nine large"
+    k "a number si-"
+
+    t "NO"
+    t "Stop"
+    t "..."
+    t "This joke isn't even funny"
+    t "Make a real order or I'm taking you home"
+
+    k "This is my real order"
+
+    t "I thought you were trying to be healthy and lose weight"
+
+    k "I did not say I wanted to be healthy"
+    k "All I said was I wanted to lose weight"
+
+    t "Well you have to pick a healthy option in order to do that"
+
+    k "Wait what..."
+
+    "A very lengthy lecture about Health Nutritution is pain stakingly yelled by Thanga towards Kody"
+
+    k "Ok ok fine."
+    k "I'll have the McChicken Salad and an Oreo Shake IceCream"
+
+    t "I don't even care enough anymore, just whatever"
+
+
+
 
     scene bg room
 
