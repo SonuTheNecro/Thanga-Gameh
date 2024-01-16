@@ -1,7 +1,5 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
+﻿# Thanga Gamea (Thang Game) is a creation of SonuTheNecro & TacticalVortex
+# Current Verison 1.3
 
 define t = Character("Thanga")
 define k = Character("Kody")
@@ -12,21 +10,49 @@ define stn = Character("SonuTheNecro")
 define tv = Character("TacticalVortex")
 
 
-# The game starts here.
+
 
 label start:
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
+
+    # The Prologue Scene
+    scene carontheroad:
+        xzoom 1.8
+        yzoom 1.3
+    k "Holy shit Thang. I am so excited for this"
+    k "You actually made my day with this trip I am so excited!"
+
+    t "I am only doing this because Papi is making me because you are a fatass..."
+    t "You eat everything on spot like Kirby bro"
+
+    k "Ayo man, that is not fair."
+    k "I am trying to gain some muscle and I need that protein"
+
+    t "..."
+    t "..."
+    t "You realize it is really hard to gain muscle while also trying to lose weight..."
+    t "You are actually a dumb fuck, shut up so we can get there without me getting a headache"
+
+    scene mcdonalds_outside
+
+    show thanag2
+    show kody
+
+    t "well alright"
+    t "here we are... the worst place in America"
+
+    k "OMG YES I LOVE YOU THANG YOU ARE THE BEST!"
+
+    t "What the fuck?"
+    t "Are you like gay or something?"
+
+    k "BRO I AIN'T GAY I JUST LOVE MCDONALDS NOW LETS GO I AM HUNGRY"
+
+    scene mcdonalds_inside
+    t "Alright what do you even want to eat?"
 
     scene bg room
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    # These display lines of dialogue.
 
     t "live thang reaction"
 

@@ -23,13 +23,18 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "1.2"
+define config.version = "1.3"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
-define gui.about = _p(""" 
+define gui.about = _p(""" Thanga Gamea (Thang Game) is a story and game created by SonuTheNecro and TacticalVortex.
+
+Although the characters in the game are based off of real people, they are by no means a representation of the real people and are done purely for satrical and entertainment purposes.
+Otherwise, everything else is fiction and should be treated as such.
+
+Special Thanks to: ThangaMangaLang, B-bop, JigglyJello, and Maslmew
 """)
 
 
