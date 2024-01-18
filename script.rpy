@@ -1,14 +1,16 @@
 ﻿# Thanga Gamea (Thang Game) is a creation of SonuTheNecro & TacticalVortex
 # Current Verison 1.3
-
+define questionmark = Character("???")
 define t = Character("Thanga")
 define k = Character("Kody")
 define jj = Character("PillowR")
 define c = Character("Cody")
+define sk = Character("Shadow Kody")
 define b = Character("B-Bop")
 define stn = Character("SonuTheNecro")
 define tv = Character("TacticalVortex")
-define mcde = Character("Mcdonalds Cashier")
+define mcde = Character("McDonalds Cashier")
+define mcm = Character("The McDonalds Manager")
 # NOTES FOR ME AND HENRY
 # Uh why did we put labels in labels, that needs to be fixed...
 # Did we just not consider proper grammer?
@@ -103,7 +105,107 @@ label start:
 
     t "I don't even care enough anymore, just whatever"
 
+    mcde "Hello, welcome to McDonalds! May I take your order?"
 
+    stn "wait..."
+    stn "This isn't Chick Fil-A"
+    stn "HENRY!"
+    stn "Why did you write it like this?"
+    tv "That was the default..."
+    stn "Alright then, guess I have to do some rewriting..."
+
+    "..."
+    "..."
+    "..."
+
+    mcde "What do you fuckers want?"
+
+    t "Uh hello, I would like one Big Mac and a McChicken Salad" 
+    k "You forgot the Icecream :("
+
+    mcde "Anything else you fucker?"
+    t "Uh can I please get an Oreo Shake IceCream"
+
+    mcde "You fucking ass stupid ass muthafucka"
+    mcde "The IceCream Machine is broken"
+
+    #Denial
+    k "What..."
+    k "..."
+    k "..."
+    k "..."
+    k "..."
+    k "..."
+    k "WHAT?!?!?"
+    k "No.... This cannot be"
+    #Anger
+    k "WHY DON'T YOU GO FIX IT YOU FUCKER!"
+    k "I SAID FIX IT, YOU AIN'T HEAR ME YOU BITCH"
+    t "Kody shut up, he isn't going to do it if you are going to be an asshat in public. "
+    #Bargaining
+    k "please fix it, I will give my best roblox cosmetic."
+    k "It is so great..."
+    t "???"
+    mcde "I don't get paid enough for this dumb shit."
+    #Depression
+    "Some time passes"
+    k "My life is over..."
+    k "The McDonalds Ice Cream was my pride and joy."
+    k "and it is all gone..."
+    t "?????"
+
+    #Acceptance
+    k "Okay whatever..."
+    k "Can I just have 3 Big Macs..."
+    k "Wait Thang where did he go?"
+    t "You are flipping out so hard he is off shift now... "
+    t "What a great way to spend my time..."
+
+    scene kodybrain
+    show cody:
+        yalign 0.5
+        xalign 0.5
+        xzoom 1.3
+        yzoom 1.3
+    questionmark "NO YOU MUST NOT WIELD!"
+    show kody:
+        xalign 0.2
+        yalign 0.5
+        xzoom 1.3
+        yzoom 1.3
+    
+    hide cody
+    show cody:         
+        yalign 0.5
+        xalign 0.5
+        xzoom 1.3
+        yzoom 1.3
+        linear 0.1 xalign 0.8
+
+    k "Huh?"
+    k "Who are you?"
+
+    questionmark "I am the true self."
+    questionmark "You are me..."
+    questionmark "but I am you..."
+    questionmark "They call me Shadow Kody"
+    sk "MWAHAHAHAHAAHAHAHAHAH"
+    sk "*Cough* *Cough*"
+    sk "HAHAHAAHAHA"
+    sk "ha... ha"
+    tv "Oh hell nah. I'm hitting pause on this"
+    tv "BHAARAT! Why did you put a Persona 4 Reference in here..."
+    stn "idk lol"
+    tv "I'm changing him to Cody with a C because that isn't confusing one bit"
+
+    "..."
+
+    k "Why are you coughing"
+    c "Shut the fuck up"
+    c "You were always the weak part of me..."
+    k "I literally do not understand what the hell is happening..."
+    c "I think its time if we made some changes around here."
+    c "Goodbye Kody"
 
 
     scene bg room
