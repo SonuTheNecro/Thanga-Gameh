@@ -212,7 +212,10 @@ label start:
     c "I think its time if we made some changes around here."
     c "Goodbye Kody"
 
-    scene mcdonalds_playplace
+    scene mcdonalds_playplace:
+        xalign 0.8
+        xzoom 3.9
+        yzoom 3.3
 
     c "GOODBYE KODY SEE YOU LATER SUCKER!"
 
