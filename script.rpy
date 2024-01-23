@@ -34,7 +34,8 @@ label start:
     k "Holy shit Thang. I am so excited for this"
     k "You actually made my day with this trip I am so excited!"
 
-    t "I am only doing this because Papi is making me because you are a fatass..."
+    t "I am only doing this because Daddi forced me."
+    t "You are actually a fatass..."
     t "You eat everything on spot like Kirby bro"
 
     k "Ayo man, that is not fair."
@@ -153,7 +154,6 @@ label start:
     k "The McDonalds Ice Cream was my pride and joy."
     k "and it is all gone..."
     t "?????"
-
     #Acceptance
     k "Okay whatever..."
     k "Can I just have 3 Big Macs..."
@@ -167,7 +167,7 @@ label start:
         xalign 0.5
         xzoom 1.3
         yzoom 1.3
-    questionmark "NO YOU MUST NOT WIELD!"
+    questionmark "NO YOU MUST NOT YIELD!"
     show kody:
         xalign 0.2
         yalign 0.5
@@ -193,6 +193,11 @@ label start:
     sk "*Cough* *Cough*"
     sk "HAHAHAAHAHA"
     sk "ha... ha"
+
+    "..."
+    "..."
+    "..."
+
     tv "Oh hell nah. I'm hitting pause on this"
     tv "BHAARAT! Why did you put a Persona 4 Reference in here..."
     stn "idk lol"
@@ -207,6 +212,9 @@ label start:
     c "I think its time if we made some changes around here."
     c "Goodbye Kody"
 
+    scene mcdonalds_playplace
+
+    c "GOODBYE KODY SEE YOU LATER SUCKER!"
 
     scene bg room
 
