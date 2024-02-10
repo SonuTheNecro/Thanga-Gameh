@@ -28,7 +28,7 @@ label start:
 
     # These display lines of dialogue.
 
-    t "live thang reaction!"
+    t "live thang reaction!!"
 
     t "my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend! my favorite anime is rent a girlfriend!"
     default learned = False
