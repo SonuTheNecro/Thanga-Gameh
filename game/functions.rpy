@@ -14,7 +14,7 @@ init python:
             renpy.jump(original_menu)
 
 #Renpy Code
-define black = Solid((0, 0, 0, 255))
+
 #A game over screen for general use, why is Master Igor shit talking so hard
 label game_over:
     stop sound

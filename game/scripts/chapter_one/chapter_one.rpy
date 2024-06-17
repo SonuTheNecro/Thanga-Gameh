@@ -965,7 +965,7 @@ label chapter_one:
         if persistent.secret1 == True:
             jump chapter_one_secret
         else:
-            jump chapter_two
+            return
         label chapter_one_secret:
             questionmark "That is what the ChatGPT script came up with"
             scene crystalball with easeintop:
