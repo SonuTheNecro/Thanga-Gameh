@@ -1,10 +1,7 @@
 ﻿# Thanga Gamea (Thang Game) is a creation of SonuTheNecro & TacticalVortex
 # Current Verison 1.3.5
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 14a4611 (Fixed Saving)
 define questionmark = Character("???")
 define t = Character("Thanga")
 define k = Character("Kody")
@@ -24,10 +21,7 @@ default count2 = -1
 
 default player_name = "Kody"
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 14a4611 (Fixed Saving)
 # Flags for all Secret Endings Secret0 = Prologue
 default persistent.secret0 = False
 default persistent.secret1 = False
@@ -94,8 +88,9 @@ label start:
             "Chapter_1" if persistent.ch00 == True:
                 jump chapter_one
             "Chapter_2" if persistent.ch01 == True:
-                #jump chapter_two
-                jump chapter_one
+                jump chapter_two
+            "Chapter_2_Gym" if persistent.chapter_two_gym == True:
+                jump chapter_two_gym
             "Erase all Data":
                 $ renpy.delete_persistent()
                 "All persistent Data has been deleted"

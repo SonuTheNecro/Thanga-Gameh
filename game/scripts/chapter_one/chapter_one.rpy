@@ -117,11 +117,6 @@ label chapter_one:
         ce "Hello, Welcome to Chick-Fil-A how many I help you?"
         b "I want 3 #2 Spicy Chickens meal plans"
         ce "Alright that will be $23.49 please pull up at the window"
-<<<<<<< HEAD
-        b "(Damn $23 that's like 5 hours of work salary money)"
-
-        b "Alright here you go, here is the cash for the meal"
-=======
         b82 "(Damn $23 that's like 5 hours of work salary money)"
         hide screen clickable_chapter_one_secret_lopunny
         scene chick_window with dissolve:
@@ -129,7 +124,6 @@ label chapter_one:
         show brian_mcdonalds with dissolve:
             subpixel True pos (603, 235) 
         b82 "Alright here you go, here is the cash for the meal"
->>>>>>> 34b9103 (did some more todos)
         ce "Alright here is the -0.99 Cents"
         k "What Demonination did Brian pay in again?"
         b "Alright let's chow down"
@@ -286,11 +280,7 @@ label chapter_one:
     b "hell is a ninkapoop..."
     b "I actually have never had subway before, is it even good"
     t "i dont know I dont eat shitty American white people food like you bozos."
-<<<<<<< HEAD
-    t "I can smell the smash player breathe from here" #T
-=======
     t "I can smell the smash player breathe from here"
->>>>>>> 34b9103 (did some more todos)
     b "Why are you always a dickhead"
     b "you do this to me intentionally like i did nothing wrong"
     b "everyday its shittalk and i cannot handle it like i am this close man"
@@ -331,11 +321,7 @@ label chapter_one:
         yrotate 180.0
     t "there is literally a homeless guy!"
     $ count = 0
-<<<<<<< HEAD
     show screen clickable_chapter_one_stn
-=======
-    show screen clickable_stn_chapter_one
->>>>>>> 34b9103 (did some more todos)
     stn "Fuck off Kody Kunt King!"
     k "what a dick!"
 
@@ -979,7 +965,7 @@ label chapter_one:
         if persistent.secret1 == True:
             jump chapter_one_secret
         else:
-            return
+            jump chapter_two
         label chapter_one_secret:
             questionmark "That is what the ChatGPT script came up with"
             scene crystalball with easeintop:
