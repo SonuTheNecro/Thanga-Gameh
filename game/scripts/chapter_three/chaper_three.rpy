@@ -102,8 +102,7 @@ label chapter_three:
         scene ch03map with dissolve:
             subpixel True pos (-63, -63) xzoom 1.31 yzoom 1.14 zoom 3.14 blur 3.48
         show screen clickable_chapter_three_jewel_osco
-
-
-
-        "test"
+        if count > 0:
+            show screen clickable_chapter_three_house
+        "Current Objective: Get a Job!"
         jump chapter_three_map

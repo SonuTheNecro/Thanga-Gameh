@@ -13,6 +13,14 @@ screen clickable_chapter_three_jewel_osco():
         idle "images/ch03jewel.jpg"
         hover "images/ch03jewel.jpg"
         action Jump("chapter_three_jewel_osco")
+screen clickable_chapter_three_house():
+    imagebutton:
+        pos (1513, 0) 
+        at Transform(zoom = 0.71)
+        idle "images/ch03house_clipart.png"
+        hover "images/ch03house_clipart.png"
+        action Jump("chapter_three_streaming")
+
 
 label chapter_three_jewel_osco:
     call chapter_three_hide_map_buttons
@@ -257,7 +265,7 @@ label chapter_three_jewel_osco:
         k "well that was fun"
         k "I should dip!"
         $ chapter_three_jewels_mark(1)
-        call chapter_three_jewel_restore_buttons
+        call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Location Three Event
@@ -359,7 +367,7 @@ label chapter_three_jewel_osco:
     label chapter_three_jewel_end:
         call chapter_three_jewel_hide_all_buttons
         show ch03_ceo with dissolve:
-            subpixel True
+            subpixel True pos (616, 68) zoom 3.41 
         jceo "Hello Kody"
         k "Who dafaq are you?"
         k "looking like a straight up bozo"
@@ -382,6 +390,87 @@ label chapter_three_jewel_osco:
         $ count = 1
         jump chapter_three_map
 
+label chapter_three_streaming:
+    call chapter_three_hide_map_buttons
+    scene ch03_desk with dissolve:
+        subpixel True xzoom 1.18 zoom 1.59 
+    show kody with dissolve:
+        subpixel True pos (990, 33) zoom 1.87 yrotate 180.0 
+    k "Well that fucking suck..."
+    k "okay so I saw Thang do this before with Danganronpa"
+    k "I watched Markiplier"
+    k "I got this, I am the straight goat and the next JackSepticEye :)"
+
+    show thanga2:
+        subpixel True pos (-459,28) zoom 1.71
+        linear 0.35 subpixel True pos (108, 28) zoom 1.71 
+    t "I heard my name"
+    k "rememeber danganronpa?"
+    t "The game or what happened last week?"
+    k "the game"
+    t "yeah why?"
+    k "remember how you recorded that game?"
+    t "like ddlc?"
+    k "yeah yeah"
+    show ch03_reaction:
+        subpixel True yzoom 1.06 zoom 1.52 
+    k "I loved your reactions"
+    t "solid content I ain't even gonna cap"
+    hide ch03_reaction
+    t "but why are you bringing this up right now?"
+    k "ima be the next pewdiepie"
+    k "ima be a millionaire"
+    t "yeah okay buddy, good luck w/ that"
+    t "after this fails, you will go get a REAL job okay?"
+    k "yeah yeah yeah"
+    k "get out of my room now"
+    show thanga2:
+        yrotate 180.0
+        linear 0.35 subpixel True pos (-459,28) zoom 1.71
+    t "later kodster"
+    k "alright let's get this bread"
+    k "now what game should I do?"
+    k "hmmm"
+    k "oh ho ho ho"
+    k "I got the ultimate idea!"
+
+    scene ch03_markiplier1:
+        subpixel True zoom 1.54 
+    show kody:
+        subpixel True crop_relative True yoffset -162.0 pos (-30, 30) xzoom 1.62 zoom 1.38 crop (0.0, -0.14, 1.0, 0.66) 
+    play sound "audio/sound/chapter_three/markiplier.ogg"
+    $ renpy.pause(3.0)
+    k "Welcome to Poppy's Playtime!"
+    k "I have heard this game is awesome"
+    k "and before we start!"
+    k "can we get 100k likes for a part two"
+    k "and be sure to subscribe if you enjoy the content"
+    k "alright, let's go"
+    scene ch03_markiplier2:
+        subpixel True zoom 1.54
+    show kody:
+        subpixel True crop_relative True yoffset -162.0 pos (-30, 40) xzoom 1.62 zoom 1.38 crop (0.0, -0.14, 1.0, 0.66) 
+    k "Alright this game looking real baby"
+    k "like is this game for babies?"
+    play movie "video/chapter_three/markiplier.webm"
+    scene ch03_desk with dissolve:
+        subpixel True xzoom 1.18 zoom 1.59 
+    show kody with dissolve:
+        subpixel True pos (990, 33) zoom 1.87 yrotate 180.0
+    k "BRO"
+    k "THIS GAME IS SO SCARY WTF"
+    show thanga2:
+        subpixel True pos (-459,28) zoom 1.71
+        linear 0.35 subpixel True pos (108, 28) zoom 1.71
+    t "I heard yelling, what happened?"
+    k "I died in this game and it was super scary"
+    t "get a real job"
+    k "k fine fine"
+    $ count = 2
+    $ count2 = 6
+    jump chapter_three_map
+
 label chapter_three_hide_map_buttons:
     hide screen clickable_chapter_three_jewel_osco
+    hide screen clickable_chapter_three_house
     return
