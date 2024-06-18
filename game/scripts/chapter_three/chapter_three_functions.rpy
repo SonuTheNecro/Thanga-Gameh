@@ -3,7 +3,13 @@
 init python:
     def chapter_three_jewels_mark(id):
         chapter_three_jewels_check[id] = True
-
+    def chapter_three_anime_talk():
+        try:
+            with renpy.file("scripts/chapter_three/chapter_three_anime_speech.txt") as file:
+                for line in file:
+                    renpy.say("Kody", str(line)[2:-5])
+        except FileNotFoundError:
+            renpy.say(None, "File not found: 'scripts/chapter_three/chapter_three_anime_speech.txt'")
 
 #Renpy Code
 screen clickable_chapter_three_jewel_osco():
@@ -395,79 +401,143 @@ label chapter_three_streaming:
     scene ch03_desk with dissolve:
         subpixel True xzoom 1.18 zoom 1.59 
     show kody with dissolve:
-        subpixel True pos (990, 33) zoom 1.87 yrotate 180.0 
-    k "Well that fucking suck..."
-    k "okay so I saw Thang do this before with Danganronpa"
-    k "I watched Markiplier"
-    k "I got this, I am the straight goat and the next JackSepticEye :)"
-
-    show thanga2:
-        subpixel True pos (-459,28) zoom 1.71
-        linear 0.35 subpixel True pos (108, 28) zoom 1.71 
-    t "I heard my name"
-    k "rememeber danganronpa?"
-    t "The game or what happened last week?"
-    k "the game"
-    t "yeah why?"
-    k "remember how you recorded that game?"
-    t "like ddlc?"
-    k "yeah yeah"
-    show ch03_reaction:
-        subpixel True yzoom 1.06 zoom 1.52 
-    k "I loved your reactions"
-    t "solid content I ain't even gonna cap"
-    hide ch03_reaction
-    t "but why are you bringing this up right now?"
-    k "ima be the next pewdiepie"
-    k "ima be a millionaire"
-    t "yeah okay buddy, good luck w/ that"
-    t "after this fails, you will go get a REAL job okay?"
-    k "yeah yeah yeah"
-    k "get out of my room now"
-    show thanga2:
-        yrotate 180.0
-        linear 0.35 subpixel True pos (-459,28) zoom 1.71
-    t "later kodster"
-    k "alright let's get this bread"
-    k "now what game should I do?"
-    k "hmmm"
-    k "oh ho ho ho"
-    k "I got the ultimate idea!"
-
-    scene ch03_markiplier1:
-        subpixel True zoom 1.54 
-    show kody:
-        subpixel True crop_relative True yoffset -162.0 pos (-30, 30) xzoom 1.62 zoom 1.38 crop (0.0, -0.14, 1.0, 0.66) 
-    play sound "audio/sound/chapter_three/markiplier.ogg"
-    $ renpy.pause(3.0)
-    k "Welcome to Poppy's Playtime!"
-    k "I have heard this game is awesome"
-    k "and before we start!"
-    k "can we get 100k likes for a part two"
-    k "and be sure to subscribe if you enjoy the content"
-    k "alright, let's go"
-    scene ch03_markiplier2:
-        subpixel True zoom 1.54
-    show kody:
-        subpixel True crop_relative True yoffset -162.0 pos (-30, 40) xzoom 1.62 zoom 1.38 crop (0.0, -0.14, 1.0, 0.66) 
-    k "Alright this game looking real baby"
-    k "like is this game for babies?"
-    play movie "video/chapter_three/markiplier.webm"
-    scene ch03_desk with dissolve:
-        subpixel True xzoom 1.18 zoom 1.59 
-    show kody with dissolve:
         subpixel True pos (990, 33) zoom 1.87 yrotate 180.0
-    k "BRO"
-    k "THIS GAME IS SO SCARY WTF"
-    show thanga2:
-        subpixel True pos (-459,28) zoom 1.71
-        linear 0.35 subpixel True pos (108, 28) zoom 1.71
-    t "I heard yelling, what happened?"
-    k "I died in this game and it was super scary"
-    t "get a real job"
-    k "k fine fine"
-    $ count = 2
-    $ count2 = 6
+    if count2 == 5:
+        k "Well that fucking sucks..."
+        k "okay so I saw Thang do this before with Danganronpa"
+        k "I watched Markiplier"
+        k "I got this, I am the straight goat and the next JackSepticEye :)"
+
+        show thanga2:
+            subpixel True pos (-459,28) zoom 1.71
+            linear 0.35 subpixel True pos (108, 28) zoom 1.71 
+        t "I heard my name"
+        k "rememeber danganronpa?"
+        t "The game or what happened last week?"
+        k "the game"
+        t "yeah why?"
+        k "remember how you recorded that game?"
+        t "like ddlc?"
+        k "yeah yeah"
+        show ch03_reaction:
+            subpixel True yzoom 1.06 zoom 1.52 
+        k "I loved your reactions"
+        t "solid content I ain't even gonna cap"
+        hide ch03_reaction
+        t "but why are you bringing this up right now?"
+        k "ima be the next pewdiepie"
+        k "ima be a millionaire"
+        t "yeah okay buddy, good luck w/ that"
+        t "after this fails, you will go get a REAL job okay?"
+        k "yeah yeah yeah"
+        k "get out of my room now"
+        show thanga2:
+            yrotate 180.0
+            linear 0.35 subpixel True pos (-459,28) zoom 1.71
+        t "later kodster"
+        k "alright let's get this bread"
+        k "now what game should I do?"
+        k "hmmm"
+        k "oh ho ho ho"
+        k "I got the ultimate idea!"
+
+        scene ch03_markiplier1:
+            subpixel True zoom 1.54 
+        show kody:
+            subpixel True crop_relative True yoffset -162.0 pos (-30, 30) xzoom 1.62 zoom 1.38 crop (0.0, -0.14, 1.0, 0.66) 
+        play sound "audio/sound/chapter_three/markiplier.ogg"
+        $ renpy.pause(3.0)
+        k "Welcome to Poppy's Playtime!"
+        k "I have heard this game is awesome"
+        k "and before we start!"
+        k "can we get 100k likes for a part two"
+        k "and be sure to subscribe if you enjoy the content"
+        k "alright, let's go"
+        scene ch03_markiplier2:
+            subpixel True zoom 1.54
+        show kody:
+            subpixel True crop_relative True yoffset -162.0 pos (-30, 40) xzoom 1.62 zoom 1.38 crop (0.0, -0.14, 1.0, 0.66) 
+        k "Alright this game looking real baby"
+        k "like is this game for babies?"
+        play movie "video/chapter_three/markiplier.webm"
+        scene ch03_desk with dissolve:
+            subpixel True xzoom 1.18 zoom 1.59 
+        show kody with dissolve:
+            subpixel True pos (990, 33) zoom 1.87 yrotate 180.0
+        k "BRO"
+        k "THIS GAME IS SO SCARY WTF"
+        show thanga2:
+            subpixel True pos (-459,28) zoom 1.71
+            linear 0.35 subpixel True pos (108, 28) zoom 1.71
+        t "I heard yelling, what happened?"
+        k "I died in this game and it was super scary"
+        t "get a real job"
+        k "k fine fine"
+        $ count2 = 6
+    elif count2 == 6:
+        k "okay gaming didn't work out"
+        k "but I simply won't do scary vidya games"
+        k "hmmmm"
+        k "THANGGGGGGGGGGGGGGGGGGG"
+        show thanga2:
+            subpixel True pos (-459,28) zoom 1.71
+            linear 0.35 subpixel True pos (108, 28) zoom 1.71
+        t "I thought I told you to get a real job"
+        k "iz too hard for me"
+        t "well what do you need?"
+        k "I need a not scary thing to do for youtube content"
+        t "hmmm"
+        t "Well can you do a thanga anime news network?"
+        k "?"
+        t "its MY show and nobody elses"
+        t "you just talk about current anime"
+        k "got it"
+        k "3"
+        k "THANG GET OUT"
+        show thanga2:
+            yrotate 180.0
+            linear 0.35 subpixel True pos (-459,28) zoom 1.71
+        t "how much are you going to reuse this animation?"
+        hide thanga2
+        k "alright here we go"
+        k "3"
+        k "2"
+        k "1"
+        k "drop it"
+        show ch03_crunchy:
+            subpixel True xpos -180 xzoom 1.23
+        play music "audio/music/chapter_three/anime1.ogg" loop
+        $ chapter_three_anime_talk()
+        scene ch03_desk with dissolve:
+            subpixel True xzoom 1.18 zoom 1.59 
+        show kody with dissolve:
+            subpixel True pos (990, 33) zoom 1.87 yrotate 180.0
+        stop music
+        k "alright the video finished"
+        k "COME HERE!"
+        show thanga2:
+            subpixel True pos (108, 28) zoom 1.71
+        k "how did you just appear"
+        t "not reusing the animation"
+        t "video looks pretty good to me"
+        t "alright now hit upload and in like 10 minutes you are good to go"
+        k "alright ima get like 10million dollars from this video"
+        t "more like ten wasted minutes"
+        k "what?"
+        t "you need to be basically a big youtuber to get money"
+        k "what a scam"
+        t "that is how supply and demand works"
+        k "fuck this then"
+        t "atleast upload the video you have already made!"
+        k "okay okay!"
+        k "I got a pop-up"
+        show ch03_dmca:
+            subpixel True xzoom 1.09 zoom 2.71 
+        t "You got a DMCA L Bozo"
+        hide ch03_dmca
+        k "THIS JOB FUCKING SUCKS I HATE THIS SHIT!"
+        k "YOUTUBE IS FUCKING RIGGED GRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR!"
+        t "get out of here"
     jump chapter_three_map
 
 label chapter_three_hide_map_buttons:
