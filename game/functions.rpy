@@ -5,14 +5,24 @@ init python:
     import random
     from renpy.display import im
     #A confirm menu for important decisions, Paramater is the str for the menu label, jump decision is where you would go if you choose yes
-    def confirm_menu(original_menu: str, jump_decision:str):
+    def confirm_menu_jump(original_menu, jump_decision):
         renpy.say(None, "This is an Important Decision that will affect your future gameplay, are you sure about this?")
         check = renpy.display_menu([("Yes", "yes"), ("No", "no")])
         if check == "yes":
-            renpy.jump(jump_decision)
+            renpy.say(None, "Good luck on your decision")
+            renpy.jump(str(jump_decision))
         else:
-            renpy.jump(original_menu)
-
+            renpy.say(None, "Good luck on your decision")
+            renpy.jump(str(original_menu))
+    #A confirm menu for important decisions, Paramater is the str for the menu label
+    def confirm_menu_no_jump(original_menu):
+        renpy.say(None, "This is an Important Decision that will affect your future gameplay, are you sure about this?")
+        check = renpy.display_menu([("Yes", "yes"), ("No", "no")])
+        if check == "no":
+            renpy.say(None, "Good luck on your decision")
+            renpy.jump(str(original_menu))
+        else:
+            renpy.say(None, "Good luck on your decision")
 #Renpy Code
 
 #A game over screen for general use, why is Master Igor shit talking so hard

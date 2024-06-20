@@ -399,7 +399,7 @@ label chapter_three_jewel_osco:
             subpixel True pos (-63, -63) xzoom 1.31 yzoom 1.14 zoom 3.14 blur 3.48
         "Well that coulda gone better"
         k "yeah I FUCKING KNOW!"
-        $ count = 1
+        $ count += 1
         jump chapter_three_map
 
 label chapter_three_streaming:
@@ -511,7 +511,7 @@ label chapter_three_streaming:
         k "1"
         k "drop it"
         show ch03_crunchy:
-            subpixel True xpos -180 xzoom 1.23
+            subpixel True xpos -180 xzoom 1.11 zoom 1.51
         play music "audio/music/chapter_three/anime1.ogg" loop
         $ chapter_three_anime_talk()
         scene ch03_desk with dissolve:
@@ -544,6 +544,7 @@ label chapter_three_streaming:
         k "THIS JOB FUCKING SUCKS I HATE THIS SHIT!"
         k "YOUTUBE IS FUCKING RIGGED GRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR!"
         t "get out of here"
+        $ count += 1
         $ count2 = 7
     else:
         k "Honestly fuck this shit"
@@ -552,8 +553,162 @@ label chapter_three_streaming:
     jump chapter_three_map
 
 label chapter_three_mailman:
-    scene ch03_post1:
+    call chapter_three_hide_map_buttons
+    scene ch03_post1 with dissolve:
+        subpixel True xzoom 1.31 zoom 1.84 
+    show kody:
+        subpixel True pos (-238, 438) 
+    "Somewhere in the U.S."
+    show kody:
+        linear 0.35 subpixel True pos (482, 438) 
+    k "I gotta be the BEST mailman i got the guuuuuuu"
+    k "but how do i make this process better than Jewel Osco"
+    show phoenix_wright:
+        subpixel True pos (2435, 398) zoom 0.63 
+        linear 0.35 subpixel True pos (1184, 398) zoom 0.63 
+    pw "yo kodster"
+    pw "is the usps open?"
+    k "uh yeah"
+    k "yo felix white"
+    k "got any guu gaming ideas on how to become pro mailman"
+    pw "I dont know what any of those words mean but I think you just deliver mail in a mail truck"
+    k "damn the truck's got pronouns"
+    pw "MAIL truck"
+    pw "not male truck"
+    k "okay ima be the best mail man ever"
+    pw "good luck"
+    pw "and you will need it!"
+    scene ch03_post2 with dissolve:
+        subpixel True xzoom 1.37 zoom 2.25 
+    k "woah this is the mail system in the united states"
+    show ch03_usps_worker:
+        subpixel True pos (323, -37) zoom 3.73 
+    usps "Hello sir, welcome to the United States Postal Service!"
+    usps "What are we delivering today?"
+    k "Yo man"
+    k "I don't really got anything important to deliver"
+    usps "What can I do for you then sir?"
+    k "Call me Kody with a K"
+    k "speaking of which, did you see a Cody with a C?"
+    usps "Uh yes, actually I did deliver a package"
+    k "YOOOOO"
+    k "WHAT WAS IT?"
+    usps "U.S. code states that all mail is anonymous and cannot be tampered with"
+    usps "But it was very big"
+    usps "kinda like a football"
+    k "(Hell Kody is using a football for?)"
+    k "so anyways..."
+    k "I would like to have a job offer at this governmental position"
+    usps "Ah"
+    usps "I cannot really do that"
+    usps "I cannot give governmental positions"
+    k "I really need this job man"
+    k "I got 3 kids to pay and my brother is ailing with autism, retardism, and cancerism"
+    usps "hmmm"
+    usps "I will tell you what"
+    usps "I will give you a test run for a couple of blocks and if you can handle that, then I will give you the job"
+    usps "It looks like you need it"
+    k "alright thanks man"
+    scene ch03_usps_suburb with dissolve:
+        subpixel True yzoom 1.31 zoom 5.63 
+    show ch03_usps_van:
+        subpixel True pos (-640, 388) zoom 2.05 yrotate 180.0
+    k "Wow are we in pixel town?"
+    usps "yes actually, there was a sign for it behind us"
+    k "oh"
+    usps "anyways deliver this first house"
+    show ch03_usps_van:
+        linear 1.1 subpixel True pos (820, 671) zoom 2.05 
+    usps "Drop this package at the front door"
+    usps "Super Simple"
+    show kody:
+        subpixel True pos (1355, 830) zoom 0.34 
+        linear 0.556 subpixel True pos (1735, 665) zoom 0.34 
+    k "Alright, I just drop the package here and now I am done"
+    k "this is pretty easy"
+    usps "Yo!"
+    usps "No Dilly-Dallying"
+    usps "Onto the next house"
+    k "k wait for me"
+    show kody:
+        yrotate 0.0
+        linear 0.445 subpixel True pos (1355, 830) zoom 0.34 
+    hide kody
+    usps "alright now go next house"
+    show ch03_usps_van:
+        linear 0.8 subpixel True pos (1286, 915) 
+    $ renpy.pause(1.0)
+    scene ch03_usps_suburb2:
         subpixel True
+    show ch03_usps_van:
+        subpixel True pos (-406, 656) zoom 1.29 yrotate 180.0 
+    k "yo is this a.i. land?"
+    usps "yes actually, there was a sign for it behind us"
+    k "oh"
+    usps "We are going to the second house"
+    k "got it sir!"
+    show ch03_usps_van:
+        linear 1.2 subpixel True pos (935, 726) zoom 1.29 yrotate 180.0 
+    usps "Drop this giftbox at the front door"
+    show kody:
+        subpixel True pos (1303, 781) zoom 0.32 
+        linear 0.35 subpixel True pos (1668, 696) 
+    $ renpy.pause(0.35)
+    k "Damn, I could get used to this"
+    show kody:
+        yrotate 180.0
+    show ch03_usps_van:
+        linear 0.1 subpixel True pos (2560, 1035) 
+    k "HEY WAIT FOR ME!"
+    k "WHERE ARE YOU GOING"
+    k "WTF!"
+    show kody:
+        yrotate 0
+        linear 2.221 subpixel True pos (2590, 1101) 
+    pause 2
+    scene ch03_usps_dog:
+        subpixel True xpos -18 xzoom 1.88 yzoom 1.06 zoom 1.02 
+    k "YO YOU ASS WHY DID YOU LEAVE ME BEHIND"
+    usps "Mail has no time for waiting in the modern era"
+    usps "You either deliver or you fail to deliver"
+    k "deep stuff"
+    "NO IT ISN'T?????"
+    k "stfu"
+    k "so uh, the dog warning"
+    usps "I am going to need you to deliver some football to this house"
+    k "CODY?"
+    k "let's do this"
+    k "(gulp)" #TODO put gulp sfx here
+
+    show kody:
+        subpixel True pos (1918, 145) yrotate 180.0 
+        linear 0.556 subpixel True pos (1435, 58) yrotate 180.0 
+    show ch03_usps_baby_ocho:
+        subpixel True pos (116, 303) zoom 0.22 
+    menu:
+        "Run!":
+            k "fuck this"
+            usps "WHAT?"
+            k "im outta there, this baby ocho got me scared!"
+            show kody:
+                yrotate 0.0
+                linear 0.35 subpixel True pos (2346, 266) 
+            $ renpy.say("Baby Ocho", "Woof")
+        "Punt the fucking dog!":
+            show kody:
+                linear 0.556 subpixel True pos (641, 188) 
+            pause 1.5
+            k "goodbye bastard" #TODO PUT falcon kick sfx here
+            show ch03_usps_baby_ocho:
+                rotate 0
+                linear 0.1 rotate -360 subpixel True pos (-590, 15)
+            k "goodbye bastard forever"
+
+
+
+    $ count += 1
+    jump chapter_three_map
+
     "test"
 label chapter_three_hide_map_buttons:
     hide screen clickable_chapter_three_jewel_osco

@@ -8,6 +8,7 @@
 define jb = Character("Jewel Osco Butcher")
 define jc = Character("Jewel Osco Customer")
 define jceo = Character("Jewel Osco CEO")
+define usps = Character("USPS Worker Guy")
 default chapter_three_jewels_check = [False, False, False, False, False]
 
 
@@ -76,7 +77,7 @@ label chapter_three:
     $ rngint = -1
     $ rngint1 = -1
     $ choice = -1
-    $ count = -1
+    $ count = 0
     $ count2 = -1
 
     "Current Objective..."
