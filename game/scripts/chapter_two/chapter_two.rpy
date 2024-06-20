@@ -257,7 +257,7 @@ label chapter_two:
         t "huh"
         t "that wasn't in the game"
         show black with fade
-        pause 5.0
+        pause 4.0
 
         label chapter_two_gym:
             scene danganronpa_gym with fade:
@@ -278,7 +278,46 @@ label chapter_two:
                 subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
             show heavy_tf2:
                 subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
-            t "alright so what do we do now"
+            t "alright so what do we do now?"
+            b "what do we do? we beat this bears ass"
+            heavy "Yes. Heavy no lose to little bear"
+            t "nuh uh nope no one is fighting that bear. you will die"
+            heavy "You are weak man. No need to follow weak man"
+            t "what about cody? he would have done something if he could have"
+            heavy "..."
+            heavy "Heavy will eat sandvich"
+            b "alright pussies ill do it then"
+            "What should you do?"
+            menu:
+                "Let Brian fight Monokuma":
+                    jump brian_fight_monokuma
+                "Stop Brian":
+                    jump stop_brian
+            label brian_fight_monokuma:
+                b "im gonna beat his little ass"
+                window auto hide
+                show gun2:
+                    subpixel True pos (0.48, 0.58) xzoom 0.15 yzoom 0.15 
+                play sound "audio/sound/chapter_one/glock_magchange.ogg"
+                pause 2.0 
+                show gunflare:
+                    subpixel True pos (830, 583) xzoom 0.2 yzoom 0.2 
+                $ baldi_shoot(15)
+                jump game_over
+            label stop_brian:
+                t "no brian stop don't you see that gun"
+                show gun2:
+                    subpixel True pos (0.48, 0.58) xzoom 0.15 yzoom 0.15 
+                play sound "audio/sound/chapter_one/glock_magchange.ogg"
+                pause 2.0 
+                b "damn man is strapped"
+                play sound "audio/sound/chapter_two/monokuma_agree.ogg"
+                m "Yep, and i'm not afraid to use it!"
+                march "Alright! We will do whatever you want!"
+                march "Just don't shoot anybody!"
+                k "see, the rizz worked"
+                k "shes trying to protect me"
+                t "..."
             $ persistent.chapter_two_gym = True #Better testing to get back here
     
 
