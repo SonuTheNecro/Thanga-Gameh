@@ -26,7 +26,13 @@ screen clickable_chapter_three_house():
         idle "images/ch03house_clipart.png"
         hover "images/ch03house_clipart.png"
         action Jump("chapter_three_streaming")
-
+screen clickable_chapter_three_mail():
+    imagebutton:
+        pos (585, 581) 
+        at Transform(zoom = 0.13)
+        idle "images/ch03_mail.png"
+        hover "images/ch03_mail.png"
+        action Jump("chapter_three_mailman")
 
 label chapter_three_jewel_osco:
     call chapter_three_hide_map_buttons
@@ -538,9 +544,19 @@ label chapter_three_streaming:
         k "THIS JOB FUCKING SUCKS I HATE THIS SHIT!"
         k "YOUTUBE IS FUCKING RIGGED GRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR!"
         t "get out of here"
+        $ count2 = 7
+    else:
+        k "Honestly fuck this shit"
+        k "I ain't doing this streamer shit again"
+        k "Everyone who got famous is obviously hacking!"
     jump chapter_three_map
 
+label chapter_three_mailman:
+    scene ch03_post1:
+        subpixel True
+    "test"
 label chapter_three_hide_map_buttons:
     hide screen clickable_chapter_three_jewel_osco
     hide screen clickable_chapter_three_house
+    hide screen clickable_chapter_three_mail
     return
