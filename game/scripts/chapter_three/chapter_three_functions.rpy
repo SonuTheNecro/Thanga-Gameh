@@ -685,8 +685,10 @@ label chapter_three_mailman:
         linear 0.556 subpixel True pos (1435, 58) yrotate 180.0 
     show ch03_usps_baby_ocho:
         subpixel True pos (116, 303) zoom 0.22 
+    label chapter_three_usps_dog:
     menu:
         "Run!":
+            $ confirm_menu_no_jump("chapter_three_usps_dog")
             k "fuck this"
             usps "WHAT?"
             k "im outta there, this baby ocho got me scared!"
@@ -695,6 +697,7 @@ label chapter_three_mailman:
                 linear 0.35 subpixel True pos (2346, 266) 
             $ renpy.say("Baby Ocho", "Woof")
         "Punt the fucking dog!":
+            $ confirm_menu_no_jump("chapter_three_usps_dog")
             show kody:
                 linear 0.556 subpixel True pos (641, 188) 
             pause 1.5
