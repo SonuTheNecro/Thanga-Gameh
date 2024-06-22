@@ -33,12 +33,21 @@ screen clickable_chapter_three_mail():
         idle "images/ch03_mail.png"
         hover "images/ch03_mail.png"
         action Jump("chapter_three_mailman")
+screen clickable_chapter_three_herobrine():
+    imagebutton:
+        pos (1838, 201) 
+        at Transform(zoom=0.06)
+        idle "images/ch03_herobrine_alter.png"
+        hover "images/ch03_herobrine_alter.png"
+        action Jump("chapter_three_herobrine_found")
+
+
 
 label chapter_three_jewel_osco:
     call chapter_three_hide_map_buttons
     #show ch03jewel:
         #subpixel True pos (611, 20) yzoom 1.0 zoom 0.07
-    if count >= 0:
+    if count > 0:
         k "I SHOULD NOT GO BACK THERE"
         k "THEY MIGHT KILL ME"
         jump chapter_three_map
@@ -480,6 +489,7 @@ label chapter_three_streaming:
         t "get a real job"
         k "k fine fine"
         $ count2 = 6
+        $ count += 1
     elif count2 == 6:
         k "okay gaming didn't work out"
         k "but I simply won't do scary vidya games"
@@ -713,8 +723,33 @@ label chapter_three_mailman:
     jump chapter_three_map
 
     "test"
+
+label chapter_three_herobrine_found:
+    $ choice = 1
+    call chapter_three_hide_map_buttons
+    show ch03_herobrine_alter with dissolve:
+        subpixel True pos (-117, -154) zoom 1.23 
+    k "Yo are these minecraft blocks?"
+    k "I gotta touch this shit lol"
+    "And the retard touched the obvious spawner"
+    k "bro what spawner, there are no zombies in the real world"
+    hide ch03_herobrine_alter
+
+    show ch03_herobrine1 with dissolve:
+        subpixel True pos (643, 38) zoom 1.44 
+    hb "What do you fucking want you cocksucker!"
+    k "I like minecraft"
+    hb "I am going to kidnap you, cut off your legs, and send you to my dungeon"
+    k "lol mad cuz bad"
+    hb "?"
+    k "you don't have legs so you are projecting that onto me"
+    hb "..."
+    hb "bye"
+    hide ch03_herobrine1
+    jump chapter_three_map
 label chapter_three_hide_map_buttons:
     hide screen clickable_chapter_three_jewel_osco
     hide screen clickable_chapter_three_house
     hide screen clickable_chapter_three_mail
+    hide screen clickable_chapter_three_herobrine
     return

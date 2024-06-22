@@ -24,6 +24,7 @@ init python:
         else:
             renpy.say(None, "Good luck on your decision")
 #Renpy Code
+image blood_red = Solid("#790000")
 
 #A game over screen for general use, why is Master Igor shit talking so hard
 label game_over:
@@ -52,4 +53,14 @@ label dio_time_stop():
         play sound "audio/sound/general/dio1.ogg"
     else:
         play sound "audio/sound/general/dio2.ogg"
+    return
+label stab_blood_screen():
+    play sound "audio/sound/general/stab_die1.ogg"
+    pause .4
+    show blood_red at Transform(alpha = 0.5) with Dissolve(1.5)
+    return
+label gun_blood_screen():
+    play sound "audio/sound/general/gun_die1.ogg"
+    pause .4
+    show blood_red at Transform(alpha = 0.5) with Dissolve(1.5)
     return
