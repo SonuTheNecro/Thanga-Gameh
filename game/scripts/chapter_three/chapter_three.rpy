@@ -153,7 +153,7 @@ label chapter_three:
         play sound "audio/sound/chapter_one/street1.ogg" loop
         pause 0.789
        
-        if choice != -1:
+        if choice == -1:
             show ch03_herobrine2:
                 subpixel True pos (-215, 78)
                 linear 1.5 subpixel True pos (-46, 365) 
@@ -177,6 +177,18 @@ label chapter_three:
             k "why use that when the us dollar exists"
             hb "we are in canada..."
             k "oh"
+            play sound "audio/sound/chapter_one/street1.ogg" loop
+            k "Why am I hearing street1.ogg playing?"
+            k "OH SHIT THERE IS SOMEONE HERE!"
+            hb "ugh"
+            hb "let me go deal with this bozo real quick"
+            window auto hide
+            show ch03_herobrine2:
+                yrotate 180.0 
+                linear 1.5 subpixel True pos (-93, 286) 
+                linear 1.5 subpixel True pos (-93, -56)
+            pause 3.0
+            hide ch03_herobrine2
         else:
             show ch03_shadow_guy:
                 subpixel True pos (-250, 126) zoom 0.32 
@@ -194,5 +206,58 @@ label chapter_three:
             k "why use that when the us dollar exists"
             questionmark "we are in canada..."
             k "oh"
+            play sound "audio/sound/chapter_one/street1.ogg" loop
+            k "What the hell is that noise?"
+            k "YO THANG cAME TO SAVE ME LETS FUCKING GO"
+            questionmark "How did someone find this spot"
+            questionmark "meh, another hostage for that bread"
+            window auto hide
+            show ch03_shadow_guy:
+                subpixel True pos (-51, 352) zoom 0.44 
+                linear 0.987 subpixel True pos (-51, -107) zoom 0.44 
+            hide ch03_shadow_guy
+        stop sound
+        questionmark "HOLY UP PARTNER"
+        questionmark "What do you want... I am busy here"
+        questionmark "I heard you got kody here"
+        questionmark "h-how did you know that"
+        questionmark "doesn't matter, I want him or you can die"
+        questionmark "oh really?"
+        play sound "audio/sound/chapter_three/mag_load.ogg"
+        $ _preferences.afm_enable = True
+        $ _preferences.afm_time = 5
+        questionmark "wtf we don't have to do that"
+        questionmark "MMMMMMMMMM I THINK WE WILL"
+        questionmark "wait dont do that"
+        $ _preferences.afm_enable = False
+        $ _preferences.afm_time = 15
+        $ chapter_three_gunshots(5)
+        questionmark "WHAT A FUCKING IDIOT"
+        questionmark "ugh got my fancy suit all messy"
+        play sound "audio/sound/chapter_one/street1.ogg" loop
+        show ch03_afton1:
+            subpixel True xpos -333 
+            linear 1.5 subpixel True pos (-91, 296)
+            linear 1.5 subpixel True pos (346, 358)
+        pause 3.0
+        stop sound
+        questionmark "There you are"
+        questionmark "The Final Piece"
+        k "huh?"
+        k "can you help me"
+        questionmark "As long as you cooperate with the next few steps"
+        k "uh sure boss?"
+        questionmark "Alright let's go"
+        k "can you fix my legs?"
+        questionmark "I will try my best"
+        show ch03_afton1:
+            linear 0.5 subpixel True pos (610, 355) 
+        pause 0.5
+        show kody as kody1:
+            linear 1.0 subpixel True pos (860, 572) rotate 0.0 
+        k "oh this is great"
+        k "I really like having legs again, this is so awesome"
+        questionmark "Alright let's get to my office to discuss what's next"
+        k "got it boss"
         
         "test"

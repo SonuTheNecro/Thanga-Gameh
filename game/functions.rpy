@@ -55,11 +55,13 @@ label dio_time_stop():
         play sound "audio/sound/general/dio2.ogg"
     return
 label stab_blood_screen():
+    window auto hide
     play sound "audio/sound/general/stab_die1.ogg"
     pause .4
     show blood_red at Transform(alpha = 0.5) with Dissolve(1.5)
     return
 label gun_blood_screen():
+    window auto hide
     play sound "audio/sound/general/gun_die1.ogg"
     pause .4
     show blood_red at Transform(alpha = 0.5) with Dissolve(1.5)

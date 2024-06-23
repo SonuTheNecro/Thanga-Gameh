@@ -10,7 +10,12 @@ init python:
                     renpy.say("Kody", str(line)[2:-5])
         except FileNotFoundError:
             renpy.say(None, "File not found: 'scripts/chapter_three/chapter_three_anime_speech.txt'")
-
+    def chapter_three_gunshots(gunshots):
+        count = 0
+        while count < gunshots:
+            renpy.sound.play("audio/sound/chapter_three/gunshot2.ogg")
+            renpy.pause(0.25)
+            count += 1
 #Renpy Code
 screen clickable_chapter_three_jewel_osco():
     imagebutton:
