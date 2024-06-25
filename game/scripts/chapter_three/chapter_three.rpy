@@ -10,6 +10,7 @@ define jc = Character("Jewel Osco Customer")
 define jceo = Character("Jewel Osco CEO")
 define usps = Character("USPS Worker Guy")
 define hb = Character("Herobrine")
+define afton = Character("William Afton")
 default chapter_three_jewels_check = [False, False, False, False, False]
 default chapter_three_secret = [False]
 
@@ -115,6 +116,7 @@ label chapter_three:
         jump chapter_three_map
     
     label chapter_three_post_map:
+
         call chapter_three_hide_map_buttons
         scene ch03_alleyway with dissolve:
             subpixel True xpos -81 xzoom 1.17 zoom 0.43 
@@ -259,5 +261,169 @@ label chapter_three:
         k "I really like having legs again, this is so awesome"
         questionmark "Alright let's get to my office to discuss what's next"
         k "got it boss"
-        
+        jump chapter_three_office
+
+    label chapter_three_office:
+        scene ch03_office with dissolve:
+            subpixel True xzoom 1.43 zoom 2.46 
+        show ch03_afton1:
+            subpixel True pos (281, 223) zoom 1.37 
+        show kody:
+            subpixel True pos (1091, 390) yrotate 180.0 
+        k "What is this place?"
+        questionmark "My office"
+        k "So who even are you?"
+        afton "My name is William Afton"
+        k "Oh like Five Nights at Freddy's?"
+        afton "nah just a big coincidence"
+        k "alright I guess"
+        k "So what do you want from me?"
+        afton "I saw you at the Post Office looking for work to do"
+        afton "And I saw the Poppy Playtime video"
+        afton "I think I have an opportunity for you"
+        k "Does it have to do with looksmaxxing with fanum taxxing"
+        afton "I will have to ask my superior about that but my guess is yes to whatever that is"
+        k "LET'S FUCKING GO!"
+        afton "Let me show you what you have to do"
+        k "alrighty"
+        afton "follow me"
+        scene ch03_fnaf_prep1 with dissolve:
+            subpixel True zoom 0.75 
+        show ch03_afton1:
+            subpixel True pos (616, 315) 
+        afton "So here is the entrance"
+        k "So this isn't fnaf..."
+        k "I can see the posters right there"
+        afton "just a coincidence"
+        k "ok"
+        afton "lets just move onto the next area"
+        k "k"
+        scene ch03_fnaf_prep2 with dissolve:
+            subpixel True zoom 0.75
+        k "THIS IS SO FNAF" #TODO: put a lock sfx here
+        afton "alright so I have locked us in here so might as well show you your job"
+        afton "This is the main area of the building"
+        scene ch03_fnaf_prep3 with dissolve:
+            subpixel True zoom 0.75
+        afton "These are the animatronics"
+        afton "This is just straight up fnaf"
+        k "YEAH I FUCKING CAN TELL"
+        afton "So the middle guy is Freddy Fazgyatt"
+        afton "The left one is Bonnie Looksmaxxer"
+        afton "and the right one is Chica Fanum Taxxer"
+        k "I don't remember this in Fnaf"
+        afton "This is the new FNAF"
+        scene ch03_fnaf_prep5 with dissolve:
+            subpixel True zoom 0.75
+        afton "This is the backrooms of the building"
+        k "THE BACKROOMS?"
+        afton "yes"
+        scene ch03_fnaf_prep4 with dissolve:
+            subpixel True zoom 0.75
+        afton "and this is the fnaf office"
+        k "So am i just the nightguard for fnaf"
+        afton "yes"
+        k "fuck this shit"
+        k "I ain't doing this"
+        afton "Well you are locked in"
+        afton "and Cody gives me a big payday for bringing you here"
+        k "WHAT?"
+        k "HES INVOLVED?"
+        afton "yeah later asshole, have fun with fnaf" #TODO: Fnaf power out sfx here
+
+        show screen ch03_fnaf_map
+        jump ch03_fnaf_1
         "test"
+    label ch03_fnaf_1:
+        scene ch03_fnaf1 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2 
+
+
+        "You are located in the Security Office in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_1
+    
+    label ch03_fnaf_2:
+        scene ch03_fnaf2 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2 
+
+
+        "You are located in the West Hall Corner in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_2
+
+    label ch03_fnaf_3:
+        scene ch03_fnaf3 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2
+        "You are located in the East Hall Corner in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_3
+
+    label ch03_fnaf_4:
+        scene ch03_fnaf4 with dissolve:
+            subpixel True xzoom 1.34 yzoom 1.02 zoom 1.12 
+
+
+        "You are located in the Kitchen in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_4
+
+    label ch03_fnaf_5:
+        scene ch03_fnaf5 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2 
+
+
+        "You are located in the Broom Closet in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_5 
+
+    label ch03_fnaf_6:
+        scene ch03_fnaf6 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.5 
+
+
+        "You are located in the Dining Area in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_6
+
+    label ch03_fnaf_7:
+        scene ch03_fnaf7 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2 
+
+
+        "You are located in the Stage Area in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_7
+
+    label ch03_fnaf_8:
+        scene ch03_fnaf8 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.6 
+
+
+        "You are located in the Backstage Area in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_8 
+
+    label ch03_fnaf_9:
+        scene ch03_fnaf9 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2 
+
+
+        "You are located in the Pirate Cove in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_9 
+
+    label ch03_fnaf_10:
+        scene ch03_fnaf10 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2 
+
+
+        "You are located in the Restrooms in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_10 
+
+    label ch03_fnaf_11:
+        scene ch03_fnaf11 with dissolve:
+            subpixel True xpos -306 yzoom 1.06 zoom 1.77 
+
+
+        "You are located in the West Hall in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_11
+
+    label ch03_fnaf_12:
+        scene ch03_fnaf12 with dissolve:
+            subpixel True xpos -234 yzoom 1.1 zoom 1.72 
+
+
+        "You are located in the East Hall in Freddy Fazgyatt's Rizzaria"
+        jump ch03_fnaf_12 

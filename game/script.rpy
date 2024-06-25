@@ -95,6 +95,8 @@ label start:
                 jump chapter_three_job
             "Chapter_3_post_map" if persistent.ch01 == True:
                 jump chapter_three_post_map
+            "Chapter_3_Office" if persistent.ch01 == True:
+                jump chapter_three_office
             "Erase all Data":
                 $ renpy.delete_persistent()
                 "All persistent Data has been deleted"

@@ -758,3 +758,19 @@ label chapter_three_hide_map_buttons:
     hide screen clickable_chapter_three_mail
     hide screen clickable_chapter_three_herobrine
     return
+
+screen ch03_fnaf_map():
+    imagemap:
+        ground "images/ch03_fnaf_map.png" pos (1423, 13) at Transform(zoom=1.1)
+        hotspot(202,309,43,105)  action Jump("ch03_fnaf_1")
+        hotspot(140,320,60,40)  action Jump("ch03_fnaf_2")
+        hotspot(257,321,60,40)  action Jump("ch03_fnaf_3")
+        hotspot(361,235,60,40)  action Jump("ch03_fnaf_4")
+        hotspot(45,254,60,40)   action Jump("ch03_fnaf_5")
+        hotspot(115,60,60,40)   action Jump("ch03_fnaf_6")
+        hotspot(137,0,60,40)    action Jump("ch03_fnaf_7")
+        hotspot(1,92,60,40)     action Jump("ch03_fnaf_8")
+        hotspot(80,146,60,40)   action Jump("ch03_fnaf_9")
+        hotspot(371,91,60,40)   action Jump("ch03_fnaf_10")
+        hotspot(137,274,60,40)  action Jump("ch03_fnaf_11")
+        hotspot(254,275,60,40)  action Jump("ch03_fnaf_12")
