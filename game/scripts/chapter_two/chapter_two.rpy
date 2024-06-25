@@ -7,6 +7,7 @@
 
 # Chapter Two Characters/Variables
 define bk = Character("Brian and Kody")
+define bkm = Character("Brian, Kody, and Matt")
 define m = Character("Monokuma")
 define mt = Character("Matt")
 define ocho = Character("Ocho")
@@ -318,6 +319,71 @@ label chapter_two:
                 k "see, the rizz worked"
                 k "shes trying to protect me"
                 t "..."
+                pw "Alright, what do you want us to do then?"
+                m "I brought you guys here for one reason"
+                m "And that is to kill each other!"
+                pw "..."
+                march "..."
+                heavy "..."
+                mt "..."
+                b "..."
+                k "..."
+                $ _preferences.afm_enable = True
+                $ _preferences.afm_time = 6
+                t "yea i knew tha-"
+                $ _preferences.afm_enable = False
+                ev "WHAAAATTT?!?"
+                pw "You can't make us do that!"
+                march "That's right!"
+                march "Even though I just met these people, I could never kill them!"
+                heavy "As long as you have no problem with Heavy, Heavy have no problem with you"
+                k "i could never kill brian or matt!"
+                b "yea me neither"
+                mt "or me!"
+                t "what about me"
+                bkm "well..."
+                t "bruh"
+                m "Oh trust me"
+                m "I'll make sure you will want to kill each other"
+                t "and how will you do that?"
+                t "by showing us our families?"
+                t "or revealing our deepest secrets?"
+                t "well too bad for you"
+                t "my family already doesn't care for me!"
+                t "and everyone already knows about me gooning!"
+                ev "..."
+                hide gun2
+                m "..."
+                m "i was only saying that just in case someone wanted to kill another person"
+                m "i was just gonna kill someone and pin it on someone else or something"
+                t "..."
+                m "im kinda bored now so ill show you the rest of the building"
+                show black with fade
+
+        label chapter_two_after_gym:
+            scene danganronpa_hallway with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            show thanga2:
+                subpixel True pos (3, 556) xzoom 0.9 yzoom 0.9
+            show kody:
+                subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
+            show brian3:
+                subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
+            show matt2:
+                subpixel True pos (1065, 580) xzoom 0.17 yzoom 0.17
+            show ocho:
+                subpixel True pos (930, 906) xzoom 0.35 yzoom 0.35
+            show march_7th:
+                subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
+            show phoenix_wright:
+                subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
+            show heavy_tf2:
+                subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
+            show monokuma:
+                subpixel True pos (0.38, 0.76) xzoom 0.5 yzoom 0.5
+            m "this is the hallway connecting the different rooms"
+                
             $ persistent.chapter_two_gym = True #Better testing to get back here
+            "test"
     
 
