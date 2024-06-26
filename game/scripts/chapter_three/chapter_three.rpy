@@ -11,8 +11,15 @@ define jceo = Character("Jewel Osco CEO")
 define usps = Character("USPS Worker Guy")
 define hb = Character("Herobrine")
 define afton = Character("William Afton")
+define freddy = Character("Freddy Fazgyatt")
+define bonnie = Character("Bonnie Looksmaxxer")
+define chica = Character("Chica FanumTaxxer")
+define foxy = Character("Foxy FurryFukker")
 default chapter_three_jewels_check = [False, False, False, False, False]
-default chapter_three_secret = [False]
+default chapter_three_secret = [False, False]
+default chapter_three_key_items = {
+    "chapter_three_phonecall": ItemState.NOT_OBTAINED
+}
 
 label chapter_three:
     "Chapter Three..."
@@ -261,8 +268,6 @@ label chapter_three:
         k "I really like having legs again, this is so awesome"
         questionmark "Alright let's get to my office to discuss what's next"
         k "got it boss"
-        jump chapter_three_office
-
     label chapter_three_office:
         scene ch03_office with dissolve:
             subpixel True xzoom 1.43 zoom 2.46 
@@ -330,100 +335,144 @@ label chapter_three:
         k "WHAT?"
         k "HES INVOLVED?"
         afton "yeah later asshole, have fun with fnaf" #TODO: Fnaf power out sfx here
-
-        show screen ch03_fnaf_map
-        jump ch03_fnaf_1
+        #show screen ch03_fnaf_map
+        
+        label chapter_three_fnaf_start:
+        python:
+            location = 1
+            Freddy = Animatronic("Freddy Fazgyatt")
+            Bonnie = Animatronic("Bonnie Looksmaxxer")
+            Chica = Animatronic("Chica Fanum Taxxer")
+            Foxy = Animatronic("Foxy")
+        #jump chapter_three_office
+        jump ch03_fnaf_office
         "test"
-    label ch03_fnaf_1:
-        scene ch03_fnaf1 with dissolve:
-            subpixel True yzoom 1.25 zoom 1.2 
+label ch03_fnaf_office:
+    $ location = 1
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf1 with dissolve:
+        subpixel True yzoom 1.25 zoom 1.2
+    if not chapter_three_item_check("chapter_three_phonecall"):
+        call chapter_three_phone_time
+    else:
+        call chapter_three_fnaf_restore_screens(location)
+    "You are located in the Security Office in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_office
 
+label ch03_fnaf_2b:
+    $ location = 2
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf2 with dissolve:
+        subpixel True yzoom 1.25 zoom 1.2 
+    call chapter_three_fnaf_restore_screens(location)
 
-        "You are located in the Security Office in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_1
-    
-    label ch03_fnaf_2:
-        scene ch03_fnaf2 with dissolve:
-            subpixel True yzoom 1.25 zoom 1.2 
+    "You are located in the West Hall Corner in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_2b
 
+label ch03_fnaf_4b:
+    $ location = 3
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf3 with dissolve:
+        subpixel True yzoom 1.25 zoom 1.2
+    call chapter_three_fnaf_restore_screens(location)
+    "You are located in the East Hall Corner in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_4b
 
-        "You are located in the West Hall Corner in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_2
+label ch03_fnaf_6:
+    $ location = 4
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf4 with dissolve:
+        subpixel True xzoom 1.34 yzoom 1.02 zoom 1.12 
+    call chapter_three_fnaf_restore_screens(location)
 
-    label ch03_fnaf_3:
-        scene ch03_fnaf3 with dissolve:
-            subpixel True yzoom 1.25 zoom 1.2
-        "You are located in the East Hall Corner in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_3
+    "You are located in the Kitchen in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_6
 
-    label ch03_fnaf_4:
-        scene ch03_fnaf4 with dissolve:
-            subpixel True xzoom 1.34 yzoom 1.02 zoom 1.12 
+label ch03_fnaf_3:
+    $ location = 5
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf5 with dissolve:
+        subpixel True yzoom 1.25 zoom 1.2 
+    call chapter_three_fnaf_restore_screens(location)
 
+    "You are located in the Broom Closet in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_3
 
-        "You are located in the Kitchen in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_4
+label ch03_fnaf_1b:
+    $ location = 6
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf6 with dissolve:
+        subpixel True yzoom 1.25 zoom 1.5 
+    call chapter_three_fnaf_restore_screens(location)
 
-    label ch03_fnaf_5:
-        scene ch03_fnaf5 with dissolve:
-            subpixel True yzoom 1.25 zoom 1.2 
+    "You are located in the Dining Area in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_1b
 
+label ch03_fnaf_1a:
+    $ location = 7
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf7 with dissolve:
+        subpixel True yzoom 1.25 zoom 1.2 
+    call chapter_three_fnaf_restore_screens(location)
+    "You are located in the Stage Area in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_1a
 
-        "You are located in the Broom Closet in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_5 
+label ch03_fnaf_5:
+    $ location = 8
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf8 with dissolve:
+        subpixel True yzoom 1.25 zoom 1.6 
+    call chapter_three_fnaf_restore_screens(location)
 
-    label ch03_fnaf_6:
-        scene ch03_fnaf6 with dissolve:
-            subpixel True yzoom 1.25 zoom 1.5 
+    "You are located in the Backstage Area in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_5
 
-
-        "You are located in the Dining Area in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_6
-
-    label ch03_fnaf_7:
-        scene ch03_fnaf7 with dissolve:
-            subpixel True yzoom 1.25 zoom 1.2 
-
-
-        "You are located in the Stage Area in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_7
-
-    label ch03_fnaf_8:
-        scene ch03_fnaf8 with dissolve:
-            subpixel True yzoom 1.25 zoom 1.6 
-
-
-        "You are located in the Backstage Area in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_8 
-
-    label ch03_fnaf_9:
+label ch03_fnaf_1c:
+    $ location = 9
+    call chapter_three_fnaf_hide_screens
+    $ count = Foxy.happiness
+    if count == 1:
+        show ch03_fnaf_cove2:
+            subpixel True xpos -396 xzoom 1.08 yzoom 1.12 zoom 2.15 
+    elif count == 2:
+        scene ch03_fnaf_cove3 with dissolve:
+            subpixel True xpos -396 xzoom 1.08 yzoom 1.12 zoom 2.15 
+    elif count == 3:
+        scene ch03_fnaf_cove4 with dissolve:
+            subpixel True xpos -396 xzoom 1.08 yzoom 1.12 zoom 2.15
+    else:
         scene ch03_fnaf9 with dissolve:
             subpixel True yzoom 1.25 zoom 1.2 
+    call chapter_three_fnaf_restore_screens(location)
+    "You are located in the Pirate Cove in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_1c
 
+label ch03_fnaf_7:
+    $ location = 10
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf10 with dissolve:
+        subpixel True yzoom 1.25 zoom 1.2 
+    call chapter_three_fnaf_restore_screens(location)
 
-        "You are located in the Pirate Cove in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_9 
+    "You are located in the Restrooms in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_7
 
-    label ch03_fnaf_10:
-        scene ch03_fnaf10 with dissolve:
-            subpixel True yzoom 1.25 zoom 1.2 
+label ch03_fnaf_2a:
+    $ location = 11
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf11 with dissolve:
+        subpixel True xpos -306 yzoom 1.06 zoom 1.77 
+    call chapter_three_fnaf_restore_screens(location)
 
+    "You are located in the West Hall in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_2a
 
-        "You are located in the Restrooms in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_10 
+label ch03_fnaf_4a:
+    $ location = 12
+    call chapter_three_fnaf_hide_screens
+    scene ch03_fnaf12 with dissolve:
+        subpixel True xpos -234 yzoom 1.1 zoom 1.72 
+    call chapter_three_fnaf_restore_screens(location)
 
-    label ch03_fnaf_11:
-        scene ch03_fnaf11 with dissolve:
-            subpixel True xpos -306 yzoom 1.06 zoom 1.77 
-
-
-        "You are located in the West Hall in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_11
-
-    label ch03_fnaf_12:
-        scene ch03_fnaf12 with dissolve:
-            subpixel True xpos -234 yzoom 1.1 zoom 1.72 
-
-
-        "You are located in the East Hall in Freddy Fazgyatt's Rizzaria"
-        jump ch03_fnaf_12 
+    "You are located in the East Hall in Freddy Fazgyatt's Rizzaria"
+    jump ch03_fnaf_4a

@@ -1,6 +1,25 @@
 # Extra Code to make chapter_three's code nicer, these functions are for one time events in Chapter three
 # Python Code
 init python:
+    from random import randint
+    from enum import Enum
+
+    class Animatronic:
+        happiness = 0
+        mission = False
+        def __init__(self, name):
+            self.name = name
+        def get_happiness(self):
+            return self.happiness
+        def set_happiness(self,happiness: int):
+            self.happiness = happiness
+        def set_mission(self, status: bool):
+            self.mission = status
+        def get_mission(self):
+            return self.mission
+        def get_name(self):
+            return self.name
+
     def chapter_three_jewels_mark(id):
         chapter_three_jewels_check[id] = True
     def chapter_three_anime_talk():
@@ -16,6 +35,14 @@ init python:
             renpy.sound.play("audio/sound/chapter_three/gunshot2.ogg")
             renpy.pause(0.25)
             count += 1
+    def chapter_three_item_check(item):
+        return chapter_three_key_items.get(item, ItemState.NOT_OBTAINED) == ItemState.OBTAINED
+    def chapter_three_obtain_item(item):
+        chapter_three_key_items[item] = ItemState.OBTAINED
+    def chapter_three_unobtain_item(item):
+        chapter_three_key_items[item] = ItemState.NOT_OBTAINED
+
+
 #Renpy Code
 screen clickable_chapter_three_jewel_osco():
     imagebutton:
@@ -45,8 +72,6 @@ screen clickable_chapter_three_herobrine():
         idle "images/ch03_herobrine_alter.png"
         hover "images/ch03_herobrine_alter.png"
         action Jump("chapter_three_herobrine_found")
-
-
 
 label chapter_three_jewel_osco:
     call chapter_three_hide_map_buttons
@@ -762,15 +787,116 @@ label chapter_three_hide_map_buttons:
 screen ch03_fnaf_map():
     imagemap:
         ground "images/ch03_fnaf_map.png" pos (1423, 13) at Transform(zoom=1.1)
-        hotspot(202,309,43,105)  action Jump("ch03_fnaf_1")
-        hotspot(140,320,60,40)  action Jump("ch03_fnaf_2")
-        hotspot(257,321,60,40)  action Jump("ch03_fnaf_3")
-        hotspot(361,235,60,40)  action Jump("ch03_fnaf_4")
-        hotspot(45,254,60,40)   action Jump("ch03_fnaf_5")
-        hotspot(115,60,60,40)   action Jump("ch03_fnaf_6")
-        hotspot(137,0,60,40)    action Jump("ch03_fnaf_7")
-        hotspot(1,92,60,40)     action Jump("ch03_fnaf_8")
-        hotspot(80,146,60,40)   action Jump("ch03_fnaf_9")
-        hotspot(371,91,60,40)   action Jump("ch03_fnaf_10")
-        hotspot(137,274,60,40)  action Jump("ch03_fnaf_11")
-        hotspot(254,275,60,40)  action Jump("ch03_fnaf_12")
+        hotspot(202,309,43,105) action Jump("ch03_fnaf_office")
+        hotspot(140,320,60,40)  action Jump("ch03_fnaf_2b")
+        hotspot(257,321,60,40)  action Jump("ch03_fnaf_4b")
+        hotspot(361,235,60,40)  action Jump("ch03_fnaf_6")
+        hotspot(45,254,60,40)   action Jump("ch03_fnaf_3")
+        hotspot(115,60,60,40)   action Jump("ch03_fnaf_1b")
+        hotspot(137,0,60,40)    action Jump("ch03_fnaf_1a")
+        hotspot(1,92,60,40)     action Jump("ch03_fnaf_5")
+        hotspot(80,146,60,40)   action Jump("ch03_fnaf_1c")
+        hotspot(371,91,60,40)   action Jump("ch03_fnaf_7")
+        hotspot(137,274,60,40)  action Jump("ch03_fnaf_2a")
+        hotspot(254,275,60,40)  action Jump("ch03_fnaf_4a")
+screen ch03_fnaf_stage():
+    imagemap:
+        ground "images/ch03_fnaf7.png" at Transform(yzoom=1.25,zoom=1.2)
+        hotspot(258,0,300,720)  action Call("chapter_three_bonnie")
+        hotspot(727,0,280,720)  action Call("chapter_three_chica")
+        hotspot(1125,0,300,729) action Call("chapter_three_freddy")
+screen chapter_three_office_timer(max, endup):
+    frame:
+        xalign 0.5
+        yalign 0.0
+        hbox:
+            timer 0.1 action If(time > max, false = SetVariable("time", time + 0.1), true = [Hide("chapter_three_office_timer"), SetVariable("time", 0), Jump("%s"%endup) ]) repeat True
+            bar: #an animated bar top center screen
+                value AnimatedValue(value=time, range=max, delay= 0.5)
+                xalign 0.0
+                yalign 0.0
+                xmaximum 200
+label chapter_three_phone_time:
+    show ch03_telephone:
+        subpixel True pos (626, 228) zoom 0.83 
+    k "Woah is that a payphone?"
+    k "this shit must be from like the 14th century"
+    k "gotta be like older than Thang!"
+    k "alright let's turn this shit on"
+    k "..."
+    k "..."
+    k "..."
+    k "how do i use this phone..."
+    k "i dont got thang here"
+    "Okay so put your finger in the digit you want to dial"
+    k "okay i put it in 9"
+    "Now rotate it to the end"
+    k "okay..."
+    "now repeat"
+    k "thanks narrator from the stanley parable"
+    "I don't wanna see here for 45 minutes watching you struggle"
+    k "alright I think I got it"
+    k "listen up chat"
+    show screen chapter_three_office_timer(285,"chapter_three_secret2")
+    play sound "audio/sound/chapter_three/ch03_phone_call.ogg"
+    pause 120
+    k "I learned literally nothing from this shit"
+    label ch03_office_timer_return:
+    stop sound
+    hide screen chapter_three_office_timer
+    hide ch03_telephone
+    $ chapter_three_obtain_item("chapter_three_phonecall")
+    return
+label chapter_three_secret2:
+    "WOW YOU ARE INCREDIBLE"
+    #$ print("Length:", len(chapter_three_secret))
+    #"a"
+    $ chapter_three_secret[1] = True
+    jump ch03_office_timer_return
+label chapter_three_bonnie:
+    "test1"
+    return
+label chapter_three_chica:
+    if Chica.get_happiness() == 0 and not Chica.get_mission():
+        chica "I am hungermaxxing"
+        k "YOOOOOOO ME TOOOO"
+        chica "get me some food pls"
+        k "NAHHHHHHHHHHHHHHHHHHHHHHHH"
+        chica "pls you don't do that to a lady"
+        k "(WAIT SHE IS A GIRL?)"
+        k "oh of course ml'lady"
+        k "anything for the female gender"
+        k "what would you like?"
+        chica "PIZZA!!"
+        k "where do i get that"
+        chica "make your own, its a pizza restaurant"
+        k "damn"
+        "Mission Unlocked: Make Chica Pizza!"
+        $ Chica.set_mission(True)
+    elif Chica.get_happiness and Chica.get_mission():
+        chica "I AM WAITING FOR MY PIZZA!"
+        k "SHEESH I WILL GET YOUR PIZZA YOU BITCH!"
+        chica "EXCUSE ME?"
+        k "uhhh I mean you best lady?"
+        chica "that's what I thought!"
+        chica "HMP!"
+    return
+label chapter_three_freddy:
+    "test3"
+    return
+label chapter_three_fnaf_hide_screens:
+    hide screen ch03_fnaf_map
+    hide screen ch03_fnaf_stage
+    return
+
+label chapter_three_fnaf_restore_screens(location):
+
+    if location == 7:
+        show screen ch03_fnaf_stage
+    show screen ch03_fnaf_map
+    return
+
+label chapter_three_screen_control(location):
+    call chapter_three_fnaf_hide_screens
+    call chapter_three_fnaf_restore_screens(location)
+    return

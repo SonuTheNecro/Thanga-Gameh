@@ -4,6 +4,7 @@
 init python:
     import random
     from renpy.display import im
+    from enum import Enum
     #A confirm menu for important decisions, Paramater is the str for the menu label, jump decision is where you would go if you choose yes
     def confirm_menu_jump(original_menu, jump_decision):
         renpy.say(None, "This is an Important Decision that will affect your future gameplay, are you sure about this?")
@@ -23,6 +24,9 @@ init python:
             renpy.jump(str(original_menu))
         else:
             renpy.say(None, "Good luck on your decision")
+    class ItemState(Enum):
+        NOT_OBTAINED = 0
+        OBTAINED = 1
 #Renpy Code
 image blood_red = Solid("#790000")
 

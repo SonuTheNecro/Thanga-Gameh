@@ -18,7 +18,7 @@ default rngint1 = -1
 default choice = -1
 default count = -1
 default count2 = -1
-
+default time = 0
 default player_name = "Kody"
 
 
@@ -93,10 +93,8 @@ label start:
             "Chapter_3_job" if persistent.ch01 == True:
                 #jump chapter_two
                 jump chapter_three_job
-            "Chapter_3_post_map" if persistent.ch01 == True:
-                jump chapter_three_post_map
-            "Chapter_3_Office" if persistent.ch01 == True:
-                jump chapter_three_office
+            "Chapter_3_fnaf_start" if persistent.ch01 == True:
+                jump chapter_three_fnaf_start
             "Erase all Data":
                 $ renpy.delete_persistent()
                 "All persistent Data has been deleted"

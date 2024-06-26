@@ -117,13 +117,13 @@ label chapter_one:
         ce "Hello, Welcome to Chick-Fil-A how many I help you?"
         b "I want 3 #2 Spicy Chickens meal plans"
         ce "Alright that will be $23.49 please pull up at the window"
-        b82 "(Damn $23 that's like 5 hours of work salary money)"
+        b "(Damn $23 that's like 5 hours of work salary money)"
         hide screen clickable_chapter_one_secret_lopunny
         scene chick_window with dissolve:
             subpixel True pos (-3, 0) xzoom 1.31 zoom 2.48 
         show brian_mcdonalds with dissolve:
             subpixel True pos (603, 235) 
-        b82 "Alright here you go, here is the cash for the meal"
+        b "Alright here you go, here is the cash for the meal"
         ce "Alright here is the -0.99 Cents"
         k "What Demonination did Brian pay in again?"
         b "Alright let's chow down"
@@ -228,7 +228,7 @@ label chapter_one:
         pe "IT OKAY CRACKERS ALL DUMB, NEVER LET MY SON SEE ONE THEY BAD THEY HAVE DRUGS"
         b "I also want 3 Large Soda cups"
         pe "okay so this order comes out to $98.54"
-        if not is_item_obtained("chapter_one_giftcard"):
+        if not chapter_one_item_check("chapter_one_giftcard"):
             b "Okay I will pay with this Giftcard with $100 on it!"
             pe "STUPID BOY THIS CARD IS EMPTY!"
             k "LOL DID MATT JUST GET YOU LOL!"
@@ -632,7 +632,7 @@ label chapter_one:
 
     #Code for the exit area for Baldi's Schoolhouse, if statements check for items and displays certain buttons depending on progression!
     label baldi_exit:
-        if not is_item_obtained("chapter_one_mop"):
+        if not chapter_one_item_check("chapter_one_mop"):
             $ count2 += 1
         call chapter_one_hide_screen() from _call_chapter_one_hide_screen
         $ location = 1
@@ -640,13 +640,13 @@ label chapter_one:
             subpixel True pos (-9, -234) zoom 0.92 
         call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons
         label baldi_exit_1:
-        if is_item_obtained("chapter_one_key"):
+        if chapter_one_item_check("chapter_one_key"):
             show screen clickable_baldi_exit()
-        if not is_item_obtained("chapter_one_mop") and count2 >= 4:
+        if not chapter_one_item_check("chapter_one_mop") and count2 >= 4:
             show screen clickable_chapter_one_mop()
-        elif chapter_one_dirt_piles[0] == False and is_item_obtained("chapter_one_mop"):
+        elif chapter_one_dirt_piles[0] == False and chapter_one_item_check("chapter_one_mop"):
             show screen clickable_chapter_one_dirt(0.03, 0.43, 0.46, 0)
-        if is_item_obtained("chapter_one_cleanup"):
+        if chapter_one_item_check("chapter_one_cleanup"):
             show screen clickable_chapter_one_god_of_sweep()
         "You are currently located at the EXIT of Baldi's Schoolhouse!"
         jump baldi_exit_1
@@ -676,13 +676,13 @@ label chapter_one:
             $ count += 1
         call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_1
         label baldi_main_area_1:
-        if not is_item_obtained("chapter_one_key"):
+        if not chapter_one_item_check("chapter_one_key"):
             show screen clickable_key_chapter_one
-        if chapter_one_dirt_piles[1] == False and is_item_obtained("chapter_one_mop"):
+        if chapter_one_dirt_piles[1] == False and chapter_one_item_check("chapter_one_mop"):
             show screen clickable_chapter_one_dirt(0.75, 0.69, 0.77, 1)
-        if not is_item_obtained("chapter_one_hands"):
+        if not chapter_one_item_check("chapter_one_hands"):
             show screen clickable_chapter_one_itsabully
-        if not is_item_obtained("chapter_one_food") and is_item_obtained("chapter_one_faculty") and count2 != 0:
+        if not chapter_one_item_check("chapter_one_food") and chapter_one_item_check("chapter_one_faculty") and count2 != 0:
             show screen clickable_chapter_one_playtime
         "You are currently located at the MAIN AREA of Baldi's Schoolhouse!"
         jump baldi_main_area_1
@@ -695,11 +695,11 @@ label chapter_one:
             subpixel True zoom 0.75
         call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_2
         label baldi_classroom_1:
-        if chapter_one_dirt_piles[2] == False and is_item_obtained("chapter_one_mop"):
+        if chapter_one_dirt_piles[2] == False and chapter_one_item_check("chapter_one_mop"):
             show screen clickable_chapter_one_dirt(0.7, 0.56, 0.52, 2)
-        if not is_item_obtained("chapter_one_faculty"):
+        if not chapter_one_item_check("chapter_one_faculty"):
             show screen clickable_chapter_one_principal
-        if count2 != 0 and is_item_obtained("chapter_one_faculty"):
+        if count2 != 0 and chapter_one_item_check("chapter_one_faculty"):
             show screen clickable_chapter_one_brian
         "You are currently located at the MAIN CLASSROOM of Baldi's Schoolhouse!"
         jump baldi_classroom_1
@@ -716,11 +716,11 @@ label chapter_one:
         # first visit
         if count2 == 0: 
             call chapter_one_faculty_first_enter() from _call_chapter_one_faculty_first_enter
-        elif not is_item_obtained("chapter_one_clock"):
+        elif not chapter_one_item_check("chapter_one_clock"):
             show screen clickable_chapter_one_alarmclock
-        if chapter_one_dirt_piles[3] == False and is_item_obtained("chapter_one_mop"):
+        if chapter_one_dirt_piles[3] == False and chapter_one_item_check("chapter_one_mop"):
             show screen clickable_chapter_one_dirt(0.01, 0.52, 0.36, 3)
-        if count2 != 0 and is_item_obtained("chapter_one_faculty"):
+        if count2 != 0 and chapter_one_item_check("chapter_one_faculty"):
             show screen clickable_chapter_one_thanga
         "You are currently located at the FACULTY ROOM of Baldi's Schoolhouse!"
         jump baldi_faculty_1
