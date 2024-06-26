@@ -18,7 +18,19 @@ define foxy = Character("Foxy FurryFukker")
 default chapter_three_jewels_check = [False, False, False, False, False]
 default chapter_three_secret = [False, False]
 default chapter_three_key_items = {
-    "chapter_three_phonecall": ItemState.NOT_OBTAINED
+    "chapter_three_phonecall": ItemState.NOT_OBTAINED,
+    "chapter_three_flour"    : ItemState.NOT_OBTAINED,
+    "chapter_three_yeast"    : ItemState.NOT_OBTAINED,
+    "chapter_three_water"    : ItemState.NOT_OBTAINED,
+    "chapter_three_salt"     : ItemState.NOT_OBTAINED,
+    "chapter_three_sugar"    : ItemState.NOT_OBTAINED,
+    "chapter_three_cornmeal" : ItemState.NOT_OBTAINED,
+    "chapter_three_garlic"   : ItemState.NOT_OBTAINED,
+    "chapter_three_wheat"    : ItemState.NOT_OBTAINED,
+    "chapter_three_cheese"   : ItemState.NOT_OBTAINED,
+    "chapter_three_pepperoni": ItemState.NOT_OBTAINED,
+    "chapter_three_olive_oil": ItemState.NOT_OBTAINED,
+
 }
 
 label chapter_three:

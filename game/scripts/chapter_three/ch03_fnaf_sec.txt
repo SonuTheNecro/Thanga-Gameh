@@ -14,7 +14,7 @@ Chica
 1.
 	Go to the Kitchen:
 		Get ingredients:
-			Flour, Yeast, Water, Olive Oil, Salt, Sugar, Cornmeal, Garlic Powder, Whole Wheat Flour, Mozzarella Cheese, Pepperoni
+			Flour, Yeast, Water, Salt, Sugar, Cornmeal, Garlic Powder, Whole Wheat Flour, Mozzarella Cheese, Pepperoni, Olive Oil,
 2. 	Go to the Office and Order a Pasta Pie from the outdoors, and find money around the map to pay for it
 
 
