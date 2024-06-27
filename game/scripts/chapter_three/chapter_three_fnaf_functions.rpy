@@ -22,6 +22,10 @@ screen ch03_fnaf_stage():
         hotspot(1125,0,300,729) action Call("chapter_three_freddy")
 
 label chapter_three_fnaf_hide_screens:
+    hide screen clickable_chapter_three_chica2_landline
+    hide screen clickable_chapter_three_chica2_quarter
+    hide screen clickable_chapter_three_chica2_1bill
+    hide screen clickable_chapter_three_chica2_5bill
     hide screen clickable_chapter_three_chica1_flour
     hide screen clickable_chapter_three_chica1_yeast
     hide screen clickable_chapter_three_chica1_water
@@ -41,26 +45,40 @@ label chapter_three_fnaf_restore_screens(location):
     if location == 1:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_flour"):
             show screen clickable_chapter_three_chica1_flour
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[2]:
+            show screen clickable_chapter_three_chica2_1bill(635,518,0.4,2)
     elif location == 2:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_yeast"):
             show screen clickable_chapter_three_chica1_yeast
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[3]:
+            show screen clickable_chapter_three_chica2_1bill(431,616,0.33,3)
     elif location == 3:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_water"):
             show screen clickable_chapter_three_chica1_water
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[4]:
+            show screen clickable_chapter_three_chica2_1bill(1003,593,0.45,4)
     elif location == 4:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_salt"):
             show screen clickable_chapter_three_chica1_salt
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[1]:
+            show screen clickable_chapter_three_chica2_5bill(695,496,0.41,1)
     elif location == 5:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_sugar"):
             show screen clickable_chapter_three_chica1_sugar
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[7]:
+            show screen clickable_chapter_three_chica2_1bill(635,518,0.4,7)
     elif location == 6:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_cornmeal"):
             show screen clickable_chapter_three_chica1_cornmeal
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and count2 > 10.00 and not chapter_three_item_check("chapter_three_pizza2"):
+            show screen clickable_chapter_three_chica2_landline
     elif location == 7:
         show screen ch03_fnaf_stage
     elif location == 8:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_wheat"):
             show screen clickable_chapter_three_chica1_wheat_flour
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[0]:
+            show screen clickable_chapter_three_chica2_5bill(936,583,0.26,0)
     elif location == 9:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_cheese"):
             show screen clickable_chapter_three_chica1_cheese
@@ -70,9 +88,13 @@ label chapter_three_fnaf_restore_screens(location):
     elif location == 11:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_olive_oil"):
             show screen clickable_chapter_three_chica1_olive_oil
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[6]:
+            show screen clickable_chapter_three_chica2_1bill(635,518,0.4,6)
     elif location == 12:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_garlic"):
             show screen clickable_chapter_three_chica1_garlic
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[5]:
+            show screen clickable_chapter_three_chica2_1bill(635,518,0.4,5)
     show screen ch03_fnaf_map
     return
 
@@ -137,7 +159,42 @@ label chapter_three_bonnie:
     return
 label chapter_three_chica:
     call chapter_three_fnaf_hide_screens
-    if Chica.get_happiness() == 0 and chapter_three_item_check("chapter_three_flour") and chapter_three_item_check("chapter_three_yeast") and chapter_three_item_check("chapter_three_water") and chapter_three_item_check("chapter_three_salt") and chapter_three_item_check("chapter_three_sugar") and chapter_three_item_check("chapter_three_cornmeal") and chapter_three_item_check("chapter_three_garlic") and chapter_three_item_check("chapter_three_wheat") and chapter_three_item_check("chapter_three_cheese") and chapter_three_item_check("chapter_three_pepperoni") and chapter_three_item_check("chapter_three_olive_oil"):
+    if Chica.get_happiness() == 1 and Chica.get_mission() and chapter_three_item_check("chapter_three_pizza2"):
+        chica "Damn that smells good!"
+        k "yeah its a really good pizza" #TODO: pizza eating stuff here
+        chica "that was a good pizza tysm :)"
+        "Your bond with Chica has grown even stronger!"
+        $ Chica.set_happiness(2)
+        $ count2 = 0
+        $ Chica.set_mission(False)
+        "Mission Completed: Order Chica a Pizza!"
+    if Chica.get_happiness() == 1 and Chica.get_mission():
+        chica "I AM FUCKING HUNGRY"
+        chica "GET ME MY FUCKING PIZZA!"
+        k "jesus woman"
+        k "leave me alone!"
+    if Chica.get_happiness() == 1 and not Chica.get_mission():
+        chica "That pizza was UNDERCOOKED!"
+        k "well yeah"
+        k "I didn't make a pizza..."
+        k "I just gave the raw ingredients"
+        chica "You clearly SUCK at making pizzas"
+        chica "I want you to go order one"
+        k "Oh that's easy, they are like 9.99 for one"
+        "..."
+        k "wait"
+        k "I have no money"
+        k "That's the whole point of me getting a job"
+        k "Do you have money chica?"
+        chica "I am an animatronic in a rundown rizzaria"
+        chica "what do you think?"
+        k "yes"
+        chica "..."
+        k "Okay I will go find money"
+        "Mission Unlocked: Order Chica a Pizza!"
+        $ Chica.set_mission(True)
+        $ count2 = 0
+    elif Chica.get_happiness() == 0 and chapter_three_item_check("chapter_three_flour") and chapter_three_item_check("chapter_three_yeast") and chapter_three_item_check("chapter_three_water") and chapter_three_item_check("chapter_three_salt") and chapter_three_item_check("chapter_three_sugar") and chapter_three_item_check("chapter_three_cornmeal") and chapter_three_item_check("chapter_three_garlic") and chapter_three_item_check("chapter_three_wheat") and chapter_three_item_check("chapter_three_cheese") and chapter_three_item_check("chapter_three_pepperoni") and chapter_three_item_check("chapter_three_olive_oil"):
         k "wait..."
         k "This isn't a pizza..."
         k "This is just ingredients..."
@@ -145,12 +202,12 @@ label chapter_three_chica:
         k "wait!"
         k "This isn't edible, its just ingredients"
         chica "nah this is FOOD FOR ME!" #TODO: put eat thingy here
-
         chica "wow that was some good food"
         "A Small Bond has been formed with Chica"
         $ Chica.set_happiness(1)
         $ Chica.set_mission(False)
-    if Chica.get_happiness() == 0 and not Chica.get_mission():
+        "Mission Completed: Make Chica Pizza!"
+    elif Chica.get_happiness() == 0 and not Chica.get_mission():
         chica "I am hungermaxxing"
         k "YOOOOOOO ME TOOOO"
         chica "get me some food pls"
@@ -251,8 +308,6 @@ label chapter_three_chica_mission1:
             idle "images/ch03_fnaf_pepperoni.png"
             hover "images/ch03_fnaf_pepperoni.png"
             action Call("chapter_three_ingredients",11)
-
-        
     label chapter_three_ingredients(area):
         call chapter_three_fnaf_hide_screens
         if area == 1:
@@ -288,4 +343,86 @@ label chapter_three_chica_mission1:
         if area == 11:
             "You have obtained Pepperoni"
             $ chapter_three_obtain_item("chapter_three_pepperoni")
+        return
+
+label chapter_three_chica_mission2:
+    screen clickable_chapter_three_chica2_5bill(xpos,ypos,zoomlevel,id):
+        imagebutton:
+            pos(xpos,ypos) at Transform(zoom = zoomlevel)
+            idle "images/ch03_fnaf_5bill.png"
+            hover "images/ch03_fnaf_5bill.png"
+            action Call("chapter_three_fnaf_bill5",id)
+    screen clickable_chapter_three_chica2_1bill(xpos,ypos,zoomlevel,id):
+        imagebutton:
+            pos(xpos,ypos) at Transform(zoom = zoomlevel)
+            idle "images/ch03_fnaf_1bill.png"
+            hover "images/ch03_fnaf_1bill.png"
+            action Call("chapter_three_fnaf_bill1",id)
+    screen clickable_chapter_three_chica2_quarter(xpos,ypos,zoomlevel,id):
+        imagebutton:
+            pos(xpos,ypos) at Transform(zoom = zoomlevel)
+            idle "images/ch03_fnaf_quarter.png"
+            hover "images/ch03_fnaf_quarter.png"
+            action Call("chapter_three_fnaf_quarter",id)
+    screen clickable_chapter_three_chica2_landline():
+        imagebutton:
+            pos (775, 145) at Transform(zoom=0.49)
+            idle "images/ch03_fnaf_landline.png"
+            hover "images/ch03_fnaf_landline.png"
+            action Call("chapter_three_landline")
+
+    label chapter_three_fnaf_bill5(id_value):
+        "You have found a 5 Dollar Bill!"
+        $ count2 += 5.00
+        $ chapter_three_fnaf_money[id_value] = True
+        return
+    label chapter_three_fnaf_bill1(id_value):
+        "You have found a 1 Dollar Bill!"
+        $ count2 += 1.00
+        $ chapter_three_fnaf_money[id_value] = True
+        return
+    label chapter_three_fnaf_quarter(id_value):
+        "You have found a 0.25 Dollar Bill!"
+        k "Isn't that just a quarter?"
+        $ count2 += 0.25
+        $ chapter_three_fnaf_money[id_value] = True
+        return
+    label chapter_three_landline:
+        call chapter_three_fnaf_hide_screens
+        #todo put mario elevator music
+        k "Alright Let's order this pizza!"
+        #Todo ring sound here
+        fnafpg "Uh hello!"
+        k "Uh hi"
+        k "Can I have a large Pepperoni pizza w/ extra cheese tomato mustard mayo pepsi and water"
+        k "with some pineapple"
+        fnafpg "uh yeah that will be 9.99 for here or to go?"
+        k "Uh i need it delivered to Freddy Fazgyatt's Rizzaria"
+        fnafpg "..."
+        fnafpg "I will not be taking prank-phone calls"
+        k "no this isn't a prank phone call, I really need a pizza, i got the cash here!"
+        fnafpg "ugh fine"
+        fnafpg "be there in 5"
+        pause 300
+
+        show ch03_fnaf_delivery with dissolve:
+            subpixel True zoom 0.75 
+        show ch03_fnaf_delivery_guy:
+            subpixel True pos (508, 31) zoom 0.49 
+
+
+        k "Uh hi can I have my pizza?"
+        fnafpg "Uh that will be 9.99"
+        k "here you go"
+        fnafpg "This is not enough"
+        k "I gave you 10 dollars worth?"
+        fnafpg "Tax bro"
+        fnafpg "This is canada where we got 50%% taxes"
+        k "why did you accept usd?"
+        fnafpg "meh its money and usd is better than cad"
+        fnafpg "later bozo"
+        $ chapter_three_obtain_item("chapter_three_pizza2")
+        "You have obtained a pizza!"
+        scene ch03_fnaf6 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.5 
         return

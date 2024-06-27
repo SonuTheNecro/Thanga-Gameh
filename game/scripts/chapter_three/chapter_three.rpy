@@ -15,8 +15,10 @@ define freddy = Character("Freddy Fazgyatt")
 define bonnie = Character("Bonnie Looksmaxxer")
 define chica = Character("Chica FanumTaxxer")
 define foxy = Character("Foxy FurryFukker")
+define fnafpg = Character("Pizza Delivery Guy")
 default chapter_three_jewels_check = [False, False, False, False, False]
 default chapter_three_secret = [False, False]
+default chapter_three_fnaf_money = [False, False, False, False, False, False, False] # 2 $5, 5 $1, 2 0.25
 default chapter_three_key_items = {
     "chapter_three_phonecall": ItemState.NOT_OBTAINED,
     "chapter_three_flour"    : ItemState.NOT_OBTAINED,
@@ -30,8 +32,8 @@ default chapter_three_key_items = {
     "chapter_three_cheese"   : ItemState.NOT_OBTAINED,
     "chapter_three_pepperoni": ItemState.NOT_OBTAINED,
     "chapter_three_olive_oil": ItemState.NOT_OBTAINED,
-
-}
+    "chapter_three_pizza2"   : ItemState.NOT_OBTAINED,
+    }
 
 label chapter_three:
     "Chapter Three..."
