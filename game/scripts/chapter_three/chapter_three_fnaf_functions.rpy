@@ -20,8 +20,16 @@ screen ch03_fnaf_stage():
         hotspot(258,0,300,720)  action Call("chapter_three_bonnie")
         hotspot(727,0,280,720)  action Call("chapter_three_chica")
         hotspot(1125,0,300,729) action Call("chapter_three_freddy")
-
+screen ch03_fnaf_stage_no_chica():
+    imagemap:
+        ground "images/ch03_fnaf7_no_chica.png" at Transform(yzoom=1.25, zoom=1.92)
+        hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
+        # hotspot(727,0,280,720)  action Call("chapter_three_chica")
+        hotspot(630,0,320,448) action Call("chapter_three_freddy")
 label chapter_three_fnaf_hide_screens:
+    hide screen chapter_three_chica_health_bar
+    hide screen clickable_chapter_three_chica3_cupcakes
+    hide screen clickable_chapter_three_chica3_dining_area
     hide screen clickable_chapter_three_chica2_landline
     hide screen clickable_chapter_three_chica2_quarter
     hide screen clickable_chapter_three_chica2_1bill
@@ -39,6 +47,7 @@ label chapter_three_fnaf_hide_screens:
     hide screen clickable_chapter_three_chica1_olive_oil
     hide screen ch03_fnaf_map
     hide screen ch03_fnaf_stage
+    hide screen ch03_fnaf_stage_no_chica
     return
 
 label chapter_three_fnaf_restore_screens(location):
@@ -68,12 +77,17 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[7]:
             show screen clickable_chapter_three_chica2_1bill(635,518,0.4,7)
     elif location == 6:
-        if Chica.get_mission() and not chapter_three_item_check("chapter_three_cornmeal"):
+        if Chica.get_happiness() == 2 and not Chica.get_mission():
+            show screen clickable_chapter_three_chica3_dining_area
+        elif Chica.get_mission() and not chapter_three_item_check("chapter_three_cornmeal"):
             show screen clickable_chapter_three_chica1_cornmeal
-        elif Chica.get_happiness() == 1 and Chica.get_mission() and count2 > 10.00 and not chapter_three_item_check("chapter_three_pizza2"):
+        elif Chica.get_happiness() == 1 and Chica.get_mission() and count2 >= 10.00 and not chapter_three_item_check("chapter_three_pizza2"):
             show screen clickable_chapter_three_chica2_landline
     elif location == 7:
-        show screen ch03_fnaf_stage
+        if Chica.get_happiness() == 2 and not Chica.get_mission():
+            show screen ch03_fnaf_stage_no_chica
+        else:
+            show screen ch03_fnaf_stage
     elif location == 8:
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_wheat"):
             show screen clickable_chapter_three_chica1_wheat_flour
@@ -159,7 +173,22 @@ label chapter_three_bonnie:
     return
 label chapter_three_chica:
     call chapter_three_fnaf_hide_screens
-    if Chica.get_happiness() == 1 and Chica.get_mission() and chapter_three_item_check("chapter_three_pizza2"):
+    if Chica.get_happiness() == 3:
+        chica "Thanks for what you have done for me :)"
+        "You feel you cannot help Chica anymore"
+        "You have done everything you could have!"
+    elif Chica.get_happiness() == 2 and Chica.get_mission():
+        chica "That was a close fight"
+        k "yeah it was and I straight up d-d-destroyed you"
+        chica "well I am still hungry"
+        k "fuck off"
+        chica "I am kidding"
+        "A life-long bond with Chica has been formed!"
+        $ Chica.set_happiness(3)
+        k "Oh shit I rizzed up another girl"
+        chica "I am lesbian"
+        k "NEVERMIND!"  
+    elif Chica.get_happiness() == 1 and Chica.get_mission() and chapter_three_item_check("chapter_three_pizza2"):
         chica "Damn that smells good!"
         k "yeah its a really good pizza" #TODO: pizza eating stuff here
         chica "that was a good pizza tysm :)"
@@ -168,12 +197,12 @@ label chapter_three_chica:
         $ count2 = 0
         $ Chica.set_mission(False)
         "Mission Completed: Order Chica a Pizza!"
-    if Chica.get_happiness() == 1 and Chica.get_mission():
+    elif Chica.get_happiness() == 1 and Chica.get_mission():
         chica "I AM FUCKING HUNGRY"
         chica "GET ME MY FUCKING PIZZA!"
         k "jesus woman"
         k "leave me alone!"
-    if Chica.get_happiness() == 1 and not Chica.get_mission():
+    elif Chica.get_happiness() == 1 and not Chica.get_mission():
         chica "That pizza was UNDERCOOKED!"
         k "well yeah"
         k "I didn't make a pizza..."
@@ -230,6 +259,9 @@ label chapter_three_chica:
         k "uhhh I mean you best lady?"
         chica "that's what I thought!"
         chica "HMP!"
+    else:
+        chica "I AM HUNGRY!"
+        k "got it!"
     return
 label chapter_three_freddy:
     call chapter_three_fnaf_hide_screens
@@ -426,3 +458,81 @@ label chapter_three_chica_mission2:
         scene ch03_fnaf6 with dissolve:
             subpixel True yzoom 1.25 zoom 1.5 
         return
+label chapter_three_chica_mission3:
+    screen clickable_chapter_three_chica3_dining_area:
+        imagebutton:
+            pos (320, 90) at Transform(zoom=0.72)
+            idle "images/ch03_fnaf_wchica.png" 
+            hover "images/ch03_fnaf_wchica.png"
+            action Jump("chapter_three_chica_fight")
+    screen chapter_three_chica_health_bar(max,endup):
+        frame:
+            xalign 0.5
+            yalign 0.0
+            hbox:
+                bar:
+                    value AnimatedValue(count2, 25, delay = 0.5)
+                    xalign 0.0
+                    yalign 0.0
+                    xmaximum 200
+    screen clickable_chapter_three_chica3_cupcakes(xpos,ypos,zoom,count2):
+        timer 0.25 + (count2 / 10) action Call("chapter_three_chica_death",xpos,ypos)
+        imagebutton:
+            pos (xpos,ypos) at Transform(zoom = zoom)
+            idle "images/ch03_fnaf_cupcake.png"
+            hover "images/ch03_fnaf_cupcake.png"
+            action [
+                #SetVariable("count2", count2-1),
+                Hide("clickable_chapter_three_chica3_cupcakes"),
+                #Return()
+            ]
+    label chapter_three_chica_fight:
+        call chapter_three_fnaf_hide_screens
+        show ch03_fnaf_wchica:
+            subpixel True pos (320, 90) zoom 0.72
+        k "Why are you here?"
+        chica "FUCK OFF KODY FUCKBOY"
+        k "Huh What did I do?"
+        $ count2 = 25
+        scene ch03_fnaf_chica_fight:
+            subpixel True yzoom 1.05 zoom 2.61
+        chica "F"
+        chica "I"
+        chica "G"
+        chica "H"
+        chica "T"
+        chica " "
+        chica "M"
+        chica "E"
+        k "That was so unneccessary, get ready to get decked!"
+        show screen chapter_three_chica_health_bar(26.25,"chapter_three_chica_victory")
+        while count2 > 0:
+            if count2 == 17:
+                chica "Ow!"
+                chica "That hurts!"
+                window auto hide
+            elif count2 == 10:
+                chica "Yowch!"
+                chica "Speed up the cupcakes!"
+                window auto hide
+            $ randint = renpy.random.randint(330,1500) # X-Value
+            $ randint2 = renpy.random.randint(400,750) # Y-Value
+            show screen clickable_chapter_three_chica3_cupcakes(randint,randint2,1.0,count2)
+            $ count2 -= 1
+            $ renpy.pause(delay = 0.25 + (count2/10), hard=True)
+        label chapter_three_chica_victory:
+        chica "OW!"
+        chica "WTF!"
+        chica "Okay I concede!"
+        chica "Im going back to stage!"
+        $ Chica.set_mission(True)
+        jump ch03_fnaf_1b
+    
+    label chapter_three_chica_death(xpos,ypos):
+        #explosion sfx here
+        "TOO SLOW!"
+        show ch03_fnaf_explosion with dissolve:
+            subpixel True pos(xpos, ypos)
+        pause 1.0
+        call chapter_three_fnaf_hide_screens
+        jump game_over

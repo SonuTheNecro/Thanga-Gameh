@@ -16,7 +16,7 @@ Chica
 		Get ingredients:
 			Flour, Yeast, Water, Salt, Sugar, Cornmeal, Garlic Powder, Whole Wheat Flour, Mozzarella Cheese, Pepperoni, Olive Oil,
 2. 	Go to the Office and Order a Pasta Pie from the outdoors, and find money around the map to pay for it
-
+	$5 + $1 + $1 +0.25 *4
 
 3. 	Chica is in dining Hall
 		Chica Pizza Ladder, She Spawns pizzas around the screen click them to destroy, if they explode you die!

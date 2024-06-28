@@ -425,7 +425,7 @@ label ch03_fnaf_1b:
 label ch03_fnaf_1a:
     $ location = 7
     call chapter_three_fnaf_hide_screens
-    scene ch03_fnaf7 with dissolve:
+    scene ch03_fnaf7:
         subpixel True yzoom 1.25 zoom 1.2 
     call chapter_three_fnaf_restore_screens(location)
     "You are located in the Stage Area in Freddy Fazgyatt's Rizzaria"
