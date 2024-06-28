@@ -17,7 +17,7 @@ define chica = Character("Chica FanumTaxxer")
 define foxy = Character("Foxy FurryFukker")
 define fnafpg = Character("Pizza Delivery Guy")
 default chapter_three_jewels_check = [False, False, False, False, False]
-default chapter_three_secret = [False, False]
+default chapter_three_secret = [False, False, False]
 default chapter_three_fnaf_money = [False, False, False, False, False, False, False] # 2 $5, 5 $1, 2 0.25
 default chapter_three_key_items = {
     "chapter_three_phonecall": ItemState.NOT_OBTAINED,
@@ -33,6 +33,7 @@ default chapter_three_key_items = {
     "chapter_three_pepperoni": ItemState.NOT_OBTAINED,
     "chapter_three_olive_oil": ItemState.NOT_OBTAINED,
     "chapter_three_pizza2"   : ItemState.NOT_OBTAINED,
+    "chapter_three_drip"     : ItemState.NOT_OBTAINED,
     }
 
 label chapter_three:
@@ -353,6 +354,9 @@ label chapter_three:
         
         label chapter_three_fnaf_start:
         python:
+            choice = 0
+            count = 0
+            count2 = 0
             location = 1
             Freddy = Animatronic("Freddy Fazgyatt")
             Bonnie = Animatronic("Bonnie Looksmaxxer")
@@ -405,8 +409,12 @@ label ch03_fnaf_6:
 label ch03_fnaf_3:
     $ location = 5
     call chapter_three_fnaf_hide_screens
-    scene ch03_fnaf5 with dissolve:
-        subpixel True yzoom 1.25 zoom 1.2 
+    if Bonnie.get_happiness() == 0 and Bonnie.get_mission():
+        scene ch03_fnaf5_bonnie with dissolve:
+            subpixel True yzoom 1.25 zoom 1.92
+    else:
+        scene ch03_fnaf5 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2 
     call chapter_three_fnaf_restore_screens(location)
 
     "You are located in the Broom Closet in Freddy Fazgyatt's Rizzaria"
@@ -425,8 +433,20 @@ label ch03_fnaf_1b:
 label ch03_fnaf_1a:
     $ location = 7
     call chapter_three_fnaf_hide_screens
-    scene ch03_fnaf7:
-        subpixel True yzoom 1.25 zoom 1.2 
+    if Bonnie.get_happiness() == 0 and Bonnie.get_mission() and Chica.get_happiness() == 2 and not Chica.get_mission():
+        scene ch03_fnaf7_only_freddy with dissolve:
+            subpixel True yzoom 1.25 zoom 1.92
+    elif Bonnie.get_happiness() == 0 and Bonnie.get_mission():
+        scene ch03_fnaf7_no_bonnie with dissolve:
+            subpixel True yzoom 1.25 zoom 1.92
+    elif Chica.get_happiness() == 2 and not Chica.get_mission():
+        scene ch03_fnaf7_no_chica with dissolve:
+            subpixel True yzoom 1.25 zoom 1.92
+    else:
+        scene ch03_fnaf7 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2 
+
+
     call chapter_three_fnaf_restore_screens(location)
     "You are located in the Stage Area in Freddy Fazgyatt's Rizzaria"
     jump ch03_fnaf_1a

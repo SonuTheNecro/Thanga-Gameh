@@ -26,7 +26,27 @@ screen ch03_fnaf_stage_no_chica():
         hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
         # hotspot(727,0,280,720)  action Call("chapter_three_chica")
         hotspot(630,0,320,448) action Call("chapter_three_freddy")
+screen ch03_fnaf_stage_no_bonnie():
+    imagemap:
+        ground "images/ch03_fnaf7_no_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
+        #hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
+        hotspot(440,0,160,448)  action Call("chapter_three_chica")
+        hotspot(630,0,320,448) action Call("chapter_three_freddy")
+screen ch03_fnaf_stage_only_freddy():
+    imagemap:
+        ground "images/ch03_fnaf7_only_freddy.png" at Transform(yzoom=1.25, zoom=1.92)
+        #hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
+        #hotspot(440,0,160,448)  action Call("chapter_three_chica")
+        hotspot(630,0,320,448) action Call("chapter_three_freddy")
+screen ch03_fnaf_closet_bonnie():
+    imagemap:
+        ground "images/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
+        hotspot(25,90,400,280) action Call("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
+    hide screen clickable_chapter_three_bonnie1_telephone
+    hide screen ch03_fnaf_closet_bonnie
+    hide screen ch03_fnaf_stage_no_bonnie
+    hide screen ch03_fnaf_stage_only_freddy
     hide screen chapter_three_chica_health_bar
     hide screen clickable_chapter_three_chica3_cupcakes
     hide screen clickable_chapter_three_chica3_dining_area
@@ -52,6 +72,8 @@ label chapter_three_fnaf_hide_screens:
 
 label chapter_three_fnaf_restore_screens(location):
     if location == 1:
+        if Bonnie.get_happiness() == 0 and Bonnie.get_mission() and choice == 100:
+            show screen clickable_chapter_three_bonnie1_telephone
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_flour"):
             show screen clickable_chapter_three_chica1_flour
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[2]:
@@ -72,6 +94,8 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[1]:
             show screen clickable_chapter_three_chica2_5bill(695,496,0.41,1)
     elif location == 5:
+        if Bonnie.get_happiness() == 0 and Bonnie.get_mission:
+            show screen ch03_fnaf_closet_bonnie
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_sugar"):
             show screen clickable_chapter_three_chica1_sugar
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[7]:
@@ -84,7 +108,11 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and count2 >= 10.00 and not chapter_three_item_check("chapter_three_pizza2"):
             show screen clickable_chapter_three_chica2_landline
     elif location == 7:
-        if Chica.get_happiness() == 2 and not Chica.get_mission():
+        if Bonnie.get_happiness() == 0 and Bonnie.get_mission() and Chica.get_happiness() == 2 and not Chica.get_mission():
+            show screen ch03_fnaf_stage_only_freddy
+        elif Bonnie.get_happiness() == 0 and Bonnie.get_mission():
+            show screen ch03_fnaf_stage_no_bonnie
+        elif Chica.get_happiness() == 2 and not Chica.get_mission():
             show screen ch03_fnaf_stage_no_chica
         else:
             show screen ch03_fnaf_stage
@@ -169,7 +197,20 @@ label chapter_three_secret2:
     jump ch03_office_timer_return
 label chapter_three_bonnie:
     call chapter_three_fnaf_hide_screens
-    "test1"
+    if Bonnie.get_happiness() == 0 and not Bonnie.get_mission():
+        bonnie "yo yo yo what is good little child"
+        k "I am 14"
+        bonnie "oh perfect!"
+        k "Am i getting groomed"
+        bonnie "no thats freddy"
+        bonnie "I need your help with something"
+        k "okay?"
+        k "What do you need help with?"
+        bonnie "I am really embarrassed so we should meet somewhere else"
+        k "okay where?"
+        bonnie "A true looksmaxxer will know where to find me!"
+        k "I am a true looksmaxxer but I got no idea where you are going..."
+        $ Bonnie.set_mission(True)
     return
 label chapter_three_chica:
     call chapter_three_fnaf_hide_screens
@@ -376,7 +417,6 @@ label chapter_three_chica_mission1:
             "You have obtained Pepperoni"
             $ chapter_three_obtain_item("chapter_three_pepperoni")
         return
-
 label chapter_three_chica_mission2:
     screen clickable_chapter_three_chica2_5bill(xpos,ypos,zoomlevel,id):
         imagebutton:
@@ -536,3 +576,351 @@ label chapter_three_chica_mission3:
         pause 1.0
         call chapter_three_fnaf_hide_screens
         jump game_over
+label chapter_three_bonnie_mission1:
+    label chapter_three_closet_bonnie:
+        call chapter_three_fnaf_hide_screens
+        if choice == 0 and not chapter_three_item_check("chapter_three_drip"):
+            bonnie "ah you made it"
+            k "So what is it you want to discuss with me?"
+            k "a 14-year old child?"
+            bonnie "Okay so I got this comment on my tiktok"
+            bonnie "and it says that I fell off and I am not the looksmaxxing goat"
+            bonnie "comment is from CodyDaBoss"
+            bonnie "Ima hurt that guy if I see him ever"
+            k "huh"
+            k "well how do I help you?"
+            bonnie "I need me some new drop but I cannot operate the phone"
+            bonnie "get me some new gucci and drop so I can looksmaxx with Kai Cenat better"
+            k "I dont got money"
+            bonnie "I got a $100 dollar bill so just order me what you thinkmaxx willmaxx looksmaxx memaxx"
+            k "gotmaxx itmaxx bossmax"
+            $ choice = 100
+        elif choice != 0 and not chapter_three_item_check("chapter_three_drip"):
+            bonnie "GET ME MY DRIPMAXX!"
+            k "okay man jesus"
+        elif choice != 0 and chapter_three_item_check("chapter_three_drip"):
+            bonnie "thanks man"
+            $ Bonnie.set_happiness(1)
+            "A small bond has been formed with Bonnie!"
+            bonnie "Thanks for the fit man!"
+            if rngint > 11:
+                "Wow you got more than 1 item!"
+                "Incredible!"
+                $ chapter_three_secret[2] = True
+        return
+    screen clickable_chapter_three_bonnie1_telephone:
+        imagebutton:
+            pos (640, 328) at Transform(zoom=0.64)
+            idle "images/ch03_fnaf_landline.png"
+            hover "images/ch03_fnaf_landline.png" 
+            action Call("Chapter_three_office_driporder")
+    label Chapter_three_office_driporder:
+        call chapter_three_fnaf_hide_screens
+        show ch03_fnaf_landline:
+            pos (640, 328) zoom 0.64
+        k "Alright I got a lot of choices for drip here" #TODO:Audio for a phonecall
+        questionmark "Uh hello Hello"
+        questionmark "I am Henry from Looksmaxxers United"
+        questionmark "How Can I help you today?"
+        k "I want the best drip to ever drip around this part of the canada/us mix we are going for"
+        questionmark "got it sir!"
+        $ rngint = 0
+        while choice >= 0:
+            menu:
+                "Gucci Jacket": 
+                    call chapter_three_drip_rng
+                "Gucci Pants":
+                    call chapter_three_drip_rng
+                "Gucci Shoes":
+                    call chapter_three_drip_rng
+                "Gucci Hoodie":
+                    call chapter_three_drip_rng
+                "Supreme Jacket":
+                    call chapter_three_drip_rng
+                "Supreme Brick":
+                    call chapter_three_drip_rng
+                "Supreme Pants":
+                    call chapter_three_drip_rng
+                "Kenzo Shirt":
+                    call chapter_three_drip_rng
+                "Kenzo Pants":
+                    call chapter_three_drip_rng
+                "A.P.C Bag":
+                    call chapter_three_drip_rng
+                "A.P.C Underwear":
+                    call chapter_three_drip_rng
+                "Billionaire Boyz Hat":
+                    call chapter_three_drip_rng
+                "Billionaire Boyz Pants":
+                    call chapter_three_drip_rng
+                "Palace Shirt":
+                    call chapter_three_drip_rng
+                "Palace Sweatpants":
+                    call chapter_three_drip_rng
+                "Palace Skateboard":
+                    call chapter_three_drip_rng
+                "Heron Preston Polo Shirt":
+                    call chapter_three_drip_rng
+                "Heron Preston Knitwear":
+                    call chapter_three_drip_rng
+                "Heron Preston Trousers":
+                    call chapter_three_drip_rng
+                "Heron Preston Beachwear":
+                    call chapter_three_drip_rng
+                "Faded Tracksuit":
+                    call chapter_three_drip_rng
+                "Faded Joggers":
+                    call chapter_three_drip_rng
+                "Faded Overshirts":
+                    call chapter_three_drip_rng
+                "Prada Bag":
+                    call chapter_three_drip_rng
+                "Haven Shoes":
+                    call chapter_three_drip_rng
+                "Haven Hoodie":
+                    call chapter_three_drip_rng
+                "Haven Brick":
+                    call chapter_three_drip_rng
+                "Brooklyn Circus T-Shirt":
+                    call chapter_three_drip_rng
+                "Brooklyn Circus Jacket":
+                    call chapter_three_drip_rng
+                "Brooklyn Circus Cap":
+                    call chapter_three_drip_rng
+                "Brooklyn Circus Shoes":
+                    call chapter_three_drip_rng
+                "Brooklyn Circus Socks":
+                    call chapter_three_drip_rng
+                "Brooklyn Circus Accessories":
+                    call chapter_three_drip_rng
+                "Union Los Angeles Top":
+                    call chapter_three_drip_rng
+                "Union Los Angeles Footwear":
+                    call chapter_three_drip_rng
+                "Union Los Angeles Bottoms":
+                    call chapter_three_drip_rng
+                "Union Los Angeles Accessories":
+                    call chapter_three_drip_rng
+                "Balenciaga Shirt":
+                    call chapter_three_drip_rng
+                "Balenciaga Pants":
+                    call chapter_three_drip_rng
+                "Balenciaga Shoes":
+                    call chapter_three_drip_rng
+                "Balenciaga Jacket":
+                    call chapter_three_drip_rng
+                "Balenciaga Hat":
+                    call chapter_three_drip_rng
+                "Balenciaga Bag":
+                    call chapter_three_drip_rng
+                "Off-White Shirt":
+                    call chapter_three_drip_rng
+                "Off-White Pants":
+                    call chapter_three_drip_rng
+                "Off-White Shoes":
+                    call chapter_three_drip_rng
+                "Off-White Jacket":
+                    call chapter_three_drip_rng
+                "Off-White Hat":
+                    call chapter_three_drip_rng
+                "Off-White Bag":
+                    call chapter_three_drip_rng
+                "Bape Shirt":
+                    call chapter_three_drip_rng
+                "Bape Pants":
+                    call chapter_three_drip_rng
+                "Bape Shoes":
+                    call chapter_three_drip_rng
+                "Bape Hoodie":
+                    call chapter_three_drip_rng
+                "Bape Cap":
+                    call chapter_three_drip_rng
+                "Bape Accessories":
+                    call chapter_three_drip_rng
+                "Yeezy Shoes":
+                    call chapter_three_drip_rng
+                "Yeezy Hoodie":
+                    call chapter_three_drip_rng
+                "Yeezy Jacket":
+                    call chapter_three_drip_rng
+                "Yeezy Pants":
+                    call chapter_three_drip_rng
+                "Yeezy Accessories":
+                    call chapter_three_drip_rng
+                "Fear of God Shirt":
+                    call chapter_three_drip_rng
+                "Fear of God Pants":
+                    call chapter_three_drip_rng
+                "Fear of God Shoes":
+                    call chapter_three_drip_rng
+                "Fear of God Jacket":
+                    call chapter_three_drip_rng
+                "Fear of God Hat":
+                    call chapter_three_drip_rng
+                "Fear of God Bag":
+                    call chapter_three_drip_rng
+                "Vetements Shirt":
+                    call chapter_three_drip_rng
+                "Vetements Pants":
+                    call chapter_three_drip_rng
+                "Vetements Shoes":
+                    call chapter_three_drip_rng
+                "Vetements Jacket":
+                    call chapter_three_drip_rng
+                "Vetements Hat":
+                    call chapter_three_drip_rng
+                "Vetements Bag":
+                    call chapter_three_drip_rng
+                "Alexander McQueen Shirt":
+                    call chapter_three_drip_rng
+                "Alexander McQueen Pants":
+                    call chapter_three_drip_rng
+                "Alexander McQueen Shoes":
+                    call chapter_three_drip_rng
+                "Alexander McQueen Jacket":
+                    call chapter_three_drip_rng
+                "Alexander McQueen Bag":
+                    call chapter_three_drip_rng
+                "Alexander McQueen Accessories":
+                    call chapter_three_drip_rng
+                "Saint Laurent Shirt":
+                    call chapter_three_drip_rng
+                "Saint Laurent Pants":
+                    call chapter_three_drip_rng
+                "Saint Laurent Shoes":
+                    call chapter_three_drip_rng
+                "Saint Laurent Jacket":
+                    call chapter_three_drip_rng
+                "Saint Laurent Bag":
+                    call chapter_three_drip_rng
+                "Saint Laurent Accessories":
+                    call chapter_three_drip_rng
+                "Givenchy Shirt":
+                    call chapter_three_drip_rng
+                "Givenchy Pants":
+                    call chapter_three_drip_rng
+                "Givenchy Shoes":
+                    call chapter_three_drip_rng
+                "Givenchy Jacket":
+                    call chapter_three_drip_rng
+                "Givenchy Bag":
+                    call chapter_three_drip_rng
+                "Givenchy Accessories":
+                    call chapter_three_drip_rng
+                "Versace Shirt":
+                    call chapter_three_drip_rng
+                "Versace Pants":
+                    call chapter_three_drip_rng
+                "Versace Shoes":
+                    call chapter_three_drip_rng
+                "Versace Jacket":
+                    call chapter_three_drip_rng
+                "Versace Bag":
+                    call chapter_three_drip_rng
+                "Versace Accessories":
+                    call chapter_three_drip_rng
+                "Louis Vuitton Shirt":
+                    call chapter_three_drip_rng
+                "Louis Vuitton Pants":
+                    call chapter_three_drip_rng
+                "Louis Vuitton Shoes":
+                    call chapter_three_drip_rng
+                "Louis Vuitton Jacket":
+                    call chapter_three_drip_rng
+                "Louis Vuitton Bag":
+                    call chapter_three_drip_rng
+                "Louis Vuitton Accessories":
+                    call chapter_three_drip_rng
+                "Burberry Shirt":
+                    call chapter_three_drip_rng
+                "Burberry Pants":
+                    call chapter_three_drip_rng
+                "Burberry Shoes":
+                    call chapter_three_drip_rng
+                "Burberry Jacket":
+                    call chapter_three_drip_rng
+                "Burberry Bag":
+                    call chapter_three_drip_rng
+                "Burberry Accessories":
+                    call chapter_three_drip_rng
+                "Tom Ford Shirt":
+                    call chapter_three_drip_rng
+                "Tom Ford Pants":
+                    call chapter_three_drip_rng
+                "Tom Ford Shoes":
+                    call chapter_three_drip_rng
+                "Tom Ford Jacket":
+                    call chapter_three_drip_rng
+                "Tom Ford Bag":
+                    call chapter_three_drip_rng
+                "Tom Ford Accessories":
+                    call chapter_three_drip_rng
+                "Raf Simons Shirt":
+                    call chapter_three_drip_rng
+                "Raf Simons Pants":
+                    call chapter_three_drip_rng
+                "Raf Simons Shoes":
+                    call chapter_three_drip_rng
+                "Raf Simons Jacket":
+                    call chapter_three_drip_rng
+                "Raf Simons Bag":
+                    call chapter_three_drip_rng
+                "Raf Simons Accessories":
+                    call chapter_three_drip_rng
+                "Maison Margiela Shirt":
+                    call chapter_three_drip_rng
+                "Maison Margiela Pants":
+                    call chapter_three_drip_rng
+                "Maison Margiela Shoes":
+                    call chapter_three_drip_rng
+                "Maison Margiela Jacket":
+                    call chapter_three_drip_rng
+                "Maison Margiela Bag":
+                    call chapter_three_drip_rng
+                "Maison Margiela Accessories":
+                    call chapter_three_drip_rng
+                "Rick Owens Shirt":
+                    call chapter_three_drip_rng
+                "Rick Owens Pants":
+                    call chapter_three_drip_rng
+                "Rick Owens Shoes":
+                    call chapter_three_drip_rng
+                "Rick Owens Jacket":
+                    call chapter_three_drip_rng
+                "Rick Owens Bag":
+                    call chapter_three_drip_rng
+                "Rick Owens Accessories":
+                    call chapter_three_drip_rng
+                "Dior Shirt":
+                    call chapter_three_drip_rng
+                "Dior Pants":
+                    call chapter_three_drip_rng
+                "Dior Shoes":
+                    call chapter_three_drip_rng
+                "Dior Jacket":
+                    call chapter_three_drip_rng
+                "Dior Bag":
+                    call chapter_three_drip_rng
+                "Dior Accessories":
+                    call chapter_three_drip_rng
+                "Valentino Shirt":
+                    call chapter_three_drip_rng
+                "Valentino Pants":
+                    call chapter_three_drip_rng
+                "Valentino Shoes":
+                    call chapter_three_drip_rng
+                "Valentino Jacket":
+                    call chapter_three_drip_rng
+                "Valentino Bag":
+                    call chapter_three_drip_rng
+                "Valentino Accessories":
+                    call chapter_three_drip_rng
+        return
+    label chapter_three_drip_rng:
+        $ rngint2 = renpy.random.randint(0,1000)
+        $ rngint += renpy.random.randint(0,10)
+        $ choice -= rngint2
+        "You just spent [rngint2] on this..."
+        "You have $[choice] remaining"
+        $ chapter_three_obtain_item("chapter_three_drip")
+        return
