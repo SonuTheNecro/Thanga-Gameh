@@ -49,6 +49,7 @@ screen ch03_fnaf_closet_bonnie():
         ground "images/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(25,90,400,280) action Call("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
+    hide screen clickable_chapter_three_bonnie3
     hide screen clickable_chapter_three_bonnie2_skibidi_toilet
     hide screen clickable_chapter_three_bonnie2_guitar
     hide screen clickable_chapter_three_bonnie1_telephone
@@ -71,6 +72,8 @@ label chapter_three_fnaf_hide_screens:
     hide screen clickable_chapter_three_chica1_pepperoni
     hide screen clickable_chapter_three_chica1_olive_oil
     hide screen clickable_chapter_three_key
+    hide screen chapter_three_bonnie_health_bar
+    hide screen chapter_three_chica_health_bar
     hide screen ch03_fnaf_closet_bonnie
     hide screen ch03_fnaf_stage_no_bonnie
     hide screen ch03_fnaf_stage_only_freddy
@@ -81,7 +84,9 @@ label chapter_three_fnaf_hide_screens:
 
 label chapter_three_fnaf_restore_screens(location):
     if location == 1:
-        if Bonnie.get_happiness() == 0 and Bonnie.get_mission() and choice == 100:
+        if Bonnie.get_happiness() == 2 and not Bonnie.get_mission():
+            show screen clickable_chapter_three_bonnie3
+        elif Bonnie.get_happiness() == 0 and Bonnie.get_mission() and choice == 100:
             show screen clickable_chapter_three_bonnie1_telephone
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_flour"):
             show screen clickable_chapter_three_chica1_flour
@@ -212,7 +217,22 @@ label chapter_three_secret2:
     jump ch03_office_timer_return
 label chapter_three_bonnie:
     call chapter_three_fnaf_hide_screens
-    if Bonnie.get_happiness() == 1 and chapter_three_item_check("chapter_three_guitar"):
+    if Bonnie.get_happiness() == 3:
+        bonnie "yo its the one true looksmaxxer"
+        "You feel you cannot help Bonnie anymore"
+        "You have done everything you could have!"
+    elif Bonnie.get_happiness() == 2:
+        k "I thought we were fighting to the death..."
+        bonnie "we were til I saw the strength of your ability"
+        bonnie "you are the truest looksmaxxer"
+        k "LETS FUCKING GO TAKE THAT THANG"
+        bonnie "there is no better looksmaxxer than you"
+        bonnie "thank you for teaching me your ways"
+        bonnie "little guy"
+        k "ITS BIG GUY!"
+        "A life-long bond with Bonnie has been formed!"
+        $ Bonnie.set_happiness(3)
+    elif Bonnie.get_happiness() == 1 and chapter_three_item_check("chapter_three_guitar"):
         bonnie "YOOOOOOOOOOO YOU FOUND MY GUITAR LITTLE GUY"
         k "Actually i am a tall guy"
         k "I practice my heightmaxxing"
@@ -224,10 +244,10 @@ label chapter_three_bonnie:
         k "that doesn't make any sense"
         bonnie "scaredmaxxing?"
         k "NO!"
-        "You feel a deeper bond forming with Bonnie!"
+        "Your bond with Bonnie has grown even stronger!"
         $ Bonnie.set_happiness(2)
         $ Bonnie.set_mission(False)
-    if Bonnie.get_happiness() == 1 and not Bonnie.get_mission():
+    elif Bonnie.get_happiness() == 1 and not Bonnie.get_mission():
         bonnie "Yo What is up man!"
         k "How is the dripgoing?"
         bonnie "My looksmaxxing is pretty good but my soundmaxxing is poor right now"
@@ -263,6 +283,9 @@ label chapter_three_bonnie:
         bonnie "A true looksmaxxer will know where to find me!"
         k "I am a true looksmaxxer but I got no idea where you are going..."
         $ Bonnie.set_mission(True)
+    else:
+        bonnie "looksmaxxing power 9999"
+        k "jeepers"
     call chapter_three_fnaf_restore_screens(location)
     return
 label chapter_three_chica:
@@ -577,7 +600,7 @@ label chapter_three_chica_mission3:
                     value AnimatedValue(count2, 25, delay = 0.5)
                     xalign 0.0
                     yalign 0.0
-                    xmaximum 200
+                    xmaximum 600
     screen clickable_chapter_three_chica3_cupcakes(xpos,ypos,zoom,count2):
         timer 0.25 + (count2 / 10) action Call("chapter_three_chica_death",xpos,ypos)
         imagebutton:
@@ -629,6 +652,7 @@ label chapter_three_chica_mission3:
         chica "Okay I concede!"
         chica "Im going back to stage!"
         $ Chica.set_mission(True)
+        hide screen chapter_three_chica_health_bar
         call chapter_three_fnaf_restore_screens(location)
         jump ch03_fnaf_1b
     
@@ -1085,3 +1109,93 @@ label chapter_three_bonnie_mission2:
         k "HUH?"
         call chapter_three_fnaf_restore_screens(location)
         return
+label chapter_three_bonnie_mission3:
+    screen chapter_three_bonnie_health_bar(max,endup):
+        frame:
+            xalign 0.5
+            yalign 0.0
+            hbox:
+                bar:
+                    value AnimatedValue(choice, 30, delay = 0.5)
+                    xalign 0.0
+                    yalign 0.0
+                    xmaximum 600
+    screen clickable_chapter_three_bonnie3:
+        imagebutton:
+            pos (655, 76) at Transform(zoom = 1.21)
+            idle "images/ch03_fnaf_bonnie.png"
+            hover "images/ch03_fnaf_bonnie.png"
+            action Jump("chapter_three_bonnie3_fight")
+    screen chapter_three_bonnie3_timer_event(key_input, xalign1, yalign1):
+        timer 0.01 repeat True action If(time > 0.0, true=SetVariable("time", time - 0.01), false=[Return(0), Hide("chapter_three_bonnie3_timer_event")]) 
+        key key_input action [Return(1), SetVariable("choice", choice - 1), SetVariable("rngint", rngint + 1)]
+        
+        vbox:
+            xalign xalign1
+            yalign yalign1
+            spacing 25
+            
+            text key_input:
+                xalign 0.5
+                color "#fff"
+                size 32
+            
+            bar:
+                value time
+                range 6.35 - (rngint / 5)
+                xalign 0.5
+                xmaximum 100
+                
+                if time < 1.6:
+                    left_bar "#f00"
+
+    label chapter_three_bonnie3_fight:
+        call chapter_three_fnaf_hide_screens
+        show ch03_fnaf_bonnie:
+            subpixel True pos (655, 76) zoom 1.21
+        show ch03_fnaf_bonnie:
+            linear 0.45 subpixel True pos (465, 0) zoom 2.64 
+        k "but why must we fight?"
+        bonnie "I am sorry, but only one looksmaxxer can fit in this rizzaria"
+        bonnie "its either me or you"
+        scene ch03_fnaf_bonnie_fight with dissolve:
+            subpixel True zoom 2.38 
+        bonnie "AND I INTEND IT TO BE ME!"
+        $ keys = ["w", "a", "s", "d"]
+        $ choice = 30
+        $ rngint = 0
+        $ check = 1
+        "Click the on-screen keyboard inputs before Bonnie reacts!"
+        show screen chapter_three_bonnie_health_bar(30, "chapter_three_bonnie_victory")
+        while choice > 0 and check == 1:
+            $ time = 6.35 - (rngint / 5)
+            call screen chapter_three_bonnie3_timer_event(renpy.random.choice(keys), renpy.random.randint(1, 9) * 0.1, renpy.random.randint(1, 9) * 0.1)
+            $ check = _return
+            if choice == 25:
+                bonnie "OW!"
+                window auto hide
+            elif choice == 20:
+                bonnie "The gloves are off! No more jokes."
+                $ keys.append("l")
+                $ keys.append("e")
+                window auto hide
+            elif choice == 10:
+                bonnie "NOW I AM ANGRY, BEHOLD THE POWER OF LOOKSMAXXING!"
+                $ keys.append("q")
+                $ keys.append("r")
+                $ keys.append("z")
+                $ keys.append("c")
+                window auto hide
+        if check == 0:
+            bonnie "die"
+            jump game_over
+
+        label chapter_three_bonnie_victory:
+        bonnie "WHAT!"
+        bonnie "HOW!"
+        k "I am just a little bit better"
+        bonnie "well played"
+        bonnie "meet me back at the stage"
+        hide screen chapter_three_bonnie_health_bar
+        $ Bonnie.set_mission(True)
+        jump ch03_fnaf_office
