@@ -11,9 +11,15 @@ screen ch03_fnaf_map():
         hotspot(137,0,60,40)    action Jump("ch03_fnaf_1a")
         hotspot(1,92,60,40)     action Jump("ch03_fnaf_5")
         hotspot(80,146,60,40)   action Jump("ch03_fnaf_1c")
-        hotspot(371,91,60,40)   action Jump("ch03_fnaf_7")
+        hotspot(371,91,60,40)   action (Jump("ch03_fnaf_7") if chapter_three_item_check("chapter_three_key") else Call("chapter_three_locked"))
         hotspot(137,274,60,40)  action Jump("ch03_fnaf_2a")
         hotspot(254,275,60,40)  action Jump("ch03_fnaf_4a")
+label chapter_three_locked:
+    call chapter_three_fnaf_hide_screens
+    "This area is currently locked!"
+    k "WHAT!"
+    call chapter_three_fnaf_restore_screens(location)
+    return
 screen ch03_fnaf_stage():
     imagemap:
         ground "images/ch03_fnaf7.png" at Transform(yzoom=1.25,zoom=1.2)
@@ -43,10 +49,9 @@ screen ch03_fnaf_closet_bonnie():
         ground "images/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(25,90,400,280) action Call("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
+    hide screen clickable_chapter_three_bonnie2_skibidi_toilet
+    hide screen clickable_chapter_three_bonnie2_guitar
     hide screen clickable_chapter_three_bonnie1_telephone
-    hide screen ch03_fnaf_closet_bonnie
-    hide screen ch03_fnaf_stage_no_bonnie
-    hide screen ch03_fnaf_stage_only_freddy
     hide screen chapter_three_chica_health_bar
     hide screen clickable_chapter_three_chica3_cupcakes
     hide screen clickable_chapter_three_chica3_dining_area
@@ -65,6 +70,10 @@ label chapter_three_fnaf_hide_screens:
     hide screen clickable_chapter_three_chica1_cheese
     hide screen clickable_chapter_three_chica1_pepperoni
     hide screen clickable_chapter_three_chica1_olive_oil
+    hide screen clickable_chapter_three_key
+    hide screen ch03_fnaf_closet_bonnie
+    hide screen ch03_fnaf_stage_no_bonnie
+    hide screen ch03_fnaf_stage_only_freddy
     hide screen ch03_fnaf_map
     hide screen ch03_fnaf_stage
     hide screen ch03_fnaf_stage_no_chica
@@ -79,6 +88,8 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[2]:
             show screen clickable_chapter_three_chica2_1bill(635,518,0.4,2)
     elif location == 2:
+        if not chapter_three_item_check("chapter_three_key"):
+            show screen clickable_chapter_three_key
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_yeast"):
             show screen clickable_chapter_three_chica1_yeast
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[3]:
@@ -94,13 +105,15 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[1]:
             show screen clickable_chapter_three_chica2_5bill(695,496,0.41,1)
     elif location == 5:
-        if Bonnie.get_happiness() == 0 and Bonnie.get_mission:
+        if Bonnie.get_happiness() == 0 and Bonnie.get_mission():
             show screen ch03_fnaf_closet_bonnie
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_sugar"):
             show screen clickable_chapter_three_chica1_sugar
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[7]:
             show screen clickable_chapter_three_chica2_1bill(635,518,0.4,7)
     elif location == 6:
+        if Bonnie.get_happiness() == 1 and Bonnie.get_mission() and not chapter_three_item_check("chapter_three_guitar"):
+            show screen clickable_chapter_three_bonnie2_guitar
         if Chica.get_happiness() == 2 and not Chica.get_mission():
             show screen clickable_chapter_three_chica3_dining_area
         elif Chica.get_mission() and not chapter_three_item_check("chapter_three_cornmeal"):
@@ -108,9 +121,9 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and count2 >= 10.00 and not chapter_three_item_check("chapter_three_pizza2"):
             show screen clickable_chapter_three_chica2_landline
     elif location == 7:
-        if Bonnie.get_happiness() == 0 and Bonnie.get_mission() and Chica.get_happiness() == 2 and not Chica.get_mission():
+        if ((Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission())) and Chica.get_happiness() == 2 and not Chica.get_mission():
             show screen ch03_fnaf_stage_only_freddy
-        elif Bonnie.get_happiness() == 0 and Bonnie.get_mission():
+        elif (Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission()):
             show screen ch03_fnaf_stage_no_bonnie
         elif Chica.get_happiness() == 2 and not Chica.get_mission():
             show screen ch03_fnaf_stage_no_chica
@@ -125,6 +138,8 @@ label chapter_three_fnaf_restore_screens(location):
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_cheese"):
             show screen clickable_chapter_three_chica1_cheese
     elif location == 10:
+        if Bonnie.get_happiness() == 1 and Bonnie.get_mission(): # and not chapter_three_item_check("chapter_three_toilet") #idk if this should be one time event
+            show screen clickable_chapter_three_bonnie2_skibidi_toilet
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_pepperoni"):
             show screen clickable_chapter_three_chica1_pepperoni
     elif location == 11:
@@ -157,7 +172,6 @@ screen chapter_three_office_timer(max, endup):
                 xalign 0.0
                 yalign 0.0
                 xmaximum 200
-
 label chapter_three_phone_time:
     show ch03_telephone:
         subpixel True pos (626, 228) zoom 0.83 
@@ -188,6 +202,7 @@ label chapter_three_phone_time:
     hide screen chapter_three_office_timer
     hide ch03_telephone
     $ chapter_three_obtain_item("chapter_three_phonecall")
+    call chapter_three_fnaf_restore_screens(location)
     return
 label chapter_three_secret2:
     "WOW YOU ARE INCREDIBLE"
@@ -197,7 +212,44 @@ label chapter_three_secret2:
     jump ch03_office_timer_return
 label chapter_three_bonnie:
     call chapter_three_fnaf_hide_screens
-    if Bonnie.get_happiness() == 0 and not Bonnie.get_mission():
+    if Bonnie.get_happiness() == 1 and chapter_three_item_check("chapter_three_guitar"):
+        bonnie "YOOOOOOOOOOO YOU FOUND MY GUITAR LITTLE GUY"
+        k "Actually i am a tall guy"
+        k "I practice my heightmaxxing"
+        k "and of course my looksmaxxing"
+        bonnie "oh of course little guy"
+        bonnie "however I am realizing we are both too AWESOME for this rizzaria"
+        k "huh?"
+        bonnie "come office 3:33 am on friday the 13th on a tuesday"
+        k "that doesn't make any sense"
+        bonnie "scaredmaxxing?"
+        k "NO!"
+        "You feel a deeper bond forming with Bonnie!"
+        $ Bonnie.set_happiness(2)
+        $ Bonnie.set_mission(False)
+    if Bonnie.get_happiness() == 1 and not Bonnie.get_mission():
+        bonnie "Yo What is up man!"
+        k "How is the dripgoing?"
+        bonnie "My looksmaxxing is pretty good but my soundmaxxing is poor right now"
+        k "wtf is soundmaxxing"
+        bonnie "My guitar... I need it"
+        k "It is very clearly in your hands"
+        bonnie "nono, this is my show guitar"
+        bonnie "I need my real guitar"
+        k "well where is it"
+        bonnie "Well..."
+        bonnie "Let me think here"
+        pause 5
+        bonnie "I got no idea"
+        k "of course"
+        bonnie "well go get me it!"
+        "Mission Unlocked!: Get Bonnie's Guitar!"
+        $ Bonnie.set_mission(True)
+    elif Bonnie.get_happiness() == 1 and Bonnie.get_mission():
+        bonnie "Can you hurry up and get my good guitar"
+        k "got it bossmaxx sir"
+        bonnie "stop"
+    elif Bonnie.get_happiness() == 0 and not Bonnie.get_mission():
         bonnie "yo yo yo what is good little child"
         k "I am 14"
         bonnie "oh perfect!"
@@ -211,6 +263,7 @@ label chapter_three_bonnie:
         bonnie "A true looksmaxxer will know where to find me!"
         k "I am a true looksmaxxer but I got no idea where you are going..."
         $ Bonnie.set_mission(True)
+    call chapter_three_fnaf_restore_screens(location)
     return
 label chapter_three_chica:
     call chapter_three_fnaf_hide_screens
@@ -303,10 +356,12 @@ label chapter_three_chica:
     else:
         chica "I AM HUNGRY!"
         k "got it!"
+    call chapter_three_fnaf_restore_screens(location)
     return
 label chapter_three_freddy:
     call chapter_three_fnaf_hide_screens
     "test3"
+    call chapter_three_fnaf_restore_screens(location)
     return
 
 
@@ -416,6 +471,7 @@ label chapter_three_chica_mission1:
         if area == 11:
             "You have obtained Pepperoni"
             $ chapter_three_obtain_item("chapter_three_pepperoni")
+        call chapter_three_fnaf_restore_screens(location)
         return
 label chapter_three_chica_mission2:
     screen clickable_chapter_three_chica2_5bill(xpos,ypos,zoomlevel,id):
@@ -444,20 +500,26 @@ label chapter_three_chica_mission2:
             action Call("chapter_three_landline")
 
     label chapter_three_fnaf_bill5(id_value):
+        call chapter_three_fnaf_hide_screens
         "You have found a 5 Dollar Bill!"
         $ count2 += 5.00
         $ chapter_three_fnaf_money[id_value] = True
+        call chapter_three_fnaf_restore_screens(location)
         return
     label chapter_three_fnaf_bill1(id_value):
+        call chapter_three_fnaf_hide_screens
         "You have found a 1 Dollar Bill!"
         $ count2 += 1.00
         $ chapter_three_fnaf_money[id_value] = True
+        call chapter_three_fnaf_restore_screens(location)
         return
     label chapter_three_fnaf_quarter(id_value):
+        call chapter_three_fnaf_hide_screens
         "You have found a 0.25 Dollar Bill!"
         k "Isn't that just a quarter?"
         $ count2 += 0.25
         $ chapter_three_fnaf_money[id_value] = True
+        call chapter_three_fnaf_restore_screens(location)
         return
     label chapter_three_landline:
         call chapter_three_fnaf_hide_screens
@@ -497,6 +559,7 @@ label chapter_three_chica_mission2:
         "You have obtained a pizza!"
         scene ch03_fnaf6 with dissolve:
             subpixel True yzoom 1.25 zoom 1.5 
+        call chapter_three_fnaf_restore_screens(location)
         return
 label chapter_three_chica_mission3:
     screen clickable_chapter_three_chica3_dining_area:
@@ -566,6 +629,7 @@ label chapter_three_chica_mission3:
         chica "Okay I concede!"
         chica "Im going back to stage!"
         $ Chica.set_mission(True)
+        call chapter_three_fnaf_restore_screens(location)
         jump ch03_fnaf_1b
     
     label chapter_three_chica_death(xpos,ypos):
@@ -607,6 +671,7 @@ label chapter_three_bonnie_mission1:
                 "Wow you got more than 1 item!"
                 "Incredible!"
                 $ chapter_three_secret[2] = True
+        call chapter_three_fnaf_restore_screens(location)
         return
     screen clickable_chapter_three_bonnie1_telephone:
         imagebutton:
@@ -915,6 +980,7 @@ label chapter_three_bonnie_mission1:
                     call chapter_three_drip_rng
                 "Valentino Accessories":
                     call chapter_three_drip_rng
+        call chapter_three_fnaf_restore_screens(location)
         return
     label chapter_three_drip_rng:
         $ rngint2 = renpy.random.randint(0,1000)
@@ -923,4 +989,99 @@ label chapter_three_bonnie_mission1:
         "You just spent [rngint2] on this..."
         "You have $[choice] remaining"
         $ chapter_three_obtain_item("chapter_three_drip")
+        return
+label chapter_three_bonnie_mission2:
+    screen clickable_chapter_three_bonnie2_guitar:
+        imagebutton:
+            pos (1363, 431) at Transform(rotate=243.0)
+            idle "images/ch03_fnaf_guitar.png"
+            hover "images/ch03_fnaf_guitar.png"
+            action Call("chapter_three_guitar")
+    label chapter_three_guitar:
+        call chapter_three_fnaf_hide_screens
+        show ch03_fnaf_guitar:
+            subpixel True pos (1363, 431) rotate 243.0
+        if not chapter_three_item_check("chapter_three_toilet"):
+            k "Well here is that guitar"
+            pause 5.0
+            k "wait"
+            k "This seems too easy"
+            k "Like how is this so easy?"
+            window auto hide
+            hide ch03_fnaf_guitar
+            show ch03_fnaf_puppet with dissolve:
+                subpixel True pos (518, 5) zoom 3.03 
+            k "Of course"
+            puppet "back up from the guitar little bro :skull:"
+            k "did you just skull me irl"
+            puppet "u mad bro?"
+            k "no?"
+            puppet "COPE HARDER CRYBABY!"
+            k "I am not crying..."
+            puppet "GIVE ME DAT COPE MACHINE SHEESHHHHHHHHHHH"
+            k "(omg this guy)"
+            k "What can I do for that geeeeeeee tar"
+            puppet "not be cringe"
+            k "ugh"
+            k "how do I not be cringe..."
+            puppet "if u haff 2 ask, u supa cringe old man boomer heh"
+            k "what? Im 12!"
+            k "Im not thang who is 94 years old!"
+            puppet "boomer boomer doesn't even know what skibidi toliet is!"
+            k "oh yeah I know what skibidi toliet is!"
+            puppet "prove it!"
+            k "..."
+            k "how"
+            puppet "BOOMER BOOMER OLD MAN SKIBIDI TOLIET YES YES YES!"
+            k "(I hate this guy)"
+            k "Where would skibidi toilet be..."
+        elif chapter_three_item_check("chapter_three_toilet"):
+            k "I never thought the Puppet would be generation Alpha"
+            window auto hide
+            hide ch03_fnaf_guitar
+            show ch03_fnaf_puppet with dissolve:
+                subpixel True pos (518, 5) zoom 3.03
+            puppet "SKIBIDI YES YES YES"
+            k "I found the skibidi toilet in the bathroom"
+            puppet "OMG KAI CENAT BIG FAN AMOGUS SUS FANUM TAXXING LOOKSMAXXING YES YES OH YES"
+            k "There is also minecraft parkour, with sandpaper, and gta cars going down a ramp if you ask the skibidi nice enough"
+            puppet "OMG BYE I NEED THIS"
+            show ch03_fnaf_puppet:
+                linear 0.45 xalign 2.0
+            k "heh I lied, there is no tiktok in there >:)"
+            k "because this country is america and its now banned!"
+            "I thought this was Canada?"
+            k "eh idk, ask the writer"
+            "GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE"
+            $ chapter_three_obtain_item("chapter_three_guitar")
+        call chapter_three_fnaf_restore_screens(location)
+        return
+    screen clickable_chapter_three_key:
+        imagebutton:
+            pos (896, 530) at Transform(zoom=0.13)
+            idle "images/key1.png"
+            hover "images/key1.png"
+            action Call("chapter_three_key_found")
+    label chapter_three_key_found:
+        call chapter_three_fnaf_hide_screens
+        "You have found the key to the restrooms!"
+        $ chapter_three_obtain_item("chapter_three_key")
+        call chapter_three_fnaf_restore_screens(location)
+        return
+    screen clickable_chapter_three_bonnie2_skibidi_toilet:
+        imagebutton:
+            pos (183, 356) at Transform(zoom=0.29)
+            idle "images/ch03_fnaf_skibidi_toilet.png"
+            hover "images/ch03_fnaf_skibidi_toilet.png"
+            action Call("chapter_three_skibidi_toilet")
+    label chapter_three_skibidi_toilet:
+        call chapter_three_fnaf_hide_screens
+        k "wait what is this?"
+        play movie "video/chapter_three/skibidi_biden.webm"
+        k "MY EYES"
+        $ chapter_three_obtain_item("chapter_three_toilet")
+        k "WHAT THE HELL WAS THAT"
+        questionmark "Suffer more Kody"
+        k "HUH?"
+        call chapter_three_fnaf_restore_screens(location)
         return
