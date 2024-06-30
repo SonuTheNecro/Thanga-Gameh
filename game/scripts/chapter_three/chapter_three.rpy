@@ -40,6 +40,7 @@ default chapter_three_key_items = {
     "chapter_three_key"      : ItemState.NOT_OBTAINED,
     "chapter_three_gun"      : ItemState.NOT_OBTAINED,
     "chapter_three_pills"    : ItemState.NOT_OBTAINED,
+    "chapter_three_bpillow"  : ItemState.NOT_OBTAINED,
     }
 
 label chapter_three:

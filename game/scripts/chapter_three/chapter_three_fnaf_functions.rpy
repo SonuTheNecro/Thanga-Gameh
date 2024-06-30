@@ -49,6 +49,8 @@ screen ch03_fnaf_closet_bonnie():
         ground "images/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(25,90,400,280) action Call("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
+    hide screen clickable_chapter_three_freddy3
+    hide screen clickable_chapter_three_freddy2_bodypillow
     hide screen clickable_chapter_three_freddy1_gun
     hide screen clickable_chapter_three_freddy1_pills
     hide screen clickable_chapter_three_bonnie3
@@ -107,6 +109,8 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[4]:
             show screen clickable_chapter_three_chica2_1bill(1003,593,0.45,4)
     elif location == 4:
+        if Freddy.get_mission() and Freddy.get_happiness() == 1 and not chapter_three_item_check("chapter_three_bpillow"):
+            show screen clickable_chapter_three_freddy2_bodypillow
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_salt"):
             show screen clickable_chapter_three_chica1_salt
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[1]:
@@ -147,6 +151,8 @@ label chapter_three_fnaf_restore_screens(location):
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_cheese"):
             show screen clickable_chapter_three_chica1_cheese
     elif location == 10:
+        if Freddy.get_happiness() == 2 and not Freddy.get_mission():
+            show screen clickable_chapter_three_freddy3
         if Bonnie.get_happiness() == 1 and Bonnie.get_mission(): # and not chapter_three_item_check("chapter_three_toilet") #idk if this should be one time event
             show screen clickable_chapter_three_bonnie2_skibidi_toilet
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_pepperoni"):
@@ -389,7 +395,69 @@ label chapter_three_chica:
     return
 label chapter_three_freddy:
     call chapter_three_fnaf_hide_screens
-    if Freddy.get_happiness() == 0 and Freddy.get_mission() and chapter_three_item_check("chapter_three_pills"):
+    if Freddy.get_happiness() == 3:
+        freddy "thanks for helping me out!"
+        "You feel you cannot help Freddy anymore"
+        "You have done everything you could have!"
+    elif Freddy.get_happiness() == 2 and Freddy.get_mission():
+        k "You are a creep"
+        freddy "Im good im good, I been listening to some men's help podcasts and Ima work my way outta this"
+        k "well that's good"
+        freddy "I appreciate your help little guy"
+        k "STOPPPPPPPPPPPPPPPPPP"
+        $ Freddy.set_happiness(3)
+    elif Freddy.get_happiness() == 2 and not Freddy.get_mission():
+        k "aren't you supposed to be in the bathroom"
+        freddy "I can teleport at will"
+        k "SINCE WHEN?"
+        freddy "Since I did it in the OG fnaf markiplier run duh"
+        k "WHAT THAT WAS A THING?"
+        stn "YOU DIDN'T KNOW?"
+        tv "WOW THIS BOZO!"
+        t "LMAOOOOOOOOOOOO"
+        b "WOWWWWWWW"
+        k "wtf are these voices in my head"
+        k "no one knows what you are talking about Freddy"
+        freddy "cope"
+    elif Freddy.get_happiness() == 1 and chapter_three_item_check("chapter_three_bpillow"):
+        k "That is some NICE gyatt i cant even gonna cap"
+        freddy "holy shit i am straight gooning to this!"
+        freddy "thanks man"
+        k "this seems way toooo easy..."
+        "Mission Unlocked: Get Freddy some Gyatt!"
+        k "that was the same dialogue as before, it should be completed"
+        "You have formed a deep bond with Freddy!"
+        k "What is happening to the game?"
+        $ Freddy.set_happiness(2)
+        $ Freddy.set_mission(False)
+        freddy "You know what is next right?"
+        freddy "I AM THE MASTER OF ALL GYATT"
+        freddy "HAND IT OVER!"
+        k "what?"
+        freddy "YOUR GYATT!"
+        k "uhhhhhh I dont wanna"
+        freddy "Come bathroom 1v1"
+        k "I dont think I will be going to the bathroom with a guy named Freddy Fazgyatt"
+        freddy "Well the game demands it so come face me!"
+        k "ugh"
+    elif Freddy.get_happiness() == 1 and Freddy.get_mission():
+        freddy "please bro"
+        k "holy shit this gooner who is goonmaxxing"
+        k "thats a new one narrator!"
+        "fuck off"
+    elif Freddy.get_happiness() == 1 and not Freddy.get_mission():
+        k "How are you doing fweddy"
+        freddy "okay :("
+        k "what do you need help with now?"
+        freddy "I need me some gyatt"
+        k "I thought you had some based on it?"
+        freddy "no i was the king but my gf took it all"
+        k "where the hell do I find gyatt"
+        freddy "idk"
+        "Mission Unlocked!: Get Freddy some Gyatt!"
+        $ Freddy.set_mission(True)
+        k "this is stupid af"
+    elif Freddy.get_happiness() == 0 and Freddy.get_mission() and chapter_three_item_check("chapter_three_pills"):
         k "here you go!"
         freddy "what is this?"
         k "its anti-depressent!"
@@ -400,6 +468,7 @@ label chapter_three_freddy:
         "A small bond has been formed with Freddy!"
         $ Freddy.set_happiness(1)
         $ Freddy.set_mission(False)
+        "Misison Complete: Make Freddy happy!"
     elif Freddy.get_happiness() == 0 and Freddy.get_mission() and count >= 5 and not chapter_three_item_check("chapter_three_pills"):
         freddy "what do you want from me"
         freddy ":("
@@ -1355,5 +1424,97 @@ label chapter_three_freddy_mission1:
         "WAIT WAIT WAIT"
         call chapter_three_fnaf_restore_screens(location)
         return
+label chapter_three_freddy_mission2:
+    screen clickable_chapter_three_freddy2_bodypillow:
+        imagebutton:
+            pos (26, 230) at Transform(zoom=0.36)
+            idle "ch03_fnaf_bp.png"
+            hover "ch03_fnaf_bp.png"
+            action Call("chapter_three_bodypillow_rant")
+    label chapter_three_bodypillow_rant:
+        call chapter_three_fnaf_hide_screens
+        k "Yo gimmie that bodypillow"
+        "You have obtained a bodypillow!"
+        $ chapter_three_obtain_item("chapter_three_bpillow")
+        k "so uh where is the challenge?"
+        k "like the fight..."
+        k "uh"
+        k "is there just no challenge?"
+        questionmark "What..."
+        questionmark "WHERE IS THE SLENDERMAN?"
+        questionmark "sir we didn't have time to make that sir!"
+        questionmark "FUCK YOU, I will be torturing you LATER!"
+        questionmark "no sir..."
+        call chapter_three_fnaf_restore_screens(location)
+        "You can leave now"
+        k "wait what"
+        k "there is still dialogue, like surely there is a secret"
+        k "right?"
+        k "there wouldn't be a waste"
+        k "there wouldn't be a waste"
+        k "there wouldn't be a waste"
+        k "there wouldn't be a waste"
+        k "there wouldn't be a waste"
+        k "well since we are here"
+        k "I got some questions about the LORRRRRRREEEEEEEEEEEEEEEEEE"
+        k "since this is fnaf chapter so lore talking just makes sense you feel me?"
+        k "like what is up with STN, Cody, Baldi, and The Entity"
+        k "like they all feel related"
+        k "Is just every villian controlled by the Entity?"
+        return
+label chapter_three_freddy_mission3:
+    screen clickable_chapter_three_freddy3:
+        imagebutton:
+            pos (973, 121) at Transform(zoom=0.31) 
+            idle "images/ch03_fnaf_freddy.png"
+            hover "images/ch03_fnaf_freddy.png"
+            action Jump("chapter_three_freddy_fight")
+    screen chapter_three_freddy_health_bar(max,endup):
+        frame:
+            xalign 0.5
+            yalign 0.0
+            hbox:
+                bar:
+                    value AnimatedValue(count, 30, delay = 0.5)
+                    xalign 0.0
+                    yalign 0.0
+                    xmaximum 600
+    screen clickable_chapter_three_freddy_timer():
+        timer 1 + (count / 10) action Jump("chapter_three_freddy_death")
+
+    
+    
+    label chapter_three_freddy_fight:
+        call chapter_three_fnaf_hide_screens
+    show ch03_fnaf_freddy:
+        subpixel True pos (973, 121) zoom 0.31 
+    show ch03_fnaf_freddy:
+        linear 0.55 subpixel True pos (790, 53) anchor (1629, 360) zoom 1.79 
+    "test"
+    $ words = ["Bite", "Of", "1987", "Freddy Fazgyatt", "William Afton", "Purple Guy", "KodyDaBoss", "Tactical Vortex", "SonuTheNecro", "ThangaMangaLang","Chica Fanumtaxxer", "Bonnie Looksmaxxer", "Foxy The Furry", "Cody", "Rizzaria", "Gen Alpha Puppet", "Enragement Child", "MasiMew124"]
+    $ count = 60
+    "Type the words as they appear on Screen!"
+    while count > 0:
+        $ rngint = str(renpy.random.choice(words))
+        freddy "[str(rngint)]"
+        show screen clickable_chapter_three_freddy_timer()
+        $ user_input = renpy.input("THIS ENDS NOW!")
+        $ user_input = user_input.strip()
+        if user_input != rngint:
+            jump chapter_three_freddy_death
+        hide screen clickable_chapter_three_freddy_timer
+        $ count -= 1
+    
+    freddy "HOW!"
+    k "ez"
+    freddy "Okay I dont want that sweaty gyatt, meet me back at the stage"
+    $ Freddy.set_mission(True)
+    return
+    label chapter_three_freddy_death:
+        freddy "STAY FREE BOZO"
+        k "FUCK FUCK FUCK FUCK FUCK"
+        freddy "later idiot"
+        jump game_over
+
 
 
