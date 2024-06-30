@@ -49,6 +49,8 @@ screen ch03_fnaf_closet_bonnie():
         ground "images/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(25,90,400,280) action Call("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
+    hide screen clickable_chapter_three_foxy
+    hide screen chapter_three_freddy_health_bar
     hide screen clickable_chapter_three_freddy3
     hide screen clickable_chapter_three_freddy2_bodypillow
     hide screen clickable_chapter_three_freddy1_gun
@@ -123,6 +125,8 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[7]:
             show screen clickable_chapter_three_chica2_1bill(635,518,0.4,7)
     elif location == 6:
+        if Foxy.get_happiness() == 3 and Foxy.get_mission():
+            show screen clickable_chapter_three_foxy
         if Bonnie.get_happiness() == 1 and Bonnie.get_mission() and not chapter_three_item_check("chapter_three_guitar"):
             show screen clickable_chapter_three_bonnie2_guitar
         if Chica.get_happiness() == 2 and not Chica.get_mission():
@@ -148,6 +152,8 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[0]:
             show screen clickable_chapter_three_chica2_5bill(936,583,0.26,0)
     elif location == 9:
+        if Foxy.get_happiness() == 3 and not Foxy.get_mission():
+            call chapter_three_foxy3_talk
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_cheese"):
             show screen clickable_chapter_three_chica1_cheese
     elif location == 10:
@@ -406,6 +412,9 @@ label chapter_three_freddy:
         freddy "I appreciate your help little guy"
         k "STOPPPPPPPPPPPPPPPPPP"
         $ Freddy.set_happiness(3)
+        k "So what podcast you listening to?"
+        freddy "Andrew And Tristan Tate"
+        k "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
     elif Freddy.get_happiness() == 2 and not Freddy.get_mission():
         k "aren't you supposed to be in the bathroom"
         freddy "I can teleport at will"
@@ -512,7 +521,16 @@ label chapter_three_freddy:
         $ count = 1
     call chapter_three_fnaf_restore_screens(location)
     return
-
+label chapter_three_foxy:
+    if Freddy.get_happiness() == 3 and Bonnie.get_happiness() == 3 and Chica.get_happiness() == 3: #Could be better but I dont wanna do variable work
+        $ Foxy.set_happiness(3)
+    elif Freddy.get_happiness() >= 2 and Bonnie.get_happiness() >= 2 and Chica.get_happiness() >= 2:
+        $ Foxy.set_happiness(2)
+    elif Freddy.get_happiness() >= 1 and Bonnie.get_happiness() >= 1 and Chica.get_happiness() >= 1:
+        $ Foxy.set_happiness(1)
+    elif Freddy.get_happiness() == 0 and Bonnie.get_happiness() == 0 and Chica.get_happiness() == 0:
+        $ Foxy.set_happiness(0)
+    return
 
 
 
@@ -1469,18 +1487,18 @@ label chapter_three_freddy_mission3:
             idle "images/ch03_fnaf_freddy.png"
             hover "images/ch03_fnaf_freddy.png"
             action Jump("chapter_three_freddy_fight")
-    screen chapter_three_freddy_health_bar(max,endup):
+    screen chapter_three_freddy_health_bar(max,enupd):
         frame:
             xalign 0.5
             yalign 0.0
             hbox:
                 bar:
-                    value AnimatedValue(count, 30, delay = 0.5)
+                    value AnimatedValue(count, 60, delay = 0.5)
                     xalign 0.0
                     yalign 0.0
                     xmaximum 600
     screen clickable_chapter_three_freddy_timer():
-        timer 1 + (count / 10) action Jump("chapter_three_freddy_death")
+        timer 2.50 + (count / 10) action Jump("chapter_three_freddy_death")
 
     
     
@@ -1492,8 +1510,9 @@ label chapter_three_freddy_mission3:
         linear 0.55 subpixel True pos (790, 53) anchor (1629, 360) zoom 1.79 
     "test"
     $ words = ["Bite", "Of", "1987", "Freddy Fazgyatt", "William Afton", "Purple Guy", "KodyDaBoss", "Tactical Vortex", "SonuTheNecro", "ThangaMangaLang","Chica Fanumtaxxer", "Bonnie Looksmaxxer", "Foxy The Furry", "Cody", "Rizzaria", "Gen Alpha Puppet", "Enragement Child", "MasiMew124"]
-    $ count = 60
+    $ count = 5
     "Type the words as they appear on Screen!"
+    show screen chapter_three_freddy_health_bar(60,"chapter_three_freddy_victory")
     while count > 0:
         $ rngint = str(renpy.random.choice(words))
         freddy "[str(rngint)]"
@@ -1504,17 +1523,28 @@ label chapter_three_freddy_mission3:
             jump chapter_three_freddy_death
         hide screen clickable_chapter_three_freddy_timer
         $ count -= 1
-    
+    label chapter_three_freddy_victory:
     freddy "HOW!"
     k "ez"
     freddy "Okay I dont want that sweaty gyatt, meet me back at the stage"
     $ Freddy.set_mission(True)
-    return
+    jump ch03_fnaf_7
     label chapter_three_freddy_death:
         freddy "STAY FREE BOZO"
         k "FUCK FUCK FUCK FUCK FUCK"
         freddy "later idiot"
         jump game_over
-
+label chapter_three_foxy3_talk:
+    k "Where did foxy go?"
+    k "That phonecall said to get Foxy's help once I became everyone's friend but he isn't here..."
+    k "ugh do I gotta find him now..."
+    $ Foxy.set_mission(True)
+    return
+    screen clickable_chapter_three_foxy:
+        imagebutton:
+            xpos 450 at Transform(zoom=0.93)
+            idle "images/ch03_fnaf_foxy.png"
+            hover "images/ch03_fnaf_foxy.png"
+            action Jump("chapter_three_ending")
 
 

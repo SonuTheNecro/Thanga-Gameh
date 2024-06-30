@@ -474,7 +474,8 @@ label ch03_fnaf_5:
 label ch03_fnaf_1c:
     $ location = 9
     call chapter_three_fnaf_hide_screens
-    $ count = Foxy.happiness
+    call chapter_three_foxy
+    $ count = Foxy.get_happiness()
     if count == 1:
         show ch03_fnaf_cove2:
             subpixel True xpos -396 xzoom 1.08 yzoom 1.12 zoom 2.15 
@@ -521,3 +522,23 @@ label ch03_fnaf_4a:
     label ch03_fnaf_4a_1:
     "You are located in the East Hall in Freddy Fazgyatt's Rizzaria"
     jump ch03_fnaf_4a_1
+
+
+label chapter_three_ending:
+    call chapter_three_fnaf_hide_screens
+    show ch03_fnaf_foxy:
+        subpixel True xpos 450 zoom 0.93 
+    k "NO NOT ANYMORE BOSS BATTLES FUCK RIGHT OFF!"
+    foxy "Is that was the others been making you doing?"
+    k "yeah..."
+    foxy "eh my boss battle can be a secret ending for the sleuths out there"
+    k "so I am stuck here, and you can help me right?"
+    foxy "uh sir, lets just go" #Animation stuff here
+
+    scene ch03_fnaf_prep1 with dissolve:
+        subpixel True zoom 0.75 
+    
+    k "Wow, that was way easier than I thought it'd be!"
+
+    $ persistent.ch03 = True
+    "end of chapter three"
