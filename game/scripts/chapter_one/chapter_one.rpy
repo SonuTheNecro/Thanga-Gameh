@@ -374,8 +374,7 @@ label chapter_one:
     b "and i'm trying to get shiny shadow sexy lopunny since it is lopunny community day for pokemon go"
     k "links so I can avoid it?"
     t "shut up"
-    $ _preferences.afm_enable = True
-    $ _preferences.afm_time = 5
+    call auto_advance(1)
     t "BRIAN!, PAY ATTENTION, THERE IS A DOG ON THE ROAD"
     b "no whe-" 
     play sound "audio/sound/chapter_one/car_crash.ogg"
@@ -385,8 +384,7 @@ label chapter_one:
     $ renpy.pause(2.5)
     show thanga2 with dissolve:
         subpixel True pos (1535, 365)  matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 180.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
-    $ _preferences.afm_enable = False
-    $ _preferences.afm_time = 15
+    call auto_advance(0)
     t "holy shit"
     t "this is bad!"
     show kody with dissolve:

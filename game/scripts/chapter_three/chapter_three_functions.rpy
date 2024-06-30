@@ -81,7 +81,7 @@ label chapter_three_jewel_osco:
         k "I SHOULD NOT GO BACK THERE"
         k "THEY MIGHT KILL ME"
         jump chapter_three_map
-    scene ch03jewel_outside:
+    scene ch03jewel_outside with dissolve:
         subpixel True xzoom 1.32 zoom 1.23 
     k "Ugh... I guess I can try working in Grocery"
     show brian1 with dissolve:
@@ -92,17 +92,19 @@ label chapter_three_jewel_osco:
         linear 0.15 subpixel True pos (103, 486) 
     show kody with dissolve:
         subpixel True pos (1145, 556) yrotate 180.0 
-    k "oh great what is the lopunny lover doing here?"
+    $ renpy.pause(0.15, hard=True)
+    k "oh great what is this bozo doing here?!"
     b "i work here : D"
     k "huh?"
-    b "You thought making fun of me for two chapters and it was all a meme?"
+    b "You thought it was all a meme?"
     k "yes"
     b "fuck you"
     b "yeah well I work here, what can I help you with?"
     k "uh"
     k "gimmie job or i will show off my mogmaxxing"
+    b "you already showed me that"
+    k "oh"
     b "Uh let me see what I can do for you!"
-    "Some Time Passes"
     scene ch03jewel1 with dissolve:
         subpixel True xzoom 1.2 zoom 2.58 
     show brian1:
@@ -110,15 +112,13 @@ label chapter_three_jewel_osco:
     show kody:
         subpixel True pos (1116, 361) yrotate 180.0 
 
-
-    b "okay so I talked with CEO Osco and" #TODO have this auto-advance
+    call auto_advance(1)
+    b "okay so I talked with CEO Osco and"
+    call auto_advance(0)
     k "wait you talked with CEO Mr. Jewel Osco?"
     b "yes"
-    k "How does a cashier talk to the ceo for a simple job at one location of a multinational location?"
+    k "How does a cashier talk to the CEO for a simple job at one location of a multinational business?"
     b "yeah its a really bad bottleneck"
-    b "but!"
-    k "hey butts"
-    b "SHUT IT"
     b "The point is"
     b "I got you a trial job"
     k "so an internship at jewel osco"
@@ -126,9 +126,11 @@ label chapter_three_jewel_osco:
     b "just help people out and if Mr. Osco likes it"
     b "He will give you a job"
     k "bet thats so FREE!"
+    b "you'll see"
     "Go help out Jewel Osco Customers"
     "Show what you are made of!"
     "YEAH!"
+    play music "audio/music/chapter_three/butterfly_kiss.ogg" loop
     $ count2 = 0
     jump ch03_jewel_main
     label ch03_jewel_main:
@@ -277,15 +279,21 @@ label chapter_three_jewel_osco:
             subpixel True pos (991, 561)
         k "Hmmmm"
         k "Here is a wet-floor sign"
-        k "It'd be really funny if I just..." #TODO, knock-over sfx
+        k "It'd be really funny if I just..."
+        play sound "audio/sound/chapter_three/sign_fallover.ogg"
         hide ch03_wetfloorsign
         k "Knock this over"
         k ">:)"
         show ch03_man:
             subpixel True pos (-298, 293) zoom 0.54
-            linear 0.45 subpixel True xpos 962 
+            linear 0.45 subpixel True xpos 962
+        pause 0.45
+        play sound "audio/sound/chapter_three/slip1.ogg"
+        show ch03_man:
             linear 0.65 subpixel True pos (953, 63) rotate -90
-            linear 0.35 subpixel True pos (936, 541) rotate 270.0 #sfx here as well
+            linear 0.35 subpixel True pos (936, 541) rotate 270.0
+        pause 1.0
+        play sound "audio/sound/chapter_three/back_crack.ogg"
         questionmark "YO WHAT THE HELL!"
         questionmark "MY BACK"
         k "uh"
@@ -311,7 +319,10 @@ label chapter_three_jewel_osco:
         k "but no one is here..."
         k "I guess this is..."
         k "LOST MEDIA?!?" 
-        k "alright time to piss into the groceries >:)" #TODO SFX
+        k "alright time to piss into the groceries >:)"
+        play sound "audio/sound/chapter_three/water_pouring.ogg"
+        pause 10.0
+        stop sound
         hide ch03_cart
         k "well that was fun"
         k "I should dip!"
@@ -358,7 +369,8 @@ label chapter_three_jewel_osco:
         k "Dang..."
         k "That is a big bag of candy..."
         k "nobody would mind if I..."
-        k "ate it real fast" #TODO chomp sound effect
+        k "ate it real fast"
+        play sound "audio/sound/chapter_three/chomp.ogg"
         hide ch03_candy
         k "That was some good candy :)"
         $ chapter_three_jewels_mark(3)
@@ -416,6 +428,7 @@ label chapter_three_jewel_osco:
         hide screen clickable_chapter_three_customer
         return
     label chapter_three_jewel_end:
+        stop music
         call chapter_three_jewel_hide_all_buttons
         show ch03_ceo with dissolve:
             subpixel True pos (616, 68) zoom 3.41 

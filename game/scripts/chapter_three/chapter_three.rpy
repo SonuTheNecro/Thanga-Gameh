@@ -45,10 +45,10 @@ default chapter_three_key_items = {
 
 label chapter_three:
     "Chapter Three..."
-    "WAIT WAS THAT THE BITE OF 87?"
+    "The Job Jubt"
     show ch03couch:
         subpixel True xpos -126 xzoom 1.35 zoom 1.77 
-
+    play music "audio/music/chapter_three/beneath_the_mask.ogg" loop
     show thanga2 with dissolve:
         subpixel True pos (1548, 153) yrotate 180.0 
     show kody with dissolve:
@@ -62,25 +62,25 @@ label chapter_three:
     k "Its now 2 feet now"
     t "..."
     k "..."
-    t "You need a fucking job"
+    t "You need a fucking job and a fucking life"
     k "..."
     stop sound
-    k "WHY DO I NEED A JOB?"
+    k "WHY DO I NEED A FUCKING JOB?"
     t "After what happened last week and what you said in Monokuma's Dungeon"
-    t "You need a freakin life"
+    t "You need a freakin life kid"
     k "Yeah I got one, I mewmaxx and mogmaxx all day every day"
     k "what do you do all day?"
     k "goon and look at your art gallery"
     t "..."
     t "I can explain that"
-    k "WELL DO IT FOR ALL US THEN BUCKO!"
-    t "That isn't important"
-    k "I THINK IT IS SO TELL US"
-    show march_7th
-    "We don't actually know the reason so enjoy this image of march 7th"
-    "Anyways..."
-    "Back after the nonsense"
-    hide march_7th
+    #k "WELL DO IT FOR ALL US THEN BUCKO!"
+    #t "That isn't important"
+    #k "I THINK IT IS SO TELL US"
+    #show march_7th
+    #"We don't actually know the reason so enjoy this image of march 7th"
+    #"Anyways..."
+    #"Back after the nonsense"
+    #hide march_7th
     t "The point is"
     t "I got a job and you don't"
     t "so go look around and get something"
@@ -88,8 +88,10 @@ label chapter_three:
     k "OOOOOOOOOOOOOO IMA DO THAT"
     show kody:
         linear 0.56 xalign 1.7
-    t "What an idiot..."
-    scene ch03house:
+    $ renpy.pause(0.56, hard=True)
+    t "What a fucking idiot..."
+    stop music
+    scene ch03house with dissolve:
         subpixel True xzoom 1.2 zoom 0.62 
     show kody:
         subpixel True pos (1331, 500) zoom 0.5 yrotate 180.0 
@@ -97,11 +99,11 @@ label chapter_three:
     play sound "audio/sound/chapter_three/footstep.ogg" loop
 
     show kody:
-        linear 0.68 subpixel True pos (1365, 586) zoom 0.5 yrotate 180.0
-        linear 0.85 subpixel True pos (496, 553) zoom 0.5 yrotate 180.0 
-        linear 0.94 subpixel True pos (-185, 798) zoom 0.5 yrotate 180.0 
+        linear 0.68 subpixel True pos (1365, 586) 
+        linear 0.85 subpixel True pos (496, 553) 
+        linear 0.94 subpixel True pos (-185, 798) 
     stop sound
-
+    $ renpy.pause(2.0, hard=True)
     # Set Variables
     label chapter_three_job:
     $ location = -1
