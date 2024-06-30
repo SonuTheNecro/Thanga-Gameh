@@ -17,8 +17,9 @@ define chica = Character("Chica FanumTaxxer")
 define foxy = Character("Foxy FurryFukker")
 define fnafpg = Character("Pizza Delivery Guy")
 define puppet = Character("The Puppet")
+define balloon = Character("Balloon Boy")
 default chapter_three_jewels_check = [False, False, False, False, False]
-default chapter_three_secret = [False, False, False]
+default chapter_three_secret = [False, False, False, False]
 default chapter_three_fnaf_money = [False, False, False, False, False, False, False, False] # 2 $5, 5 $1, 2 0.25
 default chapter_three_key_items = {
     "chapter_three_phonecall": ItemState.NOT_OBTAINED,
@@ -37,6 +38,8 @@ default chapter_three_key_items = {
     "chapter_three_drip"     : ItemState.NOT_OBTAINED,
     "chapter_three_toilet"   : ItemState.NOT_OBTAINED,
     "chapter_three_key"      : ItemState.NOT_OBTAINED,
+    "chapter_three_gun"      : ItemState.NOT_OBTAINED,
+    "chapter_three_pills"    : ItemState.NOT_OBTAINED,
     }
 
 label chapter_three:

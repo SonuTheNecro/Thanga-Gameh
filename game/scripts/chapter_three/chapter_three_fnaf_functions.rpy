@@ -49,6 +49,8 @@ screen ch03_fnaf_closet_bonnie():
         ground "images/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(25,90,400,280) action Call("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
+    hide screen clickable_chapter_three_freddy1_gun
+    hide screen clickable_chapter_three_freddy1_pills
     hide screen clickable_chapter_three_bonnie3
     hide screen clickable_chapter_three_bonnie2_skibidi_toilet
     hide screen clickable_chapter_three_bonnie2_guitar
@@ -135,6 +137,8 @@ label chapter_three_fnaf_restore_screens(location):
         else:
             show screen ch03_fnaf_stage
     elif location == 8:
+        if Freddy.get_happiness() == 0 and count >= 5 and not chapter_three_item_check("chapter_three_pills"):
+            show screen clickable_chapter_three_freddy1_pills
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_wheat"):
             show screen clickable_chapter_three_chica1_wheat_flour
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[0]:
@@ -153,6 +157,8 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[6]:
             show screen clickable_chapter_three_chica2_1bill(635,518,0.4,6)
     elif location == 12:
+        if Freddy.get_mission() and Freddy.get_happiness() == 0 and count == 7 and not chapter_three_item_check("chapter_three_gun"):
+            show screen clickable_chapter_three_freddy1_gun
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_garlic"):
             show screen clickable_chapter_three_chica1_garlic
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[5]:
@@ -383,7 +389,58 @@ label chapter_three_chica:
     return
 label chapter_three_freddy:
     call chapter_three_fnaf_hide_screens
-    "test3"
+    if Freddy.get_happiness() == 0 and Freddy.get_mission() and chapter_three_item_check("chapter_three_pills"):
+        k "here you go!"
+        freddy "what is this?"
+        k "its anti-depressent!"
+        freddy "what do?"
+        k "make you less sad!"
+        freddy "okay i will try it"
+        freddy "thank you :|"
+        "A small bond has been formed with Freddy!"
+        $ Freddy.set_happiness(1)
+        $ Freddy.set_mission(False)
+    elif Freddy.get_happiness() == 0 and Freddy.get_mission() and count >= 5 and not chapter_three_item_check("chapter_three_pills"):
+        freddy "what do you want from me"
+        freddy ":("
+        k "You look super sad man"
+        k "I wanna help"
+        freddy "why do you wanna help me"
+        k "idk I just walk around and you are the only interactable on the map so might as well"
+        freddy "my roblox gf left me :("
+        k "YOOOOO YOU PLAY ROBLOX!?"
+        k "me too!"
+        k "what was her name?"
+        freddy "her name was"
+        freddy "codydaboss"
+        k "oh"
+        pause 1.5
+        k "why don't you just get with one of the other animatronics"
+        k "you already get shipped with them anyways"
+        freddy "chicas lesbo and Bonnie is too awesome and Foxy is a fucking yiffer"
+        k "truuuu"
+        freddy "can you go find me something to cheer me up?"
+        k "is this a sex joke or what?"
+        freddy "depends on if your mind is in the gutter or not"
+        "Misison Unlocked: Make Freddy happy?"
+        k "idk either man"
+    elif Freddy.get_happiness() == 0 and Freddy.get_mission() and count < 5 and not count == 0:
+        freddy "leave me alone man"
+        $ count += 1
+    elif Freddy.get_happiness() == 0 and not Freddy.get_mission() and count == 0:
+        k "omg its the freddy five nights o mai gahd"
+        freddy "..."
+        k "freddy fazbear like"
+        k "arf arf arf arf"
+        k "jeepers"
+        k "like toredaor march"
+        freddy "stop"
+        k "oh you can talk"
+        k "fnaf freddy"
+        freddy "Leave me alone..."
+        k "ok man :("
+        $ Freddy.set_mission(True)
+        $ count = 1
     call chapter_three_fnaf_restore_screens(location)
     return
 
@@ -546,6 +603,9 @@ label chapter_three_chica_mission2:
         return
     label chapter_three_landline:
         call chapter_three_fnaf_hide_screens
+        if count2 == 16:
+            "Wow you found all of the money!"
+            $ chapter_three_secret[3] = True
         #todo put mario elevator music
         k "Alright Let's order this pizza!"
         #Todo ring sound here
@@ -1199,3 +1259,101 @@ label chapter_three_bonnie_mission3:
         hide screen chapter_three_bonnie_health_bar
         $ Bonnie.set_mission(True)
         jump ch03_fnaf_office
+label chapter_three_freddy_mission1:
+    screen clickable_chapter_three_freddy1_pills:
+        imagebutton:
+            pos (438, 88) at Transform(xzoom=1.0, zoom=0.16)
+            idle "images/ch03_fnaf_pills.png"
+            hover "images/ch03_fnaf_pills.png"
+            action Call("chapter_three_pills")
+    label chapter_three_pills:
+    call chapter_three_fnaf_hide_screens
+    show ch03_fnaf_pills:
+        subpixel True pos (438, 88) xzoom 1.0 zoom 0.16
+    if count == 7 and chapter_three_item_check("chapter_three_gun"):
+        show ch03_fnaf_bb with dissolve:
+            subpixel True pos (888, 116) zoom 1.95
+        balloon "FUCK OFF YOU BITCH!"
+        k "Yo narrator, hold the camera real quick"
+        "uh sure"
+        show kody:
+            subpixel True pos (-234, 360) 
+            linear 0.75 subpixel True pos (477, 360) 
+        $ renpy.pause(0.75, hard=True)
+        balloon "what are you doing?"
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        show gun1:
+            subpixel True pos (656, 471) 
+        balloon "uh"
+        k "fuck off"
+        show gunflare:
+            subpixel True pos (763, 391) zoom 0.28 
+        play sound "audio/sound/chapter_one/gun_shot1.ogg"
+        balloon "OW, FUCK OFF"
+        hide gunflare
+        show ch03_fnaf_bb:
+            linear 0.55 xalign 1.8
+        k "My pills now >:)"
+        "You have obtained pills!"
+        $ chapter_three_obtain_item("chapter_three_pills")
+    elif count == 7 and not chapter_three_item_check("chapter_three_gun"):
+        hide ch03_fnaf_pills
+        show ch03_fnaf_bb with dissolve:
+            subpixel True pos (888, 116) zoom 1.95
+        balloon "FUCK OFF YOU BITCH ASS!"
+        K "k man leave me alone"
+    elif count == 5:
+        k "dang these pills are just so open"
+        k "Wonder if these things will help with my mewing and mogging streak"
+        "We have to stop..."
+        k "huh?"
+        "Maybe you need these pills more"
+        k "shut up"
+        "You have said mewing and mogging and whatever generation alpha nonsense for like a couple of system hours and like 2 weeks in real life time"
+        k "yeah because I am awesome"
+        "We are just at this point farming for ThangaMangaLang Reaction Ep. 6 or Ep.4 if he does this part first"
+        "Hi System User Thang :)"
+        k "sooo free pills?"
+        questionmark "HEY those are MY pills!"
+        k "ugh of course there is some difficulty"
+        hide ch03_fnaf_pills
+        show ch03_fnaf_bb with dissolve:
+            subpixel True pos (888, 116) zoom 1.95 
+        balloon "FUCK YOU HIGHER POWERS"
+        balloon "WHY AM I SUCH A MINOR CHARACTER?!?"
+        k "oh great its you"
+        k "What do you want from me?"
+        balloon "I WANT YOU TO FUCKING FUCK OFF RIGHT NOW AND LEAVE ME BE AND LET ME DO MY OWN THING"
+        k "so just let you goon all day every day?"
+        balloon "YES"
+        pause 2.0
+        balloon "WAIT NO"
+        balloon "FUCK OFF THESE ARE MY PILLS"
+        k "you depressed?"
+        balloon "YES BECAUSE I AM A JPG IN AN ASSET FLIP A.I GAME"
+        k "damn that sucks, I couldn't imagine it"
+        balloon "YOU DONT KNOW?"
+        k "know you are gay?"
+        balloon "FUCK OFFFFFFFFFFFFFFFFFFF"
+        k "so what do you want for those pills"
+        balloon "I DO NOT WANT ANYTHING FUCK OFF!"
+        $ count = 7
+    call chapter_three_fnaf_restore_screens(location)
+    return
+    screen clickable_chapter_three_freddy1_gun:
+        imagebutton:
+            pos (1486, 515) at Transform(rotate=90.0)
+            idle "ch03_fnaf_gun.png"
+            hover "ch03_fnaf_gun.png"
+            action Call("chapter_three_gun")
+    label chapter_three_gun:
+        call chapter_three_fnaf_hide_screens
+        "You have obtained a gun!"
+        $ chapter_three_obtain_item("chapter_three_gun")
+        k "OH ITS TIME"
+        "WHO GAVE HIM A GUN"
+        "WAIT WAIT WAIT"
+        call chapter_three_fnaf_restore_screens(location)
+        return
+
+
