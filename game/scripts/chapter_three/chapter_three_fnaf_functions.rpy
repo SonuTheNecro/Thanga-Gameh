@@ -214,9 +214,11 @@ label chapter_three_phone_time:
     "now repeat"
     k "thanks narrator from the stanley parable"
     "I don't wanna see here for 45 minutes watching you struggle"
+    play sound "audio/sound/chapter_three/phone_ring1.ogg"
     k "alright I think I got it"
     k "listen up chat"
     show screen chapter_three_office_timer(285,"chapter_three_secret2")
+    stop sound
     play sound "audio/sound/chapter_three/ch03_phone_call.ogg"
     pause 120
     k "I learned literally nothing from this shit"
@@ -228,9 +230,8 @@ label chapter_three_phone_time:
     call chapter_three_fnaf_restore_screens(location)
     return
 label chapter_three_secret2:
-    "WOW YOU ARE INCREDIBLE"
-    #$ print("Length:", len(chapter_three_secret))
-    #"a"
+    "wait you actually listened to the whole thing?"
+    "I Guess that\'s worth a secret I suppose..."
     $ chapter_three_secret[1] = True
     jump ch03_office_timer_return
 label chapter_three_bonnie:
@@ -250,31 +251,41 @@ label chapter_three_bonnie:
         k "ITS BIG GUY!"
         "A life-long bond with Bonnie has been formed!"
         $ Bonnie.set_happiness(3)
+        k "so whats my prize?"
+        bonnie "me not killing you"
+        k "BUT I LITERALLY WON HUH?"
+        bonnie "yeah let me turn down my speed timer and let's see what happens to you"
     elif Bonnie.get_happiness() == 1 and chapter_three_item_check("chapter_three_guitar"):
         bonnie "YOOOOOOOOOOO YOU FOUND MY GUITAR LITTLE GUY"
         k "Actually i am a tall guy"
         k "I practice my heightmaxxing"
         k "and of course my looksmaxxing"
         bonnie "oh of course little guy"
+        "Your bond with Bonnie has grown even stronger!"
+        "Mission Complete!: Get Bonnie's Guitar!"
         bonnie "however I am realizing we are both too AWESOME for this rizzaria"
         k "huh?"
         bonnie "come office 3:33 am on friday the 13th on a tuesday"
         k "that doesn't make any sense"
         bonnie "scaredmaxxing?"
         k "NO!"
-        "Your bond with Bonnie has grown even stronger!"
         $ Bonnie.set_happiness(2)
         $ Bonnie.set_mission(False)
     elif Bonnie.get_happiness() == 1 and not Bonnie.get_mission():
         bonnie "Yo What is up man!"
-        k "How is the dripgoing?"
+        k "how is the dripgoing?"
         bonnie "My looksmaxxing is pretty good but my soundmaxxing is poor right now"
         k "wtf is soundmaxxing"
-        bonnie "My guitar... I need it"
+        bonnie "My guitar..."
+        k "oh"
+        bonnie "I need it"
         k "It is very clearly in your hands"
         bonnie "nono, this is my show guitar"
         bonnie "I need my real guitar"
-        k "well where is it"
+        k "what?"
+        bonnie "I don\'t make the rules [player_name]"
+        k "ugh"
+        k "well where is the fucking guitar..."
         bonnie "Well..."
         bonnie "Let me think here"
         pause 5
@@ -282,11 +293,18 @@ label chapter_three_bonnie:
         k "of course"
         bonnie "well go get me it!"
         "Mission Unlocked!: Get Bonnie's Guitar!"
+        bonnie "make it snappy too"
+        k "ugh..."
         $ Bonnie.set_mission(True)
     elif Bonnie.get_happiness() == 1 and Bonnie.get_mission():
         bonnie "Can you hurry up and get my good guitar"
         k "got it bossmaxx sir"
         bonnie "stop"
+        k "stop what?"
+        k "helping you or looksmaxxing"
+        bonnie "the englishmaxxing"
+        pause 2.76
+        k "yeah okay I'll stop"
     elif Bonnie.get_happiness() == 0 and not Bonnie.get_mission():
         bonnie "yo yo yo what is good little child"
         k "I am 14"
@@ -300,7 +318,11 @@ label chapter_three_bonnie:
         k "okay where?"
         bonnie "A true looksmaxxer will know where to find me!"
         k "I am a true looksmaxxer but I got no idea where you are going..."
+        bonnie "Guess you aren't a true looksmaxxer"
+        k "NO!"
+        k "I AM A TRUE ONE"
         $ Bonnie.set_mission(True)
+        "Mission Unlocked: Help Bonnie w/ Whatever He needs..."
     else:
         bonnie "looksmaxxing power 9999"
         k "jeepers"
@@ -605,6 +627,7 @@ label chapter_three_chica_mission1:
             action Call("chapter_three_ingredients",11)
     label chapter_three_ingredients(area):
         call chapter_three_fnaf_hide_screens
+        play sound "audio/sound/chapter_three/item_pickup.ogg"
         if area == 1:
             "You have obtained Flour!"
             $ chapter_three_obtain_item("chapter_three_flour")
@@ -726,6 +749,7 @@ label chapter_three_chica_mission2:
         fnafpg "meh its money and usd is better than cad"
         fnafpg "later bozo"
         $ chapter_three_obtain_item("chapter_three_pizza2")
+        play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have obtained a pizza!"
         scene ch03_fnaf6 with dissolve:
             subpixel True yzoom 1.25 zoom 1.5 
@@ -814,29 +838,48 @@ label chapter_three_bonnie_mission1:
             bonnie "ah you made it"
             k "So what is it you want to discuss with me?"
             k "a 14-year old child?"
-            bonnie "Okay so I got this comment on my tiktok"
-            bonnie "and it says that I fell off and I am not the looksmaxxing goat"
+            bonnie "IM NOT FREDDY, I AM JUST A HUMBLE LOOKSMAXXER"
+            k "I am better"
+            bonnie "uhh thats irrelevant to the argument"
+            bonnie "anyways..."
+            bonnie "so I got this comment on my tiktok"
+            bonnie "and it says that I fell off and I am not the looksmaxxing chad"
             bonnie "comment is from CodyDaBoss"
             bonnie "Ima hurt that guy if I see him ever"
             k "huh"
-            k "well how do I help you?"
-            bonnie "I need me some new drop but I cannot operate the phone"
-            bonnie "get me some new gucci and drop so I can looksmaxx with Kai Cenat better"
+            k "I would too as well"
+            k "well how do you want me to help you?"
+            bonnie "I need me some new drip but I cannot operate the phone"
+            bonnie "get me some new gucci and drip so I can looksmaxx with Kai Cenat better"
             k "I dont got money"
             bonnie "I got a $100 dollar bill so just order me what you thinkmaxx willmaxx looksmaxx memaxx"
             k "gotmaxx itmaxx bossmax"
             $ choice = 100
         elif choice != 0 and not chapter_three_item_check("chapter_three_drip"):
-            bonnie "GET ME MY DRIPMAXX!"
+            bonnie "Did you get my Dripmaxx"
+            k "no"
+            bonnie "...."
+            bonnie "WHY THE FUCK ARE YOU BACK HERE?"
+            k "secret dialogue idk man"
+            bonnie "GET THE FUCK OUTTA HERE AND GET ME MY DRIP YOU LOOKSMINNER"
             k "okay man jesus"
         elif choice != 0 and chapter_three_item_check("chapter_three_drip"):
-            bonnie "thanks man"
+            bonnie "Oh shit you actually got me some drop"
+            k "yeah it may have put you into debt"
+            bonnie "meh, they can't charge debt onto dead people"
+            k "arent you dead or like an undead being or something?"
+            bonnie "idk"
+            bonnie "either way I aint paying taxes"
             $ Bonnie.set_happiness(1)
             "A small bond has been formed with Bonnie!"
+            "Mission Complete: Help Bonnie w/ Whatever He needs..."
+            bonnie "well this should suit me for a while"
             bonnie "Thanks for the fit man!"
+            bonnie "I will return to the stage"
             if rngint > 11:
-                "Wow you got more than 1 item!"
-                "Incredible!"
+                bonnie "Holy shit you got more than one item?"
+                k "yeah it was pretty cheap, fire sale if you will"
+                bonnie "damn that might be worth a secret ain't even gonna cap!"
                 $ chapter_three_secret[2] = True
         call chapter_three_fnaf_restore_screens(location)
         jump ch03_fnaf_3
@@ -850,7 +893,8 @@ label chapter_three_bonnie_mission1:
         call chapter_three_fnaf_hide_screens
         show ch03_fnaf_landline:
             pos (640, 328) zoom 0.64
-        k "Alright I got a lot of choices for drip here" #TODO:Audio for a phonecall
+        k "Alright I got a lot of choices for drip here"
+        play sound "audio/sound/chapter_three/phone_ring2.ogg"
         questionmark "Uh hello Hello"
         questionmark "I am Henry from Looksmaxxers United"
         questionmark "How Can I help you today?"
@@ -1169,7 +1213,7 @@ label chapter_three_bonnie_mission2:
         show ch03_fnaf_guitar:
             subpixel True pos (1363, 431) rotate 243.0
         if not chapter_three_item_check("chapter_three_toilet"):
-            k "Well here is that guitar"
+            k "Well here is the guitar"
             pause 5.0
             k "wait"
             k "This seems too easy"
@@ -1211,15 +1255,21 @@ label chapter_three_bonnie_mission2:
             puppet "SKIBIDI YES YES YES"
             k "I found the skibidi toilet in the bathroom"
             puppet "OMG KAI CENAT BIG FAN AMOGUS SUS FANUM TAXXING LOOKSMAXXING YES YES OH YES"
-            k "There is also minecraft parkour, with sandpaper, and gta cars going down a ramp if you ask the skibidi nice enough"
+            k "There is also minecraft parkour, with \"cake or fake\", and gta cars going down a ramp if you ask the skibidi sus amogus toliet nice enough"
             puppet "OMG BYE I NEED THIS"
             show ch03_fnaf_puppet:
                 linear 0.45 xalign 2.0
+            $ renpy.pause(0.5, hard=True)
             k "heh I lied, there is no tiktok in there >:)"
             k "because this country is america and its now banned!"
             "I thought this was Canada?"
             k "eh idk, ask the writer"
+            call auto_advance(1)
             "GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE GET IT ITS LIKE THE STANLEY PARABLE"
+            call auto_advance(0)
+            k "anyways back to the guitar >:)"
+            play sound "audio/sound/chapter_three/item_pickup.ogg"
+            "You have obtained Bonnie's guitar"
             $ chapter_three_obtain_item("chapter_three_guitar")
         call chapter_three_fnaf_restore_screens(location)
         return
@@ -1231,6 +1281,7 @@ label chapter_three_bonnie_mission2:
             action Call("chapter_three_key_found")
     label chapter_three_key_found:
         call chapter_three_fnaf_hide_screens
+        play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have found the key to the restrooms!"
         $ chapter_three_obtain_item("chapter_three_key")
         call chapter_three_fnaf_restore_screens(location)
@@ -1309,13 +1360,14 @@ label chapter_three_bonnie_mission3:
         $ rngint = 0
         $ check = 1
         "Click the on-screen keyboard inputs before Bonnie reacts!"
+        call auto_advance(1)
         show screen chapter_three_bonnie_health_bar(30, "chapter_three_bonnie_victory")
         while choice > 0 and check == 1:
             $ time = 6.35 - (rngint / 5)
             call screen chapter_three_bonnie3_timer_event(renpy.random.choice(keys), renpy.random.randint(1, 9) * 0.1, renpy.random.randint(1, 9) * 0.1)
             $ check = _return
             if choice == 25:
-                bonnie "OW!"
+                bonnie "OW! WTF!"
                 window auto hide
             elif choice == 20:
                 bonnie "The gloves are off! No more jokes."
@@ -1330,11 +1382,13 @@ label chapter_three_bonnie_mission3:
                 $ keys.append("c")
                 window auto hide
         if check == 0:
+            call auto_advance(0)
             call chapter_three_fnaf_hide_screens
             play movie "video/chapter_three/bonnie.webm"
             jump game_over
 
         label chapter_three_bonnie_victory:
+        call auto_advance(0)
         bonnie "WHAT!"
         bonnie "HOW!"
         k "I am just a little bit better"
@@ -1342,6 +1396,7 @@ label chapter_three_bonnie_mission3:
         bonnie "meet me back at the stage"
         hide screen chapter_three_bonnie_health_bar
         $ Bonnie.set_mission(True)
+        k "MORE WALKING UGH!"
         jump ch03_fnaf_office
 label chapter_three_freddy_mission1:
     screen clickable_chapter_three_freddy1_pills:
@@ -1378,6 +1433,7 @@ label chapter_three_freddy_mission1:
         show ch03_fnaf_bb:
             linear 0.55 xalign 1.8
         k "My pills now >:)"
+        play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have obtained pills!"
         $ chapter_three_obtain_item("chapter_three_pills")
     elif count == 7 and not chapter_three_item_check("chapter_three_gun"):
@@ -1432,6 +1488,7 @@ label chapter_three_freddy_mission1:
             action Call("chapter_three_gun")
     label chapter_three_gun:
         call chapter_three_fnaf_hide_screens
+        play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have obtained a gun!"
         $ chapter_three_obtain_item("chapter_three_gun")
         k "OH ITS TIME"
@@ -1449,6 +1506,7 @@ label chapter_three_freddy_mission2:
     label chapter_three_bodypillow_rant:
         call chapter_three_fnaf_hide_screens
         k "Yo gimmie that bodypillow"
+        play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have obtained a bodypillow!"
         $ chapter_three_obtain_item("chapter_three_bpillow")
         k "so uh where is the challenge?"
