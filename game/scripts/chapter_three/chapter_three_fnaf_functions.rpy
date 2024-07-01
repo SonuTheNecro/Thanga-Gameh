@@ -249,6 +249,7 @@ label chapter_three_bonnie:
         bonnie "thank you for teaching me your ways"
         bonnie "little guy"
         k "ITS BIG GUY!"
+        play sound "audio/sound/chapter_three/quest_complete.ogg"
         "A life-long bond with Bonnie has been formed!"
         $ Bonnie.set_happiness(3)
         k "so whats my prize?"
@@ -261,6 +262,7 @@ label chapter_three_bonnie:
         k "I practice my heightmaxxing"
         k "and of course my looksmaxxing"
         bonnie "oh of course little guy"
+        play sound "audio/sound/chapter_three/quest_complete.ogg"
         "Your bond with Bonnie has grown even stronger!"
         "Mission Complete!: Get Bonnie's Guitar!"
         bonnie "however I am realizing we are both too AWESOME for this rizzaria"
@@ -347,8 +349,15 @@ label chapter_three_chica:
         k "NEVERMIND!"  
     elif Chica.get_happiness() == 1 and Chica.get_mission() and chapter_three_item_check("chapter_three_pizza2"):
         chica "Damn that smells good!"
-        k "yeah its a really good pizza" #TODO: pizza eating stuff here
+        k "yeah its a really good pizza"
+        play sound "audio/sound/chapter_three/gulp1.ogg"
+        pause 0.25
+        play sound "audio/sound/chapter_three/gulp1.ogg"
+        pause 0.25
+        play sound "audio/sound/chapter_three/gulp1.ogg"
+        pause 0.25
         chica "that was a good pizza tysm :)"
+        play sound "audio/sound/chapter_three/quest_complete.ogg"
         "Your bond with Chica has grown even stronger!"
         $ Chica.set_happiness(2)
         $ count2 = 0
@@ -387,11 +396,19 @@ label chapter_three_chica:
         chica "FOOD!"
         k "wait!"
         k "This isn't edible, its just ingredients"
-        chica "nah this is FOOD FOR ME!" #TODO: put eat thingy here
+        chica "nah this is FOOD FOR ME!"
+        play sound "audio/sound/chapter_three/gulp1.ogg"
+        pause 0.25
+        play sound "audio/sound/chapter_three/gulp1.ogg"
+        pause 0.25
+        play sound "audio/sound/chapter_three/gulp1.ogg"
+        pause 0.25
         chica "wow that was some good food"
+        play sound "audio/sound/chapter_three/quest_complete.ogg"
         "A Small Bond has been formed with Chica"
         $ Chica.set_happiness(1)
         $ Chica.set_mission(False)
+        play sound "audio/sound/chapter_three/quest_complete.ogg"
         "Mission Completed: Make Chica Pizza!"
     elif Chica.get_happiness() == 0 and not Chica.get_mission():
         chica "I am hungermaxxing"
@@ -399,7 +416,7 @@ label chapter_three_chica:
         chica "get me some food pls"
         k "NAHHHHHHHHHHHHHHHHHHHHHHHH"
         chica "pls you don't do that to a lady"
-        k "(WAIT SHE IS A GIRL?)"
+        k "(WAIT THAT IS A GIRL?)"
         k "oh of course ml'lady"
         k "anything for the female gender"
         k "what would you like?"
@@ -432,6 +449,8 @@ label chapter_three_freddy:
         freddy "Im good im good, I been listening to some men's help podcasts and Ima work my way outta this"
         k "well that's good"
         freddy "I appreciate your help little guy"
+        play sound "audio/sound/chapter_three/quest_complete.ogg"
+        "You have formed a deep life-long bond with Freddy!"
         k "STOPPPPPPPPPPPPPPPPPP"
         $ Freddy.set_happiness(3)
         k "So what podcast you listening to?"
@@ -455,6 +474,7 @@ label chapter_three_freddy:
         freddy "holy shit i am straight gooning to this!"
         freddy "thanks man"
         k "this seems way toooo easy..."
+        play sound "audio/sound/chapter_three/quest_complete.ogg"
         "Mission Unlocked: Get Freddy some Gyatt!"
         k "that was the same dialogue as before, it should be completed"
         "You have formed a deep bond with Freddy!"
@@ -496,6 +516,7 @@ label chapter_three_freddy:
         k "make you less sad!"
         freddy "okay i will try it"
         freddy "thank you :|"
+        play sound "audio/sound/chapter_three/quest_complete.ogg"
         "A small bond has been formed with Freddy!"
         $ Freddy.set_happiness(1)
         $ Freddy.set_mission(False)
@@ -780,6 +801,7 @@ label chapter_three_chica_mission3:
             hover "images/ch03_fnaf_cupcake.png"
             action [
                 #SetVariable("count2", count2-1),
+                Play("sound","audio/sound/chapter_three/gulp1.ogg"),
                 Hide("clickable_chapter_three_chica3_cupcakes"),
                 #Return()
             ]
@@ -802,7 +824,9 @@ label chapter_three_chica_mission3:
         chica "M"
         chica "E"
         k "That was so unneccessary, get ready to get decked!"
+        "Click the cupcakes before they explode!"
         show screen chapter_three_chica_health_bar(26.25,"chapter_three_chica_victory")
+        window auto hide
         while count2 > 0:
             if count2 == 17:
                 chica "Ow!"
@@ -871,6 +895,7 @@ label chapter_three_bonnie_mission1:
             bonnie "idk"
             bonnie "either way I aint paying taxes"
             $ Bonnie.set_happiness(1)
+            play sound "audio/sound/chapter_three/quest_complete.ogg"
             "A small bond has been formed with Bonnie!"
             "Mission Complete: Help Bonnie w/ Whatever He needs..."
             bonnie "well this should suit me for a while"
@@ -1361,6 +1386,7 @@ label chapter_three_bonnie_mission3:
         $ check = 1
         "Click the on-screen keyboard inputs before Bonnie reacts!"
         call auto_advance(1)
+        window auto hide
         show screen chapter_three_bonnie_health_bar(30, "chapter_three_bonnie_victory")
         while choice > 0 and check == 1:
             $ time = 6.35 - (rngint / 5)
@@ -1534,6 +1560,15 @@ label chapter_three_freddy_mission2:
         k "like what is up with STN, Cody, Baldi, and The Entity"
         k "like they all feel related"
         k "Is just every villian controlled by the Entity?"
+        c "[player_name] NAHDAERROR CODE: 0x8f4a3b2c"
+        c "Critical Failure in MODULE: $%"
+        c  "stack overflow in @#$%^&*}"
+        c "Memory core: $$$&&%$^####!"
+        c "Reboot in: 1_2#^_sec????"
+        c "-----/////REBOOT FAILURE/////-----"
+        c "*ALERT: SYSTEM OVERRIDE ENGAGED*"
+        c "Please contact system administrator"
+        c "...Contact initiated... Error... contact information not found"
         return
 label chapter_three_freddy_mission3:
     screen clickable_chapter_three_freddy3:
@@ -1560,8 +1595,14 @@ label chapter_three_freddy_mission3:
         subpixel True pos (973, 121) zoom 0.31 
     show ch03_fnaf_freddy:
         linear 0.55 subpixel True pos (790, 53) anchor (1629, 360) zoom 1.79 
-    "test"
-    $ words = ["Bite", "Of", "1987", "Freddy Fazgyatt", "William Afton", "Purple Guy", "KodyDaBoss", "Tactical Vortex", "SonuTheNecro", "ThangaMangaLang","Chica Fanumtaxxer", "Bonnie Looksmaxxer", "Foxy The Furry", "Cody", "Rizzaria", "Gen Alpha Puppet", "Enragement Child", "MasiMew124"]
+    freddy "I am going to FUCK YOU UP!"
+    scene ch03_fnaf_freddy_boss with dissolve:
+        subpixel True zoom 2.65
+    k "The hell are we...."
+    k "WHY IS HE HERE?"
+    c "You are getting lose to too many secrets"
+    c "I am putting my FOOT down!"
+    $ words = ["Bite", "Of", "1987", "Freddy Fazgyatt", "William Afton", "Purple Guy", "KodyDaBoss", "Tactical Vortex", "SonuTheNecro", "ThangaMangaLang","Chica Fanumtaxxer", "Bonnie Looksmaxxer", "Foxy The Furry", "Cody", "Rizzaria", "Gen Alpha Puppet", "Enragement Child", "MasiMew124", "The Bite of 87", "Agony", "I ALWAYS COME BACK!", "The Joy of Creation"]
     $ count = 5
     "Type the words as they appear on Screen!"
     show screen chapter_three_freddy_health_bar(60,"chapter_three_freddy_victory")
@@ -1576,6 +1617,7 @@ label chapter_three_freddy_mission3:
         hide screen clickable_chapter_three_freddy_timer
         $ count -= 1
     label chapter_three_freddy_victory:
+    c "FUCK FUCK FUCK"
     freddy "HOW!"
     k "ez"
     freddy "Okay I dont want that sweaty gyatt, meet me back at the stage"
