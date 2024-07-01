@@ -23,31 +23,31 @@ label chapter_three_locked:
 screen ch03_fnaf_stage():
     imagemap:
         ground "images/ch03_fnaf7.png" at Transform(yzoom=1.25,zoom=1.2)
-        hotspot(258,0,300,720)  action Call("chapter_three_bonnie")
-        hotspot(727,0,280,720)  action Call("chapter_three_chica")
-        hotspot(1125,0,300,729) action Call("chapter_three_freddy")
+        hotspot(258,0,300,720)  action Jump("chapter_three_bonnie")
+        hotspot(727,0,280,720)  action Jump("chapter_three_chica")
+        hotspot(1125,0,300,729) action Jump("chapter_three_freddy")
 screen ch03_fnaf_stage_no_chica():
     imagemap:
         ground "images/ch03_fnaf7_no_chica.png" at Transform(yzoom=1.25, zoom=1.92)
-        hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
+        hotspot(150,0,230,448)  action Jump("chapter_three_bonnie")
         # hotspot(727,0,280,720)  action Call("chapter_three_chica")
-        hotspot(630,0,320,448) action Call("chapter_three_freddy")
+        hotspot(630,0,320,448) action Jump("chapter_three_freddy")
 screen ch03_fnaf_stage_no_bonnie():
     imagemap:
         ground "images/ch03_fnaf7_no_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         #hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
-        hotspot(440,0,160,448)  action Call("chapter_three_chica")
-        hotspot(630,0,320,448) action Call("chapter_three_freddy")
+        hotspot(440,0,160,448)  action Jump("chapter_three_chica")
+        hotspot(630,0,320,448) action Jump("chapter_three_freddy")
 screen ch03_fnaf_stage_only_freddy():
     imagemap:
         ground "images/ch03_fnaf7_only_freddy.png" at Transform(yzoom=1.25, zoom=1.92)
         #hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
         #hotspot(440,0,160,448)  action Call("chapter_three_chica")
-        hotspot(630,0,320,448) action Call("chapter_three_freddy")
+        hotspot(630,0,320,448) action Jumpl("chapter_three_freddy")
 screen ch03_fnaf_closet_bonnie():
     imagemap:
         ground "images/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
-        hotspot(25,90,400,280) action Call("chapter_three_closet_bonnie")
+        hotspot(25,90,400,280) action Jump("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
     hide screen clickable_chapter_three_foxy
     hide screen chapter_three_freddy_health_bar
@@ -305,7 +305,7 @@ label chapter_three_bonnie:
         bonnie "looksmaxxing power 9999"
         k "jeepers"
     call chapter_three_fnaf_restore_screens(location)
-    return
+    jump ch03_fnaf_1a
 label chapter_three_chica:
     call chapter_three_fnaf_hide_screens
     if Chica.get_happiness() == 3:
@@ -398,7 +398,7 @@ label chapter_three_chica:
         chica "I AM HUNGRY!"
         k "got it!"
     call chapter_three_fnaf_restore_screens(location)
-    return
+    jump ch03_fnaf_1a
 label chapter_three_freddy:
     call chapter_three_fnaf_hide_screens
     if Freddy.get_happiness() == 3:
@@ -520,7 +520,7 @@ label chapter_three_freddy:
         $ Freddy.set_mission(True)
         $ count = 1
     call chapter_three_fnaf_restore_screens(location)
-    return
+    jump ch03_fnaf_1a
 label chapter_three_foxy:
     if Freddy.get_happiness() == 3 and Bonnie.get_happiness() == 3 and Chica.get_happiness() == 3: #Could be better but I dont wanna do variable work
         $ Foxy.set_happiness(3)
@@ -749,7 +749,7 @@ label chapter_three_chica_mission3:
                     yalign 0.0
                     xmaximum 600
     screen clickable_chapter_three_chica3_cupcakes(xpos,ypos,zoom,count2):
-        timer 0.25 + (count2 / 10) action Call("chapter_three_chica_death",xpos,ypos)
+        timer 0.25 + (count2 / 10) action Jump("chapter_three_chica_death")
         imagebutton:
             pos (xpos,ypos) at Transform(zoom = zoom)
             idle "images/ch03_fnaf_cupcake.png"
@@ -803,13 +803,9 @@ label chapter_three_chica_mission3:
         call chapter_three_fnaf_restore_screens(location)
         jump ch03_fnaf_1b
     
-    label chapter_three_chica_death(xpos,ypos):
-        #explosion sfx here
-        "TOO SLOW!"
-        show ch03_fnaf_explosion with dissolve:
-            subpixel True pos(xpos, ypos)
-        pause 1.0
+    label chapter_three_chica_death:
         call chapter_three_fnaf_hide_screens
+        play movie "video/chapter_three/chica.webm"
         jump game_over
 label chapter_three_bonnie_mission1:
     label chapter_three_closet_bonnie:
@@ -843,7 +839,7 @@ label chapter_three_bonnie_mission1:
                 "Incredible!"
                 $ chapter_three_secret[2] = True
         call chapter_three_fnaf_restore_screens(location)
-        return
+        jump ch03_fnaf_3
     screen clickable_chapter_three_bonnie1_telephone:
         imagebutton:
             pos (640, 328) at Transform(zoom=0.64)
@@ -1334,7 +1330,8 @@ label chapter_three_bonnie_mission3:
                 $ keys.append("c")
                 window auto hide
         if check == 0:
-            bonnie "die"
+            call chapter_three_fnaf_hide_screens
+            play movie "video/chapter_three/bonnie.webm"
             jump game_over
 
         label chapter_three_bonnie_victory:
@@ -1499,9 +1496,6 @@ label chapter_three_freddy_mission3:
                     xmaximum 600
     screen clickable_chapter_three_freddy_timer():
         timer 2.50 + (count / 10) action Jump("chapter_three_freddy_death")
-
-    
-    
     label chapter_three_freddy_fight:
         call chapter_three_fnaf_hide_screens
     show ch03_fnaf_freddy:
@@ -1530,9 +1524,8 @@ label chapter_three_freddy_mission3:
     $ Freddy.set_mission(True)
     jump ch03_fnaf_7
     label chapter_three_freddy_death:
-        freddy "STAY FREE BOZO"
-        k "FUCK FUCK FUCK FUCK FUCK"
-        freddy "later idiot"
+        call chapter_three_fnaf_hide_screens
+        play movie "video/chapter_three/freddy.webm"
         jump game_over
 label chapter_three_foxy3_talk:
     k "Where did foxy go?"

@@ -70,3 +70,12 @@ label gun_blood_screen():
     pause .4
     show blood_red at Transform(alpha = 0.5) with Dissolve(1.5)
     return
+# Code for auto advance as a Pseudo-Function, 1 = Starting it, 0 for Ending it
+label auto_advance(value):
+    if value == 1:
+        $ _preferences.afm_enable = True
+        $ _preferences.afm_time = 5
+    elif value == 0:
+        $ _preferences.afm_enable = False
+        $ _preferences.afm_time = 15
+    return
