@@ -130,6 +130,7 @@ label chapter_three_jewel_osco:
     "Go help out Jewel Osco Customers"
     "Show what you are made of!"
     "YEAH!"
+    stop music
     play music "audio/music/chapter_three/butterfly_kiss.ogg" loop
     $ count2 = 0
     jump ch03_jewel_main
@@ -144,7 +145,7 @@ label chapter_three_jewel_osco:
             show screen clickable_chapter_three_wet_floor_sign
         elif count2 == 5:
             jump chapter_three_jewel_end
-        "You are currently located in the middle of Jewel Osco!"
+        "You are currently in the middle of Jewel Osco!"
         jump ch03_jewel_main_1
 
     label ch03_jewel_grocery:
@@ -156,7 +157,7 @@ label chapter_three_jewel_osco:
         label ch03_jewel_grocery_1:
         if chapter_three_jewels_check[1] == False:
             show screen clickable_chapter_three_grocery_cart
-        "You are currently located in the Grocery Section of Jewel Osco!"
+        "You are currently in the Grocery Section of Jewel Osco!"
         jump ch03_jewel_grocery_1
 
     label ch03_jewel_meat:
@@ -168,7 +169,7 @@ label chapter_three_jewel_osco:
         label ch03_jewel_meat_1:
         if chapter_three_jewels_check[2] == False:
             show screen clickable_chapter_three_butcher
-        "You are currently located in the Meat Section of Jewel Osco!"
+        "You are currently in the Meat Section of Jewel Osco!"
         jump ch03_jewel_meat_1
 
     label ch03_jewel_shelf:
@@ -180,7 +181,7 @@ label chapter_three_jewel_osco:
         label ch03_jewel_shelf_1:
         if chapter_three_jewels_check[3] == False:
             show screen clickable_chapter_three_candy
-        "You are currently located in the Shelfed Goods Section of Jewel Osco!"
+        "You are currently in the Shelfed Goods Section of Jewel Osco!"
         jump ch03_jewel_shelf_1
 
     label ch03_jewel_checkout:
@@ -192,7 +193,7 @@ label chapter_three_jewel_osco:
         label ch03_jewel_checkout_1:
         if chapter_three_jewels_check[4] == False:
             show screen clickable_chapter_three_customer
-        "You are currently located in the Checkout Section of Jewel Osco!"
+        "You are currently in the Checkout Section of Jewel Osco!"
         jump ch03_jewel_checkout_1
 
     #These are buttons used to walk around Baldi's school house
@@ -429,25 +430,30 @@ label chapter_three_jewel_osco:
         return
     label chapter_three_jewel_end:
         stop music
+        play music "audio/music/chapter_three/troubled.ogg" loop
         call chapter_three_jewel_hide_all_buttons
         show ch03_ceo with dissolve:
             subpixel True pos (616, 68) zoom 3.41 
         jceo "Hello Kody"
-        k "Who dafaq are you?"
-        k "looking like a straight up bozo"
+        k "Who the hell are you?"
+        k "looking like a straight up gooner"
         jceo "I would like to say something"
+        play sound "audio/sound/general/vine_boom.ogg"
         jceo "and that is YOU ARE FUCKING FIRED"
-        jceo "YOU ATE OUR MERCHANDISE, GAVE FREE PRODUCE AWAY, FIRED AN EMPLOYEE, BROKE HEALTH SAFETY PROTOCOL, AND PISSED IN SOMEONE's FOOD!"
-        k "yeah and it was awesome"
+        jceo "YOU ATE OUR MERCHANDISE, GAVE FREE PRODUCE AWAY, FIRED AN EMPLOYEE, BROKE HEALTH SAFETY PROTOCOL, AND PISSED IN SOMEONE'S FOOD!"
+        k "yeah and it was freakin awesome"
         jceo "You are FUCKING BANNED FROM EVERY JEWEL OSCO FOR EVER"
-        jceo "YOU HAVE 5 MINUTES TO LEAVE UNTIL I CALL THE FUCKING POLICE!"
+        jceo "YOU HAVE 5 MINUTES TO LEAVE BEFORE I CALL THE FUCKING POLICE!"
         k "Fine jeez"
         k "Can i still have my paycheck?"
         jceo "WHAT DO YOU FUCKING THINK?"
         k "yes"
-        jceo "..."
+        #jceo "..."
+        pause 2.0
         k "okay i will go"
-        scene ch03map:
+        stop music
+        play music "audio/music/chapter_three/forest1.ogg" loop
+        scene ch03map with dissolve:
             subpixel True pos (-63, -63) xzoom 1.31 yzoom 1.14 zoom 3.14 blur 3.48
         "Well that coulda gone better"
         k "yeah I FUCKING KNOW!"
@@ -460,8 +466,10 @@ label chapter_three_streaming:
         subpixel True xzoom 1.18 zoom 1.59 
     show kody with dissolve:
         subpixel True pos (990, 33) zoom 1.87 yrotate 180.0
+    stop music
+    play music "audio/music/chapter_three/investigation.ogg"
     if count2 == 5:
-        k "Well that fucking sucks..."
+        #k "Well that fucking sucks..."
         k "okay so I saw Thang do this before with Danganronpa"
         k "I watched Markiplier"
         k "I got this, I am the straight goat and the next JackSepticEye :)"
@@ -485,6 +493,8 @@ label chapter_three_streaming:
         t "but why are you bringing this up right now?"
         k "ima be the next pewdiepie"
         k "ima be a millionaire"
+        t "straight copium"
+        k "no it aint, its straight bopium"
         t "yeah okay buddy, good luck w/ that"
         t "after this fails, you will go get a REAL job okay?"
         k "yeah yeah yeah"
@@ -505,6 +515,7 @@ label chapter_three_streaming:
             subpixel True crop_relative True yoffset -162.0 pos (-30, 30) xzoom 1.62 zoom 1.38 crop (0.0, -0.14, 1.0, 0.66) 
         play sound "audio/sound/chapter_three/markiplier.ogg"
         $ renpy.pause(3.0)
+        
         k "Welcome to Poppy's Playtime!"
         k "I have heard this game is awesome"
         k "and before we start!"
@@ -565,6 +576,7 @@ label chapter_three_streaming:
         k "drop it"
         show ch03_crunchy:
             subpixel True xpos -180 xzoom 1.11 zoom 1.51
+        stop music
         play music "audio/music/chapter_three/anime1.ogg" loop
         $ chapter_three_anime_talk()
         scene ch03_desk with dissolve:
@@ -603,10 +615,14 @@ label chapter_three_streaming:
         k "Honestly fuck this shit"
         k "I ain't doing this streamer shit again"
         k "Everyone who got famous is obviously hacking!"
+    stop music
+    play music "audio/music/chapter_three/forest1.ogg" loop
     jump chapter_three_map
 
 label chapter_three_mailman:
     call chapter_three_hide_map_buttons
+    stop music
+    play music "audio/music/chapter_three/youthful_lunch.ogg"
     scene ch03_post1 with dissolve:
         subpixel True xzoom 1.31 zoom 1.84 
     show kody:
@@ -729,9 +745,12 @@ label chapter_three_mailman:
     k "stfu"
     k "so uh, the dog warning"
     usps "I am going to need you to deliver some football to this house"
+    stop music
+    play music "audio/music/chapter_three/zone_time.ogg"
     k "CODY?"
     k "let's do this"
-    k "(gulp)" #TODO put gulp sfx here
+    play sound "audio/sound/chapter_three/gulp1.ogg"
+    k "(gulp)"
 
     show kody:
         subpixel True pos (1918, 145) yrotate 180.0 
@@ -754,7 +773,9 @@ label chapter_three_mailman:
             show kody:
                 linear 0.556 subpixel True pos (641, 188) 
             pause 1.5
-            k "goodbye bastard" #TODO PUT falcon kick sfx here
+            k "goodbye bastard"
+            play sound "audio/sound/chapter_three/falcon_kick.ogg"
+            pause 1.4
             show ch03_usps_baby_ocho:
                 rotate 0
                 linear 0.1 rotate -360 subpixel True pos (-590, 15)
@@ -763,9 +784,9 @@ label chapter_three_mailman:
 
 
     $ count += 1
+    stop music
+    play music "audio/music/chapter_three/forest1.ogg" loop
     jump chapter_three_map
-
-    "test"
 
 label chapter_three_herobrine_found:
     $ choice = 1

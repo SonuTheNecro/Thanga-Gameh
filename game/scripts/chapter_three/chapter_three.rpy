@@ -45,9 +45,10 @@ default chapter_three_key_items = {
 
 label chapter_three:
     "Chapter Three..."
-    "The Job Jubt"
+    "The Job hunt!"
     show ch03couch:
         subpixel True xpos -126 xzoom 1.35 zoom 1.77 
+    stop music
     play music "audio/music/chapter_three/beneath_the_mask.ogg" loop
     show thanga2 with dissolve:
         subpixel True pos (1548, 153) yrotate 180.0 
@@ -106,6 +107,8 @@ label chapter_three:
     $ renpy.pause(2.0, hard=True)
     # Set Variables
     label chapter_three_job:
+    stop music
+    play music "audio/music/chapter_three/forest1.ogg" loop
     $ location = -1
     $ rngint = -1
     $ rngint1 = -1
@@ -329,8 +332,13 @@ label chapter_three:
         k "k"
         scene ch03_fnaf_prep2 with dissolve:
             subpixel True zoom 0.75
-        k "THIS IS SO FNAF" #TODO: put a lock sfx here
+        play sound "audio/sound/chapter_three/lock1.ogg"
+        k "THIS IS SO FNAF" 
         afton "alright so I have locked us in here so might as well show you your job"
+        k "wait what"
+        k "why would you lock me in here?"
+        pause 2.0
+        afton "anyways"
         afton "This is the main area of the building"
         scene ch03_fnaf_prep3 with dissolve:
             subpixel True zoom 0.75
@@ -358,8 +366,11 @@ label chapter_three:
         afton "and Cody gives me a big payday for bringing you here"
         k "WHAT?"
         k "HES INVOLVED?"
-        afton "yeah later asshole, have fun with fnaf" #TODO: Fnaf power out sfx here
-        #show screen ch03_fnaf_map
+        play sound "audio/sound/chapter_three/power.out.ogg"
+        afton "yeah later asshole, have fun with fnaf"
+        pause 3.5
+        k "fuck"
+        k "Im stuck here aren't I..."
         
         label chapter_three_fnaf_start:
         python:
