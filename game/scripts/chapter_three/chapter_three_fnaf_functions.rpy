@@ -521,7 +521,13 @@ label chapter_three_freddy:
         $ Freddy.set_happiness(1)
         $ Freddy.set_mission(False)
         "Misison Complete: Make Freddy happy!"
-    elif Freddy.get_happiness() == 0 and Freddy.get_mission() and count >= 5 and not chapter_three_item_check("chapter_three_pills"):
+    elif Freddy.get_happiness() == 0 and Freddy.get_mission() and not chapter_three_item_check("chapter_three_pills"):
+        freddy "Did you get anything to help me yet?"
+        k "no sorry man not yet"
+        freddy "please hurry :("
+        freddy "I am big sad"
+        k "ok man :)"
+    elif Freddy.get_happiness() == 0 and not Freddy.get_mission() and count >= 5 and not chapter_three_item_check("chapter_three_pills"):
         freddy "what do you want from me"
         freddy ":("
         k "You look super sad man"
@@ -544,11 +550,12 @@ label chapter_three_freddy:
         k "is this a sex joke or what?"
         freddy "depends on if your mind is in the gutter or not"
         "Misison Unlocked: Make Freddy happy?"
+        $ Freddy.set_mission(True)
         k "idk either man"
-    elif Freddy.get_happiness() == 0 and Freddy.get_mission() and count < 5 and not count == 0:
+    elif Freddy.get_happiness() == 0 and not Freddy.get_mission() and count < 5 and not count == 0:
         freddy "leave me alone man"
         $ count += 1
-    elif Freddy.get_happiness() == 0 and not Freddy.get_mission() and count == 0:
+    elif Freddy.get_happiness() == 0 and not Freddy.get_mission():
         k "omg its the freddy five nights o mai gahd"
         freddy "..."
         k "freddy fazbear like"
@@ -560,7 +567,6 @@ label chapter_three_freddy:
         k "fnaf freddy"
         freddy "Leave me alone..."
         k "ok man :("
-        $ Freddy.set_mission(True)
         $ count = 1
     call chapter_three_fnaf_restore_screens(location)
     jump ch03_fnaf_1a
@@ -723,6 +729,7 @@ label chapter_three_chica_mission2:
 
     label chapter_three_fnaf_bill5(id_value):
         call chapter_three_fnaf_hide_screens
+        play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have found a 5 Dollar Bill!"
         $ count2 += 5.00
         $ chapter_three_fnaf_money[id_value] = True
@@ -730,6 +737,7 @@ label chapter_three_chica_mission2:
         return
     label chapter_three_fnaf_bill1(id_value):
         call chapter_three_fnaf_hide_screens
+        play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have found a 1 Dollar Bill!"
         $ count2 += 1.00
         $ chapter_three_fnaf_money[id_value] = True
@@ -737,6 +745,7 @@ label chapter_three_chica_mission2:
         return
     label chapter_three_fnaf_quarter(id_value):
         call chapter_three_fnaf_hide_screens
+        play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have found a 0.25 Dollar Bill!"
         k "Isn't that just a quarter?"
         $ count2 += 0.25
@@ -750,7 +759,7 @@ label chapter_three_chica_mission2:
             $ chapter_three_secret[3] = True
         #todo put mario elevator music
         k "Alright Let's order this pizza!"
-        #Todo ring sound here
+        play sound "audio/sound/chapter_three/phone_ring2.ogg"
         fnafpg "Uh hello!"
         k "Uh hi"
         k "Can I have a large Pepperoni pizza w/ extra cheese tomato mustard mayo pepsi and water"
@@ -909,6 +918,7 @@ label chapter_three_bonnie_mission1:
             bonnie "idk"
             bonnie "either way I aint paying taxes"
             $ Bonnie.set_happiness(1)
+            $ Bonnie.set_mission(False)
             play sound "audio/sound/chapter_three/quest_complete.ogg"
             "A small bond has been formed with Bonnie!"
             "Mission Complete: Help Bonnie w/ Whatever He needs..."
@@ -1375,7 +1385,7 @@ label chapter_three_bonnie_mission3:
             
             bar:
                 value time
-                range 6.35 - (rngint / 5)
+                range 5.85 - (rngint / 5)
                 xalign 0.5
                 xmaximum 100
                 
@@ -1405,7 +1415,7 @@ label chapter_three_bonnie_mission3:
         window auto hide
         show screen chapter_three_bonnie_health_bar(30, "chapter_three_bonnie_victory")
         while choice > 0 and check == 1:
-            $ time = 6.35 - (rngint / 5)
+            $ time = 5.85 - (rngint / 5)
             call screen chapter_three_bonnie3_timer_event(renpy.random.choice(keys), renpy.random.randint(1, 9) * 0.1, renpy.random.randint(1, 9) * 0.1)
             $ check = _return
             if choice == 25:
@@ -1617,7 +1627,7 @@ label chapter_three_freddy_mission3:
                     yalign 0.0
                     xmaximum 600
     screen clickable_chapter_three_freddy_timer():
-        timer 2.50 + (count / 10) action Jump("chapter_three_freddy_death")
+        timer 3.75 + (count / 4.50) action Jump("chapter_three_freddy_death")
     label chapter_three_freddy_fight:
         call chapter_three_fnaf_hide_screens
     show ch03_fnaf_freddy:

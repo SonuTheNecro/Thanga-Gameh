@@ -193,7 +193,7 @@ label chapter_three:
         play sound "audio/sound/chapter_one/street1.ogg" loop
         pause 0.789
        
-        if choice == -1:
+        if choice == 1:
             show ch03_herobrine2:
                 subpixel True pos (-215, 78)
                 linear 1.5 subpixel True pos (-46, 365) 
@@ -258,7 +258,7 @@ label chapter_three:
                 linear 0.987 subpixel True pos (-51, -107) zoom 0.44 
             hide ch03_shadow_guy
         stop sound
-        questionmark "HOLY UP BUDDY"
+        questionmark "HOLD UP BUDDY!"
         questionmark "What do you want... I am busy here"
         questionmark "I heard you got kody here"
         questionmark "h-how did you know that"
@@ -286,6 +286,10 @@ label chapter_three:
         questionmark "The Final Piece"
         k "huh?"
         k "can you help me"
+        play sound "audio/sound/chapter_three/put_her_back.ogg"
+        questionmark "I will put you back together"
+        window auto hide
+        pause 3
         questionmark "As long as you cooperate with the next few steps"
         k "uh sure boss?"
         questionmark "Alright let's go"

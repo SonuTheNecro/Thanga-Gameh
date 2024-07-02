@@ -528,7 +528,9 @@ label chapter_three_streaming:
             subpixel True crop_relative True yoffset -162.0 pos (-30, 40) xzoom 1.62 zoom 1.38 crop (0.0, -0.14, 1.0, 0.66) 
         k "Alright this game looking real baby"
         k "like is this game for babies?"
+        stop music
         play movie "video/chapter_three/markiplier.webm"
+        play music "audio/music/chapter_three/investigation.ogg"
         scene ch03_desk with dissolve:
             subpixel True xzoom 1.18 zoom 1.59 
         show kody with dissolve:
@@ -665,7 +667,7 @@ label chapter_three_mailman:
     usps "U.S. code states that all mail is anonymous and cannot be tampered with"
     usps "But it was very big"
     usps "kinda like a football"
-    k "(Hell Kody is using a football for?)"
+    k "(Hell Cody is using a football for?)"
     k "so anyways..."
     k "I would like to have a job offer at this governmental position"
     usps "Ah"
@@ -701,7 +703,8 @@ label chapter_three_mailman:
     k "k wait for me"
     show kody:
         yrotate 0.0
-        linear 0.445 subpixel True pos (1355, 830) zoom 0.34 
+        linear 0.445 subpixel True pos (1355, 830) zoom 0.34
+    pause 0.445
     hide kody
     usps "alright now go next house"
     show ch03_usps_van:
