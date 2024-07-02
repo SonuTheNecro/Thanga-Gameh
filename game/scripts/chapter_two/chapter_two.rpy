@@ -12,6 +12,7 @@ define m = Character("Monokuma")
 define mt = Character("Matt")
 define ocho = Character("Ocho")
 define march = Character("March 7th", who_color="#B0E6FA")
+define emarch = Character("Evil March 7th", who_color="#5c1d1d")
 define heavy = Character("Heavy")
 define pw = Character("Phoenix Wright")
 define ev = Character("Everyone")
@@ -263,22 +264,8 @@ label chapter_two:
         label chapter_two_gym:
             scene danganronpa_gym with fade:
                 subpixel True xzoom 0.76 yzoom 0.76
-            show thanga2:
-                subpixel True pos (3, 556) xzoom 0.9 yzoom 0.9
-            show kody:
-                subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
-            show brian3:
-                subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
-            show matt2:
-                subpixel True pos (760, 571) xzoom 0.17 yzoom 0.17
-            show ocho:
-                subpixel True pos (896, 906) xzoom 0.35 yzoom 0.35
-            show march_7th:
-                subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
-            show phoenix_wright:
-                subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
-            show heavy_tf2:
-                subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
+            call chapter_two_all_except_cody
+            hide monokuma
             t "alright so what do we do now?"
             b "what do we do? we beat this bears ass"
             heavy "Yes. Heavy no lose to little bear"
@@ -363,25 +350,63 @@ label chapter_two:
         label chapter_two_after_gym:
             scene danganronpa_hallway with fade:
                 subpixel True xzoom 0.76 yzoom 0.76
-            show thanga2:
-                subpixel True pos (3, 556) xzoom 0.9 yzoom 0.9
-            show kody:
-                subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
-            show brian3:
-                subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
-            show matt2:
-                subpixel True pos (1065, 580) xzoom 0.17 yzoom 0.17
-            show ocho:
-                subpixel True pos (930, 906) xzoom 0.35 yzoom 0.35
-            show march_7th:
-                subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
-            show phoenix_wright:
-                subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
-            show heavy_tf2:
-                subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
-            show monokuma:
-                subpixel True pos (0.38, 0.76) xzoom 0.5 yzoom 0.5
+            call chapter_two_all_except_cody
             m "this is the hallway connecting the different rooms"
+            m "the bathrooms are broken though so you can't use them"
+            m "use the ones in your rooms"
+            k "but what if i need to go now?"
+            m "too bad"
+            b "dont piss your pants like last time"
+            scene danganronpa_nurse with fade:
+                subpixel True zoom 0.76
+            call chapter_two_all_except_cody
+            m "this is the nurses office"
+            m "come here if you get hurt"
+            m "or don't cause i want you guys to die"
+            k "but there is no nurse, so who will i be able to rizz?"
+            t "what about saving you?"
+            march "Don't worry guys! I know a few tricks in first-aid!"
+            k "the rizzler strikes again"
+            t "???"
+            scene danganronpa_hallway with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            scene danganronpa_lobby with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            call chapter_two_all_except_cody
+            m "this is the lobby"
+            m "it connects to the hall, changing room, dorms, and hallway leading to the gym"
+            scene danganronpa_hall with fade:
+                subpixel True zoom 0.76
+            call chapter_two_all_except_cody
+            m "this is the hall where you guys will meet after waking up"
+            m "you guys will also be eating here"
+            k "WE GET FREE FOOD!?"
+            k "IS IT MCDONALDS OR CHUCK E CHEESE??"
+            m "no fatass its salads and vitamin shakes only"
+            k "FUUCCCKKKK"
+            k "also what time will we be waking up?"
+            k "12? 1?"
+            m "8"
+            k "8 P.M?? LETS FUCKING GO"
+            m "8 A.M"
+            k "FFFFFFUUUUUUUUCCCCCCCKKKKKKK"
+            scene danganronpa_lobby with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            scene danganronpa_changing with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            call chapter_two_all_except_cody
+            m "this is the changing room for the pool"
+            mt "lets go i can swim with ocho"
+            heavy "Heavy also like to svim"
+            m "sorry but the pool is also closed"
+            k "dangit"
+            march "Aww man. I was also looking foward to swimming."
+            k "NNNNNNNOOOOOOOOOOOOOOOOOOOOOOOO"
+            scene danganronpa_lobby with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            scene danganronpa_hall with fade:
+                subpixel True zoom 0.76
+            call chapter_two_all_except_cody
                 
             $ persistent.chapter_two_gym = True #Better testing to get back here
             "test"

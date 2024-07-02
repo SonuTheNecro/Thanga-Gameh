@@ -169,3 +169,23 @@ label chapter_two_phoenix:
         $ count += 1
     $ count2 += 1
     return
+
+label chapter_two_all_except_cody:
+    show thanga2:
+        subpixel True pos (3, 556) xzoom 0.9 yzoom 0.9
+    show kody:
+        subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
+    show brian3:
+        subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
+    show matt2:
+        subpixel True pos (1065, 580) xzoom 0.17 yzoom 0.17
+    show ocho:
+        subpixel True pos (930, 906) xzoom 0.35 yzoom 0.35
+    show march_7th:
+        subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
+    show phoenix_wright:
+        subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
+    show heavy_tf2:
+        subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
+    show monokuma:
+        subpixel True pos (0.38, 0.76) xzoom 0.5 yzoom 0.5
