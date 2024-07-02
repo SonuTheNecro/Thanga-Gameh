@@ -240,6 +240,7 @@ label chapter_three:
             k "fuck off you bitch what do you want from me"
             questionmark "I will be selling you off"
             questionmark "I hear some inverted demon wants you"
+            k "(CODY?!?)"
             questionmark "Something like 25 looney Tooneys for you"
             k "dafaq is a looney tooney"
             questionmark "canadian currency"
@@ -257,7 +258,7 @@ label chapter_three:
                 linear 0.987 subpixel True pos (-51, -107) zoom 0.44 
             hide ch03_shadow_guy
         stop sound
-        questionmark "HOLY UP PARTNER"
+        questionmark "HOLY UP BUDDY"
         questionmark "What do you want... I am busy here"
         questionmark "I heard you got kody here"
         questionmark "h-how did you know that"
@@ -293,10 +294,12 @@ label chapter_three:
         show ch03_afton1:
             linear 0.5 subpixel True pos (610, 355) 
         pause 0.5
+        stop sound
+        play sound "audio/sound/chapter_three/back_crack.ogg"
         show kody as kody1:
             linear 1.0 subpixel True pos (860, 572) rotate 0.0 
-        k "oh this is great"
-        k "I really like having legs again, this is so awesome"
+        k "oh this is awesome!"
+        k "I really like having legs again, this is eBic!"
         questionmark "Alright let's get to my office to discuss what's next"
         k "got it boss"
         stop music
@@ -306,7 +309,9 @@ label chapter_three:
         show ch03_afton1:
             subpixel True pos (281, 223) zoom 1.37 
         show kody:
-            subpixel True pos (1091, 390) yrotate 180.0 
+            subpixel True pos (1091, 390) yrotate 180.0
+        stop music
+        play music "audio/music/chapter_three/have_a_short_rest.ogg"
         k "What is this place?"
         questionmark "My office"
         k "So who even are you?"
