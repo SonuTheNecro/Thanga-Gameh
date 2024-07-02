@@ -575,7 +575,18 @@ label chapter_three_foxy:
         $ Foxy.set_happiness(0)
     return
 
-
+label chapter_three_music: #Controls the bkg music for the fnaf section in chapter_three, basic stuff
+    $ rngint2 = renpy.random.randint(0,2)
+    if rngint2 == 0:
+        stop music
+        play music "audio/music/chapter_three/fnaf_ambience1"
+    elif rngint2 == 1:
+        stop music
+        play music "audio/music/chapter_three/fnaf_ambience2"
+    else:
+        stop music
+        play music "audio/music/chapter_three/fnaf_ambience3"
+    return
 
 
 label chapter_three_chica_mission1:
@@ -823,6 +834,8 @@ label chapter_three_chica_mission3:
         chica " "
         chica "M"
         chica "E"
+        stop music
+        play music "audio/music/chapter_three/fnaf_chica_music.ogg"
         k "That was so unneccessary, get ready to get decked!"
         "Click the cupcakes before they explode!"
         show screen chapter_three_chica_health_bar(26.25,"chapter_three_chica_victory")
@@ -849,6 +862,7 @@ label chapter_three_chica_mission3:
         $ Chica.set_mission(True)
         hide screen chapter_three_chica_health_bar
         call chapter_three_fnaf_restore_screens(location)
+        call chapter_three_music
         jump ch03_fnaf_1b
     
     label chapter_three_chica_death:
@@ -1378,7 +1392,9 @@ label chapter_three_bonnie_mission3:
         bonnie "I am sorry, but only one looksmaxxer can fit in this rizzaria"
         bonnie "its either me or you"
         scene ch03_fnaf_bonnie_fight with dissolve:
-            subpixel True zoom 2.38 
+            subpixel True zoom 2.38
+        stop music
+        play music "audio/music/chapter_three/fnaf_bonnie_music.ogg"
         bonnie "AND I INTEND IT TO BE ME!"
         $ keys = ["w", "a", "s", "d"]
         $ choice = 30
@@ -1423,6 +1439,7 @@ label chapter_three_bonnie_mission3:
         hide screen chapter_three_bonnie_health_bar
         $ Bonnie.set_mission(True)
         k "MORE WALKING UGH!"
+        call chapter_three_music
         jump ch03_fnaf_office
 label chapter_three_freddy_mission1:
     screen clickable_chapter_three_freddy1_pills:
@@ -1560,7 +1577,7 @@ label chapter_three_freddy_mission2:
         k "like what is up with STN, Cody, Baldi, and The Entity"
         k "like they all feel related"
         k "Is just every villian controlled by the Entity?"
-        c "[player_name] NAHDAERROR CODE: 0x8f4a3b2c"
+        c "[player_name] NAHDA ERROR CODE: 0x8f4a3b2c"
         c "Critical Failure in MODULE: $%"
         c  "stack overflow in @#$%^&*}"
         c "Memory core: $$$&&%$^####!"
@@ -1569,6 +1586,18 @@ label chapter_three_freddy_mission2:
         c "*ALERT: SYSTEM OVERRIDE ENGAGED*"
         c "Please contact system administrator"
         c "...Contact initiated... Error... contact information not found"
+        c "MEMORY LEAK... MEMLEAK... MEMO..."
+        c "LEAK...#@#@#@#@#@#@#@#@#@#@#@#"
+        c "Buffer Overflow at 0x%&#$..."
+        c "Cannot allocate memory"
+        c "###############################"
+        c "System shutting down to prevent damage"
+        c "Shutdown in... 3... 2... 1..."
+        c "*ERROR* *ERROR* *ERROR*"
+        c "Shutdown failure"
+        c "Restarting system..."
+        c "Reboot sequence initiated"
+        c "FAIL: REBOOT SEQUENCE TERMINATED"
         return
 label chapter_three_freddy_mission3:
     screen clickable_chapter_three_freddy3:
@@ -1601,6 +1630,8 @@ label chapter_three_freddy_mission3:
     k "The hell are we...."
     k "WHY IS HE HERE?"
     c "You are getting lose to too many secrets"
+    stop music
+    play music "audio/music/chapter_three/fnaf_freddy_music.ogg"
     c "I am putting my FOOT down!"
     $ words = ["Bite", "Of", "1987", "Freddy Fazgyatt", "William Afton", "Purple Guy", "KodyDaBoss", "Tactical Vortex", "SonuTheNecro", "ThangaMangaLang","Chica Fanumtaxxer", "Bonnie Looksmaxxer", "Foxy The Furry", "Cody", "Rizzaria", "Gen Alpha Puppet", "Enragement Child", "MasiMew124", "The Bite of 87", "Agony", "I ALWAYS COME BACK!", "The Joy of Creation"]
     $ count = 5
@@ -1622,6 +1653,7 @@ label chapter_three_freddy_mission3:
     k "ez"
     freddy "Okay I dont want that sweaty gyatt, meet me back at the stage"
     $ Freddy.set_mission(True)
+    call chapter_three_music
     jump ch03_fnaf_7
     label chapter_three_freddy_death:
         call chapter_three_fnaf_hide_screens

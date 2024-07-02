@@ -152,6 +152,8 @@ label chapter_three:
     label chapter_three_post_map:
 
         call chapter_three_hide_map_buttons
+        stop music
+        play sound "audio/sound/chapter_three/street2.ogg" loop
         scene ch03_alleyway with dissolve:
             subpixel True xpos -81 xzoom 1.17 zoom 0.43 
         k "Okay I guess this is the last job I can get..."
@@ -170,6 +172,8 @@ label chapter_three:
         pause 0.9
         show black with vpunch and hpunch
         pause 10.0
+        stop sound
+        play music "audio/music/chapter_three/basement_ambience.ogg" loop
         k "..."
         k "Am I still alive?"
         k "I am in so much pain"
@@ -295,6 +299,7 @@ label chapter_three:
         k "I really like having legs again, this is so awesome"
         questionmark "Alright let's get to my office to discuss what's next"
         k "got it boss"
+        stop music
     label chapter_three_office:
         scene ch03_office with dissolve:
             subpixel True xzoom 1.43 zoom 2.46 
@@ -371,7 +376,7 @@ label chapter_three:
         pause 3.5
         k "fuck"
         k "Im stuck here aren't I..."
-        
+        call chapter_three_music
         label chapter_three_fnaf_start:
         python:
             choice = 0
