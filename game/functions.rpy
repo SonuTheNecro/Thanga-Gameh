@@ -4,16 +4,31 @@
 init python:
     import random
     from renpy.display import im
+    from enum import Enum
     #A confirm menu for important decisions, Paramater is the str for the menu label, jump decision is where you would go if you choose yes
-    def confirm_menu(original_menu: str, jump_decision:str):
+    def confirm_menu_jump(original_menu, jump_decision):
         renpy.say(None, "This is an Important Decision that will affect your future gameplay, are you sure about this?")
         check = renpy.display_menu([("Yes", "yes"), ("No", "no")])
         if check == "yes":
-            renpy.jump(jump_decision)
+            renpy.say(None, "Good luck on your decision")
+            renpy.jump(str(jump_decision))
         else:
-            renpy.jump(original_menu)
-
+            renpy.say(None, "Good luck on your decision")
+            renpy.jump(str(original_menu))
+    #A confirm menu for important decisions, Paramater is the str for the menu label
+    def confirm_menu_no_jump(original_menu):
+        renpy.say(None, "This is an Important Decision that will affect your future gameplay, are you sure about this?")
+        check = renpy.display_menu([("Yes", "yes"), ("No", "no")])
+        if check == "no":
+            renpy.say(None, "Good luck on your decision")
+            renpy.jump(str(original_menu))
+        else:
+            renpy.say(None, "Good luck on your decision")
+    class ItemState(Enum):
+        NOT_OBTAINED = 0
+        OBTAINED = 1
 #Renpy Code
+image blood_red = Solid("#790000")
 
 #A game over screen for general use, why is Master Igor shit talking so hard
 label game_over:
@@ -42,4 +57,25 @@ label dio_time_stop():
         play sound "audio/sound/general/dio1.ogg"
     else:
         play sound "audio/sound/general/dio2.ogg"
+    return
+label stab_blood_screen():
+    window auto hide
+    play sound "audio/sound/general/stab_die1.ogg"
+    pause .4
+    show blood_red at Transform(alpha = 0.5) with Dissolve(1.5)
+    return
+label gun_blood_screen():
+    window auto hide
+    play sound "audio/sound/general/gun_die1.ogg"
+    pause .4
+    show blood_red at Transform(alpha = 0.5) with Dissolve(1.5)
+    return
+# Code for auto advance as a Pseudo-Function, 1 = Starting it, 0 for Ending it
+label auto_advance(value):
+    if value == 1:
+        $ _preferences.afm_enable = True
+        $ _preferences.afm_time = 5
+    elif value == 0:
+        $ _preferences.afm_enable = False
+        $ _preferences.afm_time = 15
     return
