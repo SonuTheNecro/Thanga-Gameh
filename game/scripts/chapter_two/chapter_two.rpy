@@ -412,3 +412,45 @@ label chapter_two:
             "test"
     
 
+    label ch02_area_1:
+        $ location = 1
+        call chapter_two_hide_screens
+        scene danganronpa_dorm:
+            subpixel True
+        call chapter_two_restore_screens(location)
+    label ch02_area_2:
+        $ location = 2
+        call chapter_two_hide_screens
+        scene danganronpa_changing with fade:
+            subpixel True xzoom 0.76 yzoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_3:
+        $ location = 3
+        call chapter_two_hide_screens
+        scene danganronpa_lobby with fade:
+            subpixel True xzoom 0.76 yzoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_4:
+        $ location = 4
+        call chapter_two_hide_screens
+        scene danganronpa_hall with fade:
+            subpixel True zoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_5:
+        $ location = 5
+        call chapter_two_hide_screens
+        scene danganronpa_nurse with fade:
+            subpixel True zoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_6:
+        $ location = 6
+        call chapter_two_hide_screens
+        scene danganronpa_hallway with fade:
+            subpixel True xzoom 0.76 yzoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_7:
+        $ location = 7
+        call chapter_two_hide_screens
+        scene danganronpa_gym with fade:
+            subpixel True xzoom 0.76 yzoom 0.76
+        call chapter_two_restore_screens(location)

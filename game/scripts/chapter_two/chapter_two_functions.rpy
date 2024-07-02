@@ -189,3 +189,102 @@ label chapter_two_all_except_cody:
         subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
     show monokuma:
         subpixel True pos (0.38, 0.76) xzoom 0.5 yzoom 0.5
+    return
+
+# Handles the movement for the investigation part for chapter two
+label chapter_two_movement:
+    screen chapter_two_danganronpa_up_button(origin):
+        imagebutton:
+            xalign 0.5
+            yalign -0.05
+            idle "images/ArrowUpPress.png"
+            hover "images/ArrowUpPress.png"
+            if origin == 7:
+                action Jump("ch02_area_6")
+            elif origin == 6:
+                action Jump("ch02_area_3")
+            elif origin == 3:
+                action Jump("ch02_area_1")
+    screen chapter_two_danganronpa_down_button(origin):
+        imagebutton:
+            xalign 0.5
+            yalign 0.995
+            idle "images/ArrowDownPress.png"
+            hover "images/ArrowDownPress.png"
+            if origin == 1:
+                action Jump("ch02_area_3")
+            elif origin == 3:
+                action Jump("ch02_area_6")
+            elif origin == 6:
+                action Jump("ch02_area_7")
+    screen chapter_two_danganronpa_left_button(origin):
+        imagebutton:
+            xalign 0.005
+            yalign 0.5
+            idle "images/ArrowLeftPress.png"
+            hover "images/ArrowLeftPress.png"
+            if origin == 3:
+                action Jump("ch02_area_2")
+            elif origin == 4:
+                action Jump("ch02_area_3")
+            elif origin == 6:
+                action Jump("ch02_area_5")
+    screen chapter_two_danganronpa_right_button(origin):
+        imagebutton:
+            xalign 0.995
+            yalign 0.5
+            idle "images/ArrowRightPress.png"
+            hover "images/ArrowRightPress.png"
+            if origin == 2:
+                action Jump("ch02_area_3")
+            elif origin == 3:
+                action Jump("ch02_area_4")
+            elif origin == 5:
+                action Jump("ch02_area_6")
+
+# Put all screens into here, so all can be hidden when we transition screens
+label chapter_two_hide_screens():
+    hide screen chapter_two_danganronpa_up_button
+    hide screen chapter_two_danganronpa_down_button
+    hide screen chapter_two_danganronpa_left_button
+    hide screen chapter_two_danganronpa_right_button
+    return
+# Restores the movement, do this last so its on top of everything else
+label chapter_two_restore_movement(location):
+    if location == 1:
+        call screen chapter_two_danganronpa_down_button(location)
+    elif location == 2:
+        call screen chapter_two_danganronpa_right_button(location)
+    elif location == 3:
+        show screen chapter_two_danganronpa_up_button(location)
+        show screen chapter_two_danganronpa_down_button(location)
+        show screen chapter_two_danganronpa_right_button(location)
+        call screen chapter_two_danganronpa_left_button(location)
+    elif location == 4:
+        call screen chapter_two_danganronpa_left_button(location)
+    elif location == 5:
+        call screen chapter_two_danganronpa_right_button(location)
+    elif location == 6:
+        show screen chapter_two_danganronpa_up_button(location)
+        show screen chapter_two_danganronpa_down_button(location)
+        call screen chapter_two_danganronpa_left_button(location)
+    elif location == 7:
+        call screen chapter_two_danganronpa_up_button(location)
+# Put all clickable objects here
+label chapter_two_restore_screens(location):
+    if location == 1:
+        pass
+    elif location == 2:
+        pass
+    elif location == 3:
+        pass
+    elif location == 4:
+        pass
+    elif location == 5:
+        pass
+    elif location == 6:
+        pass
+    elif location == 7:
+        pass
+    call chapter_two_restore_movement(location)
+    return
