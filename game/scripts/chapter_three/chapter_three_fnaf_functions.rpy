@@ -579,13 +579,13 @@ label chapter_three_music: #Controls the bkg music for the fnaf section in chapt
     $ rngint2 = renpy.random.randint(0,2)
     if rngint2 == 0:
         stop music
-        play music "audio/music/chapter_three/fnaf_ambience1"
+        play music "audio/music/chapter_three/fnaf_ambience1.ogg"
     elif rngint2 == 1:
         stop music
-        play music "audio/music/chapter_three/fnaf_ambience2"
+        play music "audio/music/chapter_three/fnaf_ambience2.ogg"
     else:
         stop music
-        play music "audio/music/chapter_three/fnaf_ambience3"
+        play music "audio/music/chapter_three/fnaf_ambience3.ogg"
     return
 
 
@@ -1484,7 +1484,7 @@ label chapter_three_freddy_mission1:
         show ch03_fnaf_bb with dissolve:
             subpixel True pos (888, 116) zoom 1.95
         balloon "FUCK OFF YOU BITCH ASS!"
-        K "k man leave me alone"
+        k "k man leave me alone"
     elif count == 5:
         k "dang these pills are just so open"
         k "Wonder if these things will help with my mewing and mogging streak"

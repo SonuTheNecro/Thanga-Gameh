@@ -376,7 +376,7 @@ label chapter_three:
         afton "and Cody gives me a big payday for bringing you here"
         k "WHAT?"
         k "HES INVOLVED?"
-        play sound "audio/sound/chapter_three/power.out.ogg"
+        play sound "audio/sound/chapter_three/fnaf_power_out.ogg"
         afton "yeah later asshole, have fun with fnaf"
         pause 3.5
         k "fuck"
