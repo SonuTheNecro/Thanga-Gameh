@@ -1644,7 +1644,7 @@ label chapter_three_freddy_mission3:
     play music "audio/music/chapter_three/fnaf_freddy_music.ogg"
     c "I am putting my FOOT down!"
     $ words = ["Bite", "Of", "1987", "Freddy Fazgyatt", "William Afton", "Purple Guy", "KodyDaBoss", "Tactical Vortex", "SonuTheNecro", "ThangaMangaLang","Chica Fanumtaxxer", "Bonnie Looksmaxxer", "Foxy The Furry", "Cody", "Rizzaria", "Gen Alpha Puppet", "Enragement Child", "MasiMew124", "The Bite of 87", "Agony", "I ALWAYS COME BACK!", "The Joy of Creation"]
-    $ count = 5
+    $ count = 60
     "Type the words as they appear on Screen!"
     show screen chapter_three_freddy_health_bar(60,"chapter_three_freddy_victory")
     while count > 0:
