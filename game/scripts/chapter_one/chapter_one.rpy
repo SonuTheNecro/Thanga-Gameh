@@ -878,6 +878,7 @@ label chapter_one:
         show baldi1:
             subpixel True pos (0.59, 0.14) yrotate 180.0
         t "wait isn't cody still out there?"
+        call dio_time_stop
         show baldi_exit with dissolve:
             subpixel True matrixcolor InvertMatrix(1.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0)
         show baldi_exit_hover:
@@ -887,7 +888,6 @@ label chapter_one:
             xalign 1.7
             subpixel True crop_relative True  rotate 0.0 crop (0.42, -0.13, 0.33, 0.37)
             linear 0.35 subpixel True pos (0.99, 0.28)
-    
         show thanga2:
             linear 0.4 subpixel True pos (-0.0, 0.39) 
         show kody:
@@ -897,8 +897,6 @@ label chapter_one:
         show baldi1:
             linear 0.4 subpixel True pos (0.29, 0.19) 
             yrotate 0.0
-
-
         c "LET ME IN!"
         c "I WILL AVENGE MY DOG"
         c "OOO A RABBIT"
