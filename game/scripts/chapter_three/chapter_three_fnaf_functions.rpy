@@ -1,7 +1,7 @@
 # The labels and functions for the Fnaf Code in Chapter Three, since my brain cannot handle scrolling up and down for so long and the tabs keep resetting
 screen ch03_fnaf_map():
     imagemap:
-        ground "images/ch03_fnaf_map.png" pos (1423, 13) at Transform(zoom=1.1)
+        ground "images/chapter_three/ch03_fnaf_map.png" pos (1423, 13) at Transform(zoom=1.1)
         hotspot(202,309,43,105) action Jump("ch03_fnaf_office")
         hotspot(140,320,60,40)  action Jump("ch03_fnaf_2b")
         hotspot(257,321,60,40)  action Jump("ch03_fnaf_4b")
@@ -22,31 +22,31 @@ label chapter_three_locked:
     return
 screen ch03_fnaf_stage():
     imagemap:
-        ground "images/ch03_fnaf7.png" at Transform(yzoom=1.25,zoom=1.2)
+        ground "images/chapter_three/ch03_fnaf7.png" at Transform(yzoom=1.25,zoom=1.2)
         hotspot(258,0,300,720)  action Jump("chapter_three_bonnie")
         hotspot(727,0,280,720)  action Jump("chapter_three_chica")
         hotspot(1125,0,300,729) action Jump("chapter_three_freddy")
 screen ch03_fnaf_stage_no_chica():
     imagemap:
-        ground "images/ch03_fnaf7_no_chica.png" at Transform(yzoom=1.25, zoom=1.92)
+        ground "images/chapter_three/ch03_fnaf7_no_chica.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(150,0,230,448)  action Jump("chapter_three_bonnie")
         # hotspot(727,0,280,720)  action Call("chapter_three_chica")
         hotspot(630,0,320,448) action Jump("chapter_three_freddy")
 screen ch03_fnaf_stage_no_bonnie():
     imagemap:
-        ground "images/ch03_fnaf7_no_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
+        ground "images/chapter_three/ch03_fnaf7_no_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         #hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
         hotspot(440,0,160,448)  action Jump("chapter_three_chica")
         hotspot(630,0,320,448) action Jump("chapter_three_freddy")
 screen ch03_fnaf_stage_only_freddy():
     imagemap:
-        ground "images/ch03_fnaf7_only_freddy.png" at Transform(yzoom=1.25, zoom=1.92)
+        ground "images/chapter_three/ch03_fnaf7_only_freddy.png" at Transform(yzoom=1.25, zoom=1.92)
         #hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
         #hotspot(440,0,160,448)  action Call("chapter_three_chica")
         hotspot(630,0,320,448) action Jumpl("chapter_three_freddy")
 screen ch03_fnaf_closet_bonnie():
     imagemap:
-        ground "images/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
+        ground "images/chapter_three/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(25,90,400,280) action Jump("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
     hide screen clickable_chapter_three_foxy
@@ -600,68 +600,68 @@ label chapter_three_chica_mission1:
         imagebutton:
             pos (333, 275) 
             at Transform(zoom=0.61)
-            idle  "images/ch03_fnaf_flour.png"
-            hover "images/ch03_fnaf_flour.png"
+            idle  "images/chapter_three/ch03_fnaf_flour.png"
+            hover "images/chapter_three/ch03_fnaf_flour.png"
             action Call("chapter_three_ingredients",1)
     screen clickable_chapter_three_chica1_yeast:
         imagebutton:
             pos (1661, 715) at Transform(zoom=0.36)
-            idle "images/ch03_fnaf_yeast.png"
-            hover "images/ch03_fnaf_yeast.png"
+            idle "images/chapter_three/ch03_fnaf_yeast.png"
+            hover "images/chapter_three/ch03_fnaf_yeast.png"
             action Call("chapter_three_ingredients",2)
     screen clickable_chapter_three_chica1_water:
         imagebutton:
             pos (775, 565) at Transform(zoom=0.43)
-            idle "images/ch03_fnaf_water.png"
-            hover "images/ch03_fnaf_water.png"
+            idle "images/chapter_three/ch03_fnaf_water.png"
+            hover "images/chapter_three/ch03_fnaf_water.png"
             action Call("chapter_three_ingredients",3)
     screen clickable_chapter_three_chica1_olive_oil:
         imagebutton:
             pos (1046, 218) at Transform(zoom=0.12)
-            idle "images/ch03_fnaf_olive_oil.png"
-            hover "images/ch03_fnaf_olive_oil.png"
+            idle "images/chapter_three/ch03_fnaf_olive_oil.png"
+            hover "images/chapter_three/ch03_fnaf_olive_oil.png"
             action Call("chapter_three_ingredients",4)
     screen clickable_chapter_three_chica1_salt:
         imagebutton:
             pos (506, 515) at Transform(zoom=0.1) 
-            idle "images/ch03_fnaf_salt.png"
-            hover "images/ch03_fnaf_salt.png"
+            idle "images/chapter_three/ch03_fnaf_salt.png"
+            hover "images/chapter_three/ch03_fnaf_salt.png"
             action Call("chapter_three_ingredients",5)
     screen clickable_chapter_three_chica1_sugar:
         imagebutton:
             pos (826, 505) at Transform(zoom=0.49) 
-            idle "images/ch03_fnaf_sugar.png"
-            hover "images/ch03_fnaf_sugar.png"
+            idle "images/chapter_three/ch03_fnaf_sugar.png"
+            hover "images/chapter_three/ch03_fnaf_sugar.png"
             action Call("chapter_three_ingredients",6)
     screen clickable_chapter_three_chica1_cornmeal:
         imagebutton:
             pos (541, 145) at Transform(zoom=0.43) 
-            idle "images/ch03_fnaf_cornmeal.png"
-            hover "images/ch03_fnaf_cornmeal.png"
+            idle "images/chapter_three/ch03_fnaf_cornmeal.png"
+            hover "images/chapter_three/ch03_fnaf_cornmeal.png"
             action Call("chapter_three_ingredients",7)
     screen clickable_chapter_three_chica1_garlic:
         imagebutton:
             pos (0, 0)
-            idle "images/ch03_fnaf_garlic.png"
-            hover "images/ch03_fnaf_garlic.png"
+            idle "images/chapter_three/ch03_fnaf_garlic.png"
+            hover "images/chapter_three/ch03_fnaf_garlic.png"
             action Call("chapter_three_ingredients",8)
     screen clickable_chapter_three_chica1_wheat_flour:
         imagebutton:
             pos (-55, 786) at Transform(zoom=0.25) 
-            idle "images/ch03_fnaf_wheat_flour.png"
-            hover "images/ch03_fnaf_wheat_flour.png"
+            idle "images/chapter_three/ch03_fnaf_wheat_flour.png"
+            hover "images/chapter_three/ch03_fnaf_wheat_flour.png"
             action Call("chapter_three_ingredients",9)
     screen clickable_chapter_three_chica1_cheese:
         imagebutton:
             pos (0, 0) at Transform(zoom=0.09)
-            idle "images/ch03_fnaf_cheese.png"
-            hover "images/ch03_fnaf_cheese.png"
+            idle "images/chapter_three/ch03_fnaf_cheese.png"
+            hover "images/chapter_three/ch03_fnaf_cheese.png"
             action Call("chapter_three_ingredients",10)
     screen clickable_chapter_three_chica1_pepperoni:
         imagebutton:
             pos (686, 283) at Transform(zoom=0.34, rotate=-36.0)
-            idle "images/ch03_fnaf_pepperoni.png"
-            hover "images/ch03_fnaf_pepperoni.png"
+            idle "images/chapter_three/ch03_fnaf_pepperoni.png"
+            hover "images/chapter_three/ch03_fnaf_pepperoni.png"
             action Call("chapter_three_ingredients",11)
     label chapter_three_ingredients(area):
         call chapter_three_fnaf_hide_screens
@@ -705,26 +705,26 @@ label chapter_three_chica_mission2:
     screen clickable_chapter_three_chica2_5bill(xpos,ypos,zoomlevel,id):
         imagebutton:
             pos(xpos,ypos) at Transform(zoom = zoomlevel)
-            idle "images/ch03_fnaf_5bill.png"
-            hover "images/ch03_fnaf_5bill.png"
+            idle "images/chapter_three/ch03_fnaf_5bill.png"
+            hover "images/chapter_three/ch03_fnaf_5bill.png"
             action Call("chapter_three_fnaf_bill5",id)
     screen clickable_chapter_three_chica2_1bill(xpos,ypos,zoomlevel,id):
         imagebutton:
             pos(xpos,ypos) at Transform(zoom = zoomlevel)
-            idle "images/ch03_fnaf_1bill.png"
-            hover "images/ch03_fnaf_1bill.png"
+            idle "images/chapter_three/ch03_fnaf_1bill.png"
+            hover "images/chapter_three/ch03_fnaf_1bill.png"
             action Call("chapter_three_fnaf_bill1",id)
     screen clickable_chapter_three_chica2_quarter(xpos,ypos,zoomlevel,id):
         imagebutton:
             pos(xpos,ypos) at Transform(zoom = zoomlevel)
-            idle "images/ch03_fnaf_quarter.png"
-            hover "images/ch03_fnaf_quarter.png"
+            idle "images/chapter_three/ch03_fnaf_quarter.png"
+            hover "images/chapter_three/ch03_fnaf_quarter.png"
             action Call("chapter_three_fnaf_quarter",id)
     screen clickable_chapter_three_chica2_landline():
         imagebutton:
             pos (775, 145) at Transform(zoom=0.49)
-            idle "images/ch03_fnaf_landline.png"
-            hover "images/ch03_fnaf_landline.png"
+            idle "images/chapter_three/ch03_fnaf_landline.png"
+            hover "images/chapter_three/ch03_fnaf_landline.png"
             action Call("chapter_three_landline")
 
     label chapter_three_fnaf_bill5(id_value):
@@ -800,8 +800,8 @@ label chapter_three_chica_mission3:
     screen clickable_chapter_three_chica3_dining_area:
         imagebutton:
             pos (320, 90) at Transform(zoom=0.72)
-            idle "images/ch03_fnaf_wchica.png" 
-            hover "images/ch03_fnaf_wchica.png"
+            idle "images/chapter_three/ch03_fnaf_wchica.png" 
+            hover "images/chapter_three/ch03_fnaf_wchica.png"
             action Jump("chapter_three_chica_fight")
     screen chapter_three_chica_health_bar(max,endup):
         frame:
@@ -817,8 +817,8 @@ label chapter_three_chica_mission3:
         timer 0.25 + (count2 / 10) action Jump("chapter_three_chica_death")
         imagebutton:
             pos (xpos,ypos) at Transform(zoom = zoom)
-            idle "images/ch03_fnaf_cupcake.png"
-            hover "images/ch03_fnaf_cupcake.png"
+            idle "images/chapter_three/ch03_fnaf_cupcake.png"
+            hover "images/chapter_three/ch03_fnaf_cupcake.png"
             action [
                 #SetVariable("count2", count2-1),
                 Play("sound","audio/sound/chapter_three/gulp1.ogg"),
@@ -935,8 +935,8 @@ label chapter_three_bonnie_mission1:
     screen clickable_chapter_three_bonnie1_telephone:
         imagebutton:
             pos (640, 328) at Transform(zoom=0.64)
-            idle "images/ch03_fnaf_landline.png"
-            hover "images/ch03_fnaf_landline.png" 
+            idle "images/chapter_three/ch03_fnaf_landline.png"
+            hover "images/chapter_three/ch03_fnaf_landline.png" 
             action Call("Chapter_three_office_driporder")
     label Chapter_three_office_driporder:
         call chapter_three_fnaf_hide_screens
@@ -1254,8 +1254,8 @@ label chapter_three_bonnie_mission2:
     screen clickable_chapter_three_bonnie2_guitar:
         imagebutton:
             pos (1363, 431) at Transform(rotate=243.0)
-            idle "images/ch03_fnaf_guitar.png"
-            hover "images/ch03_fnaf_guitar.png"
+            idle "images/chapter_three/ch03_fnaf_guitar.png"
+            hover "images/chapter_three/ch03_fnaf_guitar.png"
             action Call("chapter_three_guitar")
     label chapter_three_guitar:
         call chapter_three_fnaf_hide_screens
@@ -1338,8 +1338,8 @@ label chapter_three_bonnie_mission2:
     screen clickable_chapter_three_bonnie2_skibidi_toilet:
         imagebutton:
             pos (183, 356) at Transform(zoom=0.29)
-            idle "images/ch03_fnaf_skibidi_toilet.png"
-            hover "images/ch03_fnaf_skibidi_toilet.png"
+            idle "images/chapter_three/ch03_fnaf_skibidi_toilet.png"
+            hover "images/chapter_three/ch03_fnaf_skibidi_toilet.png"
             action Call("chapter_three_skibidi_toilet")
     label chapter_three_skibidi_toilet:
         call chapter_three_fnaf_hide_screens
@@ -1366,8 +1366,8 @@ label chapter_three_bonnie_mission3:
     screen clickable_chapter_three_bonnie3:
         imagebutton:
             pos (655, 76) at Transform(zoom = 1.21)
-            idle "images/ch03_fnaf_bonnie.png"
-            hover "images/ch03_fnaf_bonnie.png"
+            idle "images/chapter_three/ch03_fnaf_bonnie.png"
+            hover "images/chapter_three/ch03_fnaf_bonnie.png"
             action Jump("chapter_three_bonnie3_fight")
     screen chapter_three_bonnie3_timer_event(key_input, xalign1, yalign1):
         timer 0.01 repeat True action If(time > 0.0, true=SetVariable("time", time - 0.01), false=[Return(0), Hide("chapter_three_bonnie3_timer_event")]) 
@@ -1455,8 +1455,8 @@ label chapter_three_freddy_mission1:
     screen clickable_chapter_three_freddy1_pills:
         imagebutton:
             pos (438, 88) at Transform(xzoom=1.0, zoom=0.16)
-            idle "images/ch03_fnaf_pills.png"
-            hover "images/ch03_fnaf_pills.png"
+            idle "images/chapter_three/ch03_fnaf_pills.png"
+            hover "images/chapter_three/ch03_fnaf_pills.png"
             action Call("chapter_three_pills")
     label chapter_three_pills:
     call chapter_three_fnaf_hide_screens
@@ -1613,8 +1613,8 @@ label chapter_three_freddy_mission3:
     screen clickable_chapter_three_freddy3:
         imagebutton:
             pos (973, 121) at Transform(zoom=0.31) 
-            idle "images/ch03_fnaf_freddy.png"
-            hover "images/ch03_fnaf_freddy.png"
+            idle "images/chapter_three/ch03_fnaf_freddy.png"
+            hover "images/chapter_three/ch03_fnaf_freddy.png"
             action Jump("chapter_three_freddy_fight")
     screen chapter_three_freddy_health_bar(max,enupd):
         frame:
@@ -1678,8 +1678,8 @@ label chapter_three_foxy3_talk:
     screen clickable_chapter_three_foxy:
         imagebutton:
             xpos 450 at Transform(zoom=0.93)
-            idle "images/ch03_fnaf_foxy.png"
-            hover "images/ch03_fnaf_foxy.png"
+            idle "images/chapter_three/ch03_fnaf_foxy.png"
+            hover "images/chapter_three/ch03_fnaf_foxy.png"
             action Jump("chapter_three_ending")
 
 
