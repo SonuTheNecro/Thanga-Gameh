@@ -525,16 +525,85 @@ label chapter_three_ending:
     show ch03_fnaf_foxy:
         subpixel True xpos 450 zoom 0.93 
     k "NO NOT ANYMORE BOSS BATTLES FUCK RIGHT OFF!"
-    foxy "Is that was the others been making you doing?"
-    k "yeah..."
-    foxy "eh my boss battle can be a secret ending for the sleuths out there"
-    k "so I am stuck here, and you can help me right?"
+    foxy "Is dat waz de odders bean mikkinng u doeng?"
+    k "yeah sure i don't speak whatever you are saying"
+    foxy "eye rash m8"
+    foxy "wat r u dewing otta hear en free em?"
+    k "I am stuck here"
+    foxy "dew u liek 2 weave?"
+    k "YES YES YES PLEASE!"
+    foxy "I got you fam"
     foxy "uh sir, lets just go" #Animation stuff here
-
+    show ch03_fnaf_foxy:
+        linear 0.25 subpixel True xalign 2.0
+    pause 0.25
+    play sound "audio/sound/chapter_three/fnaf_jumpscare.ogg"
+    foxy "Cum hear u dallywag!"
     scene ch03_fnaf_prep1 with dissolve:
         subpixel True zoom 0.75 
-    
+    k "holy shit I am FREE"
+    show ch03_fnaf_foxy with dissolve:
+        subpixel True xpos 450 zoom 0.93
+    foxy "well take care me friend!"
+    k "wait you sound normal!"
+    foxy "hahaha, I am only irish while im in the rizzaria!"
+    foxy "I can talk out here without a dick up my ass!"
+    k "huh?"
+    foxy "it's pride month"
+    "This line was written during pride month"
+    "laugh"
+    foxy "I suppose you can leave now"
+    k "I feel like there is a lot of loose-ends and things not accounted for..."
+    k "Where was Cody?"
+    k "What happened to afton?"
+    k "How am I going to get home?"
+    k "What is the lore of Five Nights?"
+    "Its fnaf, you have to find all the secrets to get your answer"
+    k "oh"
+    "for a shitty mid story that people pretend is straight peak"
+    k "oh okay!"
+    foxy "I would go before the twisted one get you..."
+    k "How do I get home though?"
+    call auto_advance(1)
+    "Idk use a jumpcut?"
+    k "like a what cut?!?"
+    show ch03couch with dissolve:
+        subpixel True xpos -126 xzoom 1.35 zoom 1.77 
+    stop music
+    play music "audio/music/chapter_three/beneath_the_mask.ogg" loop
+    show thanga2 with dissolve:
+        subpixel True pos (1548, 153) yrotate 180.0 
+    show kody:
+        subpixel True pos (-325, 218)
+    show kody with dissolve:
+        linear 0.5 subpixel True pos (143, 218)
+    $ renpy.pause(0.5, hard = True)
+    call auto_advance(0)
     k "Wow, that was way easier than I thought it'd be!"
-
+    t "so how was your day?"
+    t "I was at work working at the nail shop for 9 hours"
+    t "what did your lazy ass do all day?"
+    k "I was at Freddy Fazgyatt's Rizzaria"
+    pause 1.0
+    t "..."
+    k "I am 100% serious"
+    t "okay buddy"
+    t "good to know you are unworkful and lazy as possible!"
+    show ch03couch:
+        matrixcolor SaturationMatrix(0)
+    show thanga2:
+        matrixcolor SaturationMatrix(0)
+    show kody:
+        matrixcolor SaturationMatrix(0)
+    "Well..."
+    "That was quite eventful!"
+    "Kody made a lot of new friends and failed a lot of jobs..."
+    "This is truly the romcom anime we were looking for..."
+    call auto_advance(1)
+    "END"
+    "OF"
+    "CHAPTER!"
+    call auto_advance(0)
+    #matrixcolor SaturationMatrix(0)
     $ persistent.ch03 = True
-    "end of chapter three"
+    return

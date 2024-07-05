@@ -102,7 +102,7 @@ label chapter_one:
         scene chick2 with fade:
             subpixel True zoom 2.25 
         stop music
-        play "audio/music/chapter_one/the_road_leading_the_secret.ogg"
+        play music "audio/music/chapter_one/the_road_leading_the_secret.ogg"
         b "That sucks for those employees, there is grafitti on the menu screen..."
         k "deserved for cucking me outta fries"
         b "you have problems"
@@ -169,7 +169,7 @@ label chapter_one:
         with Pause(0.60)
         window auto show
         stop music
-        play "audio/music/chapter_one/the_road_leading_the_secret.ogg"
+        play music "audio/music/chapter_one/the_road_leading_the_secret.ogg"
         b "Well here we are!"
         b "Panda Express"
         b "The Greatest Korean Restaurant!"
@@ -315,7 +315,7 @@ label chapter_one:
     show kody with dissolve:
         subpixel True pos (0.8, 0.43)  yrotate 180.0 
     stop music
-    play "audio/music/chapter_one/the_road_leading_the_secret.ogg"
+    play music "audio/music/chapter_one/the_road_leading_the_secret.ogg"
     se "..."
     t "uh hello!"
     t "uhhhhh"
