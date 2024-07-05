@@ -36,7 +36,8 @@ label chapter_one:
     "Chapter 1: The Hunt for the Elusive..."
     questionmark "Lopunny..."
     questionmark "Why would you write it like this?"
-
+    stop music
+    play music "audio/sound/chapter_one/reaching_out_stars.ogg" loop
     "It all began one day..."
     "The Exact day is Friday, Marth 15, 2027"
     show brian1:
@@ -100,6 +101,8 @@ label chapter_one:
         b "alright alright let's just go get the food"
         scene chick2 with fade:
             subpixel True zoom 2.25 
+        stop music
+        play "audio/music/chapter_one/the_road_leading_the_secret.ogg"
         b "That sucks for those employees, there is grafitti on the menu screen..."
         k "deserved for cucking me outta fries"
         b "you have problems"
@@ -165,6 +168,8 @@ label chapter_one:
             'panda2' with dissolve
         with Pause(0.60)
         window auto show
+        stop music
+        play "audio/music/chapter_one/the_road_leading_the_secret.ogg"
         b "Well here we are!"
         b "Panda Express"
         b "The Greatest Korean Restaurant!"
@@ -309,7 +314,8 @@ label chapter_one:
         subpixel True pos (0.36, 0.46) 
     show kody with dissolve:
         subpixel True pos (0.8, 0.43)  yrotate 180.0 
-
+    stop music
+    play "audio/music/chapter_one/the_road_leading_the_secret.ogg"
     se "..."
     t "uh hello!"
     t "uhhhhh"
@@ -366,6 +372,8 @@ label chapter_one:
         subpixel True pos (343, 485)  xzoom 2.43 yzoom 0.92 zoom 1.0 
     show kody:
         subpixel True pos (0.6, 0.29) 
+    stop music
+    play music "audio/sound/chapter_one/reaching_out_stars.ogg" loop
     b "well that was some good lunch"
     b "however, I am stuffed now"
     t "Yo brian put your phone down"
@@ -376,7 +384,8 @@ label chapter_one:
     t "shut up"
     call auto_advance(1)
     t "BRIAN!, PAY ATTENTION, THERE IS A DOG ON THE ROAD"
-    b "no whe-" 
+    b "no whe-"
+    stop music
     play sound "audio/sound/chapter_one/car_crash.ogg"
     window hide
     scene ocho_dead with vpunch and hpunch:
@@ -385,6 +394,7 @@ label chapter_one:
     show thanga2 with dissolve:
         subpixel True pos (1535, 365)  matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 180.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
     call auto_advance(0)
+    play music "audio/music/chapter_one/fearful_experience.ogg" loop
     t "holy shit"
     t "this is bad!"
     show kody with dissolve:
@@ -421,7 +431,8 @@ label chapter_one:
 
     t "Well that sucks for the owner"
     b "yeah I agree, I guess we cannot do much for the owner"
-
+    stop music
+    play music "audio/music/chapter_one/calamity.ogg" loop
     show ocho_dead with dissolve:
         subpixel True matrixcolor InvertMatrix(1.05)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
     call dio_time_stop
@@ -464,6 +475,8 @@ label chapter_one:
     b "please dont, i need it to get to jewel osco for work"
     b "also pokemon go"
     c "not my problem bozo"
+    stop music
+    play music "audio/music/chapter_one/the_road_leading_the_secret.ogg"
     hide screen clickable_chapter_one_secret_lopunny
     scene street1 with hpunch and vpunch:
         subpixel True yzoom 1.06 
@@ -816,6 +829,7 @@ label chapter_one:
     
     # The Ending THANK GOD I AM FREE!
     label baldi_beaten:
+        stop music
         play music "audio/music/chapter_one/baldi_main.ogg"
         baldi "Well done students!"
         b "Did we win?"
