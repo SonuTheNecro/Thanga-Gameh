@@ -5,6 +5,8 @@ init python:
     import random
     from renpy.display import im
     from enum import Enum
+    renpy.music.register_channel("sound2", "sound", loop = False)
+
     #A confirm menu for important decisions, Paramater is the str for the menu label, jump decision is where you would go if you choose yes
     def confirm_menu_jump(original_menu, jump_decision):
         renpy.say(None, "This is an Important Decision that will affect your future gameplay, are you sure about this?")
@@ -34,6 +36,7 @@ image blood_red = Solid("#790000")
 label game_over:
     stop sound
     stop music
+    pause 5.0
     play music "audio/music/prologue/aria_of_the_soul.ogg"
     scene velvet room with fade:
         subpixel True pos (-0.08, 0.0) yzoom 1.12 zoom 1.22 

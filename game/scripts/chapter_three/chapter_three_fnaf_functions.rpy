@@ -2,18 +2,18 @@
 screen ch03_fnaf_map():
     imagemap:
         ground "images/chapter_three/ch03_fnaf_map.png" pos (1423, 13) at Transform(zoom=1.1)
-        hotspot(202,309,43,105) action Jump("ch03_fnaf_office")
-        hotspot(140,320,60,40)  action Jump("ch03_fnaf_2b")
-        hotspot(257,321,60,40)  action Jump("ch03_fnaf_4b")
-        hotspot(361,235,60,40)  action Jump("ch03_fnaf_6")
-        hotspot(45,254,60,40)   action Jump("ch03_fnaf_3")
-        hotspot(115,60,60,40)   action Jump("ch03_fnaf_1b")
-        hotspot(137,0,60,40)    action Jump("ch03_fnaf_1a")
-        hotspot(1,92,60,40)     action Jump("ch03_fnaf_5")
-        hotspot(80,146,60,40)   action Jump("ch03_fnaf_1c")
-        hotspot(371,91,60,40)   action (Jump("ch03_fnaf_7") if chapter_three_item_check("chapter_three_key") else Call("chapter_three_locked"))
-        hotspot(137,274,60,40)  action Jump("ch03_fnaf_2a")
-        hotspot(254,275,60,40)  action Jump("ch03_fnaf_4a")
+        hotspot(202,309,43,105) action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_office")]
+        hotspot(140,320,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_2b")]
+        hotspot(257,321,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_4b")]
+        hotspot(361,235,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_6")]
+        hotspot(45,254,60,40)   action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_3")]
+        hotspot(115,60,60,40)   action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_1b")]
+        hotspot(137,0,60,40)    action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_1a")]
+        hotspot(1,92,60,40)     action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_5")]
+        hotspot(80,146,60,40)   action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_1c")]
+        hotspot(371,91,60,40)   action Play("sound","audio/sound/chapter_three/camera_switch.ogg"), (Jump("ch03_fnaf_7")if chapter_three_item_check("chapter_three_key") else Call("chapter_three_locked"))
+        hotspot(137,274,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_2a")]
+        hotspot(254,275,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_4a")]
 label chapter_three_locked:
     call chapter_three_fnaf_hide_screens
     "This area is currently locked!"
@@ -43,12 +43,15 @@ screen ch03_fnaf_stage_only_freddy():
         ground "images/chapter_three/ch03_fnaf7_only_freddy.png" at Transform(yzoom=1.25, zoom=1.92)
         #hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
         #hotspot(440,0,160,448)  action Call("chapter_three_chica")
-        hotspot(630,0,320,448) action Jumpl("chapter_three_freddy")
+        hotspot(630,0,320,448) action Jump("chapter_three_freddy")
 screen ch03_fnaf_closet_bonnie():
     imagemap:
         ground "images/chapter_three/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(25,90,400,280) action Jump("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
+    hide screen clickable_chapter_three_shadow_freddy2
+    hide screen clickable_chapter_three_shadow_freddy
+    hide screen clickable_chapter_three_shadow_bonnie
     hide screen clickable_chapter_three_foxy
     hide screen chapter_three_freddy_health_bar
     hide screen clickable_chapter_three_freddy3
@@ -175,7 +178,8 @@ label chapter_three_fnaf_restore_screens(location):
             show screen clickable_chapter_three_chica1_garlic
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[5]:
             show screen clickable_chapter_three_chica2_1bill(635,518,0.4,5)
-    show screen ch03_fnaf_map
+    call chapter_three_camera_rng(location)
+    call screen ch03_fnaf_map
     return
 
 label chapter_three_screen_control(location):
@@ -328,7 +332,7 @@ label chapter_three_bonnie:
     else:
         bonnie "looksmaxxing power 9999"
         k "jeepers"
-    call chapter_three_fnaf_restore_screens(location)
+    #call chapter_three_fnaf_restore_screens(location)
     jump ch03_fnaf_1a
 label chapter_three_chica:
     call chapter_three_fnaf_hide_screens
@@ -436,7 +440,7 @@ label chapter_three_chica:
     else:
         chica "I AM HUNGRY!"
         k "got it!"
-    call chapter_three_fnaf_restore_screens(location)
+    #call chapter_three_fnaf_restore_screens(location)
     jump ch03_fnaf_1a
 label chapter_three_freddy:
     call chapter_three_fnaf_hide_screens
@@ -568,7 +572,7 @@ label chapter_three_freddy:
         freddy "Leave me alone..."
         k "ok man :("
         $ count = 1
-    call chapter_three_fnaf_restore_screens(location)
+    #call chapter_three_fnaf_restore_screens(location)
     jump ch03_fnaf_1a
 label chapter_three_foxy:
     if Freddy.get_happiness() == 3 and Bonnie.get_happiness() == 3 and Chica.get_happiness() == 3: #Could be better but I dont wanna do variable work
@@ -593,8 +597,85 @@ label chapter_three_music: #Controls the bkg music for the fnaf section in chapt
         stop music
         play music "audio/music/chapter_three/fnaf_ambience3.ogg"
     return
-
-
+label chapter_three_camera_rng(location):
+    $ rngint2 = renpy.random.randint(0,100)
+    if rngint2 % 10 != 0:
+        return
+    if location == 7:
+        return
+    $ rngint2 = rngint2 / 10 #WHY ARENT SWITCH STATEMENTS A THING IN RENPY/PYTHON UGHHHHHHHHHHHHHHHHHH
+    #$ rngint2 = 8
+    if rngint2 == 0:
+        $ rngint2 = renpy.random.randint(0,3)
+        if rngint2 == 0:
+            play sound2 "audio/sound/chapter_three/freddy_laugh1.ogg"
+        elif rngint2 == 1:
+            play sound2 "audio/sound/chapter_three/freddy_laugh2.ogg"
+        if rngint2 == 2:
+            play sound2 "audio/sound/chapter_three/freddy_laugh3.ogg"
+    elif rngint2 == 1:
+        play sound2 "audio/sound/chapter_three/fnaf_circus.ogg"
+    elif rngint2 == 2:
+        play sound2 "audio/sound/chapter_three/foxy_hum.ogg"
+    elif rngint2 == 3:
+        play sound2 "audio/sound/chapter_three/door_knock.ogg"
+    elif rngint2 == 4:
+        show screen clickable_chapter_three_shadow_bonnie
+    elif rngint2 == 5:
+        show screen clickable_chapter_three_shadow_freddy
+    elif rngint2 == 6:
+        show ch03_cupcake:
+            subpixel True pos (-10, 725) zoom 3.44 yrotate 180.0 
+    elif rngint2 == 7:
+        show screen clickable_chapter_three_shadow_freddy2
+    elif rngint2 == 8:
+        play sound2 "audio/sound/chapter_three/ch03_dog_audio.ogg"
+    elif rngint2 == 9:
+        play sound2 "audio/sound/chapter_three/weird_phonecall.ogg"
+    elif rngint2 == 10:
+        play sound2 "audio/sound/chapter_three/bonnie_moan.ogg"
+    return
+label chapter_three_events:
+    screen clickable_chapter_three_shadow_bonnie:
+        imagebutton:
+            pos (1361, 0) at Transform(zoom=1.28)
+            idle "images/chapter_three/ch03_shadow_bonnie.png"
+            hover "images/chapter_three/ch03_shadow_bonnie.png"
+            action Jump("chapter_three_shadow_bonnie")
+    label chapter_three_shadow_bonnie:
+        call chapter_three_fnaf_hide_screens()
+        show ch03_shadow_bonnie:
+            subpixel True pos (1361, 0) zoom 1.28
+        questionmark "WAHNJFijasKUIENFSUIJANSDOIAKM*IHJUAUIJAUIJNV(UIJKN)"
+        k "huh?"
+        $ renpy.quit()
+    screen clickable_chapter_three_shadow_freddy:
+        imagebutton:
+            pos (-6, 608) at Transform(zoom=0.72)
+            idle "images/chapter_three/ch03_shadow_freddy.png"
+            hover "images/chapter_three/ch03_shadow_freddy.png"
+            action Jump("chapter_three_shadow_freddy")
+    label chapter_three_shadow_freddy(origin):
+        $ chapter_three_secret[4] = True
+        questionmark "The beast is coming..."
+        k "huh?"
+        questionmark "The thing that turned me into this..."
+        k "huh?"
+        call chapter_three_fnaf_hide_screens()
+        if origin == 0:
+            show ch03_shadow_freddy:
+                subpixel True pos (-6, 608) zoom 0.72
+        elif origin == 1:
+            show ch03_shadow_freddy2:
+                subpixel True pos (1, 540) 
+        questionmark "uBKNDuwHQUJFNejwae9duio239wdeucijnf4haewfvh3jnwafgiwjnf9iwahogjnahwofnojn4ehianjw"
+        $ renpy.quit()
+    screen clickable_chapter_three_shadow_freddy2:
+        imagebutton:
+            pos (1, 540)
+            idle "images/chapter_three/ch03_shadow_freddy2.png"
+            hover "images/chapter_three/ch03_shadow_freddy2.png"
+            action Jump("chapter_three_shadow_freddy")
 label chapter_three_chica_mission1:
     screen clickable_chapter_three_chica1_flour:
         imagebutton:
