@@ -1,19 +1,19 @@
 # The labels and functions for the Fnaf Code in Chapter Three, since my brain cannot handle scrolling up and down for so long and the tabs keep resetting
 screen ch03_fnaf_map():
     imagemap:
-        ground "images/ch03_fnaf_map.png" pos (1423, 13) at Transform(zoom=1.1)
-        hotspot(202,309,43,105) action Jump("ch03_fnaf_office")
-        hotspot(140,320,60,40)  action Jump("ch03_fnaf_2b")
-        hotspot(257,321,60,40)  action Jump("ch03_fnaf_4b")
-        hotspot(361,235,60,40)  action Jump("ch03_fnaf_6")
-        hotspot(45,254,60,40)   action Jump("ch03_fnaf_3")
-        hotspot(115,60,60,40)   action Jump("ch03_fnaf_1b")
-        hotspot(137,0,60,40)    action Jump("ch03_fnaf_1a")
-        hotspot(1,92,60,40)     action Jump("ch03_fnaf_5")
-        hotspot(80,146,60,40)   action Jump("ch03_fnaf_1c")
-        hotspot(371,91,60,40)   action (Jump("ch03_fnaf_7") if chapter_three_item_check("chapter_three_key") else Call("chapter_three_locked"))
-        hotspot(137,274,60,40)  action Jump("ch03_fnaf_2a")
-        hotspot(254,275,60,40)  action Jump("ch03_fnaf_4a")
+        ground "images/chapter_three/ch03_fnaf_map.png" pos (1423, 13) at Transform(zoom=1.1)
+        hotspot(202,309,43,105) action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_office")]
+        hotspot(140,320,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_2b")]
+        hotspot(257,321,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_4b")]
+        hotspot(361,235,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_6")]
+        hotspot(45,254,60,40)   action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_3")]
+        hotspot(115,60,60,40)   action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_1b")]
+        hotspot(137,0,60,40)    action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_1a")]
+        hotspot(1,92,60,40)     action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_5")]
+        hotspot(80,146,60,40)   action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_1c")]
+        hotspot(371,91,60,40)   action Play("sound","audio/sound/chapter_three/camera_switch.ogg"), (Jump("ch03_fnaf_7")if chapter_three_item_check("chapter_three_key") else Call("chapter_three_locked"))
+        hotspot(137,274,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_2a")]
+        hotspot(254,275,60,40)  action [Play("sound","audio/sound/chapter_three/camera_switch.ogg"), Jump("ch03_fnaf_4a")]
 label chapter_three_locked:
     call chapter_three_fnaf_hide_screens
     "This area is currently locked!"
@@ -22,33 +22,41 @@ label chapter_three_locked:
     return
 screen ch03_fnaf_stage():
     imagemap:
-        ground "images/ch03_fnaf7.png" at Transform(yzoom=1.25,zoom=1.2)
+        ground "images/chapter_three/ch03_fnaf7.png" at Transform(yzoom=1.25,zoom=1.2)
         hotspot(258,0,300,720)  action Jump("chapter_three_bonnie")
         hotspot(727,0,280,720)  action Jump("chapter_three_chica")
         hotspot(1125,0,300,729) action Jump("chapter_three_freddy")
 screen ch03_fnaf_stage_no_chica():
     imagemap:
-        ground "images/ch03_fnaf7_no_chica.png" at Transform(yzoom=1.25, zoom=1.92)
+        ground "images/chapter_three/ch03_fnaf7_no_chica.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(150,0,230,448)  action Jump("chapter_three_bonnie")
         # hotspot(727,0,280,720)  action Call("chapter_three_chica")
         hotspot(630,0,320,448) action Jump("chapter_three_freddy")
 screen ch03_fnaf_stage_no_bonnie():
     imagemap:
-        ground "images/ch03_fnaf7_no_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
+        ground "images/chapter_three/ch03_fnaf7_no_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         #hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
         hotspot(440,0,160,448)  action Jump("chapter_three_chica")
         hotspot(630,0,320,448) action Jump("chapter_three_freddy")
 screen ch03_fnaf_stage_only_freddy():
     imagemap:
-        ground "images/ch03_fnaf7_only_freddy.png" at Transform(yzoom=1.25, zoom=1.92)
+        ground "images/chapter_three/ch03_fnaf7_only_freddy.png" at Transform(yzoom=1.25, zoom=1.92)
         #hotspot(150,0,230,448)  action Call("chapter_three_bonnie")
         #hotspot(440,0,160,448)  action Call("chapter_three_chica")
-        hotspot(630,0,320,448) action Jumpl("chapter_three_freddy")
+        hotspot(630,0,320,448) action Jump("chapter_three_freddy")
 screen ch03_fnaf_closet_bonnie():
     imagemap:
-        ground "images/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
+        ground "images/chapter_three/ch03_fnaf5_bonnie.png" at Transform(yzoom=1.25, zoom=1.92)
         hotspot(25,90,400,280) action Jump("chapter_three_closet_bonnie")
 label chapter_three_fnaf_hide_screens:
+    hide screen chapter_three_puppet_health_bar
+    hide screen clickable_chapter_three_puppet_cupcakes
+    hide screen clickable_chapter_three_puppet
+    hide screen clickable_chapter_three_plush
+    hide screen clickable_chapter_three_scraptrap
+    hide screen clickable_chapter_three_shadow_freddy2
+    hide screen clickable_chapter_three_shadow_freddy
+    hide screen clickable_chapter_three_shadow_bonnie
     hide screen clickable_chapter_three_foxy
     hide screen chapter_three_freddy_health_bar
     hide screen clickable_chapter_three_freddy3
@@ -90,6 +98,8 @@ label chapter_three_fnaf_hide_screens:
 
 label chapter_three_fnaf_restore_screens(location):
     if location == 1:
+        if Freddy.get_happiness() == 1 and chapter_three_item_check("chapter_three_bpillow") and not chapter_three_item_check("chapter_three_afton"):
+            show screen clickable_chapter_three_scraptrap
         if Bonnie.get_happiness() == 2 and not Bonnie.get_mission():
             show screen clickable_chapter_three_bonnie3
         elif Bonnie.get_happiness() == 0 and Bonnie.get_mission() and choice == 100:
@@ -117,6 +127,8 @@ label chapter_three_fnaf_restore_screens(location):
             show screen clickable_chapter_three_chica1_salt
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[1]:
             show screen clickable_chapter_three_chica2_5bill(695,496,0.41,1)
+        elif Chica.get_happiness() == 0 and chapter_three_item_check("chapter_three_flour") and chapter_three_item_check("chapter_three_yeast") and chapter_three_item_check("chapter_three_water") and chapter_three_item_check("chapter_three_salt") and chapter_three_item_check("chapter_three_sugar") and chapter_three_item_check("chapter_three_cornmeal") and chapter_three_item_check("chapter_three_garlic") and chapter_three_item_check("chapter_three_wheat") and chapter_three_item_check("chapter_three_cheese") and chapter_three_item_check("chapter_three_pepperoni") and chapter_three_item_check("chapter_three_olive_oil") and not chapter_three_item_check("chapter_three_fplush"):
+            show screen clickable_chapter_three_plush
     elif location == 5:
         if Bonnie.get_happiness() == 0 and Bonnie.get_mission():
             show screen ch03_fnaf_closet_bonnie
@@ -136,7 +148,9 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and count2 >= 10.00 and not chapter_three_item_check("chapter_three_pizza2"):
             show screen clickable_chapter_three_chica2_landline
     elif location == 7:
-        if ((Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission())) and Chica.get_happiness() == 2 and not Chica.get_mission():
+        if Foxy.get_happiness() == 3 and Foxy.get_mission() and chapter_three_secret > 5 and not chapter_three_item_check("chapter_three_puppet"):
+            show screen clickable_chapter_three_puppet
+        elif ((Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission())) and Chica.get_happiness() == 2 and not Chica.get_mission():
             show screen ch03_fnaf_stage_only_freddy
         elif (Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission()):
             show screen ch03_fnaf_stage_no_bonnie
@@ -175,7 +189,8 @@ label chapter_three_fnaf_restore_screens(location):
             show screen clickable_chapter_three_chica1_garlic
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[5]:
             show screen clickable_chapter_three_chica2_1bill(635,518,0.4,5)
-    show screen ch03_fnaf_map
+    call chapter_three_camera_rng(location)
+    call screen ch03_fnaf_map
     return
 
 label chapter_three_screen_control(location):
@@ -232,7 +247,8 @@ label chapter_three_phone_time:
 label chapter_three_secret2:
     "wait you actually listened to the whole thing?"
     "I Guess that\'s worth a secret I suppose..."
-    $ chapter_three_secret[1] = True
+    $ chapter_three_secret += 1
+    play sound "audio/sound/chapter_three/item_pickup.ogg"
     jump ch03_office_timer_return
 label chapter_three_bonnie:
     call chapter_three_fnaf_hide_screens
@@ -328,7 +344,7 @@ label chapter_three_bonnie:
     else:
         bonnie "looksmaxxing power 9999"
         k "jeepers"
-    call chapter_three_fnaf_restore_screens(location)
+    #call chapter_three_fnaf_restore_screens(location)
     jump ch03_fnaf_1a
 label chapter_three_chica:
     call chapter_three_fnaf_hide_screens
@@ -436,7 +452,7 @@ label chapter_three_chica:
     else:
         chica "I AM HUNGRY!"
         k "got it!"
-    call chapter_three_fnaf_restore_screens(location)
+    #call chapter_three_fnaf_restore_screens(location)
     jump ch03_fnaf_1a
 label chapter_three_freddy:
     call chapter_three_fnaf_hide_screens
@@ -568,7 +584,7 @@ label chapter_three_freddy:
         freddy "Leave me alone..."
         k "ok man :("
         $ count = 1
-    call chapter_three_fnaf_restore_screens(location)
+    #call chapter_three_fnaf_restore_screens(location)
     jump ch03_fnaf_1a
 label chapter_three_foxy:
     if Freddy.get_happiness() == 3 and Bonnie.get_happiness() == 3 and Chica.get_happiness() == 3: #Could be better but I dont wanna do variable work
@@ -593,75 +609,152 @@ label chapter_three_music: #Controls the bkg music for the fnaf section in chapt
         stop music
         play music "audio/music/chapter_three/fnaf_ambience3.ogg"
     return
-
-
+label chapter_three_camera_rng(location):
+    $ rngint2 = renpy.random.randint(0,100)
+    if rngint2 % 10 != 0:
+        return
+    if location == 7:
+        return
+    $ rngint2 = rngint2 / 10 #WHY ARENT SWITCH STATEMENTS A THING IN RENPY/PYTHON UGHHHHHHHHHHHHHHHHHH
+    #$ rngint2 = 8
+    if rngint2 == 0:
+        $ rngint2 = renpy.random.randint(0,3)
+        if rngint2 == 0:
+            play sound2 "audio/sound/chapter_three/freddy_laugh1.ogg"
+        elif rngint2 == 1:
+            play sound2 "audio/sound/chapter_three/freddy_laugh2.ogg"
+        if rngint2 == 2:
+            play sound2 "audio/sound/chapter_three/freddy_laugh3.ogg"
+    elif rngint2 == 1:
+        play sound2 "audio/sound/chapter_three/fnaf_circus.ogg"
+    elif rngint2 == 2:
+        play sound2 "audio/sound/chapter_three/foxy_hum.ogg"
+    elif rngint2 == 3:
+        play sound2 "audio/sound/chapter_three/door_knock.ogg"
+    elif rngint2 == 4:
+        show screen clickable_chapter_three_shadow_bonnie
+    elif rngint2 == 5:
+        show screen clickable_chapter_three_shadow_freddy
+    elif rngint2 == 6:
+        show ch03_cupcake:
+            subpixel True pos (-10, 725) zoom 3.44 yrotate 180.0 
+    elif rngint2 == 7:
+        show screen clickable_chapter_three_shadow_freddy2
+    elif rngint2 == 8:
+        play sound2 "audio/sound/chapter_three/ch03_dog_audio.ogg"
+    elif rngint2 == 9:
+        play sound2 "audio/sound/chapter_three/weird_phonecall.ogg"
+    elif rngint2 == 10:
+        play sound2 "audio/sound/chapter_three/bonnie_moan.ogg"
+    return
+label chapter_three_events:
+    screen clickable_chapter_three_shadow_bonnie:
+        imagebutton:
+            pos (1361, 0) at Transform(zoom=1.28)
+            idle "images/chapter_three/ch03_shadow_bonnie.png"
+            hover "images/chapter_three/ch03_shadow_bonnie.png"
+            action Jump("chapter_three_shadow_bonnie")
+    label chapter_three_shadow_bonnie:
+        call chapter_three_fnaf_hide_screens()
+        show ch03_shadow_bonnie:
+            subpixel True pos (1361, 0) zoom 1.28
+        questionmark "WAHNJFijasKUIENFSUIJANSDOIAKM*IHJUAUIJAUIJNV(UIJKN)"
+        k "huh?"
+        $ renpy.quit()
+    screen clickable_chapter_three_shadow_freddy:
+        imagebutton:
+            pos (-6, 608) at Transform(zoom=0.72)
+            idle "images/chapter_three/ch03_shadow_freddy.png"
+            hover "images/chapter_three/ch03_shadow_freddy.png"
+            action Jump("chapter_three_shadow_freddy")
+    label chapter_three_shadow_freddy(origin):
+        $ chapter_three_secret += 1
+        questionmark "The beast is coming..."
+        k "huh?"
+        questionmark "The thing that turned me into this..."
+        k "huh?"
+        call chapter_three_fnaf_hide_screens()
+        if origin == 0:
+            show ch03_shadow_freddy:
+                subpixel True pos (-6, 608) zoom 0.72
+        elif origin == 1:
+            show ch03_shadow_freddy2:
+                subpixel True pos (1, 540) 
+        questionmark "uBKNDuwHQUJFNejwae9duio239wdeucijnf4haewfvh3jnwafgiwjnf9iwahogjnahwofnojn4ehianjw"
+        $ renpy.quit()
+    screen clickable_chapter_three_shadow_freddy2:
+        imagebutton:
+            pos (1, 540)
+            idle "images/chapter_three/ch03_shadow_freddy2.png"
+            hover "images/chapter_three/ch03_shadow_freddy2.png"
+            action Jump("chapter_three_shadow_freddy")
 label chapter_three_chica_mission1:
     screen clickable_chapter_three_chica1_flour:
         imagebutton:
             pos (333, 275) 
             at Transform(zoom=0.61)
-            idle  "images/ch03_fnaf_flour.png"
-            hover "images/ch03_fnaf_flour.png"
+            idle  "images/chapter_three/ch03_fnaf_flour.png"
+            hover "images/chapter_three/ch03_fnaf_flour.png"
             action Call("chapter_three_ingredients",1)
     screen clickable_chapter_three_chica1_yeast:
         imagebutton:
             pos (1661, 715) at Transform(zoom=0.36)
-            idle "images/ch03_fnaf_yeast.png"
-            hover "images/ch03_fnaf_yeast.png"
+            idle "images/chapter_three/ch03_fnaf_yeast.png"
+            hover "images/chapter_three/ch03_fnaf_yeast.png"
             action Call("chapter_three_ingredients",2)
     screen clickable_chapter_three_chica1_water:
         imagebutton:
             pos (775, 565) at Transform(zoom=0.43)
-            idle "images/ch03_fnaf_water.png"
-            hover "images/ch03_fnaf_water.png"
+            idle "images/chapter_three/ch03_fnaf_water.png"
+            hover "images/chapter_three/ch03_fnaf_water.png"
             action Call("chapter_three_ingredients",3)
     screen clickable_chapter_three_chica1_olive_oil:
         imagebutton:
             pos (1046, 218) at Transform(zoom=0.12)
-            idle "images/ch03_fnaf_olive_oil.png"
-            hover "images/ch03_fnaf_olive_oil.png"
+            idle "images/chapter_three/ch03_fnaf_olive_oil.png"
+            hover "images/chapter_three/ch03_fnaf_olive_oil.png"
             action Call("chapter_three_ingredients",4)
     screen clickable_chapter_three_chica1_salt:
         imagebutton:
             pos (506, 515) at Transform(zoom=0.1) 
-            idle "images/ch03_fnaf_salt.png"
-            hover "images/ch03_fnaf_salt.png"
+            idle "images/chapter_three/ch03_fnaf_salt.png"
+            hover "images/chapter_three/ch03_fnaf_salt.png"
             action Call("chapter_three_ingredients",5)
     screen clickable_chapter_three_chica1_sugar:
         imagebutton:
             pos (826, 505) at Transform(zoom=0.49) 
-            idle "images/ch03_fnaf_sugar.png"
-            hover "images/ch03_fnaf_sugar.png"
+            idle "images/chapter_three/ch03_fnaf_sugar.png"
+            hover "images/chapter_three/ch03_fnaf_sugar.png"
             action Call("chapter_three_ingredients",6)
     screen clickable_chapter_three_chica1_cornmeal:
         imagebutton:
             pos (541, 145) at Transform(zoom=0.43) 
-            idle "images/ch03_fnaf_cornmeal.png"
-            hover "images/ch03_fnaf_cornmeal.png"
+            idle "images/chapter_three/ch03_fnaf_cornmeal.png"
+            hover "images/chapter_three/ch03_fnaf_cornmeal.png"
             action Call("chapter_three_ingredients",7)
     screen clickable_chapter_three_chica1_garlic:
         imagebutton:
             pos (0, 0)
-            idle "images/ch03_fnaf_garlic.png"
-            hover "images/ch03_fnaf_garlic.png"
+            idle "images/chapter_three/ch03_fnaf_garlic.png"
+            hover "images/chapter_three/ch03_fnaf_garlic.png"
             action Call("chapter_three_ingredients",8)
     screen clickable_chapter_three_chica1_wheat_flour:
         imagebutton:
             pos (-55, 786) at Transform(zoom=0.25) 
-            idle "images/ch03_fnaf_wheat_flour.png"
-            hover "images/ch03_fnaf_wheat_flour.png"
+            idle "images/chapter_three/ch03_fnaf_wheat_flour.png"
+            hover "images/chapter_three/ch03_fnaf_wheat_flour.png"
             action Call("chapter_three_ingredients",9)
     screen clickable_chapter_three_chica1_cheese:
         imagebutton:
             pos (0, 0) at Transform(zoom=0.09)
-            idle "images/ch03_fnaf_cheese.png"
-            hover "images/ch03_fnaf_cheese.png"
+            idle "images/chapter_three/ch03_fnaf_cheese.png"
+            hover "images/chapter_three/ch03_fnaf_cheese.png"
             action Call("chapter_three_ingredients",10)
     screen clickable_chapter_three_chica1_pepperoni:
         imagebutton:
             pos (686, 283) at Transform(zoom=0.34, rotate=-36.0)
-            idle "images/ch03_fnaf_pepperoni.png"
-            hover "images/ch03_fnaf_pepperoni.png"
+            idle "images/chapter_three/ch03_fnaf_pepperoni.png"
+            hover "images/chapter_three/ch03_fnaf_pepperoni.png"
             action Call("chapter_three_ingredients",11)
     label chapter_three_ingredients(area):
         call chapter_three_fnaf_hide_screens
@@ -705,26 +798,26 @@ label chapter_three_chica_mission2:
     screen clickable_chapter_three_chica2_5bill(xpos,ypos,zoomlevel,id):
         imagebutton:
             pos(xpos,ypos) at Transform(zoom = zoomlevel)
-            idle "images/ch03_fnaf_5bill.png"
-            hover "images/ch03_fnaf_5bill.png"
+            idle "images/chapter_three/ch03_fnaf_5bill.png"
+            hover "images/chapter_three/ch03_fnaf_5bill.png"
             action Call("chapter_three_fnaf_bill5",id)
     screen clickable_chapter_three_chica2_1bill(xpos,ypos,zoomlevel,id):
         imagebutton:
             pos(xpos,ypos) at Transform(zoom = zoomlevel)
-            idle "images/ch03_fnaf_1bill.png"
-            hover "images/ch03_fnaf_1bill.png"
+            idle "images/chapter_three/ch03_fnaf_1bill.png"
+            hover "images/chapter_three/ch03_fnaf_1bill.png"
             action Call("chapter_three_fnaf_bill1",id)
     screen clickable_chapter_three_chica2_quarter(xpos,ypos,zoomlevel,id):
         imagebutton:
             pos(xpos,ypos) at Transform(zoom = zoomlevel)
-            idle "images/ch03_fnaf_quarter.png"
-            hover "images/ch03_fnaf_quarter.png"
+            idle "images/chapter_three/ch03_fnaf_quarter.png"
+            hover "images/chapter_three/ch03_fnaf_quarter.png"
             action Call("chapter_three_fnaf_quarter",id)
     screen clickable_chapter_three_chica2_landline():
         imagebutton:
             pos (775, 145) at Transform(zoom=0.49)
-            idle "images/ch03_fnaf_landline.png"
-            hover "images/ch03_fnaf_landline.png"
+            idle "images/chapter_three/ch03_fnaf_landline.png"
+            hover "images/chapter_three/ch03_fnaf_landline.png"
             action Call("chapter_three_landline")
 
     label chapter_three_fnaf_bill5(id_value):
@@ -756,7 +849,7 @@ label chapter_three_chica_mission2:
         call chapter_three_fnaf_hide_screens
         if count2 == 16:
             "Wow you found all of the money!"
-            $ chapter_three_secret[3] = True
+            $ chapter_three_secret += 1
         #todo put mario elevator music
         k "Alright Let's order this pizza!"
         play sound "audio/sound/chapter_three/phone_ring2.ogg"
@@ -796,12 +889,29 @@ label chapter_three_chica_mission2:
             subpixel True yzoom 1.25 zoom 1.5 
         call chapter_three_fnaf_restore_screens(location)
         return
+    screen clickable_chapter_three_plush:
+        imagebutton:
+            xpos 396
+            idle "images/chapter_three/ch03_freddy_plush.png"
+            hover "images/chapter_three/ch03_freddy_plush.png"
+            action Call("chapter_three_freddy_plus")
+
+    label chapter_three_freddy_plus:
+        call chapter_three_fnaf_hide_screens
+        show ch03_freddy_plush:
+            subpixel True xpos 396 
+        $ chapter_three_obtain_item("chapter_three_fplush")
+        $ chapter_three_secret += 1
+        play sound "audio/sound/chapter_three/plush_squeak.ogg"
+        hide ch03_freddy_plush with dissolve
+        call chapter_three_fnaf_restore_screens(location)
+        return
 label chapter_three_chica_mission3:
     screen clickable_chapter_three_chica3_dining_area:
         imagebutton:
             pos (320, 90) at Transform(zoom=0.72)
-            idle "images/ch03_fnaf_wchica.png" 
-            hover "images/ch03_fnaf_wchica.png"
+            idle "images/chapter_three/ch03_fnaf_wchica.png" 
+            hover "images/chapter_three/ch03_fnaf_wchica.png"
             action Jump("chapter_three_chica_fight")
     screen chapter_three_chica_health_bar(max,endup):
         frame:
@@ -814,11 +924,11 @@ label chapter_three_chica_mission3:
                     yalign 0.0
                     xmaximum 600
     screen clickable_chapter_three_chica3_cupcakes(xpos,ypos,zoom,count2):
-        timer 0.25 + (count2 / 10) action Jump("chapter_three_chica_death")
+        timer 0.35 + (count2 / 10) action Jump("chapter_three_chica_death")
         imagebutton:
             pos (xpos,ypos) at Transform(zoom = zoom)
-            idle "images/ch03_fnaf_cupcake.png"
-            hover "images/ch03_fnaf_cupcake.png"
+            idle "images/chapter_three/ch03_fnaf_cupcake.png"
+            hover "images/chapter_three/ch03_fnaf_cupcake.png"
             action [
                 #SetVariable("count2", count2-1),
                 Play("sound","audio/sound/chapter_three/gulp1.ogg"),
@@ -870,7 +980,7 @@ label chapter_three_chica_mission3:
         chica "Im going back to stage!"
         $ Chica.set_mission(True)
         hide screen chapter_three_chica_health_bar
-        call chapter_three_fnaf_restore_screens(location)
+        #call chapter_three_fnaf_restore_screens(location)
         call chapter_three_music
         jump ch03_fnaf_1b
     
@@ -929,14 +1039,14 @@ label chapter_three_bonnie_mission1:
                 bonnie "Holy shit you got more than one item?"
                 k "yeah it was pretty cheap, fire sale if you will"
                 bonnie "damn that might be worth a secret ain't even gonna cap!"
-                $ chapter_three_secret[2] = True
+                $ chapter_three_secret += 1
         call chapter_three_fnaf_restore_screens(location)
         jump ch03_fnaf_3
     screen clickable_chapter_three_bonnie1_telephone:
         imagebutton:
             pos (640, 328) at Transform(zoom=0.64)
-            idle "images/ch03_fnaf_landline.png"
-            hover "images/ch03_fnaf_landline.png" 
+            idle "images/chapter_three/ch03_fnaf_landline.png"
+            hover "images/chapter_three/ch03_fnaf_landline.png" 
             action Call("Chapter_three_office_driporder")
     label Chapter_three_office_driporder:
         call chapter_three_fnaf_hide_screens
@@ -1254,8 +1364,8 @@ label chapter_three_bonnie_mission2:
     screen clickable_chapter_three_bonnie2_guitar:
         imagebutton:
             pos (1363, 431) at Transform(rotate=243.0)
-            idle "images/ch03_fnaf_guitar.png"
-            hover "images/ch03_fnaf_guitar.png"
+            idle "images/chapter_three/ch03_fnaf_guitar.png"
+            hover "images/chapter_three/ch03_fnaf_guitar.png"
             action Call("chapter_three_guitar")
     label chapter_three_guitar:
         call chapter_three_fnaf_hide_screens
@@ -1338,8 +1448,8 @@ label chapter_three_bonnie_mission2:
     screen clickable_chapter_three_bonnie2_skibidi_toilet:
         imagebutton:
             pos (183, 356) at Transform(zoom=0.29)
-            idle "images/ch03_fnaf_skibidi_toilet.png"
-            hover "images/ch03_fnaf_skibidi_toilet.png"
+            idle "images/chapter_three/ch03_fnaf_skibidi_toilet.png"
+            hover "images/chapter_three/ch03_fnaf_skibidi_toilet.png"
             action Call("chapter_three_skibidi_toilet")
     label chapter_three_skibidi_toilet:
         call chapter_three_fnaf_hide_screens
@@ -1366,8 +1476,8 @@ label chapter_three_bonnie_mission3:
     screen clickable_chapter_three_bonnie3:
         imagebutton:
             pos (655, 76) at Transform(zoom = 1.21)
-            idle "images/ch03_fnaf_bonnie.png"
-            hover "images/ch03_fnaf_bonnie.png"
+            idle "images/chapter_three/ch03_fnaf_bonnie.png"
+            hover "images/chapter_three/ch03_fnaf_bonnie.png"
             action Jump("chapter_three_bonnie3_fight")
     screen chapter_three_bonnie3_timer_event(key_input, xalign1, yalign1):
         timer 0.01 repeat True action If(time > 0.0, true=SetVariable("time", time - 0.01), false=[Return(0), Hide("chapter_three_bonnie3_timer_event")]) 
@@ -1406,7 +1516,7 @@ label chapter_three_bonnie_mission3:
         stop music
         play music "audio/music/chapter_three/fnaf_bonnie_music.ogg"
         bonnie "AND I INTEND IT TO BE ME!"
-        $ keys = ["w", "a", "s", "d"]
+        $ keys = ["q", "w", "e", "r"]
         $ choice = 30
         $ rngint = 0
         $ check = 1
@@ -1415,7 +1525,7 @@ label chapter_three_bonnie_mission3:
         window auto hide
         show screen chapter_three_bonnie_health_bar(30, "chapter_three_bonnie_victory")
         while choice > 0 and check == 1:
-            $ time = 5.85 - (rngint / 5)
+            $ time = 5.95 - (rngint / 5)
             call screen chapter_three_bonnie3_timer_event(renpy.random.choice(keys), renpy.random.randint(1, 9) * 0.1, renpy.random.randint(1, 9) * 0.1)
             $ check = _return
             if choice == 25:
@@ -1424,14 +1534,12 @@ label chapter_three_bonnie_mission3:
             elif choice == 20:
                 bonnie "The gloves are off! No more jokes."
                 $ keys.append("l")
-                $ keys.append("e")
+                $ keys.append("k")
                 window auto hide
             elif choice == 10:
                 bonnie "NOW I AM ANGRY, BEHOLD THE POWER OF LOOKSMAXXING!"
-                $ keys.append("q")
-                $ keys.append("r")
-                $ keys.append("z")
-                $ keys.append("c")
+                $ keys.append("h")
+                $ keys.append("j")
                 window auto hide
         if check == 0:
             call auto_advance(0)
@@ -1455,8 +1563,8 @@ label chapter_three_freddy_mission1:
     screen clickable_chapter_three_freddy1_pills:
         imagebutton:
             pos (438, 88) at Transform(xzoom=1.0, zoom=0.16)
-            idle "images/ch03_fnaf_pills.png"
-            hover "images/ch03_fnaf_pills.png"
+            idle "images/chapter_three/ch03_fnaf_pills.png"
+            hover "images/chapter_three/ch03_fnaf_pills.png"
             action Call("chapter_three_pills")
     label chapter_three_pills:
     call chapter_three_fnaf_hide_screens
@@ -1480,7 +1588,7 @@ label chapter_three_freddy_mission1:
         k "fuck off"
         show gunflare:
             subpixel True pos (763, 391) zoom 0.28 
-        play sound "audio/sound/chapter_one/gun_shot1.ogg"
+        $ fnaf_shoot(3)
         balloon "OW, FUCK OFF"
         hide gunflare
         show ch03_fnaf_bb:
@@ -1536,8 +1644,8 @@ label chapter_three_freddy_mission1:
     screen clickable_chapter_three_freddy1_gun:
         imagebutton:
             pos (1486, 515) at Transform(rotate=90.0)
-            idle "ch03_fnaf_gun.png"
-            hover "ch03_fnaf_gun.png"
+            idle "images/chapter_three/ch03_fnaf_gun.png"
+            hover "images/chapter_three/ch03_fnaf_gun.png"
             action Call("chapter_three_gun")
     label chapter_three_gun:
         call chapter_three_fnaf_hide_screens
@@ -1553,8 +1661,8 @@ label chapter_three_freddy_mission2:
     screen clickable_chapter_three_freddy2_bodypillow:
         imagebutton:
             pos (26, 230) at Transform(zoom=0.36)
-            idle "ch03_fnaf_bp.png"
-            hover "ch03_fnaf_bp.png"
+            idle "images/chapter_three/ch03_fnaf_bp.png"
+            hover "images/chapter_three/ch03_fnaf_bp.png"
             action Call("chapter_three_bodypillow_rant")
     label chapter_three_bodypillow_rant:
         call chapter_three_fnaf_hide_screens
@@ -1609,12 +1717,29 @@ label chapter_three_freddy_mission2:
         c "Reboot sequence initiated"
         c "FAIL: REBOOT SEQUENCE TERMINATED"
         return
+    screen clickable_chapter_three_scraptrap:
+        imagebutton:
+            pos (728, 90)
+            idle "images/chapter_three/ch03_scraptrap.png"
+            hover "images/chapter_three/ch03_scraptrap.png"
+            action Call("chapter_three_scraptrap")
+    label chapter_three_scraptrap:
+        call chapter_three_fnaf_hide_screens
+        show ch03_scraptrap:
+            subpixel True pos (728, 90)
+        $ chapter_three_secret += 1
+        $ chapter_three_obtain_item("chapter_three_afton")
+        play sound "audio/sound/chapter_three/come_back.ogg"
+        #"test"
+        hide ch03_scraptrap with dissolve
+        call chapter_three_fnaf_restore_screens(location)
+        return
 label chapter_three_freddy_mission3:
     screen clickable_chapter_three_freddy3:
         imagebutton:
             pos (973, 121) at Transform(zoom=0.31) 
-            idle "images/ch03_fnaf_freddy.png"
-            hover "images/ch03_fnaf_freddy.png"
+            idle "images/chapter_three/ch03_fnaf_freddy.png"
+            hover "images/chapter_three/ch03_fnaf_freddy.png"
             action Jump("chapter_three_freddy_fight")
     screen chapter_three_freddy_health_bar(max,enupd):
         frame:
@@ -1622,12 +1747,12 @@ label chapter_three_freddy_mission3:
             yalign 0.0
             hbox:
                 bar:
-                    value AnimatedValue(count, 60, delay = 0.5)
+                    value AnimatedValue(count, 20, delay = 0.5)
                     xalign 0.0
                     yalign 0.0
                     xmaximum 600
     screen clickable_chapter_three_freddy_timer():
-        timer 3.75 + (count / 4.50) action Jump("chapter_three_freddy_death")
+        timer 4.00 + (count) action Jump("chapter_three_freddy_death")
     label chapter_three_freddy_fight:
         call chapter_three_fnaf_hide_screens
     show ch03_fnaf_freddy:
@@ -1644,7 +1769,7 @@ label chapter_three_freddy_mission3:
     play music "audio/music/chapter_three/fnaf_freddy_music.ogg"
     c "I am putting my FOOT down!"
     $ words = ["Bite", "Of", "1987", "Freddy Fazgyatt", "William Afton", "Purple Guy", "KodyDaBoss", "Tactical Vortex", "SonuTheNecro", "ThangaMangaLang","Chica Fanumtaxxer", "Bonnie Looksmaxxer", "Foxy The Furry", "Cody", "Rizzaria", "Gen Alpha Puppet", "Enragement Child", "MasiMew124", "The Bite of 87", "Agony", "I ALWAYS COME BACK!", "The Joy of Creation"]
-    $ count = 5
+    $ count = 20
     "Type the words as they appear on Screen!"
     show screen chapter_three_freddy_health_bar(60,"chapter_three_freddy_victory")
     while count > 0:
@@ -1678,8 +1803,176 @@ label chapter_three_foxy3_talk:
     screen clickable_chapter_three_foxy:
         imagebutton:
             xpos 450 at Transform(zoom=0.93)
-            idle "images/ch03_fnaf_foxy.png"
-            hover "images/ch03_fnaf_foxy.png"
+            idle "images/chapter_three/ch03_fnaf_foxy.png"
+            hover "images/chapter_three/ch03_fnaf_foxy.png"
             action Jump("chapter_three_ending")
 
-
+label chapter_three_secret_puppet:
+    screen clickable_chapter_three_puppet:
+        imagebutton:
+            pos (608, 0) at Transform(zoom=2.35)
+            idle "images/chapter_three/ch03_fnaf_puppet.png"
+            hover "images/chapter_three/ch03_fnaf_puppet.png"
+            action Jump("chapter_three_puppet_fight")
+    screen clickable_chapter_three_puppet_cupcakes(xpos,ypos,zoom,count):
+        timer (0.0625 * count) - 2.25 action Jump("chapter_three_puppet_death")
+        imagebutton:
+            pos (xpos,ypos) at Transform(zoom = zoom)
+            idle "images/chapter_three/ch03_giftbox.png"
+            hover "images/chapter_three/ch03_giftbox.png"
+            action [
+                #SetVariable("count2", count2-1),
+                Play("sound","audio/sound/chapter_three/the_voices.ogg"),
+                Hide("clickable_chapter_three_puppet_cupcakes"),
+                #Return()
+            ]
+    screen chapter_three_puppet_timer_event(key_input, xalign1, yalign1):
+        timer 0.01 repeat True action If(time > 0.0, true=SetVariable("time", time - 0.01), false=[Return(0), Hide("chapter_three_puppet_timer_event")]) 
+        key key_input action [Return(1), SetVariable("count", count-1), Play("sound","audio/sound/chapter_three/the_voices.ogg")]
+        
+        vbox:
+            xalign xalign1
+            yalign yalign1
+            spacing 25
+            
+            text key_input:
+                xalign 0.5
+                color "#fff"
+                size 32
+            
+            bar:
+                value time
+                range (count * 0.25) - 4.05
+                xalign 0.5
+                xmaximum 100
+                
+                if time < 1.455:
+                    left_bar "#f00"
+    screen clickable_chapter_three_puppet_timer():
+        timer 3.75 + (count / 4.50) action Jump("chapter_three_puppet_death")
+    screen chapter_three_puppet_health_bar(max,enupd):
+        frame:
+            xalign 0.5
+            yalign 0.0
+            hbox:
+                bar:
+                    value AnimatedValue(count, 60, delay = 0.5)
+                    xalign 0.0
+                    yalign 0.0
+                    xmaximum 900
+    label chapter_three_puppet_fight:
+        call chapter_three_fnaf_hide_screens
+        show ch03_fnaf_puppet:
+            subpixel True pos (608, 0) zoom 2.35
+        k "this looks important..."
+        puppet "HOW CAN YOU SEE ME?"
+        k "idk, its just a clickable object on the map so I clicked it"
+        puppet "FUCK CODY!"
+        puppet "FUCK SONU!"
+        puppet "FUCK ???"
+        puppet "AND FUCK VORTEX!"
+        k "hey I know those guys!"
+        puppet "OH SO YOU ARE FUCKING ASSOCIATED WITH THOSE FUCKERS?"
+        k "what no?"
+        puppet "NAH NO TAKEBACKS GET READY FOR ME!!!!!!!!!!!"
+        show screen chapter_three_puppet_health_bar(60,"chapter_three_puppet_win")
+        $ count = 60
+        #$ count = 0
+        window auto hide
+        play music "audio/music/chapter_three/wiping_all_out.ogg"
+        "Beat the Puppet at his game!"
+        hide ch03_fnaf_puppet
+        show ch03_fnaf_puppet2:
+            subpixel True xanchor 873 pos (1413, 16) zoom 5.43 
+        while count > 40:
+            $ randint = renpy.random.randint(330,1500) # X-Value
+            $ randint2 = renpy.random.randint(400,750) # Y-Value
+            show screen clickable_chapter_three_puppet_cupcakes(randint,randint2,1.0,count)
+            $ count -= 1
+            $ renpy.pause(delay = (0.0625 * count) - 2.25, hard=True)
+        puppet "This is so annoying"
+        $ check = 1
+        $ puppet_keys = ["w","a","s","d","i","j","k","l","f","h"]
+        $ puppet_words = ["GIVE GIFTS", "GIVE LIFE", "LIES", "AFTON", "HENRY", "LIFE", "DEATH", "FAILED", "A CYCLE", "GENESIS", "REVELATIONS", "HE ALWAYS COMES BACK", "CODY", "VORTEX", "NECRO", "HIM", "???"]
+        #$ count = 40                                                                                                          
+        while count > 20 and check == 1:
+            $ time = (count * 0.25) - 4.05
+            call screen chapter_three_puppet_timer_event(renpy.random.choice(puppet_keys), renpy.random.randint(1, 9) * 0.1, renpy.random.randint(1, 9) * 0.1)
+            $ check = _return
+        if check == 0:
+            label chapter_three_puppet_death:
+            call auto_advance(0)
+            call chapter_three_fnaf_hide_screens
+            play movie "video/chapter_three/puppet.webm"
+            jump game_over
+        puppet "JUST DIE ALREADY!"
+        window auto hide
+        while count > 0:
+            $ rngint = str(renpy.random.choice(puppet_words))
+            puppet "[str(rngint)]"
+            show screen clickable_chapter_three_puppet_timer()
+            $ user_input = renpy.input("THE GIFT OF DESTRUCTION APPROACHS!")
+            $ user_input = user_input.strip()
+            if user_input != rngint:
+                jump chapter_three_puppet_death
+            hide screen clickable_chapter_three_puppet_timer
+            play sound "audio/sound/chapter_three/the_voices.ogg"
+            $ count -= 1
+        label chapter_three_puppet_win:
+        hide screen chapter_three_puppet_health_bar
+        hide ch03_fnaf_puppet2
+        show ch03_fnaf_puppet:
+            subpixel True pos (608, 0) zoom 2.35
+        puppet "ugh"
+        k "easy"
+        puppet "I cant believe I lost to one of Cody's goons..."
+        k "oh I fucking hate cody, im like his arch enemy"
+        puppet "wait..."
+        puppet "that means you are..."
+        puppet "HIM"
+        k "who is him?"
+        call auto_advance(1)
+        puppet "He will be the savior of the new world!"
+        k "So what am I supposed to do now?"
+        puppet "I think you have to defeat him!"
+        k "how do I do that?"
+        puppet "you have to..."
+        show cody:
+            subpixel True pos (1923, 383) 
+        call dio_time_stop
+        show ch03_fnaf_puppet:
+            subpixel True matrixcolor InvertMatrix(1.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        show ch03_fnaf7_empty:
+            subpixel True matrixcolor InvertMatrix(1.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        show cody:
+            linear 0.85 subpixel True pos (1478, 360)
+        pause 2.0
+        show gun1 with dissolve:
+            subpixel True pos (1298, 460) yrotate 180.0 
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        pause 1.0
+        show gunflare:
+            subpixel True pos (985, 315) zoom 0.45 
+        $ fnaf_shoot(3)
+        hide gunflare with dissolve
+        hide ch03_fnaf_puppet with dissolve
+        pause 0.1
+        show kody:
+            subpixel True pos (-499, 331) 
+            linear 0.45 subpixel True pos (194, 358) 
+        pause 0.45
+        call auto_advance(0)
+        k "WHY WOULD YOU DO THAT?!?"
+        c "you are getting dangerously close to learning some important informations"
+        k "I WILL FIGHT YOU RN"
+        "DON'T!"
+        k "huh?"
+        "He is quite literally holding a gun..."
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        c "YOU WERE SAYING YOU FUCKER?!?"
+        k "uhhh nvm"
+        c "later bozo"
+        call auto_advance(0)
+        $ chapter_three_obtain_item("chapter_three_puppet")
+        call chapter_three_music
+        jump ch03_fnaf_1a

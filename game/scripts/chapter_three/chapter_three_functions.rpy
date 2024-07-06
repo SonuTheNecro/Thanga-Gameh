@@ -41,36 +41,42 @@ init python:
         chapter_three_key_items[item] = ItemState.OBTAINED
     def chapter_three_unobtain_item(item):
         chapter_three_key_items[item] = ItemState.NOT_OBTAINED
-            
+    def fnaf_shoot(count):
+        random_number = randint(count,count*2)
+        count = 0
+        while count < random_number:
+            renpy.sound.play("audio/sound/chapter_one/gun_shot1.ogg")
+            renpy.pause(0.075)
+            count += 1 
 
 #Renpy Code
 screen clickable_chapter_three_jewel_osco():
     imagebutton:
         pos (611, 20) 
         at Transform(yzoom = 1.0, zoom = 0.07)
-        idle "images/ch03jewel.jpg"
-        hover "images/ch03jewel.jpg"
+        idle "images/chapter_three/ch03jewel.jpg"
+        hover "images/chapter_three/ch03jewel.jpg"
         action Jump("chapter_three_jewel_osco")
 screen clickable_chapter_three_house():
     imagebutton:
         pos (1513, 0) 
         at Transform(zoom = 0.71)
-        idle "images/ch03house_clipart.png"
-        hover "images/ch03house_clipart.png"
+        idle "images/chapter_three/ch03house_clipart.png"
+        hover "images/chapter_three/ch03house_clipart.png"
         action Jump("chapter_three_streaming")
 screen clickable_chapter_three_mail():
     imagebutton:
         pos (585, 581) 
         at Transform(zoom = 0.13)
-        idle "images/ch03_mail.png"
-        hover "images/ch03_mail.png"
+        idle "images/chapter_three/ch03_mail.png"
+        hover "images/chapter_three/ch03_mail.png"
         action Jump("chapter_three_mailman")
 screen clickable_chapter_three_herobrine():
     imagebutton:
         pos (1838, 201) 
         at Transform(zoom=0.06)
-        idle "images/ch03_herobrine_alter.png"
-        hover "images/ch03_herobrine_alter.png"
+        idle "images/chapter_three/ch03_herobrine_alter.png"
+        hover "images/chapter_three/ch03_herobrine_alter.png"
         action Jump("chapter_three_herobrine_found")
 
 label chapter_three_jewel_osco:
@@ -243,34 +249,34 @@ label chapter_three_jewel_osco:
     screen clickable_chapter_three_wet_floor_sign():
         imagebutton:
             pos (991, 561)
-            idle "images/ch03_wetfloorsign.png"
-            hover "images/ch03_wetfloorsign.png"
+            idle "images/chapter_three/ch03_wetfloorsign.png"
+            hover "images/chapter_three/ch03_wetfloorsign.png"
             action Call("chapter_three_wet_floor_sign")
     screen clickable_chapter_three_grocery_cart():
         imagebutton:
             pos (1071, 451) 
             at Transform(rotate = -36.0 , zoom = 0.7)
-            idle "images/ch03_cart.png"
-            hover "images/ch03_cart.png"
+            idle "images/chapter_three/ch03_cart.png"
+            hover "images/chapter_three/ch03_cart.png"
             action Call("chapter_three_cart")
     screen clickable_chapter_three_butcher():
         imagebutton:
             pos (55, 326)
-            idle "images/ch03_butcher.png"
-            hover "images/ch03_butcher.png"
+            idle "images/chapter_three/ch03_butcher.png"
+            hover "images/chapter_three/ch03_butcher.png"
             action Call("chapter_three_butcher")
     screen clickable_chapter_three_candy():
         imagebutton:
             pos (1390, 475)
-            idle "images/ch03_candy.png"
-            hover "images/ch03_candy.png"
+            idle "images/chapter_three/ch03_candy.png"
+            hover "images/chapter_three/ch03_candy.png"
             action Call("chapter_three_candy")
     screen clickable_chapter_three_customer():
         imagebutton:
             pos (1106, 226) 
             at Transform(zoom = 1.38)
-            idle "images/ch03_woman.png"
-            hover "images/ch03_woman.png"
+            idle "images/chapter_three/ch03_woman.png"
+            hover "images/chapter_three/ch03_woman.png"
             action Call("chapter_three_customer")
 
     # Location One Event

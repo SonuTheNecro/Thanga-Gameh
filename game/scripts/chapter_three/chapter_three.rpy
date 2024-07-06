@@ -19,7 +19,7 @@ define fnafpg = Character("Pizza Delivery Guy")
 define puppet = Character("The Puppet")
 define balloon = Character("Balloon Boy")
 default chapter_three_jewels_check = [False, False, False, False, False]
-default chapter_three_secret = [False, False, False, False]
+default chapter_three_secret = 0
 default chapter_three_fnaf_money = [False, False, False, False, False, False, False, False] # 2 $5, 5 $1, 2 0.25
 default chapter_three_key_items = {
     "chapter_three_phonecall": ItemState.NOT_OBTAINED,
@@ -41,6 +41,9 @@ default chapter_three_key_items = {
     "chapter_three_gun"      : ItemState.NOT_OBTAINED,
     "chapter_three_pills"    : ItemState.NOT_OBTAINED,
     "chapter_three_bpillow"  : ItemState.NOT_OBTAINED,
+    "chapter_three_afton"    : ItemState.NOT_OBTAINED,
+    "chapter_three_fplush"   : ItemState.NOT_OBTAINED,
+    "chapter_three_puppet"   : ItemState.NOT_OBTAINED,
     }
 
 label chapter_three:
@@ -200,7 +203,7 @@ label chapter_three:
                 linear 1.5 subpixel True pos (405, 381) zoom 1.45
             pause 4.0
             stop sound
-            $ chapter_three_secret[0] = True
+            $ chapter_three_secret += 1
             hb "remember me you cunt?"
             k "oh lol"
             k "WAIT YOU TOLD ME THIS WAS GONNA HAPPEN"
@@ -397,6 +400,7 @@ label chapter_three:
             Chica = Animatronic("Chica Fanum Taxxer")
             Foxy = Animatronic("Foxy")
         #jump chapter_three_office
+        call chapter_three_music
         jump ch03_fnaf_office
         "test"
 label ch03_fnaf_office:
@@ -408,19 +412,19 @@ label ch03_fnaf_office:
         call chapter_three_phone_time
     else:
         call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_office_1:
-    "You are located in the Security Office in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_office_1
 
 label ch03_fnaf_2b:
     $ location = 2
     call chapter_three_fnaf_hide_screens
-    scene ch03_fnaf2 with dissolve:
-        subpixel True yzoom 1.25 zoom 1.2 
+    $ rngint2 = renpy.random.randint(0,50)
+    if rngint2 > 0:
+        scene ch03_fnaf2 with dissolve:
+            subpixel True yzoom 1.25 zoom 1.2 
+    else:
+        play sound2 "audio/sound/chapter_three/golden_freddy_laugh.ogg"
+        scene ch03_fnaf2_gfreddy with dissolve:
+            subpixel True yzoom 1.25 zoom 1.92
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_2b_1:
-    "You are located in the West Hall Corner in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_2b_1
 
 label ch03_fnaf_4b:
     $ location = 3
@@ -428,9 +432,6 @@ label ch03_fnaf_4b:
     scene ch03_fnaf3 with dissolve:
         subpixel True yzoom 1.25 zoom 1.2
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_4b_1:
-    "You are located in the East Hall Corner in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_4b_1
 
 label ch03_fnaf_6:
     $ location = 4
@@ -438,9 +439,6 @@ label ch03_fnaf_6:
     scene ch03_fnaf4 with dissolve:
         subpixel True xzoom 1.34 yzoom 1.02 zoom 1.12 
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_6_1:
-    "You are located in the Kitchen in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_6_1
 
 label ch03_fnaf_3:
     $ location = 5
@@ -452,9 +450,6 @@ label ch03_fnaf_3:
         scene ch03_fnaf5 with dissolve:
             subpixel True yzoom 1.25 zoom 1.2 
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_3_1:
-    "You are located in the Broom Closet in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_3_1
 
 label ch03_fnaf_1b:
     $ location = 6
@@ -462,14 +457,14 @@ label ch03_fnaf_1b:
     scene ch03_fnaf6 with dissolve:
         subpixel True yzoom 1.25 zoom 1.5 
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_1b_1:
-    "You are located in the Dining Area in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_1b_1
 
 label ch03_fnaf_1a:
     $ location = 7
     call chapter_three_fnaf_hide_screens
-    if ((Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission())) and Chica.get_happiness() == 2 and not Chica.get_mission():
+    if Foxy.get_happiness() == 3 and Foxy.get_mission() and chapter_three_secret > 5 and not chapter_three_item_check("chapter_three_puppet"):
+        scene ch03_fnaf7_empty with dissolve:
+            subpixel True yzoom 1.25 zoom 1.92
+    elif ((Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission())) and Chica.get_happiness() == 2 and not Chica.get_mission():
         scene ch03_fnaf7_only_freddy with dissolve:
             subpixel True yzoom 1.25 zoom 1.92
     elif (Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission()):
@@ -481,12 +476,7 @@ label ch03_fnaf_1a:
     else:
         scene ch03_fnaf7 with dissolve:
             subpixel True yzoom 1.25 zoom 1.2 
-
-
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_1a_1:
-    "You are located in the Stage Area in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_1a_1
 
 label ch03_fnaf_5:
     $ location = 8
@@ -494,9 +484,6 @@ label ch03_fnaf_5:
     scene ch03_fnaf8 with dissolve:
         subpixel True yzoom 1.25 zoom 1.6 
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_5_1:
-    "You are located in the Backstage Area in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_5_1
 
 label ch03_fnaf_1c:
     $ location = 9
@@ -516,9 +503,6 @@ label ch03_fnaf_1c:
         scene ch03_fnaf9 with dissolve:
             subpixel True yzoom 1.25 zoom 1.2 
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_1c_1:
-    "You are located in the Pirate Cove in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_1c_1
 
 label ch03_fnaf_7:
     $ location = 10
@@ -526,9 +510,6 @@ label ch03_fnaf_7:
     scene ch03_fnaf10 with dissolve:
         subpixel True yzoom 1.25 zoom 1.2 
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_7_1:
-    "You are located in the Restrooms in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_7_1
 
 label ch03_fnaf_2a:
     $ location = 11
@@ -536,9 +517,6 @@ label ch03_fnaf_2a:
     scene ch03_fnaf11 with dissolve:
         subpixel True xpos -306 yzoom 1.06 zoom 1.77 
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_2a_1:
-    "You are located in the West Hall in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_2a_1
 
 label ch03_fnaf_4a:
     $ location = 12
@@ -546,9 +524,6 @@ label ch03_fnaf_4a:
     scene ch03_fnaf12 with dissolve:
         subpixel True xpos -234 yzoom 1.1 zoom 1.72 
     call chapter_three_fnaf_restore_screens(location)
-    label ch03_fnaf_4a_1:
-    "You are located in the East Hall in Freddy Fazgyatt's Rizzaria"
-    jump ch03_fnaf_4a_1
 
 
 label chapter_three_ending:
@@ -556,16 +531,210 @@ label chapter_three_ending:
     show ch03_fnaf_foxy:
         subpixel True xpos 450 zoom 0.93 
     k "NO NOT ANYMORE BOSS BATTLES FUCK RIGHT OFF!"
-    foxy "Is that was the others been making you doing?"
-    k "yeah..."
-    foxy "eh my boss battle can be a secret ending for the sleuths out there"
-    k "so I am stuck here, and you can help me right?"
+    foxy "Is dat waz de odders bean mikkinng u doeng?"
+    k "yeah sure i don't speak whatever you are saying"
+    foxy "eye rash m8"
+    foxy "wat r u dewing otta hear en free em?"
+    k "I am stuck here"
+    foxy "dew u liek 2 weave?"
+    k "YES YES YES PLEASE!"
+    foxy "I got you fam"
     foxy "uh sir, lets just go" #Animation stuff here
-
+    show ch03_fnaf_foxy:
+        linear 0.25 subpixel True xalign 2.0
+    pause 0.25
+    play sound "audio/sound/chapter_three/fnaf_jumpscare.ogg"
+    foxy "Cum hear u dallywag!"
     scene ch03_fnaf_prep1 with dissolve:
         subpixel True zoom 0.75 
-    
+    k "holy shit I am FREE"
+    show ch03_fnaf_foxy with dissolve:
+        subpixel True xpos 450 zoom 0.93
+    foxy "well take care me friend!"
+    k "wait you sound normal!"
+    foxy "hahaha, I am only irish while im in the rizzaria!"
+    foxy "I can talk out here without a dick up my ass!"
+    k "huh?"
+    foxy "it's pride month"
+    "This line was written during pride month"
+    "laugh"
+    foxy "I suppose you can leave now"
+    k "I feel like there is a lot of loose-ends and things not accounted for..."
+    k "Where was Cody?"
+    k "What happened to afton?"
+    k "How am I going to get home?"
+    k "What is the lore of Five Nights?"
+    "Its fnaf, you have to find all the secrets to get your answer"
+    k "oh"
+    "for a shitty mid story that people pretend is straight peak"
+    k "oh okay!"
+    foxy "I would go before the twisted one get you..."
+    k "How do I get home though?"
+    call auto_advance(1)
+    "Idk use a jumpcut?"
+    k "like a what cut?!?"
+    show ch03couch with dissolve:
+        subpixel True xpos -126 xzoom 1.35 zoom 1.77 
+    stop music
+    play music "audio/music/chapter_three/beneath_the_mask.ogg" loop
+    show thanga2 with dissolve:
+        subpixel True pos (1548, 153) yrotate 180.0 
+    show kody:
+        subpixel True pos (-325, 218)
+    show kody with dissolve:
+        linear 0.5 subpixel True pos (143, 218)
+    $ renpy.pause(0.5, hard = True)
+    call auto_advance(0)
     k "Wow, that was way easier than I thought it'd be!"
-
+    t "so how was your day?"
+    t "I was at work working at the nail shop for 9 hours"
+    t "what did your lazy ass do all day?"
+    k "I was at Freddy Fazgyatt's Rizzaria"
+    pause 1.0
+    t "..."
+    k "I am 100\% serious"
+    t "okay buddy"
+    t "good to know you are unworkful and lazy as possible!"
+    show ch03couch:
+        matrixcolor SaturationMatrix(0)
+    show thanga2:
+        matrixcolor SaturationMatrix(0)
+    show kody:
+        matrixcolor SaturationMatrix(0)
+    "Well..."
+    "That was quite eventful!"
+    "Kody made a lot of new friends and failed a lot of jobs..."
+    "This is truly the romcom anime we were looking for..."
+    call auto_advance(1)
+    "END"
+    "OF"
+    "CHAPTER!"
+    call auto_advance(0)
+    #matrixcolor SaturationMatrix(0)
     $ persistent.ch03 = True
-    "end of chapter three"
+
+    if chapter_three_item_check("chapter_three_puppet"):
+        label chapter_three_secret:
+        stop music
+        play music "audio/music/chapter_three/basement_ambience.ogg" loop
+        scene ch03_safe_room with dissolve:
+            subpixel True yzoom 1.25 zoom 0.75
+        play sound "audio/sound/chapter_one/street1.ogg"
+        show ch03_afton1:
+            subpixel True pos (-345, 631) 
+            linear 1.0 pos (780, 586) 
+        pause 1.0
+        stop sound
+        afton "Why was I told to come to the safe room?"
+        questionmark "because you are..."
+        questionmark "A FAILURE!"
+        afton "huh?"
+        show cody:
+            subpixel True pos (1926, 455) 
+        
+        show ch03_afton1:
+            linear 0.45 subpixel True pos (330, 426) yzoom 1.0 zoom 1.53 
+        show cody:
+            linear 0.6 subpixel True pos (1224, 455)
+        pause 0.6
+        afton "uh hello cody!"
+        afton "I completed your job"
+        afton "I brought Kody to the murderhouse"
+        c "THAT'S COMPLETING THE JOB?!?"
+        c "YOU FAILED!"
+        afton "You killed my puppet..."
+        c "YEAH BECAUSE HE WAS ABOUT TO SNITCH ON HOW TO END OUR ORGANIZATION!"
+        afton "well I cannot control kody, that's your end"
+        c "..."
+        c "..."
+        afton "so what now?"
+        c "THAT"
+        c "IS UP TO ME"
+        show gun1:
+            subpixel True pos (1066, 560) yrotate 180.0
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        pause 0.1
+        afton "oh yeah?"
+        show gun1 as gun2:
+            subpixel True pos (686, 648)
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        c "why?"
+        call auto_advance(1)
+        afton "I DID NOT FUCKING FAIL"
+        window auto hide
+        show gunflare:
+            subpixel True pos (670, 476) zoom 0.52 
+        $ fnaf_shoot(2)
+        call auto_advance(0)
+        hide gunflare
+        afton "huh?"
+        c "stupid afton..."
+        c "You really thought bullets stop me?"
+        c "this is why I must keep my secret hidden"
+        window auto hide
+        show gunflare:
+            subpixel True pos (788, 430) zoom 0.4 
+        $ fnaf_shoot(15)
+        hide gunflare
+        hide ch03_afton1 with dissolve
+        hide gun2
+        $ persistent.secret3 = True
+        c "what a fucking joke"
+        hide gun1
+
+        show sonuthenecro:
+            subpixel True pos (-504, 265) zoom 0.81 
+            linear 0.45 subpixel True pos (234, 265) zoom 0.81 
+        stn "Well he is dead..."
+        c "HUH?"
+        c "WHY ARE YOU HERE?"
+        stn "boss told me what will happen"
+        stn "You really did a number on will..."
+        c "yeah he thought he would win"
+        stn "mhmm"
+        c "so how do we hide the body?"
+        show ch03_springtrap_empty with dissolve:
+            subpixel True pos (786, 495) 
+        stn "I found this suit in the back!"
+        c "so?"
+        stn "let's do something poetic"
+        c "wdym"
+        stn "idk"
+        stn "henry mentioned it"
+        stn "something about the creator is now trapped in the creation"
+        c "OOOOOOOOOOO TRUUUUUUUUU"
+        stn "nothing bad will happen like he somehow haunts the suit and wants revenge on you"
+        c "why did you say it like that"
+        stn "don't worry about it"
+        c "BRO YOU JUST FUCKING SAID IT WILL KILL US"
+        stn "uhh we can just reprogram it off-camera to just kill kody if it ever did come after us"
+        stn "also didn't you encounter kody, why didn't you just kill him?"
+        c "..."
+        c "fuck"
+        stn "you forgot?"
+        c "I thought we weren't supposed to"
+        stn "uh boss said we can now, before its too late"
+        c "What is too late?"
+        stn "uhh kody is getting stronger with his maxxing and if he full-maxxes"
+        stn "he could theoretically kill the boss"
+        c "WAIT WHAT?"
+        c "WAIT WE GOTTA STOP HIM"
+        stn "patience is everything, let's just wait for the right opportunity"
+        c "ugh fine"
+        stn "let's get out of this hell-hole, we need to coordinate with Trip"
+        
+        show cody:
+            subpixel True yrotate 180.0
+            linear 0.45 xpos 2070
+        show sonuthenecro:
+            linear 0.45 subpixel True xpos 1800 
+        "..."
+        "..."
+        "..."
+        show ch03_springtrap_eyes with dissolve:
+            subpixel True pos (971, 643) zoom 0.06 
+        show ch03_springtrap_eyes as eyes2 with dissolve:
+            subpixel True pos (935, 655) zoom 0.06
+        play sound "audio/sound/chapter_three/come_back.ogg"
+        questionmark "I always come back"
+    return

@@ -944,6 +944,7 @@ label chapter_one_hide_screen:
     hide screen clickable_chapter_one_playtime
     hide screen clickable_chapter_one_brian
     hide screen clickable_chapter_one_thanga
+    hide screen clickable_baldi_exit
     return
 #Code used for the secret Conversion in Chapter One Subway Path
 label chapter_one_subway_conversation:
@@ -963,7 +964,11 @@ label chapter_one_subway_conversation:
         stn "I suggest you eat all of the lunches though"
         stn "They taste pretty good"
         stn "What is your favorite lunch Henry?"
-        #TODO, just put whatever you want
+        tv "I am a big fan of the BLT"
+        stn "what's in that?"
+        tv "Uh bacon lettuce tomato"
+        tv "straight bussin bussin"
+        stn "sounds good ain't even gonna cap lol"
     else: 
         show screen clickable_chapter_one_secret_lopunny(910,210,0.29)
         stn "Well I am glad you three have made it to lunch"
