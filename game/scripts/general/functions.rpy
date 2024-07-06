@@ -36,7 +36,6 @@ image blood_red = Solid("#790000")
 label game_over:
     stop sound
     stop music
-    pause 5.0
     play music "audio/music/prologue/aria_of_the_soul.ogg"
     scene velvet room with fade:
         subpixel True pos (-0.08, 0.0) yzoom 1.12 zoom 1.22 

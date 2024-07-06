@@ -19,7 +19,7 @@ define fnafpg = Character("Pizza Delivery Guy")
 define puppet = Character("The Puppet")
 define balloon = Character("Balloon Boy")
 default chapter_three_jewels_check = [False, False, False, False, False]
-default chapter_three_secret = [False, False, False, False, False]
+default chapter_three_secret = 0
 default chapter_three_fnaf_money = [False, False, False, False, False, False, False, False] # 2 $5, 5 $1, 2 0.25
 default chapter_three_key_items = {
     "chapter_three_phonecall": ItemState.NOT_OBTAINED,
@@ -41,6 +41,9 @@ default chapter_three_key_items = {
     "chapter_three_gun"      : ItemState.NOT_OBTAINED,
     "chapter_three_pills"    : ItemState.NOT_OBTAINED,
     "chapter_three_bpillow"  : ItemState.NOT_OBTAINED,
+    "chapter_three_afton"    : ItemState.NOT_OBTAINED,
+    "chapter_three_fplush"   : ItemState.NOT_OBTAINED,
+    "chapter_three_puppet"   : ItemState.NOT_OBTAINED,
     }
 
 label chapter_three:
@@ -200,7 +203,7 @@ label chapter_three:
                 linear 1.5 subpixel True pos (405, 381) zoom 1.45
             pause 4.0
             stop sound
-            $ chapter_three_secret[0] = True
+            $ chapter_three_secret += 1
             hb "remember me you cunt?"
             k "oh lol"
             k "WAIT YOU TOLD ME THIS WAS GONNA HAPPEN"
@@ -458,7 +461,10 @@ label ch03_fnaf_1b:
 label ch03_fnaf_1a:
     $ location = 7
     call chapter_three_fnaf_hide_screens
-    if ((Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission())) and Chica.get_happiness() == 2 and not Chica.get_mission():
+    if Foxy.get_happiness() == 3 and Foxy.get_mission() and chapter_three_secret > 5 and not chapter_three_item_check("chapter_three_puppet"):
+        scene ch03_fnaf7_empty with dissolve:
+            subpixel True yzoom 1.25 zoom 1.92
+    elif ((Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission())) and Chica.get_happiness() == 2 and not Chica.get_mission():
         scene ch03_fnaf7_only_freddy with dissolve:
             subpixel True yzoom 1.25 zoom 1.92
     elif (Bonnie.get_happiness() == 0 and Bonnie.get_mission()) or (Bonnie.get_happiness() == 2 and not Bonnie.get_mission()):
@@ -586,7 +592,7 @@ label chapter_three_ending:
     k "I was at Freddy Fazgyatt's Rizzaria"
     pause 1.0
     t "..."
-    k "I am 100% serious"
+    k "I am 100\% serious"
     t "okay buddy"
     t "good to know you are unworkful and lazy as possible!"
     show ch03couch:
