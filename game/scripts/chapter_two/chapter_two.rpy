@@ -7,10 +7,12 @@
 
 # Chapter Two Characters/Variables
 define bk = Character("Brian and Kody")
+define bkm = Character("Brian, Kody, and Matt")
 define m = Character("Monokuma")
 define mt = Character("Matt")
 define ocho = Character("Ocho")
 define march = Character("March 7th", who_color="#B0E6FA")
+define emarch = Character("Evil March 7th", who_color="#5c1d1d")
 define heavy = Character("Heavy")
 define pw = Character("Phoenix Wright")
 define ev = Character("Everyone")
@@ -257,28 +259,198 @@ label chapter_two:
         t "huh"
         t "that wasn't in the game"
         show black with fade
-        pause 5.0
+        pause 4.0
 
         label chapter_two_gym:
             scene danganronpa_gym with fade:
                 subpixel True xzoom 0.76 yzoom 0.76
-            show thanga2:
-                subpixel True pos (3, 556) xzoom 0.9 yzoom 0.9
-            show kody:
-                subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
-            show brian3:
-                subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
-            show matt2:
-                subpixel True pos (760, 571) xzoom 0.17 yzoom 0.17
-            show ocho:
-                subpixel True pos (896, 906) xzoom 0.35 yzoom 0.35
-            show march_7th:
-                subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
-            show phoenix_wright:
-                subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
-            show heavy_tf2:
-                subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
-            t "alright so what do we do now"
+            call chapter_two_all_except_cody
+            hide monokuma
+            t "alright so what do we do now?"
+            b "what do we do? we beat this bears ass"
+            heavy "Yes. Heavy no lose to little bear"
+            t "nuh uh nope no one is fighting that bear. you will die"
+            heavy "You are weak man. No need to follow weak man"
+            t "what about cody? he would have done something if he could have"
+            heavy "..."
+            heavy "Heavy will eat sandvich"
+            b "alright pussies ill do it then"
+            "What should you do?"
+            menu:
+                "Let Brian fight Monokuma":
+                    jump brian_fight_monokuma
+                "Stop Brian":
+                    jump stop_brian
+            label brian_fight_monokuma:
+                b "im gonna beat his little ass"
+                window auto hide
+                show gun2:
+                    subpixel True pos (0.48, 0.58) xzoom 0.15 yzoom 0.15 
+                play sound "audio/sound/chapter_one/glock_magchange.ogg"
+                pause 2.0 
+                show gunflare:
+                    subpixel True pos (830, 583) xzoom 0.2 yzoom 0.2 
+                $ baldi_shoot(15)
+                jump game_over
+            label stop_brian:
+                t "no brian stop don't you see that gun"
+                show gun2:
+                    subpixel True pos (0.48, 0.58) xzoom 0.15 yzoom 0.15 
+                play sound "audio/sound/chapter_one/glock_magchange.ogg"
+                pause 2.0 
+                b "damn man is strapped"
+                play sound "audio/sound/chapter_two/monokuma_agree.ogg"
+                m "Yep, and i'm not afraid to use it!"
+                march "Alright! We will do whatever you want!"
+                march "Just don't shoot anybody!"
+                k "see, the rizz worked"
+                k "shes trying to protect me"
+                t "..."
+                pw "Alright, what do you want us to do then?"
+                m "I brought you guys here for one reason"
+                m "And that is to kill each other!"
+                pw "..."
+                march "..."
+                heavy "..."
+                mt "..."
+                b "..."
+                k "..."
+                $ _preferences.afm_enable = True
+                $ _preferences.afm_time = 6
+                t "yea i knew tha-"
+                $ _preferences.afm_enable = False
+                ev "WHAAAATTT?!?"
+                pw "You can't make us do that!"
+                march "That's right!"
+                march "Even though I just met these people, I could never kill them!"
+                heavy "As long as you have no problem with Heavy, Heavy have no problem with you"
+                k "i could never kill brian or matt!"
+                b "yea me neither"
+                mt "or me!"
+                t "what about me"
+                bkm "well..."
+                t "bruh"
+                m "Oh trust me"
+                m "I'll make sure you will want to kill each other"
+                t "and how will you do that?"
+                t "by showing us our families?"
+                t "or revealing our deepest secrets?"
+                t "well too bad for you"
+                t "my family already doesn't care for me!"
+                t "and everyone already knows about me gooning!"
+                ev "..."
+                hide gun2
+                m "..."
+                m "i was only saying that just in case someone wanted to kill another person"
+                m "i was just gonna kill someone and pin it on someone else or something"
+                t "..."
+                m "im kinda bored now so ill show you the rest of the building"
+                show black with fade
+
+        label chapter_two_after_gym:
+            scene danganronpa_hallway with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            call chapter_two_all_except_cody
+            m "this is the hallway connecting the different rooms"
+            m "the bathrooms are broken though so you can't use them"
+            m "use the ones in your rooms"
+            k "but what if i need to go now?"
+            m "too bad"
+            b "dont piss your pants like last time"
+            scene danganronpa_nurse with fade:
+                subpixel True zoom 0.76
+            call chapter_two_all_except_cody
+            m "this is the nurses office"
+            m "come here if you get hurt"
+            m "or don't cause i want you guys to die"
+            k "but there is no nurse, so who will i be able to rizz?"
+            t "what about saving you?"
+            march "Don't worry guys! I know a few tricks in first-aid!"
+            k "the rizzler strikes again"
+            t "???"
+            scene danganronpa_hallway with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            scene danganronpa_lobby with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            call chapter_two_all_except_cody
+            m "this is the lobby"
+            m "it connects to the hall, changing room, dorms, and hallway leading to the gym"
+            scene danganronpa_hall with fade:
+                subpixel True zoom 0.76
+            call chapter_two_all_except_cody
+            m "this is the hall where you guys will meet after waking up"
+            m "you guys will also be eating here"
+            k "WE GET FREE FOOD!?"
+            k "IS IT MCDONALDS OR CHUCK E CHEESE??"
+            m "no fatass its salads and vitamin shakes only"
+            k "FUUCCCKKKK"
+            k "also what time will we be waking up?"
+            k "12? 1?"
+            m "8"
+            k "8 P.M?? LETS FUCKING GO"
+            m "8 A.M"
+            k "FFFFFFUUUUUUUUCCCCCCCKKKKKKK"
+            scene danganronpa_lobby with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            scene danganronpa_changing with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            call chapter_two_all_except_cody
+            m "this is the changing room for the pool"
+            mt "lets go i can swim with ocho"
+            heavy "Heavy also like to svim"
+            m "sorry but the pool is also closed"
+            k "dangit"
+            march "Aww man. I was also looking foward to swimming."
+            k "NNNNNNNOOOOOOOOOOOOOOOOOOOOOOOO"
+            scene danganronpa_lobby with fade:
+                subpixel True xzoom 0.76 yzoom 0.76
+            scene danganronpa_hall with fade:
+                subpixel True zoom 0.76
+            call chapter_two_all_except_cody
+                
             $ persistent.chapter_two_gym = True #Better testing to get back here
+            "test"
     
 
+    label ch02_area_1:
+        $ location = 1
+        call chapter_two_hide_screens
+        scene danganronpa_dorm:
+            subpixel True
+        call chapter_two_restore_screens(location)
+    label ch02_area_2:
+        $ location = 2
+        call chapter_two_hide_screens
+        scene danganronpa_changing with fade:
+            subpixel True xzoom 0.76 yzoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_3:
+        $ location = 3
+        call chapter_two_hide_screens
+        scene danganronpa_lobby with fade:
+            subpixel True xzoom 0.76 yzoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_4:
+        $ location = 4
+        call chapter_two_hide_screens
+        scene danganronpa_hall with fade:
+            subpixel True zoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_5:
+        $ location = 5
+        call chapter_two_hide_screens
+        scene danganronpa_nurse with fade:
+            subpixel True zoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_6:
+        $ location = 6
+        call chapter_two_hide_screens
+        scene danganronpa_hallway with fade:
+            subpixel True xzoom 0.76 yzoom 0.76
+        call chapter_two_restore_screens(location)
+    label ch02_area_7:
+        $ location = 7
+        call chapter_two_hide_screens
+        scene danganronpa_gym with fade:
+            subpixel True xzoom 0.76 yzoom 0.76
+        call chapter_two_restore_screens(location)
