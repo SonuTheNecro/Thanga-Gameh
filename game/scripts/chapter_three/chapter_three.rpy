@@ -612,4 +612,129 @@ label chapter_three_ending:
     call auto_advance(0)
     #matrixcolor SaturationMatrix(0)
     $ persistent.ch03 = True
+
+    if chapter_three_item_check("chapter_three_puppet"):
+        label chapter_three_secret:
+        stop music
+        play music "audio/music/chapter_three/basement_ambience.ogg" loop
+        scene ch03_safe_room with dissolve:
+            subpixel True yzoom 1.25 zoom 0.75
+        play sound "audio/sound/chapter_one/street1.ogg"
+        show ch03_afton1:
+            subpixel True pos (-345, 631) 
+            linear 1.0 pos (780, 586) 
+        pause 1.0
+        stop sound
+        afton "Why was I told to come to the safe room?"
+        questionmark "because you are..."
+        questionmark "A FAILURE!"
+        afton "huh?"
+        show cody:
+            subpixel True pos (1926, 455) 
+        
+        show ch03_afton1:
+            linear 0.45 subpixel True pos (330, 426) yzoom 1.0 zoom 1.53 
+        show cody:
+            linear 0.6 subpixel True pos (1224, 455)
+        pause 0.6
+        afton "uh hello cody!"
+        afton "I completed your job"
+        afton "I brought Kody to the murderhouse"
+        c "THAT'S COMPLETING THE JOB?!?"
+        c "YOU FAILED!"
+        afton "You killed my puppet..."
+        c "YEAH BECAUSE HE WAS ABOUT TO SNITCH ON HOW TO END OUR ORGANIZATION!"
+        afton "well I cannot control kody, that's your end"
+        c "..."
+        c "..."
+        afton "so what now?"
+        c "THAT"
+        c "IS UP TO ME"
+        show gun1:
+            subpixel True pos (1066, 560) yrotate 180.0
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        pause 0.1
+        afton "oh yeah?"
+        show gun1 as gun2:
+            subpixel True pos (686, 648)
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        c "why?"
+        call auto_advance(1)
+        afton "I DID NOT FUCKING FAIL"
+        window auto hide
+        show gunflare:
+            subpixel True pos (670, 476) zoom 0.52 
+        $ fnaf_shoot(2)
+        call auto_advance(0)
+        hide gunflare
+        afton "huh?"
+        c "stupid afton..."
+        c "You really thought bullets stop me?"
+        c "this is why I must keep my secret hidden"
+        window auto hide
+        show gunflare:
+            subpixel True pos (788, 430) zoom 0.4 
+        $ fnaf_shoot(15)
+        hide gunflare
+        hide ch03_afton1 with dissolve
+        hide gun2
+        $ persistent.secret3 = True
+        c "what a fucking joke"
+        hide gun1
+
+        show sonuthenecro:
+            subpixel True pos (-504, 265) zoom 0.81 
+            linear 0.45 subpixel True pos (234, 265) zoom 0.81 
+        stn "Well he is dead..."
+        c "HUH?"
+        c "WHY ARE YOU HERE?"
+        stn "boss told me what will happen"
+        stn "You really did a number on will..."
+        c "yeah he thought he would win"
+        stn "mhmm"
+        c "so how do we hide the body?"
+        show ch03_springtrap_empty with dissolve:
+            subpixel True pos (786, 495) 
+        stn "I found this suit in the back!"
+        c "so?"
+        stn "let's do something poetic"
+        c "wdym"
+        stn "idk"
+        stn "henry mentioned it"
+        stn "something about the creator is now trapped in the creation"
+        c "OOOOOOOOOOO TRUUUUUUUUU"
+        stn "nothing bad will happen like he somehow haunts the suit and wants revenge on you"
+        c "why did you say it like that"
+        stn "don't worry about it"
+        c "BRO YOU JUST FUCKING SAID IT WILL KILL US"
+        stn "uhh we can just reprogram it off-camera to just kill kody if it ever did come after us"
+        stn "also didn't you encounter kody, why didn't you just kill him?"
+        c "..."
+        c "fuck"
+        stn "you forgot?"
+        c "I thought we weren't supposed to"
+        stn "uh boss said we can now, before its too late"
+        c "What is too late?"
+        stn "uhh kody is getting stronger with his maxxing and if he full-maxxes"
+        stn "he could theoretically kill the boss"
+        c "WAIT WHAT?"
+        c "WAIT WE GOTTA STOP HIM"
+        stn "patience is everything, let's just wait for the right opportunity"
+        c "ugh fine"
+        stn "let's get out of this hell-hole, we need to coordinate with Trip"
+        
+        show cody:
+            subpixel True yrotate 180.0
+            linear 0.45 xpos 2070
+        show sonuthenecro:
+            linear 0.45 subpixel True xpos 1800 
+        "..."
+        "..."
+        "..."
+        show ch03_springtrap_eyes with dissolve:
+            subpixel True pos (971, 643) zoom 0.06 
+        show ch03_springtrap_eyes as eyes2 with dissolve:
+            subpixel True pos (935, 655) zoom 0.06
+        play sound "audio/sound/chapter_three/come_back.ogg"
+        questionmark "I always come back"
     return

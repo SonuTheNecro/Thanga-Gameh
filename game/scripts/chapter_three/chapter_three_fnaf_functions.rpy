@@ -1516,7 +1516,7 @@ label chapter_three_bonnie_mission3:
         stop music
         play music "audio/music/chapter_three/fnaf_bonnie_music.ogg"
         bonnie "AND I INTEND IT TO BE ME!"
-        $ keys = ["w", "a", "s", "d"]
+        $ keys = ["q", "w", "e", "r"]
         $ choice = 30
         $ rngint = 0
         $ check = 1
@@ -1534,14 +1534,12 @@ label chapter_three_bonnie_mission3:
             elif choice == 20:
                 bonnie "The gloves are off! No more jokes."
                 $ keys.append("l")
-                $ keys.append("e")
+                $ keys.append("k")
                 window auto hide
             elif choice == 10:
                 bonnie "NOW I AM ANGRY, BEHOLD THE POWER OF LOOKSMAXXING!"
-                $ keys.append("q")
-                $ keys.append("r")
-                $ keys.append("z")
-                $ keys.append("c")
+                $ keys.append("h")
+                $ keys.append("j")
                 window auto hide
         if check == 0:
             call auto_advance(0)
@@ -1590,7 +1588,7 @@ label chapter_three_freddy_mission1:
         k "fuck off"
         show gunflare:
             subpixel True pos (763, 391) zoom 0.28 
-        play sound "audio/sound/chapter_one/gun_shot1.ogg"
+        $ fnaf_shoot(3)
         balloon "OW, FUCK OFF"
         hide gunflare
         show ch03_fnaf_bb:
@@ -1955,12 +1953,7 @@ label chapter_three_secret_puppet:
         pause 1.0
         show gunflare:
             subpixel True pos (985, 315) zoom 0.45 
-        play sound "audio/sound/chapter_one/gun_shot1.ogg"
-        pause 0.25
-        play sound "audio/sound/chapter_one/gun_shot1.ogg"
-        pause 0.25
-        play sound "audio/sound/chapter_one/gun_shot1.ogg"
-        pause 0.25
+        $ fnaf_shoot(3)
         hide gunflare with dissolve
         hide ch03_fnaf_puppet with dissolve
         pause 0.1

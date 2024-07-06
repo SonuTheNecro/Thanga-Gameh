@@ -90,13 +90,10 @@ label start:
             "Chapter_3" if persistent.ch01 == True:
                 #jump chapter_two
                 jump chapter_three
-            "Chapter_3_job" if persistent.ch01 == True:
-                #jump chapter_two
-                jump chapter_three_job
             "Chapter_3_fnaf_start" if persistent.ch01 == True:
                 jump chapter_three_fnaf_start
-            "Chapter_3_fnaf_ending" if persistent.ch01 == True:
-                jump chapter_three_ending
+            "Chapter_3_fnaf_secret" if persistent.ch01 == True:
+                jump chapter_three_secret
             "Erase all Data":
                 $ renpy.delete_persistent()
                 "All persistent Data has been deleted"
