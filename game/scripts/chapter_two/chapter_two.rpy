@@ -407,7 +407,41 @@ label chapter_two:
             scene danganronpa_hall with fade:
                 subpixel True zoom 0.76
             call chapter_two_all_except_cody
-                
+            b "I just realized I am going to miss work"
+            b "I gotta call my manager rq"
+            ev "YOU HAVE YOUR PHONE!"
+            t "BRIAN CALL THE POLICE OR SOMETHING" #Ring sound here
+
+            $ renpy.pause(delay = 1.0, hard = True)
+            b "Uh hey, I won't be able to make it to work"
+            ev "..."
+            b "yeah its a \"family\" emergency "
+            b "dang my pay just got cut by $27 per hour"
+            mt "wait how much were you making per hour?"
+            b "14.50"
+            mt "WHATTTTTTTTTTTTTTTTTTTTTTT"
+            t "BRIAN!"
+            b "what?"
+            t "CALL SOMEONE FOR HELP!"
+            b "uhhhh my phone just died..."
+            ev "..."
+            t "soooo let me get this straight"
+            t "We are stuck in a vault bunker with a murderous bear"
+            t "and you WASTE our ONE phone-call"
+            t "for FUCKING WORK?"
+            b "yeah?"
+            t "BRIAN YOU CAN'T HAVE WORK IF YOU FUCKING DIE RIGHT HERE"
+            b "oh"
+            b "maybe the bear is like chill?"
+            t "NO IM THE ONLY ONE HERE WHO KNOWS WHAT THAT BEAR IS CAPABLE OF"
+            t "WE ARE DEAD"
+            march "Thang, I think you need to calm down"
+            ocho "(Barks in sadness)"
+            heavy "Yelling is ztrezzin heavy weapons guy"
+            mt "let's just go to bed and think over our options tomorrow"
+            b "yeah matt's right"
+            $ count = 0
+            jump ch02_area_1
             $ persistent.chapter_two_gym = True #Better testing to get back here
             "test"
     
@@ -415,7 +449,7 @@ label chapter_two:
     label ch02_area_1:
         $ location = 1
         call chapter_two_hide_screens
-        scene danganronpa_dorm:
+        scene danganronpa_dorm with fade:
             subpixel True
         call chapter_two_restore_screens(location)
     label ch02_area_2:
