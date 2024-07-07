@@ -169,27 +169,27 @@ label chapter_two_phoenix:
         $ count += 1
     $ count2 += 1
     return
-
-label chapter_two_all_except_cody:
-    show thanga2:
-        subpixel True pos (3, 556) xzoom 0.9 yzoom 0.9
-    show kody:
-        subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
-    show brian3:
-        subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
-    show matt2:
-        subpixel True pos (1065, 580) xzoom 0.17 yzoom 0.17
-    show ocho:
-        subpixel True pos (930, 906) xzoom 0.35 yzoom 0.35
-    show march_7th:
-        subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
-    show phoenix_wright:
-        subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
-    show heavy_tf2:
-        subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
-    show monokuma:
-        subpixel True pos (0.38, 0.76) xzoom 0.5 yzoom 0.5
-    return
+label chapter_two_show_character_lists:
+    label chapter_two_all_except_cody:
+        show thanga2:
+            subpixel True pos (3, 556) xzoom 0.9 yzoom 0.9
+        show kody:
+            subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
+        show brian3:
+            subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
+        show matt2:
+            subpixel True pos (1065, 580) xzoom 0.17 yzoom 0.17
+        show ocho:
+            subpixel True pos (930, 906) xzoom 0.35 yzoom 0.35
+        show march_7th:
+            subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
+        show phoenix_wright:
+            subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
+        show heavy_tf2:
+            subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
+        show monokuma:
+            subpixel True pos (0.38, 0.76) xzoom 0.5 yzoom 0.5
+        return
 
 # Handles the movement for the investigation part for chapter two
 label chapter_two_movement:
@@ -273,18 +273,124 @@ label chapter_two_restore_movement(location):
 # Put all clickable objects here
 label chapter_two_restore_screens(location):
     if location == 1:
-        pass
+        if count == 0:
+            call chapter_two_wake_up
     elif location == 2:
-        pass
+        if count == 3:
+            call chapter_two_ocho_dead
     elif location == 3:
         pass
     elif location == 4:
-        pass
+        if count == 1:
+            call chapter_two_intro_meeting
     elif location == 5:
         pass
     elif location == 6:
-        pass
+        if count == 2:
+            call chapter_two_matt_meeting1
     elif location == 7:
         pass
     call chapter_two_restore_movement(location)
     return
+
+label chapter_two_events:
+    label chapter_two_wake_up:
+        show thanga2:
+            subpixel True pos (560, 295) 
+        t "Why did I get the girl's room"
+        t "I guess I should go meet up with everyone else and discuss"
+        t "but holy shit Brian is a dumbass"
+        show brian1:
+            subpixel True pos (1900, 323) 
+            linear 0.65 subpixel True pos (1153, 323) 
+        pause 0.7
+        b "shut the fuck up"
+        t "where the fuck were you?"
+        b "I was in the bathroom"
+        t "oh"
+        b "it was very important for me to call off work"
+        b "The CEO is like this mega powerful guy who would literally murder me if I didn't call in"
+        b "For me, dealing with the bear has better odds than dealing with Jewel Osco's Ceo"
+        t "you need to get a new job"
+        b "cant"
+        t "why?"
+        b "Jewel Osco is more like a cult"
+        b "you don't just leave the job"
+        b "the job leaves you"
+        t "okay brian"
+        $ count = 1
+        return
+    label chapter_two_intro_meeting:
+        call chapter_two_all_except_cody
+        hide matt2
+        hide monokuma
+        hide ocho
+        k "Thang you look so sleepy"
+        t "can't sleep when there is a murderous bear nearby waiting to strike at any opportunity"
+        b "well technically"
+        b "everyday you are at risk of being shot"
+        b "so you should just accept death being an inevitable being"
+        t "that doesn't help me feel better"
+        march "Well smiling always keeps me feeling good"
+        march ":)"
+        t ":("
+        march ";)"
+        k ":)"
+        march ":)"
+        k "W Rizz"
+        t "Shut the fuck up"
+        t "uhh where is matt"
+        heavy "Heavy weapons guy could not locate singapore boy"
+        b "I thought he was Korean?"
+        t "hes from the flipino land"
+        heavy "iz the same to me"
+        heavy "russia will beat all china countries the same"
+        t "right..."
+        t "(I should go find matt)"
+        t "Yo guys I am going to go find matt since he should be here"
+        t "(I swear if that kid is fucking gooning to march 7th I am fucking done)"
+        $ count = 2
+        return
+    label chapter_two_matt_meeting1:
+        show thanga2 with dissolve:
+            subpixel True pos (510, 278) 
+        show matt2 with dissolve:
+            subpixel True pos (1206, 243) zoom 0.21 
+        t "Yo matt are you good?"
+        mt "yeah why?"
+        t "you weren't at the meeting in the hall?"
+        t "did you goon too hard?"
+        mt "nahhhhh I am goonminning right now"
+        t "I hate everyone in this building"
+        mt "but uh Ocho is missing"
+        t "So you aren't good"
+        mt "I am"
+        mt "Ocho isn't"
+        t "ugh, i guess I will help look for him"
+        mt "thanks man!"
+        $ count = 3
+        return
+    label chapter_two_ocho_dead:
+
+        show ch02_ocho_dead:
+            subpixel True pos (30, 671) zoom 0.71 
+        show thanga2:
+            subpixel True pos (1951, 211) yrotate 180.0
+            linear 0.6 subpixel True pos (1411, 211) yrotate 180.0 
+        show matt2:
+            subpixel True pos (1950, 405) zoom 0.2 
+        t "uhhh wtf"
+        t "is that ocho?"
+        t "holy shit"
+        mt "yo thang are you in there?"
+        show matt2:
+            linear 0.6 subpixel True pos (1653, 405) zoom 0.2 
+        mt "The pool's closed thang"
+        pause 1.2
+        mt "OCHOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+        mt "WTF HAPPENED"
+
+        #TODO:more dialogue here
+        
+        $ count = 4
+        return
