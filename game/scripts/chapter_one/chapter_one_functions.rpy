@@ -57,16 +57,13 @@ init python:
             except ValueError:
                 choice = renpy.input("THAT ISN'T A VALID NUMBER! TRY AGAIN!:", length=17)
         return choice
-    class ItemState(Enum):
-        NOT_OBTAINED = 0
-        OBTAINED = 1
 
-    def is_item_obtained(item):
+    def chapter_one_item_check(item):
         return key_items.get(item, ItemState.NOT_OBTAINED) == ItemState.OBTAINED
 
-    def obtain_item(item):
+    def chapter_one_obtain_item(item):
         key_items[item] = ItemState.OBTAINED
-    def unobtain_item(item):
+    def chapter_one_unobtain_item(item):
         key_items[item] = ItemState.NOT_OBTAINED
 
     def chapter_one_clean_dirt(id):
@@ -88,8 +85,8 @@ screen clickable_chapter_one_giftcard():
     imagebutton:
         pos (1091, 793)
         at Transform(zoom = 0.04)
-        idle "images/panda1.jpg"
-        hover "images/panda1.jpg"
+        idle "images/chapter_one/panda1.jpg"
+        hover "images/chapter_one/panda1.jpg"
         action Call("chapter_one_panda_giftcard")
 
 #The clickable SonuTheNecro in Subway
@@ -160,16 +157,16 @@ screen clickable_baldi_exit():
     imagebutton:
         pos (0.6, 0.23) 
         at Transform(zoom = 0.9)
-        idle "images/baldi_exit_hover.png"
-        hover "images/baldi_exit_hover.png"
+        idle "images/chapter_one/baldi_exit_hover.png"
+        hover "images/chapter_one/baldi_exit_hover.png"
         action Call("chapter_one_early_exit")
 
 #The Code for the mop found in the exit area
 screen clickable_chapter_one_mop():
     imagebutton:
         pos (0.21, 0.29)
-        idle "images/mop.png"
-        hover "images/mop.png"
+        idle "images/chapter_one/mop.png"
+        hover "images/chapter_one/mop.png"
         action Call("chapter_one_mop")
 
 #The code for the random dirt that appears throughout the map
@@ -177,8 +174,8 @@ screen clickable_chapter_one_dirt(xpos, ypos, zoom_level, id):
     imagebutton:
         pos(xpos, ypos)
         at Transform(zoom = zoom_level)
-        idle "images/dirt.png"
-        hover "images/dirt.png"
+        idle "images/chapter_one/dirt.png"
+        hover "images/chapter_one/dirt.png"
         action Function(chapter_one_clean_dirt, id)
 
 #Code for God Of sweep NPC, after you clean him up
@@ -186,38 +183,38 @@ screen clickable_chapter_one_god_of_sweep():
     imagebutton:
         pos(396,358)
         at Transform(zoom = 1.21)
-        idle "images/godofsweep.png"
-        hover "images/godofsweep.png"
+        idle "images/chapter_one/godofsweep.png"
+        hover "images/chapter_one/godofsweep.png"
         action Call("chapter_one_post_cleanup")
 #Code for the button for Principal of the Thing after you get the book
 screen clickable_chapter_one_principal():
     imagebutton:
         pos(0.11,0.34)
-        idle "images/principal_of_the_thing.png"
-        hover "images/principal_of_the_thing.png"
+        idle "images/chapter_one/principal_of_the_thing.png"
+        hover "images/chapter_one/principal_of_the_thing.png"
         action Call("chapter_one_pott_class")
 
 screen clickable_chapter_one_alarmclock():
     imagebutton:
         pos(40,301)
         at Transform(zoom = 1.68)
-        idle "images/alarm_clock.png"
-        hover "images/alarm_clock.png"
+        idle "images/chapter_one/alarm_clock.png"
+        hover "images/chapter_one/alarm_clock.png"
         action Call("chapter_one_alarm_clock")
 screen clickable_chapter_one_itsabully():
     imagebutton:
         pos(776, 330)
         at Transform(zoom = 1.46)
-        idle "images/itsabully.png"
-        hover "images/itsabully.png"
+        idle "images/chapter_one/itsabully.png"
+        hover "images/chapter_one/itsabully.png"
         action Call("chapter_one_bully")
 screen clickable_chapter_one_playtime():
     imagebutton:
         pos(358,601)
         xanchor 270
         at Transform(zoom = 0.66)
-        idle "images/playtime.png"
-        hover "images/playtime.png"
+        idle "images/chapter_one/playtime.png"
+        hover "images/chapter_one/playtime.png"
         action Call("chapter_one_playtime")
 screen clickable_chapter_one_thanga():
     imagebutton:
@@ -252,7 +249,7 @@ label chapter_one_panda_giftcard():
         "Take":
             play sound "audio/sound/chapter_one/item_pickup.ogg"
             "You have acquired a Panda Express Gift Card!"
-            $ obtain_item("chapter_one_giftcard")
+            $ chapter_one_obtain_item("chapter_one_giftcard")
             k "Yeah I found it, where did you even get this?"
             b "Uh If I remember correctly..."
             b "I think Matt gave it to me since he did not want it"
@@ -406,7 +403,7 @@ label chapter_one_key():
     k "Yo sweet the key to leave"
     k "YO BRIAN THANG GET OVER HERE, THIS BALD MOTHERFUCKER LEFT THE KEY HERE LETS JUST LEAVE!"
     play sound "audio/sound/chapter_one/item_pickup.ogg"
-    $ obtain_item("chapter_one_key")
+    $ chapter_one_obtain_item("chapter_one_key")
     play sound "audio/sound/chapter_one/item_pickup.ogg"
     "You have obtained Baldi's Key to the Schoolhouse!"
     stn "WHAT!"
@@ -420,11 +417,13 @@ label chapter_one_key():
 label chapter_one_mop():
     call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_3
     hide clickable_chapter_one_mop
+    hide baldi_exit_hover
+    hide screen clickable_baldi_exit
     show mop:
         subpixel True pos (0.21, 0.29)
     "You have obtained..."
     "A rather smelly mop"
-    $ obtain_item("chapter_one_mop")
+    $ chapter_one_obtain_item("chapter_one_mop")
     $ count = 0
     hide screen clickable_chapter_one_mop
     show godofsweep with dissolve:
@@ -445,7 +444,6 @@ label chapter_one_mop():
             k "I ain't starting at a random elementary school"
             show gun2:
                 subpixel True pos (755, 393) yrotate 180.0
-            
             gos "EXCUSE ME YOU BITCH?"
             gos "YOU WLL PAY!"
             show gunflare:
@@ -458,6 +456,8 @@ label chapter_one_mop():
     "Were... Were you just given chores to do?"
     hide mop
     call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_7
+    if chapter_one_item_check("chapter_one_key"):
+        show screen clickable_baldi_exit
     return
 # cleaning up all the dirt
 label chapter_one_dirt(id):
@@ -496,7 +496,7 @@ label chapter_one_dirt(id):
         "Isn't this writing witty and comedic?"
         "I am like the next stanley parable"
         k "cap is calling!"
-        $ obtain_item("chapter_one_cleanup")
+        $ chapter_one_obtain_item("chapter_one_cleanup")
     elif count == 3:
         k "I am so nasty dude"
         k "I am dropping outta school"
@@ -508,17 +508,17 @@ label chapter_one_dirt(id):
         t "SHUT THE FUCK UP KODY!"
         t "YOU WALK AROUND THE HOUSE IN NO UNDERWEAR!"
         k "yooooo that's a secret!"
-        $ obtain_item("chapter_one_cleanup")
+        $ chapter_one_obtain_item("chapter_one_cleanup")
     elif count == 4:
         k "YOOOOOOOOOOOOO WE GOT A SPEEDRUNNER IN THE HOUSE!"
         k "Imagine this was the way to the secret ending, heh!"
-        $ obtain_item("chapter_one_cleanup")
+        $ chapter_one_obtain_item("chapter_one_cleanup")
     $ count += 1
     "..."
     hide dirt
     "You have cleaned [count] dirt(s)!"
     k "Woohoo!"
-    if is_item_obtained("chapter_one_cleanup") and not is_item_obtained("chapter_one_book"):
+    if chapter_one_item_check("chapter_one_cleanup") and not chapter_one_item_check("chapter_one_book"):
         "You have cleaned up al the dirt!"
         k "Yeah no shit narrator, i was there!"
         "I am giving hints imagine this was a 12 room Ace Attorney Map, you'd be crying rn"
@@ -545,7 +545,7 @@ label chapter_one_post_cleanup():
         k "This hot girl has her jumprope dirty, can you clean it"
         gos "GOT IT SAY NO MORE FAM"
         $ count2 = 3
-    elif not is_item_obtained("chapter_one_book"):
+    elif not chapter_one_item_check("chapter_one_book"):
         gos "AYO YOU FUCKING WANKER GET OVER HERE!"
         k "(Oh god, what did I do this time?)"
         gos "YOU MAKE ME A 'REA SO CLEAN I CAN COOK MY BARBEECOO ON MI THONGS"
@@ -570,7 +570,7 @@ label chapter_one_post_cleanup():
         gos "WELL I'M DONE NOW"
         gos "IF YOU NEED ANY HELP, YOU KNOW WHERE TO FIND ME!"
         play sound "audio/sound/chapter_one/item_pickup.ogg"
-        $ obtain_item("chapter_one_book")
+        $ chapter_one_obtain_item("chapter_one_book")
         "You have obtained a book!"
         k "what book is it though?"
         "You have eyes..."
@@ -578,7 +578,7 @@ label chapter_one_post_cleanup():
         k "Mein Kampf?"
         k "What is that?"
         "Google it after so you can teach yourself history!"
-    elif is_item_obtained("chapter_one_book"):
+    elif chapter_one_item_check("chapter_one_book"):
         gos "THANKS AGAIN FOR THE HELP LA KODY"
         gos "IF YOU NEED MY HELP AGAIN, JUST RING THE OL BELL"
         k "What is a bell?"
@@ -592,7 +592,7 @@ label chapter_one_pott_class():
     hide screen clickable_chapter_one_principal
     show principal_of_the_thing:
         subpixel True pos (0.11, 0.34) 
-    if not is_item_obtained("chapter_one_book"):
+    if not chapter_one_item_check("chapter_one_book"):
         k "Yo bitch let me in the side room, im tryna talk to my friends who are locked in"
         pott "I don't have the key man :("
         k "HOW?!?"
@@ -604,7 +604,7 @@ label chapter_one_pott_class():
         pott "It is a big big book about German History!"
         pott "I teach it to my son everyday!"
         k "got it sir"
-    elif is_item_obtained("chapter_one_book") and not is_item_obtained("chapter_one_faculty"):
+    elif chapter_one_item_check("chapter_one_book") and not chapter_one_item_check("chapter_one_faculty"):
         pott "Yo is that my book?"
         k "Soooo"
         k "Why are you reading a book about this kinda thing?"
@@ -616,7 +616,7 @@ label chapter_one_pott_class():
         pott "Well since you helped find the book, you can go into the faculty room if you'd like"
         pott "here ya go!"
         play sound "audio/sound/chapter_one/item_pickup.ogg"
-        $ obtain_item("chapter_one_faculty")
+        $ chapter_one_obtain_item("chapter_one_faculty")
         "You have obtained the key to the Faculty Room!"
         $ count2 = 0
 
@@ -648,8 +648,6 @@ label chapter_one_faculty_first_enter():
         yrotate 180.0 
     show alarm_clock with dissolve:
         subpixel True pos (40, 301) zoom 1.68 
-
-
     t "Well there is a big clock here"
     b "A comically large clock if you will"
     k "This clock looks important to this investigation!"
@@ -672,14 +670,13 @@ label chapter_one_faculty_first_enter():
     hide alarm_clock
     call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_11
     return
-
 #Code for the alarm clock in chapter one
 label chapter_one_alarm_clock():
     call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_8
     hide screen clickable_chapter_one_alarmclock
     show alarm_clock:
         subpixel True pos (40,301) zoom 1.68
-    if is_item_obtained("chapter_one_hands") and not is_item_obtained("chapter_one_battery"):
+    if chapter_one_item_check("chapter_one_hands") and not chapter_one_item_check("chapter_one_battery"):
         k "Let's start this bad boy"
         t "I am so excited"
         b "Big clock gaming"
@@ -691,7 +688,7 @@ label chapter_one_alarm_clock():
         b "No i mean the battery"
         t "uh i don't think it has one..."
         k "FUCK OFF WITH THE PUZZLES HOLY SHIT CAN WE FUCKING FINISH???"
-    elif is_item_obtained("chapter_one_hands") and is_item_obtained("chapter_one_battery"):
+    elif chapter_one_item_check("chapter_one_hands") and chapter_one_item_check("chapter_one_battery"):
         k "Oh now its ticking"
         b "imagine this is a bomb about to kill of us"
         t "Why would you say that..."
@@ -704,7 +701,7 @@ label chapter_one_alarm_clock():
         t "No you idiot, it opened something"
         $ rngint1 = renpy.random.randint(10,20) * 2
         t "It says the answer is x = [rngint1 /2], y = [rngint1+7], z = [rngint1*3]"
-        $ obtain_item("chapter_one_clock")
+        $ chapter_one_obtain_item("chapter_one_clock")
         k "NO WAYYYY WE GOTTA DO MATHHHHHHHHHHHHHH"
         b "i got this"
         t "no you dont"
@@ -722,13 +719,13 @@ label chapter_one_bully():
     hide screen clickable_chapter_one_itsabully
     show itsabully:
         subpixel True pos(776, 330) zoom 1.46
-    if is_item_obtained("chapter_one_giftcard") or is_item_obtained("chapter_one_food"):
+    if chapter_one_item_check("chapter_one_giftcard") or chapter_one_item_check("chapter_one_food"):
         itsabully "OOOO THAT LOOKS GOOD!"
         k "(What?  This is just shitty gum on the floor)"
         k "Uh yeah i want those hands!"
         itsabully "ugh fine, you can have it"
         play sound "audio/sound/chapter_one/item_pickup.ogg"
-        $ obtain_item("chapter_one_hands")
+        $ chapter_one_obtain_item("chapter_one_hands")
         "You have received the clock's hands.  Time to fix that clock!"
         itsabully "Owugh"
         itsabully "Bully doesn't feel good"
@@ -795,7 +792,7 @@ label chapter_one_playtime():
         gos "have this!"
         play sound "audio/sound/chapter_one/item_pickup.ogg"
         "You have been given... some gum?"
-        $ obtain_item("chapter_one_food")
+        $ chapter_one_obtain_item("chapter_one_food")
         "gross."
         k "Why would I want this?"
         gos "Eat it or smth idk?"
@@ -818,7 +815,7 @@ label chapter_one_thanga():
     hide screen clickable_chapter_one_thanga
     show thanga2:
         subpixel True pos (821, 130) yrotate 180.0 zoom 1.45 
-    if not is_item_obtained("chapter_one_wrench"):
+    if not chapter_one_item_check("chapter_one_wrench"):
         t "Yo kodster"
         k "yeah?"
         t "There is this cabinet in this desk?"
@@ -840,7 +837,7 @@ label chapter_one_thanga():
         t "you got it?"
         k "no"
         t "so go get me that tool huh"
-    elif is_item_obtained("chapter_one_wrench") and not is_item_obtained("chapter_one_clock"):
+    elif chapter_one_item_check("chapter_one_wrench") and not chapter_one_item_check("chapter_one_clock"):
         k "yo thang"
         k "i got me some tool?"
         k "i am like the engineer from tf2 i can a scientest"
@@ -856,11 +853,11 @@ label chapter_one_thanga():
         t "uhhh and some random tax documents and some batteries"
         k "Gimmie them, i need em for my switch!"
         play sound "audio/sound/chapter_one/item_pickup.ogg"
-        $ obtain_item("chapter_one_battery")
+        $ chapter_one_obtain_item("chapter_one_battery")
         "Kody has obtained batteries"
         "Now will kody give up those batteries"
         "that is the real question"
-    elif is_item_obtained("chapter_one_clock"):
+    elif chapter_one_item_check("chapter_one_clock"):
         k "Let's beat baldi!"
         t "You mean I have to with my math skills..."
     hide thanga2
@@ -873,7 +870,7 @@ label chapter_one_brian():
     show brian1 with dissolve:
         subpixel True xanchor 270 pos (826, 136) zoom 1.39  orientation (0.0, 0.0, 0.0) 
 
-    if not is_item_obtained("chapter_one_wrench"):
+    if not chapter_one_item_check("chapter_one_wrench"):
         k "What did you find in this classroom"
         b "Well I didn't find lopunny"
         k "BRIAN"
@@ -892,8 +889,8 @@ label chapter_one_brian():
         play sound "audio/sound/chapter_one/item_pickup.ogg"
         "You have obtained a red-collar wrench!"
         b "ITS BLUE-COLLAR WTF"
-        $ obtain_item("chapter_one_wrench")
-    elif is_item_obtained("chapter_one_clock"):
+        $ chapter_one_obtain_item("chapter_one_wrench")
+    elif chapter_one_item_check("chapter_one_clock"):
         b "My accounting skills are ready to cook baldi!"
         k "better be!"
     else:
@@ -911,10 +908,10 @@ label chapter_one_restore_buttons(current_location):
     if current_location == 1:
         show screen clickable_button_baldi_chapter_one_up(location)
     elif current_location == 2:
-        if is_item_obtained("chapter_one_hands"):
+        if chapter_one_item_check("chapter_one_hands"):
             show screen clickable_button_baldi_chapter_one_up(location)
         show screen clickable_button_baldi_chapter_one_down(location)
-        if is_item_obtained("chapter_one_faculty"):
+        if chapter_one_item_check("chapter_one_faculty"):
             show screen clickable_button_baldi_chapter_one_left(location)
         show screen clickable_button_baldi_chapter_one_right(location)
     elif current_location == 3:
@@ -947,6 +944,7 @@ label chapter_one_hide_screen:
     hide screen clickable_chapter_one_playtime
     hide screen clickable_chapter_one_brian
     hide screen clickable_chapter_one_thanga
+    hide screen clickable_baldi_exit
     return
 #Code used for the secret Conversion in Chapter One Subway Path
 label chapter_one_subway_conversation:
@@ -966,7 +964,11 @@ label chapter_one_subway_conversation:
         stn "I suggest you eat all of the lunches though"
         stn "They taste pretty good"
         stn "What is your favorite lunch Henry?"
-        #TODO, just put whatever you want
+        tv "I am a big fan of the BLT"
+        stn "what's in that?"
+        tv "Uh bacon lettuce tomato"
+        tv "straight bussin bussin"
+        stn "sounds good ain't even gonna cap lol"
     else: 
         show screen clickable_chapter_one_secret_lopunny(910,210,0.29)
         stn "Well I am glad you three have made it to lunch"

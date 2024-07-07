@@ -7,11 +7,13 @@ define sk = Character("Shadow Kody")
 
 label prologue:
     # The Prologue Scene
+    stop music
     scene carontheroad with dissolve:
         xzoom 1.8
         yzoom 1.3
     questionmark "Chapter 0: Prologue"
     questionmark "The Creation of ???"
+    play music "audio/music/prologue/new_days.ogg" loop
     k "Holy shit Thang. I am so excited for this"
     k "You actually made my day with this trip I am so excited!"
 
@@ -125,7 +127,9 @@ label prologue:
     k "You forgot the Icecream :("
     mcde "Anything else you fucker?"
     t "Uh can I please get an Oreo Shake IceCream"
+    stop music
     mcde "You fucking ass stupid ass muthafucka"
+    play music "audio/music/prologue/mayonaka_tv.ogg" loop
     mcde "The IceCream Machine is..."
     mcde "FUCKING BROKEN!"
     mcde "L BOZO!"
@@ -178,6 +182,8 @@ label prologue:
     show cody:
         yalign 0.5 xalign 0.5 xzoom 1.3 yzoom 1.3
     call dio_time_stop
+    stop music
+    play music "audio/music/prologue/percieve.ogg" loop
     questionmark "WAIT WE ARE LOSING THE BIG MAC?!?"
     questionmark "NOT ON MY WATCH!"
     questionmark "I WANT THAT BIG MAC!"
@@ -245,6 +251,7 @@ label prologue:
         c "You were always the weak part of me..."
         c "I think its time if we made some changes around here."
         c "goodbye forver kody"
+    stop music
     scene mcdonalds_playplace with fade:
         xalign 0.8 xzoom 3.9 yzoom 3.3
     k "where the hell am i?"
@@ -271,7 +278,7 @@ label prologue:
         linear 0.5 xalign 1.3
 
     $ rngint1 = renpy.random.randint(1,2)
-
+    play music "audio/music/prologue/you're_my_brother.ogg"
     if rngint1 == 1:
         scene wild_west1 with fade:
             xzoom 3.9 yzoom 3.2 yalign 0.8
@@ -325,4 +332,6 @@ label chapter_zero_ending:
     "and Kody has thorted Cody and kept the peace in the town"
     "or did he?"
     $ persistent.ch00 = True
+    stop music
+    $ renpy.quit()
     jump chapter_one

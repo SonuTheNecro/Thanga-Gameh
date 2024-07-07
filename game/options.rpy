@@ -12,18 +12,18 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Thanga Game (Chapter Two) ")
+define config.name = _("Thanga Game (Chapter Three) ")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## The version of the game.
 
-define config.version = "1.4.0"
+define config.version = "1.5.4"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -34,7 +34,7 @@ define gui.about = _p(""" Thanga Gamea (Thang Game) is a story and game created 
 Although the characters in the game are based off of real people, they are by no means a representation of the real people and are done purely for satrical and entertainment purposes.
 Otherwise, everything else is fiction and should be treated as such.
 
-Special Thanks to: ThangaMangaLang, B-bop, JigglyJello, and Maslmew
+Special Thanks to: ThangaMangaLang, B-bop, JigglyJello, and Masimew
 """)
 
 
@@ -212,3 +212,10 @@ init python:
 ## by a slash.
 
 # define build.itch_project = "renpytom/test-project"
+
+
+
+# Turns Renpy's Auto-save feature Off , I need this off so we can force autosaves better
+define config.has_autosave = False
+# Turns The Back-button off!
+define config.rollback_enabled = True
