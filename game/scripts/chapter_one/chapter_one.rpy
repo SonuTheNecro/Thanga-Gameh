@@ -970,7 +970,7 @@ label chapter_one:
         "And after Baldi shot evil cody, the world was saved and everyone lived heavily after ever"
         "Til next time"
         k "Wait why are we black..."
-        #$ persistent.ch01 = True
+        $ persistent.ch01 = True
         $ if(lopunny_count == 5): persistent.secret1 = True
         if persistent.secret1 == True:
             label chapter_one_secret:
