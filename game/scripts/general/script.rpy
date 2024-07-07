@@ -82,28 +82,133 @@ label start:
                         $ renpy.quit()
 
     else:
-        menu:
-            "Chapter_0":
-                jump prologue
-            "Chapter_1" if persistent.ch00 == True:
-                jump chapter_one
-            "Chapter_3" if persistent.ch01 == True:
-                #jump chapter_two
-                jump chapter_three
-            "Chapter_3_fnaf_start" if persistent.ch01 == True:
-                jump chapter_three_fnaf_start
-            "Chapter_3_fnaf_secret" if persistent.ch01 == True:
-                jump chapter_three_secret
-            "Erase all Data":
-                $ renpy.delete_persistent()
-                "All persistent Data has been deleted"
-                jump intro
+        label main_menu_chapter_select:
+        show screen clickable_main_menu_ch00
+        if persistent.ch00:#2
+            show screen clickable_main_menu_ch01
+        else:#2
+            show screen clickable_main_menu_question_screen1(768,13)
+        if persistent.ch01:#3
+            show screen clickable_main_menu_ch02
+        else:#3
+            show screen clickable_main_menu_question_screen2(1458,13)
+        if persistent.ch02:#4
+            show screen clickable_main_menu_ch03
+        else:#4
+            show screen clickable_main_menu_question_screen3(126,541)
+    #if persistent.ch03:#5
+        show screen clickable_main_menu_question_screen4(768,541)
+    #if not persistent.ch04:#6
+        show question_screen:
+            subpixel True pos(1458,541) zoom 0.62
+        call screen clickable_main_menu_question_screen5(1458,541)
+        
 
+label hide_clickable_menus:
+    hide screen clickable_main_menu_ch00
+    hide screen clickable_main_menu_ch01
+    hide screen clickable_main_menu_ch02
+    hide screen clickable_main_menu_ch03
+    hide screen clickable_main_menu_question_screen1
+    hide screen clickable_main_menu_question_screen2
+    hide screen clickable_main_menu_question_screen3
+    hide screen clickable_main_menu_question_screen4
+    hide screen clickable_main_menu_question_screen5
+
+    return
             
+label clickable_menus:
+    screen clickable_main_menu_ch00:
+        imagebutton:
+            pos (126, 13) at Transform(zoom=0.62)
+            idle "images/chapter_zero_screen.png"
+            hover "images/chapter_zero_screen.png"
+            action Jump("chapter_start0")
+    screen clickable_main_menu_ch01:
+        imagebutton:
+            pos (768, 13) at Transform(zoom=0.62)
+            idle "images/chapter_one_screen.png"
+            hover "images/chapter_one_screen.png"
+            action Jump("chapter_start1")
+    screen clickable_main_menu_ch02:
+        imagebutton:
+            pos (1458, 13) at Transform(zoom=0.62)
+            idle "images/chapter_two_screen.png"
+            hover "images/chapter_two_screen.png"
+            action Jump("chapter_start2")
+    screen clickable_main_menu_ch03:
+        imagebutton:
+            pos (126, 541) at Transform(zoom=0.62)
+            idle "images/chapter_three_screen.png"
+            hover "images/chapter_three_screen.png"
+            action Jump("chapter_start3")
+    screen clickable_main_menu_question_screen1(xpos,ypos):
+        imagebutton:
+            pos (xpos, ypos) at Transform(zoom=0.62)
+            idle "images/question_screen.png"
+            hover "images/question_screen.png"
+            action Jump("chapter_start_question")
+    screen clickable_main_menu_question_screen2(xpos,ypos):
+        imagebutton:
+            pos (xpos, ypos) at Transform(zoom=0.62)
+            idle "images/question_screen.png"
+            hover "images/question_screen.png"
+            action Jump("chapter_start_question")
+    screen clickable_main_menu_question_screen3(xpos,ypos):
+        imagebutton:
+            pos (xpos, ypos) at Transform(zoom=0.62)
+            idle "images/question_screen.png"
+            hover "images/question_screen.png"
+            action Jump("chapter_start_question")
+    screen clickable_main_menu_question_screen4(xpos,ypos):
+        imagebutton:
+            pos (xpos, ypos) at Transform(zoom=0.62)
+            idle "images/question_screen.png"
+            hover "images/question_screen.png"
+            action Jump("chapter_start_question")
+    screen clickable_main_menu_question_screen5(xpos,ypos):
+        imagebutton:
+            pos (xpos, ypos) at Transform(zoom=0.62)
+            idle "images/question_screen.png"
+            hover "images/question_screen.png"
+            action Jump("chapter_start_question")
+    label chapter_start0():
+        "Do you want to start the Prologue?"
+        menu:
+            "Yes":
+                call hide_clickable_menus
+                jump prologue
+            "No":
+                jump main_menu_chapter_select
+    label chapter_start1():
+        "Do you want to start Chapter One?"
+        menu:
+            "Yes":
+                call hide_clickable_menus
+                jump chapter_one
+            "No":
+                jump main_menu_chapter_select
+    label chapter_start2():
+        "Do you want to start Chapter Two?"
+        menu:
+            "Yes":
+                call hide_clickable_menus
+                jump chapter_two
+            "No":
+                jump main_menu_chapter_select
+    label chapter_start3():
+        "Do you want to start the Chapter Three?"
+        menu:
+            "Yes":
+                call hide_clickable_menus
+                jump chapter_three
+            "No":
+                jump main_menu_chapter_select
 
-
-
-
+    label chapter_start_question:
+        "That chapter is currently locked/unavailable!"
+        "Please select another chapter!"
+        jump main_menu_chapter_select
 label test1:
     scene bg room
 

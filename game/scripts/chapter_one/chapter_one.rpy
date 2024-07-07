@@ -37,7 +37,7 @@ label chapter_one:
     questionmark "Lopunny..."
     questionmark "Why would you write it like this?"
     stop music
-    play music "audio/sound/chapter_one/reaching_out_stars.ogg" loop
+    play music "audio/music/chapter_one/reaching_out_stars.ogg" loop
     "It all began one day..."
     "The Exact day is Friday, Marth 15, 2027"
     show brian1:

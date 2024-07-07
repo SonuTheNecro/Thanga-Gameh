@@ -6,6 +6,10 @@ init python:
     from renpy.display import im
     from enum import Enum
     renpy.music.register_channel("sound2", "sound", loop = False) # second sound track for dual sound effects
+    config.keymap['screenshot'].remove('alt_K_s')
+    config.keymap['screenshot'].remove('alt_shift_K_s')
+    config.keymap['screenshot'].remove('noshift_K_s')
+
 
     #A confirm menu for important decisions, Paramater is the str for the menu label, jump decision is where you would go if you choose yes
     def confirm_menu_jump(original_menu, jump_decision):
