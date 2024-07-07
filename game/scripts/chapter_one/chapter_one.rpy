@@ -373,7 +373,7 @@ label chapter_one:
     show kody:
         subpixel True pos (0.6, 0.29) 
     stop music
-    play music "audio/sound/chapter_one/reaching_out_stars.ogg" loop
+    play music "audio/music/chapter_one/reaching_out_stars.ogg" loop
     b "well that was some good lunch"
     b "however, I am stuffed now"
     t "Yo brian put your phone down"
@@ -970,13 +970,10 @@ label chapter_one:
         "And after Baldi shot evil cody, the world was saved and everyone lived heavily after ever"
         "Til next time"
         k "Wait why are we black..."
-        $ persistent.ch01 = True
+        #$ persistent.ch01 = True
         $ if(lopunny_count == 5): persistent.secret1 = True
         if persistent.secret1 == True:
-            jump chapter_one_secret
-        else:
-            return
-        label chapter_one_secret:
+            label chapter_one_secret:
             questionmark "That is what the ChatGPT script came up with"
             scene crystalball with easeintop:
                 subpixel True zoom 1.5 
@@ -1010,4 +1007,5 @@ label chapter_one:
             stn "The dog wasn't even real"
             stn "it was a jpeg file called ocho_dead.jpg"
             c "TRUEEEEEEEEEEEEEEEE!"
-            return
+        $ renpy.quit()
+        return
