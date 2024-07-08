@@ -82,6 +82,8 @@ label start:
                         $ renpy.quit()
 
     else:
+        play music "audio/music/prologue/phantom.ogg" loop
+        scene main_menu_bg3
         label main_menu_chapter_select:
         show screen clickable_main_menu_ch00
         if persistent.ch00:#2
