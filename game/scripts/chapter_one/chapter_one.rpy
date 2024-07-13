@@ -233,7 +233,7 @@ label chapter_one:
         pe "IT OKAY CRACKERS ALL DUMB, NEVER LET MY SON SEE ONE THEY BAD THEY HAVE DRUGS"
         b "I also want 3 Large Soda cups"
         pe "okay so this order comes out to $98.54"
-        if not chapter_one_item_check("chapter_one_giftcard"):
+        if chapter_one_item_check("chapter_one_giftcard"):
             b "Okay I will pay with this Giftcard with $100 on it!"
             pe "STUPID BOY THIS CARD IS EMPTY!"
             k "LOL DID MATT JUST GET YOU LOL!"
@@ -260,7 +260,7 @@ label chapter_one:
         "AND KODY JUST THREW THE FOOD OUT"
         "huh?"
         "You wanna see this?"
-        "No you can imagine it or beg on https://github.com/SonuTheNecro/Thanga-Gameh/tree/master"
+        "No you can imagine it or beg on https://github.com/SonuTheNecro/Thanga-Gameh/tree/main"
         "sweet promo!"
         stop sound
         jump chapter_one_post_lunch

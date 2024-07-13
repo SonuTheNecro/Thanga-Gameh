@@ -6,7 +6,7 @@ init python:
     from enum import Enum
     #Code for the Street Situation's rng, better in Python
     def street1_random():
-        random_number = randint(24,36)
+        random_number = randint(2,6)
         count = 0
         while count < random_number:
             renpy.sound.play("audio/sound/chapter_one/street1.ogg")
@@ -519,7 +519,7 @@ label chapter_one_dirt(id):
     "You have cleaned [count] dirt(s)!"
     k "Woohoo!"
     if chapter_one_item_check("chapter_one_cleanup") and not chapter_one_item_check("chapter_one_book"):
-        "You have cleaned up al the dirt!"
+        "You have cleaned up all the dirt!"
         k "Yeah no shit narrator, i was there!"
         "I am giving hints imagine this was a 12 room Ace Attorney Map, you'd be crying rn"
         k "Yeah sorry sorry"
