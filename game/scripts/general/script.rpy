@@ -85,6 +85,7 @@ label start:
         play music "audio/music/prologue/phantom.ogg" loop
         scene main_menu_bg3
         label main_menu_chapter_select:
+        show screen clickable_main_menu_trash_can
         show screen clickable_main_menu_ch00
         if persistent.ch00:#2
             show screen clickable_main_menu_ch01
@@ -116,7 +117,7 @@ label hide_clickable_menus:
     hide screen clickable_main_menu_question_screen3
     hide screen clickable_main_menu_question_screen4
     hide screen clickable_main_menu_question_screen5
-
+    hide screen clickable_main_menu_trash_can
     return
             
 label clickable_menus:
@@ -211,6 +212,23 @@ label clickable_menus:
         "That chapter is currently locked/unavailable!"
         "Please select another chapter!"
         jump main_menu_chapter_select
+    screen clickable_main_menu_trash_can:
+        imagebutton:
+            pos((0, 1020))
+            idle "images/main_menu_delete.png"
+            hover "images/main_menu_delete.png"
+            action Jump("main_menu_delete")
+    label main_menu_delete:
+        "Do you want to delete all of your Save Data"
+        "This includes your Chapter Completions, Secrets Found, and the player name!"
+        "This is an IRREVERSIBLE ACTION!"
+        "Would you like to continue?"
+        menu:
+            "Yes, delete my DATA":
+                $ renpy.delete_persistent()
+                jump main_menu_chapter_select
+            "No, Don't Do That":
+                jump main_menu_chapter_select
 label test1:
     scene bg room
 
