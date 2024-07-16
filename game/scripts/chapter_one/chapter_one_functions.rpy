@@ -190,8 +190,8 @@ screen clickable_chapter_one_god_of_sweep():
 screen clickable_chapter_one_principal():
     imagebutton:
         pos(0.11,0.34)
-        idle "images/chapter_one/principal_of_the_thing.png"
-        hover "images/chapter_one/principal_of_the_thing.png"
+        idle "images/chapter_one/principal_of_the_thing_outline.png"
+        hover "images/chapter_one/principal_of_the_thing_outline.png"
         action Call("chapter_one_pott_class")
 
 screen clickable_chapter_one_alarmclock():
@@ -205,16 +205,16 @@ screen clickable_chapter_one_itsabully():
     imagebutton:
         pos(776, 330)
         at Transform(zoom = 1.46)
-        idle "images/chapter_one/itsabully.png"
-        hover "images/chapter_one/itsabully.png"
+        idle "images/chapter_one/itsabully_outline.png"
+        hover "images/chapter_one/itsabully_outline.png"
         action Call("chapter_one_bully")
 screen clickable_chapter_one_playtime():
     imagebutton:
         pos(358,601)
         xanchor 270
         at Transform(zoom = 0.66)
-        idle "images/chapter_one/playtime.png"
-        hover "images/chapter_one/playtime.png"
+        idle "images/chapter_one/playtime_outline.png"
+        hover "images/chapter_one/playtime_outilne.png"
         action Call("chapter_one_playtime")
 screen clickable_chapter_one_thanga():
     imagebutton:
