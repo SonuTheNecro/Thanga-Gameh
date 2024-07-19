@@ -145,12 +145,12 @@ label chapter_three_jewel_osco:
         $ location = 1
         scene ch03jewel1 with dissolve:
             subpixel True xzoom 1.2 zoom 2.58
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_main_1:
         if chapter_three_jewels_check[0] == False:
             show screen clickable_chapter_three_wet_floor_sign
         elif count2 == 5:
             jump chapter_three_jewel_end
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the middle of Jewel Osco!"
         jump ch03_jewel_main_1
 
@@ -159,10 +159,10 @@ label chapter_three_jewel_osco:
         $ location = 2
         scene ch03jewel2 with dissolve:
             subpixel True xzoom 1.17 zoom 2.61 
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_grocery_1:
         if chapter_three_jewels_check[1] == False:
             show screen clickable_chapter_three_grocery_cart
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the Grocery Section of Jewel Osco!"
         jump ch03_jewel_grocery_1
 
@@ -171,10 +171,10 @@ label chapter_three_jewel_osco:
         $ location = 3
         scene ch03jewel3 with dissolve:
             subpixel True yzoom 1.17 zoom 1.41 
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_meat_1:
         if chapter_three_jewels_check[2] == False:
             show screen clickable_chapter_three_butcher
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the Meat Section of Jewel Osco!"
         jump ch03_jewel_meat_1
 
@@ -183,10 +183,10 @@ label chapter_three_jewel_osco:
         $ location = 4
         scene ch03jewel4 with dissolve:
             subpixel True xzoom 1.2 zoom 2.71
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_shelf_1:
         if chapter_three_jewels_check[3] == False:
             show screen clickable_chapter_three_candy
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the Shelfed Goods Section of Jewel Osco!"
         jump ch03_jewel_shelf_1
 
@@ -195,10 +195,10 @@ label chapter_three_jewel_osco:
         $ location = 5
         scene ch03jewel5 with dissolve:
             subpixel True yzoom 1.06 zoom 2.55
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_checkout_1:
         if chapter_three_jewels_check[4] == False:
             show screen clickable_chapter_three_customer
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the Checkout Section of Jewel Osco!"
         jump ch03_jewel_checkout_1
 
@@ -410,15 +410,15 @@ label chapter_three_jewel_osco:
             show screen clickable_button_jewel_chapter_three_up(location)
             show screen clickable_button_jewel_chapter_three_down(location)
             show screen clickable_button_jewel_chapter_three_left(location)
-            show screen clickable_button_jewel_chapter_three_right(location)
+            call screen clickable_button_jewel_chapter_three_right(location)
         elif current_location == 2:
-            show screen clickable_button_jewel_chapter_three_right(location)
+            call screen clickable_button_jewel_chapter_three_right(location)
         elif current_location == 3:
-            show screen clickable_button_jewel_chapter_three_down(location)
+            call screen clickable_button_jewel_chapter_three_down(location)
         elif current_location == 4:
-            show screen clickable_button_jewel_chapter_three_left(location)
+            call screen clickable_button_jewel_chapter_three_left(location)
         elif current_location == 5:
-            show screen clickable_button_jewel_chapter_three_up(location)
+            call screen clickable_button_jewel_chapter_three_up(location)
         return
     label chapter_three_jewel_hide_buttons:
         hide screen clickable_button_jewel_chapter_three_up
