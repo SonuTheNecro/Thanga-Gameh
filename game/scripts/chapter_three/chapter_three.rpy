@@ -48,7 +48,7 @@ default chapter_three_key_items = {
 
 label chapter_three:
     "Chapter Three..."
-    "The Job hunt!"
+    "The Job Hunt!"
     show ch03couch:
         subpixel True xpos -126 xzoom 1.35 zoom 1.77 
     stop music
