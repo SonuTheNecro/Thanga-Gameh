@@ -143,6 +143,7 @@ label chapter_three_jewel_osco:
     label ch03_jewel_main:
         call chapter_three_jewel_hide_all_buttons
         $ location = 1
+        $ print(count2)
         scene ch03jewel1 with dissolve:
             subpixel True xzoom 1.2 zoom 2.58
         label ch03_jewel_main_1:
@@ -313,7 +314,7 @@ label chapter_three_jewel_osco:
         k "(Im getting outta here, this guy is WACK)"
         $ chapter_three_jewels_mark(0)
         hide ch03_man
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Location Two Event
@@ -334,7 +335,7 @@ label chapter_three_jewel_osco:
         k "well that was fun"
         k "I should dip!"
         $ chapter_three_jewels_mark(1)
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Location Three Event
@@ -365,7 +366,7 @@ label chapter_three_jewel_osco:
         k "GET OUT BOZO!"
         jb "okay sir"
         $ chapter_three_jewels_mark(2)
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Location Four Event
@@ -381,7 +382,7 @@ label chapter_three_jewel_osco:
         hide ch03_candy
         k "That was some good candy :)"
         $ chapter_three_jewels_mark(3)
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Location Five Event
@@ -401,7 +402,7 @@ label chapter_three_jewel_osco:
         hide ch03_woman
         k "ez rizz"
         $ chapter_three_jewels_mark(4)
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Restores buttons once they are closed when an interaction starts/restores button once we swap areas
@@ -634,7 +635,12 @@ label chapter_three_mailman:
     scene ch03_post1 with dissolve:
         subpixel True xzoom 1.31 zoom 1.84 
     show kody:
-        subpixel True pos (-238, 438) 
+        subpixel True pos (-238, 438)
+    if location == 7:
+        k "I should not try this..."
+        stop music
+        play music "audio/music/chapter_three/forest1.ogg" loop
+        jump chapter_three_map
     "Somewhere in the U.S."
     show kody:
         linear 0.35 subpixel True pos (482, 438) 
@@ -789,9 +795,7 @@ label chapter_three_mailman:
                 rotate 0
                 linear 0.1 rotate -360 subpixel True pos (-590, 15)
             k "goodbye bastard forever"
-
-
-
+    $ location = 7
     $ count += 1
     stop music
     play music "audio/music/chapter_three/forest1.ogg" loop
