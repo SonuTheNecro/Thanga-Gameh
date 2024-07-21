@@ -24,6 +24,8 @@ label chapter_two:
     stop music
     "Chapter 2: The Trial of Eights"
     t "NO PLEASE NOT AGAIN"
+    if persistent.ch02:
+        $ config.rollback_enabled = True
     hide black
     show street1 with fade:
         subpixel True yzoom 1.06

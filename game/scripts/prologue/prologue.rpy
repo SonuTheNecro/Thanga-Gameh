@@ -11,6 +11,8 @@ label prologue:
     scene carontheroad with dissolve:
         xzoom 1.8
         yzoom 1.3
+    if persistent.ch00:
+        $ config.rollback_enabled = True
     questionmark "Chapter 0: Prologue"
     questionmark "The Creation of ???"
     play music "audio/music/prologue/new_days.ogg" loop

@@ -49,6 +49,8 @@ default chapter_three_key_items = {
 label chapter_three:
     "Chapter Three..."
     "The Job Hunt!"
+    if persistent.ch03:
+        $ config.rollback_enabled = True
     show ch03couch:
         subpixel True xpos -126 xzoom 1.35 zoom 1.77 
     stop music

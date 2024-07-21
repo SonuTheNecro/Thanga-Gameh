@@ -32,7 +32,9 @@ default chapter_one_dirt_piles = [False, False, False, False]
 default lopunny_count = 0
 label chapter_one:
     scene inside car with fade:
-        subpixel True xzoom 1.5 yzoom 1.13 zoom 0.67 
+        subpixel True xzoom 1.5 yzoom 1.13 zoom 0.67
+    if persistent.ch01:
+        $ config.rollback_enabled = True
     "Chapter 1: The Hunt for the Elusive..."
     questionmark "Lopunny..."
     questionmark "Why would you write it like this?"

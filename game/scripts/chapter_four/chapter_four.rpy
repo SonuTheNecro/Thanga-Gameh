@@ -9,3 +9,5 @@ define c = Character("Carl")
 label chapter_four:
     "Chapter Four"
     "The Steve Disease"
+    if persistent.ch04:
+        $ config.rollback_enabled = True

@@ -39,8 +39,14 @@ default persistent.ch03 = False
 default persistent.ch04 = False
 default persistent.ch05 = False
 
+#
+default persistent.play_time = 0
 
+label main_menu:
+    return
 
+label quit:
+    $ persistent.play_time += renpy.get_game_runtime()
 label start:
     if persistent.intro == False:
         label intro:
@@ -90,9 +96,11 @@ label start:
         #$ persistent.secret1 = True
         #$ persistent.secret2 = True
         #$ persistent.secret3 = True
+        $ config.rollback_enabled = False
         play music "audio/music/prologue/phantom.ogg" loop
         scene main_menu_bg3
         label main_menu_chapter_select:
+        show screen clickable_main_menu_clock
         show screen clickable_main_menu_trash_can
         show screen clickable_main_menu_trophy
         show screen clickable_main_menu_ch00
@@ -128,6 +136,7 @@ label hide_clickable_menus:
     hide screen clickable_main_menu_question_screen5
     hide screen clickable_main_menu_trash_can
     hide screen clickable_main_menu_trophy
+    hide screen clickable_main_menu_clock
     return
             
 label clickable_menus:
@@ -263,6 +272,20 @@ label clickable_menus:
             if persistent.secret3:
                 "The SpringTrap has been Formed!"
         jump main_menu_chapter_select
+    screen clickable_main_menu_clock:
+        imagebutton:
+            pos(0,960)
+            idle "images/main_menu_clock.png"
+            hover "images/main_menu_clock.png"
+            action Jump("main_menu_playtime")
+    label main_menu_playtime:
+        $ hours = int(persistent.play_time // 3600)
+        $ minutes = int((persistent.play_time % 3600) // 60)
+        $ seconds = int(persistent.play_time % 60)
+        $ formatted_time = "{:02}:{:02}:{:02}".format(hours, minutes, seconds)
+        "Playtime: [formatted_time]"
+        jump main_menu_chapter_select
+
 label test1:
     scene bg room
 
