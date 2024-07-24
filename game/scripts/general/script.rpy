@@ -41,7 +41,7 @@ default persistent.ch05 = False
 
 #
 default persistent.play_time = 0
-
+default temp_playtime = 0
 label main_menu:
     return
 
@@ -279,6 +279,9 @@ label clickable_menus:
             hover "images/main_menu_clock.png"
             action Jump("main_menu_playtime")
     label main_menu_playtime:
+        $ persistent.play_time -= temp_playtime
+        $ temp_playtime = renpy.get_game_runtime()
+        $ persistent.play_time += temp_playtime
         $ hours = int(persistent.play_time // 3600)
         $ minutes = int((persistent.play_time % 3600) // 60)
         $ seconds = int(persistent.play_time % 60)
