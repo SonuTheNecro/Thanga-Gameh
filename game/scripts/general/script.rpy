@@ -49,6 +49,7 @@ label quit:
     $ persistent.play_time += renpy.get_game_runtime()
     return
 label start:
+    $ discord.set(state = "Signing a Contract", details = "In The Prologue", large_image = "prologue", buttons = [dict(label = "SonuTheNecro's Free Promo", url = "https://github.com/SonuTheNecro/Thanga-Gameh")])
     if persistent.intro == False:
         label intro:
         play music "audio/music/prologue/aria_of_the_soul.ogg"
@@ -100,7 +101,7 @@ label start:
         $ config.rollback_enabled = False
         play music "audio/music/prologue/phantom.ogg" loop
         scene main_menu_bg3
-        $ discord.set(details = "In The Main Menu.", large_image = "main_menu")
+        $ discord.set(details = "In The Main Menu.", large_image = "main_menu", buttons = [dict(label = "SonuTheNecro's Free Promo", url = "https://github.com/SonuTheNecro/Thanga-Gameh")])
         label main_menu_chapter_select:
         show screen clickable_main_menu_clock
         show screen clickable_main_menu_trash_can

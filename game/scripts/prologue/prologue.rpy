@@ -13,6 +13,7 @@ label prologue:
         yzoom 1.3
     if persistent.ch00:
         $ config.rollback_enabled = True
+    $ discord.update(state = "On a road trip!")
     questionmark "Chapter 0: Prologue"
     questionmark "The Creation of ???"
     play music "audio/music/prologue/new_days.ogg" loop
@@ -37,7 +38,7 @@ label prologue:
     t "if you keep talking, I will I swear to god"
     scene mcdonalds_outside with dissolve:
         xzoom 3.2 yzoom 2.6
-
+    $ discord.update(state = "At McDonalds!")
     show thanga2 with moveinleft:
         xzoom 1.3 yzoom 1.3 xalign 0.3 yalign 0.9
     show kody with moveinright:
@@ -47,7 +48,6 @@ label prologue:
     t "here we are... the worst place in America"
     k "OMG YES I LOVE YOU THANG YOU ARE THE BEST!"
     k "TIME TO EAT!!"
-    
     show thanga2:
         linear 1 pos (0.04, 0.9) 
 
@@ -287,7 +287,7 @@ label prologue:
     else:
         scene wild_west2 with fade:
             xzoom 3.9 yzoom 3.2 yalign 0.8
-
+    $ discord.update(state = "In the Wild West!")
     show cody with moveinright:         
         xalign 0.8 yalign 0.3 xzoom 1.3 yzoom 1.3
     c "Wait..."
