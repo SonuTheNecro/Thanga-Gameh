@@ -32,7 +32,10 @@ default chapter_one_dirt_piles = [False, False, False, False]
 default lopunny_count = 0
 label chapter_one:
     scene inside car with fade:
-        subpixel True xzoom 1.5 yzoom 1.13 zoom 0.67 
+        subpixel True xzoom 1.5 yzoom 1.13 zoom 0.67
+    if persistent.ch01:
+        $ config.rollback_enabled = True
+    $ discord.update(state = "Getting Lunch rq", details = "In Chapter One", large_image = "chapter_one")
     "Chapter 1: The Hunt for the Elusive..."
     questionmark "Lopunny..."
     questionmark "Why would you write it like this?"
@@ -46,7 +49,7 @@ label chapter_one:
         subpixel True pos (343, 485)  xzoom 2.43 yzoom 0.92 zoom 1.0 
     show kody:
         subpixel True pos (0.6, 0.29) 
-
+    
     b "so what should we get to eat?"
     t "I am good with whatever."
     b "anything?"
@@ -233,7 +236,7 @@ label chapter_one:
         pe "IT OKAY CRACKERS ALL DUMB, NEVER LET MY SON SEE ONE THEY BAD THEY HAVE DRUGS"
         b "I also want 3 Large Soda cups"
         pe "okay so this order comes out to $98.54"
-        if not chapter_one_item_check("chapter_one_giftcard"):
+        if chapter_one_item_check("chapter_one_giftcard"):
             b "Okay I will pay with this Giftcard with $100 on it!"
             pe "STUPID BOY THIS CARD IS EMPTY!"
             k "LOL DID MATT JUST GET YOU LOL!"
@@ -260,7 +263,7 @@ label chapter_one:
         "AND KODY JUST THREW THE FOOD OUT"
         "huh?"
         "You wanna see this?"
-        "No you can imagine it or beg on https://github.com/SonuTheNecro/Thanga-Gameh/tree/master"
+        "No you can imagine it or beg on https://github.com/SonuTheNecro/Thanga-Gameh/tree/main"
         "sweet promo!"
         stop sound
         jump chapter_one_post_lunch
@@ -395,6 +398,7 @@ label chapter_one:
         subpixel True pos (1535, 365)  matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 180.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
     call auto_advance(0)
     play music "audio/music/chapter_one/fearful_experience.ogg" loop
+    $ discord.update(state = "Just ran over a dog!")
     t "holy shit"
     t "this is bad!"
     show kody with dissolve:
@@ -587,6 +591,7 @@ label chapter_one:
         subpixel True pos (-9, -234) zoom 0.92 
     stop music
     play music "audio/music/chapter_one/baldi_main.ogg"
+    $ discord.update(state = "Doing Basic Math!")
     t "Where the hell are we?"
     show thanga2 with dissolve:
         subpixel True pos (0.11, 0.42) 
@@ -831,6 +836,7 @@ label chapter_one:
     label baldi_beaten:
         stop music
         play music "audio/music/chapter_one/baldi_main.ogg"
+        $ discord.update(state = "Math Homework Completed!")
         baldi "Well done students!"
         b "Did we win?"
         k "I AM SO SICK OF MATH!"
