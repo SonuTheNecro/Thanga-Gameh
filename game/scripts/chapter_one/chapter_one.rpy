@@ -35,6 +35,7 @@ label chapter_one:
         subpixel True xzoom 1.5 yzoom 1.13 zoom 0.67
     if persistent.ch01:
         $ config.rollback_enabled = True
+    $ discord.set(details = "In Chapter One", large_image = "chapter_one")
     "Chapter 1: The Hunt for the Elusive..."
     questionmark "Lopunny..."
     questionmark "Why would you write it like this?"

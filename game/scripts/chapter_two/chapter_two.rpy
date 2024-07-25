@@ -22,6 +22,7 @@ default persistent.chapter_two_gym = False
 label chapter_two:
     scene black with fade
     stop music
+    $ discord.set(details = "In Chapter Two", large_image = "chapter_two")
     "Chapter 2: The Trial of Eights"
     t "NO PLEASE NOT AGAIN"
     if persistent.ch02:

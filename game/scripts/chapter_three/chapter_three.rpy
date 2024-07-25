@@ -49,6 +49,7 @@ default chapter_three_key_items = {
 label chapter_three:
     "Chapter Three..."
     "The Job Hunt!"
+    $ discord.set(details = "In Chapter Three", large_image = "chapter_three")
     if persistent.ch03:
         $ config.rollback_enabled = True
     show ch03couch:

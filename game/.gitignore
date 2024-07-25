@@ -1,2 +1,18 @@
 # Hide Saves from Repo
 saves/
+
+scripts/general/functions.rpyc
+scripts/general/script.rpyc
+
+scripts/chapter_one/chapter_one.rpyc
+scripts/chapter_one/chapter_one_functions.rpyc
+
+scripts/chapter_two/chapter_two.rpyc
+scripts/chapter_two/chapter_two_functions.rpyc
+
+scripts/chapter_three/chapter_three.rpyc
+scripts/chapter_three/chapter_three_functions.rpyc
+scripts/chapter_three/chapter_three_fnaf_functions.rpyc
+
+scripts/chapter_four/chapter_four.rpyc
+scripts/chapter_four/chapter_four_functions.rpyc
