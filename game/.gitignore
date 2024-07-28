@@ -3,6 +3,7 @@ saves/
 
 scripts/general/functions.rpyc
 scripts/general/script.rpyc
+scripts/general/minigames.rpyc
 
 scripts/chapter_one/chapter_one.rpyc
 scripts/chapter_one/chapter_one_functions.rpyc
@@ -17,12 +18,9 @@ scripts/chapter_three/chapter_three_fnaf_functions.rpyc
 scripts/chapter_four/chapter_four.rpyc
 scripts/chapter_four/chapter_four_functions.rpyc
 
-renpy-discord-presence/
-
-python-packages/
-
 settings/gui.rpyc
-
 settings/options.rpyc
-
 settings/screens.rpyc
+
+renpy-discord-presence/
+python-packages/
