@@ -48,3 +48,57 @@ label minigame_rps:
             else:
                 $ count2 += 1
         jump minigame_rps_start
+label minigame_math:
+    call hide_clickable_menus
+    $ count = 0 #Correct Answers
+    $ count2 = 0 #Incorrect Answers
+    $ rngint = 0 #Number 1
+    $ rngint2 = 0 #Number 2
+    $ location = 1 # Problem Count
+    $ choice = 0 # number 3
+    stop music
+    play music "audio/music/chapter_one/baldi_math.ogg"
+    label minigame_math_start:
+    baldi "Problem #[location]!"
+    scene baldi_q1 with dissolve:
+            subpixel True pos (-333, -0.26) 
+    $ rngint = renpy.random.randint(0 - count * 15,10 + count * 15)
+    $ rngint2 = renpy.random.randint(0 - count * 5, 15 + count * 5 + count2 * 3)
+    baldi "What is [rngint] + [rngint2]?"
+    $ choice = renpy.input("What is [rngint] + [rngint2]?", length = 25)
+    if choice != str(rngint + rngint2):
+        $ count2 +=1
+    else:
+        $ count += 1
+    call minigame_baldi_message
+    scene baldi_q2 with dissolve:
+        subpixel True pos (-333, -0.26)
+    $ rngint = renpy.random.randint(7 + count * 7, 17 + count * 17)
+    $ rngint2 = renpy.random.randint(9 - count2 * count - count, 11 + location * count2)
+    baldi "What is [rngint] * [rngint2] + [rngint//2]?"
+    $ choice = renpy.input("What is [rngint] * [rngint2] + [rngint//2]?", length = 25)
+    if choice != str(rngint * rngint2 + rngint // 2):
+        $ count2 +=1
+    else:
+        $ count += 1
+    call minigame_baldi_message
+    scene baldi_q3 with dissolve:
+        subpixel True pos (-333, -0.26)
+    $ rngint = renpy.random.randint(4 + count, 7 + count)
+    $ rngint2 = renpy.random.randint(2 * count2, 222 * count2)
+    baldi "WHAT IS [rngint] * [rngint2] - [location] / [rngint2 // 2]"
+    $ choice = renpy.input("What is [rngint] * [rngint2] - [location] / [rngint//2]?", length = 25)
+    if choice != str(rngint * rngint2 - location / (rngint2 // 2)):
+        $ count2 +=1
+    else:
+        $ count += 1
+    call minigame_baldi_message
+    "Correct Answers: [count]\n Incorrect Answers: [count2]"
+    jump minigame_math_start
+
+label minigame_baldi_message:
+    $ location += 1
+    baldi "WOW!"
+    baldi "You are Incredible!"
+    baldi "Problem #[location]!"
+    return

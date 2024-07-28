@@ -303,6 +303,8 @@ label clickable_menus:
         menu:
             "Cody's Roshambo":
                 jump minigame_rps
+            "Baldi's Mathmatical Madness":
+                jump minigame_math
             "Return to Main Menu":
                 jump main_menu_chapter_select
 label test1:
