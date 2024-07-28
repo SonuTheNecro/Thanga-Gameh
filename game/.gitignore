@@ -16,3 +16,13 @@ scripts/chapter_three/chapter_three_fnaf_functions.rpyc
 
 scripts/chapter_four/chapter_four.rpyc
 scripts/chapter_four/chapter_four_functions.rpyc
+
+renpy-discord-presence/
+
+python-packages/
+
+settings/gui.rpyc
+
+settings/options.rpyc
+
+settings/screens.rpyc
