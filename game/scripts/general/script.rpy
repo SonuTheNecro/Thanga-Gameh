@@ -49,8 +49,8 @@ label quit:
     $ persistent.play_time += renpy.get_game_runtime()
     return
 label start:
-    $ discord.set(state = "Signing a Contract", details = "In The Prologue", large_image = "prologue", buttons = [dict(label = "SonuTheNecro's Free Promo", url = "https://github.com/SonuTheNecro/Thanga-Gameh")])
     if persistent.intro == False:
+        $ discord.set(state = "Signing a Contract", details = "In The Prologue", large_image = "prologue", buttons = [dict(label = "SonuTheNecro's Free Promo", url = "https://github.com/SonuTheNecro/Thanga-Gameh")])
         label intro:
         play music "audio/music/prologue/aria_of_the_soul.ogg"
         scene velvet room with fade:
@@ -107,6 +107,7 @@ label start:
         show screen clickable_main_menu_trash_can
         show screen clickable_main_menu_trophy
         show screen clickable_main_menu_ch00
+        show screen clickable_main_menu_minigames
         if persistent.ch00:#2
             show screen clickable_main_menu_ch01
         else:#2
@@ -140,6 +141,7 @@ label hide_clickable_menus:
     hide screen clickable_main_menu_trash_can
     hide screen clickable_main_menu_trophy
     hide screen clickable_main_menu_clock
+    hide screen clickable_main_menu_minigames
     return
             
 label clickable_menus:
@@ -291,7 +293,20 @@ label clickable_menus:
         $ formatted_time = "{:02}:{:02}:{:02}".format(hours, minutes, seconds)
         "Playtime: [formatted_time]"
         jump main_menu_chapter_select
-
+    screen clickable_main_menu_minigames:
+        imagebutton:
+            pos(60,960)
+            idle "images/main_menu_minigames.png"
+            hover "images/main_menu_minigames.png"
+            action Jump("main_menu_minigames")
+    label main_menu_minigames:
+        menu:
+            "Cody's Roshambo":
+                jump minigame_rps
+            "Baldi's Mathmatical Madness":
+                jump minigame_math
+            "Return to Main Menu":
+                jump main_menu_chapter_select
 label test1:
     scene bg room
 

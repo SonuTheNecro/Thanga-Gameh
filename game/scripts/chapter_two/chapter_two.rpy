@@ -27,8 +27,7 @@ label chapter_two:
     t "NO PLEASE NOT AGAIN"
     if persistent.ch02:
         $ config.rollback_enabled = True
-    hide black
-    show street1 with fade:
+    scene street1 with fade:
         subpixel True yzoom 1.06
     show thanga2:
         subpixel True pos (0.19, 480) 
