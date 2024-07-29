@@ -85,7 +85,7 @@ label minigame_math:
     scene baldi_q3 with dissolve:
         subpixel True pos (-333, -0.26)
     $ rngint = renpy.random.randint(4 + count, 7 + count)
-    $ rngint2 = renpy.random.randint(2 * count2, 222 * count2)
+    $ rngint2 = renpy.random.randint(1 + 2 * count2, 1 + 222 * count2)
     baldi "WHAT IS [rngint] * [rngint2] - [location] / [rngint2 // 2]"
     $ choice = renpy.input("What is [rngint] * [rngint2] - [location] / [rngint//2]?", length = 25)
     if choice != str(rngint * rngint2 - location / (rngint2 // 2)):
