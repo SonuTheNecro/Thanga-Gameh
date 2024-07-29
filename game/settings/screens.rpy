@@ -268,7 +268,7 @@ screen quick_menu():
             textbutton _("Save") action ShowMenu('save')
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('options')
+            #textbutton _("Prefs") action ShowMenu('options')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -948,7 +948,6 @@ style history_label_text is gui_label_text
 style history_window:
     xfill True
     ysize gui.history_height
-
 style history_name:
     xpos gui.history_name_xpos
     xanchor gui.history_name_xalign
@@ -1037,29 +1036,12 @@ screen keyboard_help():
         text _("Toggles dialogue skipping.")
 
     hbox:
-        label _("Page Up")
-        text _("Rolls back to earlier dialogue.")
-
-    hbox:
-        label _("Page Down")
-        text _("Rolls forward to later dialogue.")
-
-    hbox:
         label "H"
         text _("Hides the user interface.")
 
     hbox:
-        label "S"
-        text _("Takes a screenshot.")
-
-    hbox:
         label "V"
         text _("Toggles assistive {a=https://www.renpy.org/l/voicing}self-voicing{/a}.")
-
-    hbox:
-        label "Shift+A"
-        text _("Opens the accessibility menu.")
-
 
 screen mouse_help():
 
@@ -1089,15 +1071,6 @@ screen gamepad_help():
     hbox:
         label _("Right Trigger\nA/Bottom Button")
         text _("Advances dialogue and activates the interface.")
-
-    hbox:
-        label _("Left Trigger\nLeft Shoulder")
-        text _("Rolls back to earlier dialogue.")
-
-    hbox:
-        label _("Right Shoulder")
-        text _("Rolls forward to later dialogue.")
-
 
     hbox:
         label _("D-Pad, Sticks")

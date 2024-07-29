@@ -39,10 +39,18 @@ default persistent.ch03 = False
 default persistent.ch04 = False
 default persistent.ch05 = False
 
+#
+default persistent.play_time = 0
+default temp_playtime = 0
+label main_menu:
+    return
 
-
+label quit:
+    $ persistent.play_time += renpy.get_game_runtime()
+    return
 label start:
     if persistent.intro == False:
+        $ discord.set(state = "Signing a Contract", details = "In The Prologue", large_image = "prologue", buttons = [dict(label = "SonuTheNecro's Free Promo", url = "https://github.com/SonuTheNecro/Thanga-Gameh")])
         label intro:
         play music "audio/music/prologue/aria_of_the_soul.ogg"
         scene velvet room with fade:
@@ -82,8 +90,24 @@ label start:
                         $ renpy.quit()
 
     else:
+        #$ persistent.ch00 = True
+        #$ persistent.ch01 = True
+        #$ persistent.ch02 = True
+        #$ persistent.ch03 = True
+        #$ persistent.secret0 = True
+        #$ persistent.secret1 = True
+        #$ persistent.secret2 = True
+        #$ persistent.secret3 = True
+        $ config.rollback_enabled = False
+        play music "audio/music/prologue/phantom.ogg" loop
+        scene main_menu_bg3
+        $ discord.set(details = "In The Main Menu.", large_image = "main_menu", buttons = [dict(label = "SonuTheNecro's Free Promo", url = "https://github.com/SonuTheNecro/Thanga-Gameh")])
         label main_menu_chapter_select:
+        show screen clickable_main_menu_clock
+        show screen clickable_main_menu_trash_can
+        show screen clickable_main_menu_trophy
         show screen clickable_main_menu_ch00
+        show screen clickable_main_menu_minigames
         if persistent.ch00:#2
             show screen clickable_main_menu_ch01
         else:#2
@@ -91,17 +115,17 @@ label start:
         if persistent.ch01:#3
             show screen clickable_main_menu_ch02
         else:#3
-            show screen clickable_main_menu_question_screen2(1458,13)
+            show screen clickable_main_menu_question_screen2(1444,13)
         if persistent.ch02:#4
             show screen clickable_main_menu_ch03
         else:#4
-            show screen clickable_main_menu_question_screen3(126,541)
+            show screen clickable_main_menu_question_screen3(140,541)
     #if persistent.ch03:#5
         show screen clickable_main_menu_question_screen4(768,541)
     #if not persistent.ch04:#6
         show question_screen:
-            subpixel True pos(1458,541) zoom 0.62
-        call screen clickable_main_menu_question_screen5(1458,541)
+            subpixel True pos(1444,541) zoom 0.62
+        call screen clickable_main_menu_question_screen5(1444,541)
         
 
 label hide_clickable_menus:
@@ -114,13 +138,16 @@ label hide_clickable_menus:
     hide screen clickable_main_menu_question_screen3
     hide screen clickable_main_menu_question_screen4
     hide screen clickable_main_menu_question_screen5
-
+    hide screen clickable_main_menu_trash_can
+    hide screen clickable_main_menu_trophy
+    hide screen clickable_main_menu_clock
+    hide screen clickable_main_menu_minigames
     return
             
 label clickable_menus:
     screen clickable_main_menu_ch00:
         imagebutton:
-            pos (126, 13) at Transform(zoom=0.62)
+            pos (140, 13) at Transform(zoom=0.62)
             idle "images/chapter_zero_screen.png"
             hover "images/chapter_zero_screen.png"
             action Jump("chapter_start0")
@@ -132,13 +159,13 @@ label clickable_menus:
             action Jump("chapter_start1")
     screen clickable_main_menu_ch02:
         imagebutton:
-            pos (1458, 13) at Transform(zoom=0.62)
+            pos (1444, 13) at Transform(zoom=0.62)
             idle "images/chapter_two_screen.png"
             hover "images/chapter_two_screen.png"
             action Jump("chapter_start2")
     screen clickable_main_menu_ch03:
         imagebutton:
-            pos (126, 541) at Transform(zoom=0.62)
+            pos (140, 541) at Transform(zoom=0.62)
             idle "images/chapter_three_screen.png"
             hover "images/chapter_three_screen.png"
             action Jump("chapter_start3")
@@ -209,6 +236,77 @@ label clickable_menus:
         "That chapter is currently locked/unavailable!"
         "Please select another chapter!"
         jump main_menu_chapter_select
+    screen clickable_main_menu_trash_can:
+        imagebutton:
+            pos((0, 1020))
+            idle "images/main_menu_delete.png"
+            hover "images/main_menu_delete.png"
+            action Jump("main_menu_delete")
+    label main_menu_delete:
+        "Do you want to delete all of your Save Data"
+        "This includes your Chapter Completions, Secrets Found, and the player name!"
+        "This is an IRREVERSIBLE ACTION!"
+        "Would you like to continue?"
+        menu:
+            "Yes, delete my DATA":
+                $ renpy.delete_persistent()
+                jump main_menu_chapter_select
+            "No, Don't Do That":
+                jump main_menu_chapter_select
+    screen clickable_main_menu_trophy:
+        imagebutton:
+            pos(60,1020)
+            idle "images/main_menu_trophy.png"
+            hover "images/main_menu_trophy.png"
+            action Jump("main_menu_stats")
+    label main_menu_stats:
+        if persistent.ch00:
+            "Prologue has been Completed!"
+            if persistent.secret0:
+                "Prologue's Secret has been Found!"
+        if persistent.ch01:
+            "Chapter One has been Completed!"
+            if persistent.secret1:
+                "The secret of Kody has been Found!"
+        if persistent.ch02:
+            "Chapter two has been Completed!"
+            if persistent.secret2:
+                "Chapter Two's Secret has been Found!"
+        if persistent.ch03:
+            "Chapter Three has been Completed!"
+            if persistent.secret3:
+                "The SpringTrap has been Formed!"
+        jump main_menu_chapter_select
+    screen clickable_main_menu_clock:
+        imagebutton:
+            pos(0,960)
+            idle "images/main_menu_clock.png"
+            hover "images/main_menu_clock.png"
+            action Jump("main_menu_playtime")
+    label main_menu_playtime:
+        $ persistent.play_time -= temp_playtime
+        $ temp_playtime = renpy.get_game_runtime()
+        $ persistent.play_time += temp_playtime
+        $ hours = int(persistent.play_time // 3600)
+        $ minutes = int((persistent.play_time % 3600) // 60)
+        $ seconds = int(persistent.play_time % 60)
+        $ formatted_time = "{:02}:{:02}:{:02}".format(hours, minutes, seconds)
+        "Playtime: [formatted_time]"
+        jump main_menu_chapter_select
+    screen clickable_main_menu_minigames:
+        imagebutton:
+            pos(60,960)
+            idle "images/main_menu_minigames.png"
+            hover "images/main_menu_minigames.png"
+            action Jump("main_menu_minigames")
+    label main_menu_minigames:
+        menu:
+            "Cody's Roshambo":
+                jump minigame_rps
+            "Baldi's Mathmatical Madness":
+                jump minigame_math
+            "Return to Main Menu":
+                jump main_menu_chapter_select
 label test1:
     scene bg room
 

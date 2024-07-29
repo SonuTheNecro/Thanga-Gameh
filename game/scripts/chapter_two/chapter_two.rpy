@@ -22,10 +22,12 @@ default persistent.chapter_two_gym = False
 label chapter_two:
     scene black with fade
     stop music
+    $ discord.update(details = "In Chapter Two", large_image = "chapter_two")
     "Chapter 2: The Trial of Eights"
     t "NO PLEASE NOT AGAIN"
-    hide black
-    show street1 with fade:
+    if persistent.ch02:
+        $ config.rollback_enabled = True
+    scene street1 with fade:
         subpixel True yzoom 1.06
     show thanga2:
         subpixel True pos (0.19, 480) 

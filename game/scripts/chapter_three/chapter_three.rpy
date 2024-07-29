@@ -5,16 +5,16 @@
 # All sounds: Freesounds.com
 
 #Variables
-define jb = Character("Jewel Osco Butcher")
-define jc = Character("Jewel Osco Customer")
-define jceo = Character("Jewel Osco CEO")
-define usps = Character("USPS Worker Guy")
-define hb = Character("Herobrine")
-define afton = Character("William Afton")
+define jb =     Character("Jewel Osco Butcher")
+define jc =     Character("Jewel Osco Customer")
+define jceo =   Character("Jewel Osco CEO")
+define usps =   Character("USPS Worker Guy")
+define hb =     Character("Herobrine")
+define afton =  Character("William Afton")
 define freddy = Character("Freddy Fazgyatt")
 define bonnie = Character("Bonnie Looksmaxxer")
-define chica = Character("Chica FanumTaxxer")
-define foxy = Character("Foxy FurryFukker")
+define chica =  Character("Chica FanumTaxxer")
+define foxy =   Character("Foxy FurryFukker")
 define fnafpg = Character("Pizza Delivery Guy")
 define puppet = Character("The Puppet")
 define balloon = Character("Balloon Boy")
@@ -48,7 +48,10 @@ default chapter_three_key_items = {
 
 label chapter_three:
     "Chapter Three..."
-    "The Job hunt!"
+    "The Job Hunt!"
+    $ discord.update(state = "Looking for work!", details = "In Chapter Three", large_image = "chapter_three")
+    if persistent.ch03:
+        $ config.rollback_enabled = True
     show ch03couch:
         subpixel True xpos -126 xzoom 1.35 zoom 1.77 
     stop music
@@ -158,7 +161,8 @@ label chapter_three:
         stop music
         play sound "audio/sound/chapter_three/street2.ogg" loop
         scene ch03_alleyway with dissolve:
-            subpixel True xpos -81 xzoom 1.17 zoom 0.43 
+            subpixel True xpos -81 xzoom 1.17 zoom 0.43
+        $ discord.update(state = "Committing crimes!")
         k "Okay I guess this is the last job I can get..."
         k "Dang its already night damn"
         k "According to this note" #TODO:Draw a note
@@ -190,6 +194,7 @@ label chapter_three:
             subpixel True crop_relative True pos (953, 371) zoom 0.78 crop (0.0, 0.0, 1.0, 0.59) yrotate 180.0 
         show kody as kody1: 
             subpixel True zoom 0.78 yrotate 180.0 crop_relative True pos (790, 708) rotate 315.0 crop (0.0, 0.62, 1.0, 1.0)
+        $ discord.update(state = "Being the Victim of Crimes")
         pause 1.0
         k "MY LEGS!"
         k "WTF!"
@@ -401,8 +406,8 @@ label chapter_three:
             Foxy = Animatronic("Foxy")
         #jump chapter_three_office
         call chapter_three_music
+        $ discord.update(state = "Stuck in Freddy Fazgyatt's Rizzaria")
         jump ch03_fnaf_office
-        "test"
 label ch03_fnaf_office:
     $ location = 1
     call chapter_three_fnaf_hide_screens
@@ -529,7 +534,8 @@ label ch03_fnaf_4a:
 label chapter_three_ending:
     call chapter_three_fnaf_hide_screens
     show ch03_fnaf_foxy:
-        subpixel True xpos 450 zoom 0.93 
+        subpixel True xpos 450 zoom 0.93
+    $ discord.update(state = "Escaped Freddy Fazgyatt Rizzaria!")
     k "NO NOT ANYMORE BOSS BATTLES FUCK RIGHT OFF!"
     foxy "Is dat waz de odders bean mikkinng u doeng?"
     k "yeah sure i don't speak whatever you are saying"

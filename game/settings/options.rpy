@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Thanga Game (Chapter Three) ")
+define config.name = _("Thanga GameH (Chapter Four) ")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -23,18 +23,18 @@ define gui.show_name = False
 
 ## The version of the game.
 
-define config.version = "1.5.4"
+define config.version = "1.6.0"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
-define gui.about = _p(""" Thanga Gamea (Thang Game) is a story and game created by SonuTheNecro and TacticalVortex.
+define gui.about = _p(""" Thanga GameH (Thang Game) is a story and game created by SonuTheNecro and TacticalVortex.
 
 Although the characters in the game are based off of real people, they are by no means a representation of the real people and are done purely for satrical and entertainment purposes.
 Otherwise, everything else is fiction and should be treated as such.
 
-Special Thanks to: ThangaMangaLang, B-bop, JigglyJello, and Masimew
+Special Thanks to: ThangaMangaLang, B-Bop, JigglyJello, and Masimew124
 """)
 
 
@@ -42,7 +42,7 @@ Special Thanks to: ThangaMangaLang, B-bop, JigglyJello, and Masimew
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "ThangaGamea"
+define build.name = "ThangaGameH"
 
 
 ## Sounds and music ############################################################
@@ -148,7 +148,7 @@ default preferences.afm_time = 15
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "ThangaGamea-1704862106"
+define config.save_directory = "ThangaGameh"
 
 
 ## Icon ########################################################################
@@ -218,4 +218,4 @@ init python:
 # Turns Renpy's Auto-save feature Off , I need this off so we can force autosaves better
 define config.has_autosave = False
 # Turns The Back-button off!
-define config.rollback_enabled = True
+define config.rollback_enabled = False

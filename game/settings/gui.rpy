@@ -25,7 +25,7 @@ define config.check_conflicting_properties = True
 ## The colors of text in the interface.
 
 ## An accent color used throughout the interface to label and highlight text.
-define gui.accent_color = '#e48902'
+define gui.accent_color = '#ffe600ff'
 
 ## The color used for a text button when it is neither selected nor hovered.
 define gui.idle_color = '#888888'
@@ -65,10 +65,10 @@ define gui.name_text_font = "fonts/ShareTechMono-Regular.ttf"
 define gui.interface_text_font = "fonts/PatrickHand-Regular.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 33
+define gui.text_size = 30
 
 ## The size of character names.
-define gui.name_text_size = 48
+define gui.name_text_size = 36
 
 ## The size of text in the game's user interface.
 define gui.interface_text_size = 33
@@ -105,8 +105,9 @@ define gui.textbox_yalign = 1.0
 
 ## The placement of the speaking character's name, relative to the textbox.
 ## These can be a whole number of pixels from the left or top, or 0.5 to center.
-define gui.name_xpos = 360
-define gui.name_ypos = 0
+# OLD VALUE 360
+define gui.name_xpos = 570
+define gui.name_ypos = 8
 
 ## The horizontal alignment of the character's name. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
@@ -128,12 +129,12 @@ define gui.namebox_tile = False
 
 ## The placement of dialogue relative to the textbox. These can be a whole
 ## number of pixels relative to the left or top side of the textbox, or 0.5 to
-## center.
-define gui.dialogue_xpos = 402
-define gui.dialogue_ypos = 75
+## center. #OLD VALUE 402
+define gui.dialogue_xpos = 590
+define gui.dialogue_ypos = 70
 
 ## The maximum width of dialogue text, in pixels.
-define gui.dialogue_width = 1116
+define gui.dialogue_width = 755
 
 ## The horizontal alignment of the dialogue text. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
@@ -340,7 +341,8 @@ define config.history_length = 250
 
 ## The height of a history screen entry, or None to make the height variable at
 ## the cost of performance.
-define gui.history_height = 210
+# OLD VALUE 210
+define gui.history_height = 100
 
 ## The position, width, and alignment of the label giving the name of the
 ## speaking character.
