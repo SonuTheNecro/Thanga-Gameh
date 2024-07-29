@@ -388,9 +388,9 @@ label chapter_two:
             k "FUUCCCKKKK"
             k "also what time will we be waking up?"
             k "12? 1?"
-            m "8"
-            k "8 P.M?? LETS FUCKING GO"
-            m "8 A.M"
+            m "7"
+            k "7 P.M?? LETS FUCKING GO"
+            m "7 A.M"
             k "FFFFFFUUUUUUUUCCCCCCCKKKKKKK"
             scene danganronpa_lobby with fade:
                 subpixel True xzoom 0.76 yzoom 0.76
