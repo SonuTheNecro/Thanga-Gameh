@@ -8,6 +8,9 @@ scripts/general/minigames.rpyc
 scripts/chapter_one/chapter_one.rpyc
 scripts/chapter_one/chapter_one_functions.rpyc
 
+scripts/chapter_one/chapter_secret_one.rpyc
+scripts/chapter_one/chapter_secret_one_functions.rpyc
+
 scripts/chapter_two/chapter_two.rpyc
 scripts/chapter_two/chapter_two_functions.rpyc
 

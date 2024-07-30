@@ -112,6 +112,8 @@ label start:
             show screen clickable_main_menu_ch01
         else:#2
             show screen clickable_main_menu_question_screen1(768,13)
+        if persistent.secret0:
+            show screen clickable_chapter_secret_one
         if persistent.ch01:#3
             show screen clickable_main_menu_ch02
         else:#3
@@ -142,6 +144,7 @@ label hide_clickable_menus:
     hide screen clickable_main_menu_trophy
     hide screen clickable_main_menu_clock
     hide screen clickable_main_menu_minigames
+    hide screen clickable_chapter_secret_one
     return
             
 label clickable_menus:
@@ -307,6 +310,23 @@ label clickable_menus:
                 jump minigame_math
             "Return to Main Menu":
                 jump main_menu_chapter_select
+    
+    screen clickable_chapter_secret_one:
+        imagebutton:
+            pos (549, 210)
+            idle "images/slender_man.png"
+            hover "images/slender_man.png"
+            action Jump("chapter_start_secret1")
+    label chapter_start_secret1:
+        "Do you want to start the Secret Chapter?"
+        menu:
+            "Yes":
+                call hide_clickable_menus
+                jump chapter_secret_one_start
+            "No":
+                jump main_menu_chapter_select
+
+
 label test1:
     scene bg room
 
