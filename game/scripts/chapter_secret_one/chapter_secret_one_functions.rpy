@@ -85,6 +85,17 @@ label chs01_restore_screens(location):
     call chs01_slender_movement
     if (slender_location == location):
         show slendy
+        play sound "audio/sound/general/shock_horror.ogg"
+        if (count > 0):
+            $ count -= 1
+        else:
+            call chs01_hide_screens
+            play movie "video/general/slendy.webm"
+            pause 2.0
+            call stab_blood_screen
+            pause 0.9
+            show black with vpunch and hpunch
+            jump game_over
     elif (slender_location - location == 1 or location - slender_location == 1 or slender_location - location == 4 or location - slender_location == 4 ):
         play sound "audio/sound/general/slendy_laugh.ogg"
     call chs01_restore_movement(location)
@@ -127,7 +138,9 @@ label chs01_notes:
     label chs01_note1_found:
         hide secret_paper1
         "You found a note!"
+        play sound2 "audio/sound/chapter_one/item_pickup.ogg"
         $ chapter_secret_one_notes[0] = True
+        call chs01_note_check
         jump chs01_area2
     screen clickable_chs01_note2:
         imagebutton:
@@ -138,7 +151,9 @@ label chs01_notes:
     label chs01_note2_found:
         hide secret_paper2
         "You found a note!"
+        play sound2 "audio/sound/chapter_one/item_pickup.ogg"
         $ chapter_secret_one_notes[1] = True
+        call chs01_note_check
         jump chs01_area4
     screen clickable_chs01_note3:
         imagebutton:
@@ -149,7 +164,9 @@ label chs01_notes:
     label chs01_note3_found:
         hide secret_paper3
         "You found a note!"
+        play sound2 "audio/sound/chapter_one/item_pickup.ogg"
         $ chapter_secret_one_notes[2] = True
+        call chs01_note_check
         jump chs01_area6
     screen clickable_chs01_note4:
         imagebutton:
@@ -160,7 +177,9 @@ label chs01_notes:
     label chs01_note4_found:
         hide secret_paper4
         "You found a note!"
+        play sound2 "audio/sound/chapter_one/item_pickup.ogg"
         $ chapter_secret_one_notes[3] = True
+        call chs01_note_check
         jump chs01_area7
     screen clickable_chs01_note5:
         imagebutton:
@@ -171,7 +190,9 @@ label chs01_notes:
     label chs01_note5_found:
         hide secret_paper5
         "You found a note!"
+        play sound2 "audio/sound/chapter_one/item_pickup.ogg"
         $ chapter_secret_one_notes[4] = True
+        call chs01_note_check
         jump chs01_area9
     screen clickable_chs01_note6:
         imagebutton:
@@ -182,7 +203,9 @@ label chs01_notes:
     label chs01_note6_found:
         hide secret_paper6
         "You found a note!"
+        play sound2 "audio/sound/chapter_one/item_pickup.ogg"
         $ chapter_secret_one_notes[5] = True
+        call chs01_note_check
         jump chs01_area11
     screen clickable_chs01_note7:
         imagebutton:
@@ -193,7 +216,9 @@ label chs01_notes:
     label chs01_note7_found:
         hide secret_paper7
         "You found a note!"
+        play sound2 "audio/sound/chapter_one/item_pickup.ogg"
         $ chapter_secret_one_notes[6] = True
+        call chs01_note_check
         jump chs01_area14
     screen clickable_chs01_note8:
         imagebutton:
@@ -204,7 +229,18 @@ label chs01_notes:
     label chs01_note8_found:
         hide secret_paper8
         "You found a note!"
+        play sound2 "audio/sound/chapter_one/item_pickup.ogg"
         $ chapter_secret_one_notes[7] = True
+        call chs01_note_check
         jump chs01_area16
+    label chs01_note_check:
+        if all(chapter_secret_one_notes):
+            jump chs01_all_notes_found
+        return
     label chs01_all_notes_found:
-        "test"
+        scene mcdonalds_outside with dissolve:
+            xzoom 3.2 yzoom 2.6
+
+
+
+        "wow"

@@ -25,7 +25,7 @@ label chapter_secret_one_start:
     mt "I AINT DEALING WITH THE 94 YEAR OLD AND THE 22 YEAR OLD MAN CHILDREN"
     mt "AND I DONT WANNA STUDY"
     mt "I WISH I DIDN'T HAVE TO GO HOME AND JUST DISAPPEAR FOREVER"
-
+    play music "audio/music/general/horror_bg.ogg"
     questionmark "hehehe"
     mt "HUH?"
     questionmark "...."
@@ -55,6 +55,7 @@ label chapter_secret_one_start:
     mt "Let's get outta here"
     mt "How am i so far away from the road"
     $ slender_location = 16
+    $ count = 6
     label chs01_area1:
         $ location = 1
         call chs01_hide_screens
@@ -152,7 +153,3 @@ label chapter_secret_one_start:
             subpixel True zoom 2.01 
         call chs01_restore_screens(location)
 
-
-
-
-    "test"
