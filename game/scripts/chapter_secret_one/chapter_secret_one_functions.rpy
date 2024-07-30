@@ -238,9 +238,23 @@ label chs01_notes:
             jump chs01_all_notes_found
         return
     label chs01_all_notes_found:
+        call chs01_hide_screens
+        stop music
+        play music "audio/music/chapter_three/youthful_lunch.ogg"
         scene mcdonalds_outside with dissolve:
             xzoom 3.2 yzoom 2.6
-
-
-
-        "wow"
+        show matt2:
+            subpixel True pos (1135, 223) zoom 0.28 
+        mt "WHAT THE FUCK WAS THAT?"
+        mt "WAIT HOW AM I HERE WHAT!!!!!!!!"
+        mt "WHAT IS HAPPENING!!!!!!!"
+        mt "WHAT!"
+        show thanga2 with moveinleft:
+            xzoom 1.3 yzoom 1.3 xalign 0.3 yalign 0.9
+        t "yo what are you doing here matt?"
+        mt "WHAT!"
+        mt "WHAT ARE YOU DOING HERE?"
+        t "Well kody is crying about no ice cream in there so I am just waiting for the tantrum"
+        "wait a minute"
+        stop music
+        jump start

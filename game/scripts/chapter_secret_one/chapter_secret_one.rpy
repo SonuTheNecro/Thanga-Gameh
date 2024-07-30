@@ -1,5 +1,7 @@
 default chapter_secret_one_notes = [False, False, False, False, False, False, False, False]
 label chapter_secret_one_start:
+    stop music
+    play music "audio/music/chapter_three/beneath_the_mask.ogg"
     $ discord.update(state = "??????????", details = "In Chapter Secret One", large_image = "chapter_one")
     scene street2 with dissolve:
         subpixel True xzoom 1.16 zoom 0.79
@@ -7,7 +9,6 @@ label chapter_secret_one_start:
         subpixel True crop_relative True pos (1015, 405) zoom 0.08  crop (0.0, 0.0, 1.0, 0.61)
     show car1:
         subpixel True pos (833, 405) zoom 0.57 
-
     mt "Damn work fucking sucked dick"
     mt "like WHY"
     mt "WHY DID KODY COME IN WITH THANG ASKING FOR AN ICE CREAM HOTDOG"
@@ -25,13 +26,13 @@ label chapter_secret_one_start:
     mt "I AINT DEALING WITH THE 94 YEAR OLD AND THE 22 YEAR OLD MAN CHILDREN"
     mt "AND I DONT WANNA STUDY"
     mt "I WISH I DIDN'T HAVE TO GO HOME AND JUST DISAPPEAR FOREVER"
+    stop music
     play music "audio/music/general/horror_bg.ogg"
     questionmark "hehehe"
     mt "HUH?"
     questionmark "...."
     mt "SHOW YOURSELF"
     call auto_advance(1)
-    stop music
     play sound "audio/sound/chapter_one/car_crash.ogg"
     window hide
     scene car_crash2 with vpunch and hpunch:
@@ -55,7 +56,7 @@ label chapter_secret_one_start:
     mt "Let's get outta here"
     mt "How am i so far away from the road"
     $ slender_location = 16
-    $ count = 6
+    $ count = 5 #Lives
     label chs01_area1:
         $ location = 1
         call chs01_hide_screens
