@@ -143,14 +143,15 @@ label chapter_three_jewel_osco:
     label ch03_jewel_main:
         call chapter_three_jewel_hide_all_buttons
         $ location = 1
+        $ print(count2)
         scene ch03jewel1 with dissolve:
             subpixel True xzoom 1.2 zoom 2.58
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_main_1:
         if chapter_three_jewels_check[0] == False:
             show screen clickable_chapter_three_wet_floor_sign
         elif count2 == 5:
             jump chapter_three_jewel_end
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the middle of Jewel Osco!"
         jump ch03_jewel_main_1
 
@@ -159,10 +160,10 @@ label chapter_three_jewel_osco:
         $ location = 2
         scene ch03jewel2 with dissolve:
             subpixel True xzoom 1.17 zoom 2.61 
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_grocery_1:
         if chapter_three_jewels_check[1] == False:
             show screen clickable_chapter_three_grocery_cart
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the Grocery Section of Jewel Osco!"
         jump ch03_jewel_grocery_1
 
@@ -171,10 +172,10 @@ label chapter_three_jewel_osco:
         $ location = 3
         scene ch03jewel3 with dissolve:
             subpixel True yzoom 1.17 zoom 1.41 
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_meat_1:
         if chapter_three_jewels_check[2] == False:
             show screen clickable_chapter_three_butcher
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the Meat Section of Jewel Osco!"
         jump ch03_jewel_meat_1
 
@@ -183,10 +184,10 @@ label chapter_three_jewel_osco:
         $ location = 4
         scene ch03jewel4 with dissolve:
             subpixel True xzoom 1.2 zoom 2.71
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_shelf_1:
         if chapter_three_jewels_check[3] == False:
             show screen clickable_chapter_three_candy
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the Shelfed Goods Section of Jewel Osco!"
         jump ch03_jewel_shelf_1
 
@@ -195,10 +196,10 @@ label chapter_three_jewel_osco:
         $ location = 5
         scene ch03jewel5 with dissolve:
             subpixel True yzoom 1.06 zoom 2.55
-        call chapter_three_jewel_restore_buttons(location)
         label ch03_jewel_checkout_1:
         if chapter_three_jewels_check[4] == False:
             show screen clickable_chapter_three_customer
+        call chapter_three_jewel_restore_buttons(location)
         "You are currently in the Checkout Section of Jewel Osco!"
         jump ch03_jewel_checkout_1
 
@@ -313,7 +314,7 @@ label chapter_three_jewel_osco:
         k "(Im getting outta here, this guy is WACK)"
         $ chapter_three_jewels_mark(0)
         hide ch03_man
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Location Two Event
@@ -334,7 +335,7 @@ label chapter_three_jewel_osco:
         k "well that was fun"
         k "I should dip!"
         $ chapter_three_jewels_mark(1)
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Location Three Event
@@ -365,7 +366,7 @@ label chapter_three_jewel_osco:
         k "GET OUT BOZO!"
         jb "okay sir"
         $ chapter_three_jewels_mark(2)
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Location Four Event
@@ -381,7 +382,7 @@ label chapter_three_jewel_osco:
         hide ch03_candy
         k "That was some good candy :)"
         $ chapter_three_jewels_mark(3)
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Location Five Event
@@ -401,7 +402,7 @@ label chapter_three_jewel_osco:
         hide ch03_woman
         k "ez rizz"
         $ chapter_three_jewels_mark(4)
-        call chapter_three_jewel_restore_buttons(location)
+        #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
         return
     # Restores buttons once they are closed when an interaction starts/restores button once we swap areas
@@ -410,15 +411,15 @@ label chapter_three_jewel_osco:
             show screen clickable_button_jewel_chapter_three_up(location)
             show screen clickable_button_jewel_chapter_three_down(location)
             show screen clickable_button_jewel_chapter_three_left(location)
-            show screen clickable_button_jewel_chapter_three_right(location)
+            call screen clickable_button_jewel_chapter_three_right(location)
         elif current_location == 2:
-            show screen clickable_button_jewel_chapter_three_right(location)
+            call screen clickable_button_jewel_chapter_three_right(location)
         elif current_location == 3:
-            show screen clickable_button_jewel_chapter_three_down(location)
+            call screen clickable_button_jewel_chapter_three_down(location)
         elif current_location == 4:
-            show screen clickable_button_jewel_chapter_three_left(location)
+            call screen clickable_button_jewel_chapter_three_left(location)
         elif current_location == 5:
-            show screen clickable_button_jewel_chapter_three_up(location)
+            call screen clickable_button_jewel_chapter_three_up(location)
         return
     label chapter_three_jewel_hide_buttons:
         hide screen clickable_button_jewel_chapter_three_up
@@ -634,7 +635,12 @@ label chapter_three_mailman:
     scene ch03_post1 with dissolve:
         subpixel True xzoom 1.31 zoom 1.84 
     show kody:
-        subpixel True pos (-238, 438) 
+        subpixel True pos (-238, 438)
+    if location == 7:
+        k "I should not try this..."
+        stop music
+        play music "audio/music/chapter_three/forest1.ogg" loop
+        jump chapter_three_map
     "Somewhere in the U.S."
     show kody:
         linear 0.35 subpixel True pos (482, 438) 
@@ -789,9 +795,7 @@ label chapter_three_mailman:
                 rotate 0
                 linear 0.1 rotate -360 subpixel True pos (-590, 15)
             k "goodbye bastard forever"
-
-
-
+    $ location = 7
     $ count += 1
     stop music
     play music "audio/music/chapter_three/forest1.ogg" loop
