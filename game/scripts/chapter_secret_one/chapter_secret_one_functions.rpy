@@ -44,7 +44,14 @@ label chs01_hide_screens:
     hide screen chapter_secret_one_down_button
     hide screen chapter_secret_one_up_button
     hide screen clickable_chs01_matt
-    hide screen clickable_chs01_note
+    hide screen clickable_chs01_note1
+    hide screen clickable_chs01_note2
+    hide screen clickable_chs01_note3
+    hide screen clickable_chs01_note4
+    hide screen clickable_chs01_note5
+    hide screen clickable_chs01_note6
+    hide screen clickable_chs01_note7
+    hide screen clickable_chs01_note8
     return
 label chs01_restore_movement(location):
     if location > 4:
@@ -58,10 +65,28 @@ label chs01_restore_movement(location):
     call screen clickable_chs01_matt
     return
 label chs01_restore_screens(location):
-
+    $ renpy.sound.play("audio/sound/chapter_one/street1.ogg")
+    if location == 2 and not chapter_secret_one_notes[0]:
+        show screen clickable_chs01_note1
+    elif location == 4 and not chapter_secret_one_notes[1]: 
+        show screen clickable_chs01_note2
+    elif location == 6 and not chapter_secret_one_notes[2]:
+        show screen clickable_chs01_note3
+    elif location == 7 and not chapter_secret_one_notes[3]:
+        show screen clickable_chs01_note4
+    elif location == 9 and not chapter_secret_one_notes[4]:
+        show screen clickable_chs01_note5
+    elif location == 11 and not chapter_secret_one_notes[5]:
+        show screen clickable_chs01_note6
+    elif location == 14 and not chapter_secret_one_notes[6]:
+        show screen clickable_chs01_note7
+    elif location == 16 and not chapter_secret_one_notes[7]:
+        show screen clickable_chs01_note8
     call chs01_slender_movement
     if (slender_location == location):
         show slendy
+    elif (slender_location - location == 1 or location - slender_location == 1 or slender_location - location == 4 or location - slender_location == 4 ):
+        play sound "audio/sound/general/slendy_laugh.ogg"
     call chs01_restore_movement(location)
     return
 
@@ -82,25 +107,104 @@ label chs01_slender_movement:
                 $ slender_location += 4
     return
 label chs01_matt:
-        screen clickable_chs01_matt:
+    screen clickable_chs01_matt:
         imagebutton:
-            pos((450, 230)) at Transform(zoom=0.18)
+            pos((310, 230)) at Transform(zoom=0.18)
             idle "images/matt2.jpg"
             hover "images/matt2.jpg"
             action Call("chs01_matt_filler")
-        label chs01_matt_filler:
+    label chs01_matt_filler:
         mt "LET ME GET OUTTA THIS SHITTY FOREST OH MY FUCKING GOD!"
         return
 
 label chs01_notes:
     screen clickable_chs01_note1:
         imagebutton:
-            pos (0, 0)
+            pos (1090, 223) at Transform(zoom=0.3)
             idle "images/chapter_secret_one/secret_paper1.jpg"
             hover "images/chapter_secret_one/secret_paper1.jpg"
-            action Call("chs01_note1_found")
+            action Jump("chs01_note1_found")
     label chs01_note1_found:
         hide secret_paper1
         "You found a note!"
-        $ chapter_secret_one_notes[0] = False
-        return
+        $ chapter_secret_one_notes[0] = True
+        jump chs01_area2
+    screen clickable_chs01_note2:
+        imagebutton:
+            pos (471, 300) at Transform(zoom=0.3)
+            idle "images/chapter_secret_one/secret_paper2.jpg"
+            hover "images/chapter_secret_one/secret_paper2.jpg"
+            action Jump("chs01_note2_found")
+    label chs01_note2_found:
+        hide secret_paper2
+        "You found a note!"
+        $ chapter_secret_one_notes[1] = True
+        jump chs01_area4
+    screen clickable_chs01_note3:
+        imagebutton:
+            pos (471, 300) at Transform(zoom=0.3)
+            idle "images/chapter_secret_one/secret_paper3.jpg"
+            hover "images/chapter_secret_one/secret_paper3.jpg"
+            action Jump("chs01_note3_found")
+    label chs01_note3_found:
+        hide secret_paper3
+        "You found a note!"
+        $ chapter_secret_one_notes[2] = True
+        jump chs01_area6
+    screen clickable_chs01_note4:
+        imagebutton:
+            pos (1090, 223) at Transform(zoom=0.3)
+            idle "images/chapter_secret_one/secret_paper4.jpg"
+            hover "images/chapter_secret_one/secret_paper4.jpg"
+            action Jump("chs01_note4_found")
+    label chs01_note4_found:
+        hide secret_paper4
+        "You found a note!"
+        $ chapter_secret_one_notes[3] = True
+        jump chs01_area7
+    screen clickable_chs01_note5:
+        imagebutton:
+            pos (1090, 223) at Transform(zoom=0.3)
+            idle "images/chapter_secret_one/secret_paper5.jpg"
+            hover "images/chapter_secret_one/secret_paper5.jpg"
+            action Jump("chs01_note5_found")
+    label chs01_note5_found:
+        hide secret_paper5
+        "You found a note!"
+        $ chapter_secret_one_notes[4] = True
+        jump chs01_area9
+    screen clickable_chs01_note6:
+        imagebutton:
+            pos (471, 300) at Transform(zoom=0.3)
+            idle "images/chapter_secret_one/secret_paper6.jpg"
+            hover "images/chapter_secret_one/secret_paper6.jpg"
+            action Jump("chs01_note6_found")
+    label chs01_note6_found:
+        hide secret_paper6
+        "You found a note!"
+        $ chapter_secret_one_notes[5] = True
+        jump chs01_area11
+    screen clickable_chs01_note7:
+        imagebutton:
+            pos (471, 300) at Transform(zoom=0.3)
+            idle "images/chapter_secret_one/secret_paper7.png"
+            hover "images/chapter_secret_one/secret_paper7.png"
+            action Jump("chs01_note7_found")
+    label chs01_note7_found:
+        hide secret_paper7
+        "You found a note!"
+        $ chapter_secret_one_notes[6] = True
+        jump chs01_area14
+    screen clickable_chs01_note8:
+        imagebutton:
+            pos (1090, 223) at Transform(zoom=0.3)
+            idle "images/chapter_secret_one/secret_paper8.png"
+            hover "images/chapter_secret_one/secret_paper8.png"
+            action Jump("chs01_note8_found")
+    label chs01_note8_found:
+        hide secret_paper8
+        "You found a note!"
+        $ chapter_secret_one_notes[7] = True
+        jump chs01_area16
+    label chs01_all_notes_found:
+        "test"

@@ -54,9 +54,9 @@ label chapter_secret_one_start:
     mt "well"
     mt "Let's get outta here"
     mt "How am i so far away from the road"
-    $ slender_location = renpy.random.randint(1,16)
+    $ slender_location = 16
     label chs01_area1:
-        $ location =1
+        $ location = 1
         call chs01_hide_screens
         scene secret_forest1 with dissolve:
             subpixel True xzoom 1.28 yzoom 1.09 
