@@ -421,6 +421,7 @@ label chapter_two_events:
         m "I WAS BUSY TRYING TO SET UP A MURDER"
         t "ok no need to yell"
         m "IM BRINGING EVERYONE HERE"
+        window auto hide
         stop music
         show monokuma:
             subpixel True pos (0.45, 0.5) xzoom 0.5 yzoom 0.5
@@ -430,11 +431,11 @@ label chapter_two_events:
         show matt2:
             subpixel True pos (1653, 405) zoom 0.2 
             linear 4.0 xpos 600
-        m "ocho..."
+        mt "ocho..."
         show thanga2:
             subpixel True pos (1411, 211) yrotate 180.0
             linear 0.2 xpos 771 ypos 200
-        show kody:
+        show kody with hpunch:
             zoom 0.8 subpixel True pos (1500, 600) yrotate 180.0
             linear 0.2 xpos 850 ypos 300
         show march_7th:
@@ -518,6 +519,7 @@ label chapter_two_events:
         show danganronpa_changing:
             subpixel True matrixcolor InvertMatrix(0.0)
         hide cody
+        pause 1.0
         m "wow he really made us do all that work just to say like 4 lines"
         k "it was 5"
         m "LITERALLY SHUT THE FUCK UP"
@@ -583,11 +585,11 @@ label chapter_two_events:
         k "I NEED TO GOON"
         show kody:
             zoom 0.8 subpixel True pos (850, 300) yrotate 180.0
-            linear 0.2 xpos 1505 ypos 398
-        pause 0.2
+            linear 0.08 xpos 1505 ypos 398
+        pause 0.08
         show kody:
             zoom 0.8 subpixel True pos (1505, 398) yrotate 180.0
-            linear 0.2 xpos 1966 ypos 720
+            linear 0.08 xpos 1966 ypos 720
         pause 1.2
         t "guess ill look at the monokuma file"
         window auto hide
@@ -599,6 +601,7 @@ label chapter_two_events:
         t "and wtf is blood type c"
         t "died at 6:35 from a puncture to the neck"
         t "looks like Phoenix and March were right"
+        window auto hide
         hide monokuma_file_ocho with fade
         hide black with fade
         t "guess i should talk to people and look for clues"
