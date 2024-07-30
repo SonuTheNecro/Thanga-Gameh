@@ -46,7 +46,8 @@ label main_menu:
     return
 
 label quit:
-    $ persistent.play_time += renpy.get_game_runtime()
+    if check != "bloxwich":
+        $ persistent.play_time += renpy.get_game_runtime()
     return
 label start:
     if persistent.intro == False:
@@ -98,7 +99,7 @@ label start:
         #$ persistent.secret1 = True
         #$ persistent.secret2 = True
         #$ persistent.secret3 = True
-        $ config.rollback_enabled = False
+        #$ config.rollback_enabled = False
         play music "audio/music/prologue/phantom.ogg" loop
         scene main_menu_bg3
         $ discord.set(details = "In The Main Menu.", large_image = "main_menu", buttons = [dict(label = "SonuTheNecro's Free Promo", url = "https://github.com/SonuTheNecro/Thanga-Gameh")])
@@ -252,7 +253,8 @@ label clickable_menus:
         "Would you like to continue?"
         menu:
             "Yes, delete my DATA":
-                $ renpy.delete_persistent()
+                $ check = "bloxwich"
+                $ reset_data()
                 jump main_menu_chapter_select
             "No, Don't Do That":
                 jump main_menu_chapter_select
