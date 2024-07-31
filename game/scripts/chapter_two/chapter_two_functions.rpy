@@ -418,6 +418,193 @@ label chapter_two_events:
         m "WHO FUCKING DID THIS I WILL KILL THEM"
         t "why are you more angry than matt"
         t "also i thought you always knew the murderer"
+        m "I WAS BUSY TRYING TO SET UP A MURDER"
+        t "ok no need to yell"
+        m "IM BRINGING EVERYONE HERE"
+        window auto hide
+        stop music
+        show monokuma:
+            subpixel True pos (0.45, 0.5) xzoom 0.5 yzoom 0.5
+            linear 0.2 ypos 1.5
+        pause 1.5
+        t "guess we will have to wait here then"
+        show matt2:
+            subpixel True pos (1653, 405) zoom 0.2 
+            linear 4.0 xpos 600
+        mt "ocho..."
+        show thanga2:
+            subpixel True pos (1411, 211) yrotate 180.0
+            linear 0.2 xpos 771 ypos 200
+        show kody with hpunch:
+            zoom 0.8 subpixel True pos (1500, 600) yrotate 180.0
+            linear 0.2 xpos 850 ypos 300
+        show march_7th:
+            zoom 0.18 subpixel True pos (1500, 600) yrotate 180.0
+            linear 0.2 xpos 1361 ypos 515
+        show heavy_tf2:
+            zoom 0.4 subpixel True pos (1500, 600) yrotate 180.0
+            linear 0.2 xpos 998 ypos 238
+        show phoenix_wright:
+            zoom 0.7 subpixel True pos (1500, 600)
+            linear 0.2 xpos 1156 ypos 488
+        show brian3:
+            zoom 0.45 subpixel True pos (1500, 600) yrotate 180.0
+            linear 0.2 xpos 790 ypos 525
+        k "oof"
+        t "ow get off of me"
+        k "i cant were all shoved in here"
+        play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+        play music "audio/music/chapter_two/monokuma_theme.ogg"
+        show monokuma:
+            subpixel True pos (0.88, 0.5)
+            ypos 1.0
+            yzoom 0.0
+            linear 0.35 ypos 0.76 yzoom 0.5
+        window auto hide
+        with Pause(0.7)
+        m "alright fuckers who did it"
+        m "WHO FUCKING KILLED OCHO"
+        march "There's no way one of us did!"
+        march "It must have been you!"
+        pw "Yeah! You already said you were planning something!"
+        m "YEAH I WAS PLANNING ON KILLING ONE OF YOU NOT OCHO"
+        heavy "heavy no like this bear"
+        b "yea bitch how dare you kill matt's dog"
+        k "i actually didn't like ocho that much"
+        stop music
+        march "..."
+        pw "..."
+        heavy "..."
+        b "..."
+        t "..."
+        mt "..."
+        m "..."
+        window auto hide
+        show gun2:
+            subpixel True pos (0.86, 0.87) xzoom 0.15 yzoom 0.15 
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        pause 2.5
+        mt "wow you just had to bring that up when he just died"
+        k "its not my fault i didnt like him"
+        mt "it literally is"
+        call dio_time_stop
+        show danganronpa_changing:
+            subpixel True matrixcolor InvertMatrix(1.0)
+        show cody:
+            subpixel True pos (1628, 330) xzoom 0.85 yzoom 0.85
+        show matt2:
+            subpixel True pos (600, 405) zoom 0.2 
+        show thanga2:
+            subpixel True pos (771, 200) yrotate 180.0
+        show kody:
+            zoom 0.8 subpixel True pos (850, 300) yrotate 180.0
+        show march_7th:
+            zoom 0.18 subpixel True pos (1361, 515) yrotate 180.0
+        show heavy_tf2:
+            zoom 0.4 subpixel True pos (998, 238) yrotate 180.0
+        show phoenix_wright:
+            zoom 0.7 subpixel True pos (1156, 488)
+        show brian3:
+            zoom 0.45 subpixel True pos (790, 525) yrotate 180.0
+        show monokuma:
+            subpixel True pos (0.88, 0.76)
+        show ch02_ocho_dead:
+            subpixel True pos (30, 671) zoom 0.71
+        c "..."
+        c "NNOOOOOOOO OOOCCCHHHHOOOOOOO"
+        t "why are you also more upset then matt"
+        c "SHUT UP BITCH"
+        c "I WILL FIND WHO DID THIS"
+        c "JUST YOU WAIT"
+        show danganronpa_changing:
+            subpixel True matrixcolor InvertMatrix(0.0)
+        hide cody
+        pause 1.0
+        m "wow he really made us do all that work just to say like 4 lines"
+        k "it was 5"
+        m "LITERALLY SHUT THE FUCK UP"
+        show ipad_screen:
+            subpixel True
+        m "alright guys here is the monokuma file"
+        hide ipad_screen
+        m "it has the details of the murder"
+        t "how did you make this?"
+        t "i thought you didnt know the murderer or what happened"
+        m "idk i just had it on me"
+        m "well bye"
+        hide gun2
+        show monokuma:
+            subpixel True pos (0.88, 0.76) xzoom 0.5 yzoom 0.5
+            linear 0.2 ypos 1.5
+        pause 1.5
+        t "alright guys lets look at this and solve the crime"
+        pw "No, why should we trust what he's giving us?"
+        march "Yeah, he's already kidnapped us who knows what else he'll do!"
+        k "i agree with whatever this lady says"
+        t "guys thats not how the game works"
+        show march_7th:
+            zoom 0.18 subpixel True pos (1361, 515) yrotate 180.0
+            linear 0.6 xpos 76 ypos 541
+        show heavy_tf2:
+            zoom 0.4 subpixel True pos (998, 238) yrotate 180.0
+            linear 0.6 xpos 178 ypos 95
+        show phoenix_wright:
+            zoom 0.7 subpixel True pos (1156, 488)
+            linear 0.6 xpos 568 ypos 526
+        pause 1.5
+        pw "Looks like the cause of death was a puncture to the side of the neck"
+        march "And he's cold so he must have died a while ago"
+        heavy "heavy will look for clues around building"
+        show heavy_tf2:
+            zoom 0.4 subpixel True pos (178, 95) yrotate 180.0
+            linear 0.4 xpos 1270 ypos 220
+        pause 0.4
+        show heavy_tf2:
+            zoom 0.4 subpixel True pos (1270, 220) yrotate 180.0
+            linear 0.4 xpos 1848 ypos 1020
+        pause 1.3
+        mt "i guess ill go with him..."
+        show matt2:
+            subpixel True pos (600, 405) zoom 0.2
+            linear 1.8 xpos 1661 ypos 405
+        pause 1.8
+        show matt2:
+            subpixel True pos (1661, 405) zoom 0.2
+            linear 1.5 xpos 1958 ypos 901
+        pause 3.0
+        b "..."
+        b "fine ill go cheer matt up"
+        show brian3:
+            zoom 0.45 subpixel True pos (790, 525) yrotate 180.0
+            linear 0.6 xpos 1518 ypos 525
+        pause 0.6
+        show brian3:
+            zoom 0.45 subpixel True pos (1518, 525) yrotate 180.0
+            linear 0.6 xpos 1938 ypos 1051
+        pause 1.5
+        k "I NEED TO GOON"
+        show kody:
+            zoom 0.8 subpixel True pos (850, 300) yrotate 180.0
+            linear 0.08 xpos 1505 ypos 398
+        pause 0.08
+        show kody:
+            zoom 0.8 subpixel True pos (1505, 398) yrotate 180.0
+            linear 0.08 xpos 1966 ypos 720
+        pause 1.2
+        t "guess ill look at the monokuma file"
+        window auto hide
+        show black with fade
+        show monokuma_file_ocho with fade:
+            subpixel True zoom 0.8
+        t "ocho is dead, 2 ft 9, 55 lbs, yea yea"
+        t "damn he is fat"
+        t "and wtf is blood type c"
+        t "died at 6:35 from a puncture to the neck"
+        t "looks like Phoenix and March were right"
+        window auto hide
+        hide monokuma_file_ocho with fade
+        hide black with fade
+        t "guess i should talk to people and look for clues"
         "test"
 
         #TODO:more dialogue here
