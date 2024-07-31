@@ -49,7 +49,6 @@ default chapter_three_key_items = {
 label chapter_three:
     "Chapter Three..."
     "The Job Hunt!"
-    $ discord.update(state = "Looking for work!", details = "In Chapter Three", large_image = "chapter_three")
     if persistent.ch03:
         $ config.rollback_enabled = True
     show ch03couch:
@@ -121,7 +120,7 @@ label chapter_three:
     $ choice = -1
     $ count = 0
     $ count2 = -1
-
+    $ discord.update(state = "Looking for work!", details = "In Chapter Three", large_image = "chapter_three")
     "Current Objective..."
     "Get a job..."
     k "Yeah I know"
