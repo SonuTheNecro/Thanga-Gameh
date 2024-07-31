@@ -36,6 +36,18 @@ init python:
             renpy.jump(str(original_menu))
         else:
             renpy.say(None, "Good luck on your decision")
+    # Deletes all data in the save file
+    def reset_data():
+        ## deletes all persistent data use with caution
+        for attr in dir(persistent):
+            if not callable(attr) and not attr.startswith("_"):
+                setattr(persistent, attr, None)
+
+        ## deletes all save games use with caution!
+        for slot in renpy.list_saved_games(fast=True):
+            renpy.unlink_save(slot)
+        ## a Ren'Py relaunch is nessesary
+        renpy.quit(relaunch=True)
     class ItemState(Enum):
         NOT_OBTAINED = 0
         OBTAINED = 1

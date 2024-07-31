@@ -35,7 +35,6 @@ label chapter_one:
         subpixel True xzoom 1.5 yzoom 1.13 zoom 0.67
     if persistent.ch01:
         $ config.rollback_enabled = True
-    $ discord.update(state = "Getting Lunch rq", details = "In Chapter One", large_image = "chapter_one")
     "Chapter 1: The Hunt for the Elusive..."
     questionmark "Lopunny..."
     questionmark "Why would you write it like this?"
@@ -56,6 +55,7 @@ label chapter_one:
     b "so we can get the shittiest mcdonalds ever"
     t "no mcdonalds"
     t "not everyone eats 30 meals of McDoonalds a week like you!"
+    $ discord.update(state = "Getting Lunch rq", details = "In Chapter One", large_image = "chapter_one")
     menu:
         "Chick Fil-A":
             jump chapter_one_chick

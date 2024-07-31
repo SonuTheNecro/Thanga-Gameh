@@ -46,7 +46,8 @@ label main_menu:
     return
 
 label quit:
-    $ persistent.play_time += renpy.get_game_runtime()
+    if check != "bloxwich":
+        $ persistent.play_time += renpy.get_game_runtime()
     return
 label start:
     if persistent.intro == False:
@@ -90,15 +91,6 @@ label start:
                         $ renpy.quit()
 
     else:
-        #$ persistent.ch00 = True
-        #$ persistent.ch01 = True
-        #$ persistent.ch02 = True
-        #$ persistent.ch03 = True
-        #$ persistent.secret0 = True
-        #$ persistent.secret1 = True
-        #$ persistent.secret2 = True
-        #$ persistent.secret3 = True
-        $ config.rollback_enabled = False
         play music "audio/music/prologue/phantom.ogg" loop
         scene main_menu_bg3
         $ discord.set(details = "In The Main Menu.", large_image = "main_menu", buttons = [dict(label = "SonuTheNecro's Free Promo", url = "https://github.com/SonuTheNecro/Thanga-Gameh")])
@@ -112,6 +104,8 @@ label start:
             show screen clickable_main_menu_ch01
         else:#2
             show screen clickable_main_menu_question_screen1(768,13)
+        if persistent.secret0:
+            show screen clickable_chapter_secret_one
         if persistent.ch01:#3
             show screen clickable_main_menu_ch02
         else:#3
@@ -142,6 +136,7 @@ label hide_clickable_menus:
     hide screen clickable_main_menu_trophy
     hide screen clickable_main_menu_clock
     hide screen clickable_main_menu_minigames
+    hide screen clickable_chapter_secret_one
     return
             
 label clickable_menus:
@@ -249,9 +244,20 @@ label clickable_menus:
         "Would you like to continue?"
         menu:
             "Yes, delete my DATA":
-                $ renpy.delete_persistent()
+                $ check = "bloxwich"
+                $ reset_data()
                 jump main_menu_chapter_select
             "No, Don't Do That":
+                jump main_menu_chapter_select
+            "Max Save File!":
+                $ persistent.ch00 = True
+                $ persistent.ch01 = True
+                $ persistent.ch02 = True
+                $ persistent.ch03 = True
+                $ persistent.secret0 = True
+                $ persistent.secret1 = True
+                $ persistent.secret2 = True
+                $ persistent.secret3 = True
                 jump main_menu_chapter_select
     screen clickable_main_menu_trophy:
         imagebutton:
@@ -307,6 +313,23 @@ label clickable_menus:
                 jump minigame_math
             "Return to Main Menu":
                 jump main_menu_chapter_select
+    
+    screen clickable_chapter_secret_one:
+        imagebutton:
+            pos (549, 210)
+            idle "images/slender_man.png"
+            hover "images/slender_man.png"
+            action Jump("chapter_start_secret1")
+    label chapter_start_secret1:
+        "Do you want to start the Secret Chapter?"
+        menu:
+            "Yes":
+                call hide_clickable_menus
+                jump chapter_secret_one_start
+            "No":
+                jump main_menu_chapter_select
+
+
 label test1:
     scene bg room
 

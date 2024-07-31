@@ -196,9 +196,9 @@ label chapter_two_movement:
     screen chapter_two_danganronpa_up_button(origin):
         imagebutton:
             xalign 0.5
-            yalign -0.05
-            idle "images/ArrowUpPress.png"
-            hover "images/ArrowUpPress.png"
+            yalign 0
+            idle "images/ArrowUpPress2.png"
+            hover "images/ArrowUpPress2.png"
             if origin == 7:
                 action Jump("ch02_area_6")
             elif origin == 6:
@@ -208,9 +208,9 @@ label chapter_two_movement:
     screen chapter_two_danganronpa_down_button(origin):
         imagebutton:
             xalign 0.5
-            yalign 0.995
-            idle "images/ArrowDownPress.png"
-            hover "images/ArrowDownPress.png"
+            yalign 1.0
+            idle "images/ArrowDownPress2.png"
+            hover "images/ArrowDownPress2.png"
             if origin == 1:
                 action Jump("ch02_area_3")
             elif origin == 3:
@@ -219,10 +219,10 @@ label chapter_two_movement:
                 action Jump("ch02_area_7")
     screen chapter_two_danganronpa_left_button(origin):
         imagebutton:
-            xalign 0.005
+            xalign 0.0
             yalign 0.5
-            idle "images/ArrowLeftPress.png"
-            hover "images/ArrowLeftPress.png"
+            idle "images/ArrowLeftPress2.png"
+            hover "images/ArrowLeftPress2.png"
             if origin == 3:
                 action Jump("ch02_area_2")
             elif origin == 4:
@@ -231,10 +231,10 @@ label chapter_two_movement:
                 action Jump("ch02_area_5")
     screen chapter_two_danganronpa_right_button(origin):
         imagebutton:
-            xalign 0.995
+            xalign 1.0
             yalign 0.5
-            idle "images/ArrowRightPress.png"
-            hover "images/ArrowRightPress.png"
+            idle "images/ArrowRightPress2.png"
+            hover "images/ArrowRightPress2.png"
             if origin == 2:
                 action Jump("ch02_area_3")
             elif origin == 3:
@@ -298,6 +298,17 @@ label chapter_two_events:
         show thanga2:
             subpixel True pos (560, 295) 
         t "Why did I get the girl's room"
+        t "oh well it has anime guess its my room now"
+        show black with fade
+        pause 3.0
+        hide black with fade
+        play sound "audio/sound/chapter_two/monokuma_morning.ogg"
+        window auto hide
+        pause 16.0
+        play sound "audio/sound/chapter_two/monokuma_angry.ogg"
+        m "GOD FUCKING DAMMMN STUPID FUCKING PIECE OF SHIT ANNOUNCER"
+        m "It's time to wake up fuckers. Meet at the hall"
+        t "..."
         t "I guess I should go meet up with everyone else and discuss"
         t "but holy shit Brian is a dumbass"
         show brian1:
@@ -389,6 +400,25 @@ label chapter_two_events:
         pause 1.2
         mt "OCHOOOOOOOOOOOOOOOOOOOOOOOOOOO"
         mt "WTF HAPPENED"
+        play sound "audio/sound/chapter_two/monokuma_discovery.ogg"
+        window auto hide
+        pause 16.0
+        play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+        play music "audio/music/chapter_two/monokuma_theme.ogg"
+        show monokuma:
+            subpixel True pos (0.45, 0.5) xzoom 0.5 yzoom 0.5
+            ypos 0.8
+            yzoom 0.0
+            linear 0.35 ypos 0.5 yzoom 0.5
+        window auto hide
+        with Pause(0.7)
+        m "welp guess the first murder happened without me needing to-"
+        m "NNNOOOOOOO OOCHOOOOO"
+        play sound "audio/sound/chapter_two/monokuma_angry.ogg"
+        m "WHO FUCKING DID THIS I WILL KILL THEM"
+        t "why are you more angry than matt"
+        t "also i thought you always knew the murderer"
+        "test"
 
         #TODO:more dialogue here
         
