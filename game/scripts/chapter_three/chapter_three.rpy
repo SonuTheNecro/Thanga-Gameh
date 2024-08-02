@@ -166,10 +166,10 @@ label chapter_three:
         k "Dang its already night damn"
         k "According to this note"
         show ch03_paper with dissolve:
-            subpixel True zoom 0.3
-
+            subpixel True zoom 0.3 pos (740, 333) 
         k "It says Free Robux for Free work..."
         k "I think I can trust that"
+        hide ch03_paper
         questionmark "Hello child"
         k "!!!"
         show ch03_shadow_guy with dissolve:

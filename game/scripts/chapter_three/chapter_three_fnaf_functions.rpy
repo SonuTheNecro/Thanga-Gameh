@@ -716,7 +716,7 @@ label chapter_three_chica_mission1:
             action Call("chapter_three_ingredients",4)
     screen clickable_chapter_three_chica1_salt:
         imagebutton:
-            pos (506, 515) at Transform(zoom=0.1) 
+            pos (506, 515) at Transform(zoom=0.3) 
             idle "images/chapter_three/ch03_fnaf_salt.png"
             hover "images/chapter_three/ch03_fnaf_salt.png"
             action Call("chapter_three_ingredients",5)
@@ -1450,7 +1450,7 @@ label chapter_three_bonnie_mission2:
         return
     screen clickable_chapter_three_bonnie2_skibidi_toilet:
         imagebutton:
-            pos (183, 356) at Transform(zoom=0.29)
+            pos (121, 356) at Transform(zoom=0.71)
             idle "images/chapter_three/ch03_fnaf_skibidi_toilet.png"
             hover "images/chapter_three/ch03_fnaf_skibidi_toilet.png"
             action Call("chapter_three_skibidi_toilet")
