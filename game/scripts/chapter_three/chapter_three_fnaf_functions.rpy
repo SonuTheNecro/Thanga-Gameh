@@ -850,7 +850,8 @@ label chapter_three_chica_mission2:
         if count2 == 16:
             "Wow you found all of the money!"
             $ chapter_three_secret += 1
-        #todo put mario elevator music
+        stop music
+        play music "audio/music/chapter_three/mario_elavator.ogg"
         k "Alright Let's order this pizza!"
         play sound "audio/sound/chapter_three/phone_ring2.ogg"
         fnafpg "Uh hello!"
@@ -885,6 +886,8 @@ label chapter_three_chica_mission2:
         $ chapter_three_obtain_item("chapter_three_pizza2")
         play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have obtained a pizza!"
+        stop music
+        call chapter_three_music
         scene ch03_fnaf6 with dissolve:
             subpixel True yzoom 1.25 zoom 1.5 
         call chapter_three_fnaf_restore_screens(location)

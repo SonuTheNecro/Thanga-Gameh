@@ -394,7 +394,6 @@ label chapter_three:
         pause 3.5
         k "fuck"
         k "Im stuck here aren't I..."
-        call chapter_three_music
         label chapter_three_fnaf_start:
         python:
             choice = 0
