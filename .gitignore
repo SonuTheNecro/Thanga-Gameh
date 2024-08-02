@@ -7,7 +7,7 @@ game/cache/
 *.rpyb
 *.rpymc
 *.bak
-
+game/action_editor/
 game/renpy-discord-presence/
 game/python-packages/
 
@@ -15,3 +15,4 @@ lint.txt
 trackback.txt
 errors.txt
 log.txt
+project.json
