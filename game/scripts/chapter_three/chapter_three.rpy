@@ -164,7 +164,9 @@ label chapter_three:
         $ discord.update(state = "Committing crimes!")
         k "Okay I guess this is the last job I can get..."
         k "Dang its already night damn"
-        k "According to this note" #TODO:Draw a note
+        k "According to this note"
+        show ch03_paper with dissolve:
+            subpixel True zoom 0.3
 
         k "It says Free Robux for Free work..."
         k "I think I can trust that"
