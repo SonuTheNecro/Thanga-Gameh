@@ -650,11 +650,11 @@ label chapter_one:
     label baldi_exit:
         if not chapter_one_item_check("chapter_one_mop"):
             $ count2 += 1
-        call chapter_one_hide_screen() from _call_chapter_one_hide_screen
+        call chapter_one_hide_screen()
         $ location = 1
         scene baldi_exit with dissolve:
             subpixel True pos (-9, -234) zoom 0.92 
-        call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons
+        call chapter_one_restore_buttons(location)
         label baldi_exit_1:
         if chapter_one_item_check("chapter_one_key"):
             show screen clickable_baldi_exit()
@@ -669,7 +669,7 @@ label chapter_one:
 
     #Code for the main area for Baldi's Schoolhouse, if statements check for items and displays certain buttons depending on progression!
     label baldi_main_area:
-        call chapter_one_hide_screen() from _call_chapter_one_hide_screen_1
+        call chapter_one_hide_screen()
         hide screen clickable_baldi_exit
         $ location = 2
         scene baldi_main with dissolve:
@@ -690,7 +690,7 @@ label chapter_one:
             b "How old are you?"
             t "Ninety-Four..."
             $ count += 1
-        call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_1
+        call chapter_one_restore_buttons(location)
         label baldi_main_area_1:
         if not chapter_one_item_check("chapter_one_key"):
             show screen clickable_key_chapter_one
@@ -705,11 +705,11 @@ label chapter_one:
 
     #Code for the classroom for Baldi's Schoolhouse, if statements check for items and displays certain buttons depending on progression!
     label baldi_classroom:
-        call chapter_one_hide_screen() from _call_chapter_one_hide_screen_2
+        call chapter_one_hide_screen()
         $ location = 3
         scene baldi_class with dissolve:
             subpixel True zoom 0.75
-        call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_2
+        call chapter_one_restore_buttons(location)
         label baldi_classroom_1:
         if chapter_one_dirt_piles[2] == False and chapter_one_item_check("chapter_one_mop"):
             show screen clickable_chapter_one_dirt(0.7, 0.56, 0.52, 2)
@@ -723,15 +723,15 @@ label chapter_one:
     #Code for the faculty for Baldi's Schoolhouse, if statements check for items and displays certain buttons depending on progression!
     #Area is locked til you help Principal of the Thing
     label baldi_faculty:
-        call chapter_one_hide_screen() from _call_chapter_one_hide_screen_3
+        call chapter_one_hide_screen() 
         $ location = 4
         scene baldi_faculty with dissolve:
             subpixel True zoom 0.75 
-        call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_3
+        call chapter_one_restore_buttons(location)
         label baldi_faculty_1:
         # first visit
         if count2 == 0: 
-            call chapter_one_faculty_first_enter() from _call_chapter_one_faculty_first_enter
+            call chapter_one_faculty_first_enter()
         elif not chapter_one_item_check("chapter_one_clock"):
             show screen clickable_chapter_one_alarmclock
         if chapter_one_dirt_piles[3] == False and chapter_one_item_check("chapter_one_mop"):
@@ -745,12 +745,12 @@ label chapter_one:
     label baldi_math_puzzle:
         stop music
         play music "audio/music/chapter_one/baldi_math.ogg"
-        call chapter_one_hide_screen() from _call_chapter_one_hide_screen_4
+        call chapter_one_hide_screen()
         $ location = 5
         scene baldi_q1 with dissolve:
             subpixel True pos (-333, -0.26) 
-        call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_4
-        call chapter_one_hide_buttons from _call_chapter_one_hide_buttons
+        call chapter_one_restore_buttons(location) 
+        call chapter_one_hide_buttons 
         baldi "Now you gotta solve my math problem!"
         scene baldi_q1 with dissolve:
             subpixel True pos (-333, -0.26) 

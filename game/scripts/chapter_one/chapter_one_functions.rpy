@@ -365,7 +365,7 @@ label baldi_main_area_first_visit():
     jump baldi_main_area
 #The renpy code when you attempt to leave
 label chapter_one_early_exit:
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_1
+    call chapter_one_hide_buttons
     hide screen clickable_baldi_exit
     show baldi_exit_hover:
         subpixel True pos (0.6, 0.23) zoom 0.9
@@ -391,12 +391,12 @@ label chapter_one_early_exit:
     hide baldi_exit_hover
     scene baldi_exit with dissolve:
         subpixel True pos (-9, -234) zoom 0.92
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_5
+    call chapter_one_restore_buttons(location)
     call screen clickable_baldi_exit
     return
 #Renpy code when you get the key to attempt to leave early!
 label chapter_one_key():
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_2
+    call chapter_one_hide_buttons
     hide clickable_key_chapter_one
     show key1:
         subpixel True pos(0.63, 0.7) zoom 0.08
@@ -411,11 +411,11 @@ label chapter_one_key():
     tv "Nah nah just wait for this"
     hide screen clickable_key_chapter_one
     hide key1
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_6
+    call chapter_one_restore_buttons(location)
     return
 #Getting the mop
 label chapter_one_mop():
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_3
+    call chapter_one_hide_buttons
     hide clickable_chapter_one_mop
     hide baldi_exit_hover
     hide screen clickable_baldi_exit
@@ -455,13 +455,13 @@ label chapter_one_mop():
     hide godofsweep with dissolve
     "Were... Were you just given chores to do?"
     hide mop
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_7
+    call chapter_one_restore_buttons(location)
     if chapter_one_item_check("chapter_one_key"):
         show screen clickable_baldi_exit
     return
 # cleaning up all the dirt
 label chapter_one_dirt(id):
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_4
+    call chapter_one_hide_buttons
     hide clickable_chapter_one_dirt
     if id == 0:
         show dirt:
@@ -527,11 +527,11 @@ label chapter_one_dirt(id):
         k "Didn't he have a name?"
         "No one remembers it lol"
         k "Touche"
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_8
+    call chapter_one_restore_buttons(location)
     return
 # The God of Sweep after you cleanup all the dirt
 label chapter_one_post_cleanup():
-    call chapter_one_hide_buttons() from _call_chapter_one_hide_buttons_5
+    call chapter_one_hide_buttons() 
     hide screen clickable_chapter_one_god_of_sweep
     hide screen clickable_baldi_exit
     show baldi_exit_hover:
@@ -584,11 +584,11 @@ label chapter_one_post_cleanup():
         k "What is a bell?"
     hide godofsweep
     hide baldi_exit_hover
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_9
+    call chapter_one_restore_buttons(location)
     return
 #Principal of the thing
 label chapter_one_pott_class():
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_6
+    call chapter_one_hide_buttons
     hide screen clickable_chapter_one_principal
     show principal_of_the_thing:
         subpixel True pos (0.11, 0.34) 
@@ -621,11 +621,11 @@ label chapter_one_pott_class():
         $ count2 = 0
 
     hide principal_of_the_thing
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_10
+    call chapter_one_restore_buttons(location) 
     return
 #Entering the faculty for the first time
 label chapter_one_faculty_first_enter():
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_7
+    call chapter_one_hide_buttons 
     show thanga2 with dissolve:
         subpixel True pos (531, 363) 
     show brian1 with dissolve:
@@ -668,11 +668,11 @@ label chapter_one_faculty_first_enter():
     hide thanga2
     hide brian1
     hide alarm_clock
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_11
+    call chapter_one_restore_buttons(location)
     return
 #Code for the alarm clock in chapter one
 label chapter_one_alarm_clock():
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_8
+    call chapter_one_hide_buttons 
     hide screen clickable_chapter_one_alarmclock
     show alarm_clock:
         subpixel True pos (40,301) zoom 1.68
@@ -711,11 +711,11 @@ label chapter_one_alarm_clock():
         k "The warhead..."
         t "you are stupid, it's just a clock puzzle we gotta solve"
     hide alarm_clock
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_12
+    call chapter_one_restore_buttons(location)
     return
 #Code for the bully in the main area
 label chapter_one_bully():
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_9
+    call chapter_one_hide_buttons 
     hide screen clickable_chapter_one_itsabully
     show itsabully:
         subpixel True pos(776, 330) zoom 1.46
@@ -749,11 +749,11 @@ label chapter_one_bully():
         itsabully "Tempting but not interested"
         itsabully "I got some hands for a toy train and I'll trade you for some food"
     hide itsabully
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_13
+    call chapter_one_restore_buttons(location) 
     return
 #Code for playtime in the main area post faculty
 label chapter_one_playtime():
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_10
+    call chapter_one_hide_buttons 
     hide screen clickable_chapter_one_playtime
     show playtime:
         subpixel True pos (413, 76) zoom 1.57
@@ -807,11 +807,11 @@ label chapter_one_playtime():
         pt "9!"
         k "I am exiting this conversation"
     hide playtime
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_14
+    call chapter_one_restore_buttons(location) 
     return
 #Code for Thanga post faculty
 label chapter_one_thanga():
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_11
+    call chapter_one_hide_buttons 
     hide screen clickable_chapter_one_thanga
     show thanga2:
         subpixel True pos (821, 130) yrotate 180.0 zoom 1.45 
@@ -861,11 +861,11 @@ label chapter_one_thanga():
         k "Let's beat baldi!"
         t "You mean I have to with my math skills..."
     hide thanga2
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_15
+    call chapter_one_restore_buttons(location)
     return
 #Code for brian post faculty
 label chapter_one_brian():
-    call chapter_one_hide_buttons from _call_chapter_one_hide_buttons_12
+    call chapter_one_hide_buttons 
     hide screen clickable_chapter_one_brian
     show brian1 with dissolve:
         subpixel True xanchor 270 pos (826, 136) zoom 1.39  orientation (0.0, 0.0, 0.0) 
@@ -901,7 +901,7 @@ label chapter_one_brian():
         b "Like damn they smol"
         k "(WHAT IS THIS GUY TALKING ABOUT?)"
     hide brian1
-    call chapter_one_restore_buttons(location) from _call_chapter_one_restore_buttons_16
+    call chapter_one_restore_buttons(location) 
     return
 # Restores buttons once they are closed when an interaction starts/restores button once we swap areas
 label chapter_one_restore_buttons(current_location):
