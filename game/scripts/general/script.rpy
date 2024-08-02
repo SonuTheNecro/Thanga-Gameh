@@ -311,6 +311,8 @@ label clickable_menus:
                 jump minigame_rps
             "Baldi's Mathmatical Madness":
                 jump minigame_math
+            "Puppet's Paradoxical Plight (idk man)":
+                jump minigame_puppet
             "Return to Main Menu":
                 jump main_menu_chapter_select
     

@@ -1,3 +1,8 @@
+label return_to_main_from_minigames:
+    play music "audio/music/prologue/phantom.ogg" loop
+    scene main_menu_bg3
+    $ discord.set(details = "In The Main Menu.", large_image = "main_menu", buttons = [dict(label = "SonuTheNecro's Free Promo", url = "https://github.com/SonuTheNecro/Thanga-Gameh")])
+    jump main_menu_chapter_select
 label minigame_rps:
     call hide_clickable_menus
     $ location = 0 # Win
@@ -47,7 +52,14 @@ label minigame_rps:
                 $ location += 1
             else:
                 $ count2 += 1
-        jump minigame_rps_start
+        if ((location + count2 + count) % 10 == 0):
+            menu:
+                "Retry?":
+                    jump minigame_rps_start
+                "Main Menu":
+                    jump return_to_main_from_minigames
+        else:
+            jump minigame_rps_start
 label minigame_math:
     call hide_clickable_menus
     $ count = 0 #Correct Answers
@@ -94,11 +106,105 @@ label minigame_math:
         $ count += 1
     call minigame_baldi_message
     "Correct Answers: [count]\n Incorrect Answers: [count2]"
-    jump minigame_math_start
-
-label minigame_baldi_message:
-    $ location += 1
-    baldi "WOW!"
-    baldi "You are Incredible!"
-    baldi "Problem #[location]!"
-    return
+    menu:
+        "Retry?":
+            jump minigame_math
+        "Main Menu":
+            jump return_to_main_from_minigames
+    label minigame_baldi_message:
+        $ location += 1
+        baldi "WOW!"
+        baldi "You are Incredible!"
+        baldi "Problem #[location]!"
+        return
+label minigame_puppet:
+    init python:
+        import math
+    call hide_clickable_menus
+    scene ch03_fnaf7_empty with dissolve:
+        subpixel True yzoom 1.25 zoom 1.92
+    $ count = 60
+    #$ count = 0
+    window auto hide
+    stop music
+    play music "audio/music/chapter_three/wiping_all_out.ogg"
+    "Death Approaches!"
+    show ch03_fnaf_puppet2:
+        subpixel True xanchor 873 pos (1413, 16) zoom 5.43 
+    $ check = 1
+    $ location = 1
+    $ puppet_keys = ["w","a","s","d","i","j","k","l","f","h", "g", "r", "u"]
+    $ puppet_words = ["GIVE GIFTS", "GIVE LIFE", "LIES", "AFTON", "HENRY", "LIFE", "DEATH", "FAILED", "A CYCLE", "GENESIS", "REVELATIONS", "HE ALWAYS COMES BACK", "CODY", "VORTEX", "NECRO", "HIM", "???", "MATHEW", "VANCE", "CROOKS"]
+    while check == 1 and location == 1:
+        $ choice = renpy.random.randint(0,2)
+        if choice == 0:
+            $ randint = renpy.random.randint(330,1500) # X-Value
+            $ randint2 = renpy.random.randint(400,750) # Y-Value
+            show screen minigame_puppet_cupcakes(randint,randint2,1.0,count)
+            $ count -= 1
+            $ renpy.pause(delay = (9.5 / math.log(61,10)) * math.log(-count+61,10) + 5, hard=True)
+        elif choice == 1:
+            $ time = 6 - (4.95 *  math.log(1+count,10)) / (math.log(1+60,10))
+            call screen minigame_puppet_timer_event(renpy.random.choice(puppet_keys), renpy.random.randint(1, 9) * 0.1, renpy.random.randint(1, 9) * 0.1)
+            $ location = _return
+        elif choice == 2:
+            $ rngint = str(renpy.random.choice(puppet_words))
+            puppet "[str(rngint)]"
+            show screen minigame_puppet_timer()
+            $ user_input = renpy.input("THE GIFT OF DESTRUCTION APPROACHS!")
+            $ user_input = user_input.strip()
+            if user_input != rngint:
+                jump minigame_puppet_death
+            hide screen minigame_puppet_timer
+            play sound "audio/sound/chapter_three/the_voices.ogg"
+            $ count -= 1
+    label minigame_puppet_death:
+        call auto_advance(0)
+        hide minigame_puppet_cupcakes
+        hide minigame_puppet_three_puppet_timer
+        hide minigame_puppet_timer_event
+        play movie "video/chapter_three/puppet.webm"
+        "Score: [60 - count]"
+        menu:
+            "Retry?":
+                jump minigame_puppet
+            "Main Menu":
+                jump return_to_main_from_minigames
+    label minigame_puppet_timers:
+        screen minigame_puppet_cupcakes(xpos,ypos,zoom,count):
+            timer -(9.5 / math.log(61,10)) * math.log(-count+61,10) + 5 action Jump("minigame_puppet_death")
+            imagebutton:
+                pos (xpos,ypos) at Transform(zoom = zoom)
+                idle "images/chapter_three/ch03_giftbox.png"
+                hover "images/chapter_three/ch03_giftbox.png"
+                action [
+                    #SetVariable("count2", count2-1),
+                    Play("sound","audio/sound/chapter_three/the_voices.ogg"),
+                    Hide("minigame_puppet_cupcakes"),
+                    #Return()
+                ]
+        screen minigame_puppet_timer_event(key_input, xalign1, yalign1):
+            timer 0.01 repeat True action If(time > 0.0, true=SetVariable("time", time - 0.01), false=[Return(0), Hide("minigame_puppet_timer_event")]) 
+            key key_input action [Return(1), SetVariable("count", count-1), Play("sound","audio/sound/chapter_three/the_voices.ogg")]
+            
+            vbox:
+                xalign xalign1
+                yalign yalign1
+                spacing 25
+                
+                text key_input:
+                    xalign 0.5
+                    color "#fff"
+                    size 32
+                
+                bar:
+                    value time
+                    range 6 - (4.95 * math.log(1+count,10)) / (math.log(1+60,10))
+                    xalign 0.5
+                    xmaximum 100
+                    
+                    if time < 1.455:
+                        left_bar "#410f0f"
+        screen minigame_puppet_timer():
+            timer 6.25 * math.exp((math.log(25) / 60) *(count-60)) + 3.75 action Jump("minigame_puppet_death")
+    
