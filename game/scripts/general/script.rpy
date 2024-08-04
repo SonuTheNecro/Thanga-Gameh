@@ -271,6 +271,7 @@ label clickable_menus:
                 $ persistent.ch01 = True
                 $ persistent.ch02 = True
                 $ persistent.ch03 = True
+                $ persistent.ch04 = True
                 $ persistent.secret0 = True
                 $ persistent.secret1 = True
                 $ persistent.secret2 = True
