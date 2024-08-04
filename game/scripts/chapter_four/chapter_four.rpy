@@ -1,8 +1,8 @@
 
 define trip = Character("Trip")
 define maan = Character("Maan")
-define d = Character("Dante")
-define c = Character("Carl")
+define dante = Character("Dante")
+define carl = Character("Carl")
 
 
 
