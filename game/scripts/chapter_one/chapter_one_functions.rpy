@@ -77,7 +77,7 @@ screen clickable_chapter_one_secret_lopunny(xpos, ypos, zoom):
         pos (xpos,ypos)
         at Transform(zoom = zoom)
         idle "images/lopunny1.png"
-        hover "images/lopunny1.png"
+        hover At("images/lopunny1.png", animated_outline)
         action Call("chapter_one_lopunny_check")
 
 #The clickable panda giftcard in the car
@@ -86,7 +86,7 @@ screen clickable_chapter_one_giftcard():
         pos (1091, 793)
         at Transform(zoom = 0.04)
         idle "images/chapter_one/panda1.jpg"
-        hover "images/chapter_one/panda1.jpg"
+        hover At("images/chapter_one/panda1.jpg", animated_outline)
         action Call("chapter_one_panda_giftcard")
 
 #The clickable SonuTheNecro in Subway
@@ -95,7 +95,7 @@ screen clickable_chapter_one_stn():
         pos (0.07, 0.69) 
         at Transform(zoom = 0.2, yrotate = 180)
         idle "images/sonuthenecro.png"
-        hover "images/sonuthenecro.png"
+        hover At("images/sonuthenecro.png", animated_outline)
         action Call("chapter_one_subway_conversation")
 
 #These are buttons used to walk around Baldi's school house
@@ -149,7 +149,7 @@ screen clickable_key_chapter_one():
         pos(0.63, 0.7)
         at Transform(zoom = 0.08)
         idle "images/key1.png"
-        hover "images/key1.png"
+        hover At("images/key1.png", animated_outline)
         action Call("chapter_one_key")
 
 #The Code for an early exit using the main area key1
@@ -158,7 +158,7 @@ screen clickable_baldi_exit():
         pos (0.6, 0.23) 
         at Transform(zoom = 0.9)
         idle "images/chapter_one/baldi_exit_hover.png"
-        hover "images/chapter_one/baldi_exit_hover.png"
+        hover At("images/chapter_one/baldi_exit_hover.png", animated_outline)
         action Call("chapter_one_early_exit")
 
 #The Code for the mop found in the exit area
@@ -166,7 +166,7 @@ screen clickable_chapter_one_mop():
     imagebutton:
         pos (0.21, 0.29)
         idle "images/chapter_one/mop.png"
-        hover "images/chapter_one/mop.png"
+        hover At("images/chapter_one/mop.png", animated_outline)
         action Call("chapter_one_mop")
 
 #The code for the random dirt that appears throughout the map
@@ -175,7 +175,7 @@ screen clickable_chapter_one_dirt(xpos, ypos, zoom_level, id):
         pos(xpos, ypos)
         at Transform(zoom = zoom_level)
         idle "images/chapter_one/dirt.png"
-        hover "images/chapter_one/dirt.png"
+        hover At("images/chapter_one/dirt.png", animated_outline)
         action Function(chapter_one_clean_dirt, id)
 
 #Code for God Of sweep NPC, after you clean him up
@@ -184,14 +184,14 @@ screen clickable_chapter_one_god_of_sweep():
         pos(396,358)
         at Transform(zoom = 1.21)
         idle "images/chapter_one/godofsweep.png"
-        hover "images/chapter_one/godofsweep.png"
+        hover At("images/chapter_one/godofsweep.png", animated_outline)
         action Call("chapter_one_post_cleanup")
 #Code for the button for Principal of the Thing after you get the book
 screen clickable_chapter_one_principal():
     imagebutton:
         pos(0.11,0.34)
         idle "images/chapter_one/principal_of_the_thing_outline.png"
-        hover "images/chapter_one/principal_of_the_thing_outline.png"
+        hover At("images/chapter_one/principal_of_the_thing_outline.png", animated_outline)
         action Call("chapter_one_pott_class")
 
 screen clickable_chapter_one_alarmclock():
@@ -199,14 +199,14 @@ screen clickable_chapter_one_alarmclock():
         pos(40,301)
         at Transform(zoom = 1.68)
         idle "images/chapter_one/alarm_clock.png"
-        hover "images/chapter_one/alarm_clock.png"
+        hover At("images/chapter_one/alarm_clock.png", animated_outline)
         action Call("chapter_one_alarm_clock")
 screen clickable_chapter_one_itsabully():
     imagebutton:
         pos(776, 330)
         at Transform(zoom = 1.46)
         idle "images/chapter_one/itsabully_outline.png"
-        hover "images/chapter_one/itsabully_outline.png"
+        hover At("images/chapter_one/itsabully_outline.png", animated_outline)
         action Call("chapter_one_bully")
 screen clickable_chapter_one_playtime():
     imagebutton:
@@ -214,14 +214,14 @@ screen clickable_chapter_one_playtime():
         xanchor 270
         at Transform(zoom = 0.66)
         idle "images/chapter_one/playtime_outline.png"
-        hover "images/chapter_one/playtime_outilne.png"
+        hover At("images/chapter_one/playtime_outilne.png", animated_outline)
         action Call("chapter_one_playtime")
 screen clickable_chapter_one_thanga():
     imagebutton:
         pos (1496, 306)
         at Transform(yrotate = 180.0)
         idle "images/thanga2.png"
-        hover "images/thanga2.png"
+        hover At("images/thanga2.png", animated_outline)
         action Call("chapter_one_thanga")
 
 screen clickable_chapter_one_brian():
@@ -230,7 +230,7 @@ screen clickable_chapter_one_brian():
         xanchor 270
         at Transform(zoom = 0.83)
         idle "images/brian1.png"
-        hover "images/brian1.png"
+        hover At("images/brian1.png", animated_outline)
         action Call("chapter_one_brian")
 
 label chapter_one_lopunny_check():

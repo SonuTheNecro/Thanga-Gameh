@@ -55,28 +55,28 @@ screen clickable_chapter_three_jewel_osco():
         pos (611, 20) 
         at Transform(yzoom = 1.0, zoom = 0.07)
         idle "images/chapter_three/ch03jewel.jpg"
-        hover "images/chapter_three/ch03jewel.jpg"
+        hover At("images/chapter_three/ch03jewel.jpg", animated_outline)
         action Jump("chapter_three_jewel_osco")
 screen clickable_chapter_three_house():
     imagebutton:
         pos (1513, 0) 
         at Transform(zoom = 0.71)
         idle "images/chapter_three/ch03house_clipart.png"
-        hover "images/chapter_three/ch03house_clipart.png"
+        hover At("images/chapter_three/ch03house_clipart.png", animated_outline)
         action Jump("chapter_three_streaming")
 screen clickable_chapter_three_mail():
     imagebutton:
         pos (585, 581) 
         at Transform(zoom = 0.13)
         idle "images/chapter_three/ch03_mail.png"
-        hover "images/chapter_three/ch03_mail.png"
+        hover At("images/chapter_three/ch03_mail.png", animated_outline)
         action Jump("chapter_three_mailman")
 screen clickable_chapter_three_herobrine():
     imagebutton:
         pos (1838, 201) 
         at Transform(zoom=0.06)
         idle "images/chapter_three/ch03_herobrine_alter.png"
-        hover "images/chapter_three/ch03_herobrine_alter.png"
+        hover At("images/chapter_three/ch03_herobrine_alter.png", animated_outline)
         action Jump("chapter_three_herobrine_found")
 
 label chapter_three_jewel_osco:
@@ -209,7 +209,7 @@ label chapter_three_jewel_osco:
             xalign 0.5
             yalign -0.05
             idle "images/ArrowUpPress.png"
-            hover "images/ArrowUpPress.png"
+            hover At("images/ArrowUpPress.png", animated_outline)
             if origin == 1:
                 action Jump("ch03_jewel_meat")
             else:
@@ -220,7 +220,7 @@ label chapter_three_jewel_osco:
             xalign 0.5
             yalign 0.995
             idle "images/ArrowDownPress.png"
-            hover "images/ArrowDownPress.png"
+            hover At("images/ArrowDownPress.png", animated_outline)
             if origin == 3:
                 action Jump("ch03_jewel_main")
             else:
@@ -231,7 +231,7 @@ label chapter_three_jewel_osco:
             xalign 0.005
             yalign 0.5
             idle "images/ArrowLeftPress.png"
-            hover "images/ArrowLeftPress.png"
+            hover At("images/ArrowLeftPress.png", animated_outline)
             if origin == 4:
                 action Jump("ch03_jewel_main")
             else:
@@ -242,7 +242,7 @@ label chapter_three_jewel_osco:
             xalign 0.995
             yalign 0.5
             idle "images/ArrowRightPress.png"
-            hover "images/ArrowRightPress.png"
+            hover At("images/ArrowRightPress.png", animated_outline)
             if(origin == 2):
                 action Jump("ch03_jewel_main")
             else: 
@@ -251,33 +251,33 @@ label chapter_three_jewel_osco:
         imagebutton:
             pos (991, 561)
             idle "images/chapter_three/ch03_wetfloorsign.png"
-            hover "images/chapter_three/ch03_wetfloorsign.png"
+            hover At("images/chapter_three/ch03_wetfloorsign.png", animated_outline)
             action Call("chapter_three_wet_floor_sign")
     screen clickable_chapter_three_grocery_cart():
         imagebutton:
             pos (1071, 451) 
             at Transform(rotate = -36.0 , zoom = 0.7)
             idle "images/chapter_three/ch03_cart.png"
-            hover "images/chapter_three/ch03_cart.png"
+            hover At("images/chapter_three/ch03_cart.png", animated_outline)
             action Call("chapter_three_cart")
     screen clickable_chapter_three_butcher():
         imagebutton:
             pos (55, 326)
             idle "images/chapter_three/ch03_butcher.png"
-            hover "images/chapter_three/ch03_butcher.png"
+            hover At("images/chapter_three/ch03_butcher.png", animated_outline)
             action Call("chapter_three_butcher")
     screen clickable_chapter_three_candy():
         imagebutton:
             pos (1390, 475)
             idle "images/chapter_three/ch03_candy.png"
-            hover "images/chapter_three/ch03_candy.png"
+            hover At("images/chapter_three/ch03_candy.png", animated_outline)
             action Call("chapter_three_candy")
     screen clickable_chapter_three_customer():
         imagebutton:
             pos (1106, 226) 
             at Transform(zoom = 1.38)
             idle "images/chapter_three/ch03_woman.png"
-            hover "images/chapter_three/ch03_woman.png"
+            hover At("images/chapter_three/ch03_woman.png", animated_outline)
             action Call("chapter_three_customer")
 
     # Location One Event

@@ -98,7 +98,7 @@ label start:
         show screen clickable_main_menu_clock
         show screen clickable_main_menu_trash_can
         show screen clickable_main_menu_trophy
-        show screen clickable_main_menu_ch00
+        show screen clickable_main_menu_ch00 #1
         show screen clickable_main_menu_minigames
         if persistent.ch00:#2
             show screen clickable_main_menu_ch01
@@ -114,8 +114,10 @@ label start:
             show screen clickable_main_menu_ch03
         else:#4
             show screen clickable_main_menu_question_screen3(140,541)
-    #if persistent.ch03:#5
-        show screen clickable_main_menu_question_screen4(768,541)
+        if persistent.ch03:#5
+            show screen clickable_main_menu_ch04
+        else:
+            show screen clickable_main_menu_question_screen4(768,541)
     #if not persistent.ch04:#6
         show question_screen:
             subpixel True pos(1444,541) zoom 0.62
@@ -127,6 +129,7 @@ label hide_clickable_menus:
     hide screen clickable_main_menu_ch01
     hide screen clickable_main_menu_ch02
     hide screen clickable_main_menu_ch03
+    hide screen clickable_main_menu_ch04
     hide screen clickable_main_menu_question_screen1
     hide screen clickable_main_menu_question_screen2
     hide screen clickable_main_menu_question_screen3
@@ -164,6 +167,12 @@ label clickable_menus:
             idle "images/chapter_three_screen.png"
             hover "images/chapter_three_screen.png"
             action Jump("chapter_start3")
+    screen clickable_main_menu_ch04:
+        imagebutton:
+            pos (768, 541) at Transform(zoom=0.62)
+            idle "images/question_screen.png"
+            hover "images/question_screen.png"
+            action Jump("chapter_start4")
     screen clickable_main_menu_question_screen1(xpos,ypos):
         imagebutton:
             pos (xpos, ypos) at Transform(zoom=0.62)
@@ -226,6 +235,14 @@ label clickable_menus:
                 jump chapter_three
             "No":
                 jump main_menu_chapter_select
+    label chapter_start4():
+        "Do you want to start the Chapter Four?"
+        menu:
+            "Yes":
+                call hide_clickable_menus
+                jump chapter_four
+            "No":
+                jump main_menu_chapter_select
 
     label chapter_start_question:
         "That chapter is currently locked/unavailable!"
@@ -254,6 +271,7 @@ label clickable_menus:
                 $ persistent.ch01 = True
                 $ persistent.ch02 = True
                 $ persistent.ch03 = True
+                $ persistent.ch04 = True
                 $ persistent.secret0 = True
                 $ persistent.secret1 = True
                 $ persistent.secret2 = True
@@ -311,6 +329,8 @@ label clickable_menus:
                 jump minigame_rps
             "Baldi's Mathmatical Madness":
                 jump minigame_math
+            "Puppet's Paradoxical Plight (idk man)":
+                jump minigame_puppet
             "Return to Main Menu":
                 jump main_menu_chapter_select
     
@@ -318,7 +338,7 @@ label clickable_menus:
         imagebutton:
             pos (549, 210)
             idle "images/slender_man.png"
-            hover "images/slender_man.png"
+            hover At("images/slender_man.png", animated_outline)
             action Jump("chapter_start_secret1")
     label chapter_start_secret1:
         "Do you want to start the Secret Chapter?"
