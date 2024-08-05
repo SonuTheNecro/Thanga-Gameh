@@ -6,7 +6,7 @@ screen clickable_chapter_two_note():
         pos (1126, 765)
         at Transform(zoom = 0.76)
         idle "images/danganronpa_classroom_note.jpg"
-        hover "images/danganronpa_classroom_note.jpg"
+        hover At("images/danganronpa_classroom_note.jpg", animated_outline)
         action Jump("chapter_two_classroom_note")
 
 screen clickable_chapter_two_ocho():
@@ -14,7 +14,7 @@ screen clickable_chapter_two_ocho():
         pos (873, 900)
         at Transform(zoom = 0.35)
         idle "images/ocho.png"
-        hover "images/ocho.png"
+        hover At("images/ocho.png", animated_outline)
         action Call("chapter_two_ocho")
 
 screen clickable_chapter_two_matt():
@@ -22,7 +22,7 @@ screen clickable_chapter_two_matt():
         pos (1008, 585)
         at Transform(zoom = 0.17)
         idle "images/matt2.jpg"
-        hover "images/matt2.jpg"
+        hover At("images/matt2.jpg", animated_outline)
         action Call("chapter_two_matt")
 
 screen clickable_chapter_two_phoenix():
@@ -30,7 +30,7 @@ screen clickable_chapter_two_phoenix():
         pos (1152, 558)
         at Transform(zoom = 0.6)
         idle "images/phoenix_wright.png"
-        hover "images/phoenix_wright.png"
+        hover At("images/phoenix_wright.png", animated_outline)
         action Call("chapter_two_phoenix")
 
 screen clickable_chapter_two_march():
@@ -38,7 +38,7 @@ screen clickable_chapter_two_march():
         pos (1359, 603)
         at Transform(zoom = 0.15)
         idle "images/march_7th.png"
-        hover "images/march_7th.png"
+        hover At("images/march_7th.png", animated_outline)
         action Call("chapter_two_march")
 
 screen clickable_chapter_two_heavy():
@@ -46,7 +46,7 @@ screen clickable_chapter_two_heavy():
         pos (1557, 495)
         at Transform(zoom = 0.4)
         idle "images/heavy_tf2.png"
-        hover "images/heavy_tf2.png"
+        hover At("images/heavy_tf2.png", animated_outline)
         action Call("chapter_two_heavy")
 
 label chapter_two_ocho:

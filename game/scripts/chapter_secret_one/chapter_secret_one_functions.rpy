@@ -122,7 +122,7 @@ label chs01_matt:
         imagebutton:
             pos((310, 230)) at Transform(zoom=0.18)
             idle "images/matt2.jpg"
-            hover "images/matt2.jpg"
+            hover At("images/matt2.jpg", animated_outline)
             action Call("chs01_matt_filler")
     label chs01_matt_filler:
         mt "LET ME GET OUTTA THIS SHITTY FOREST OH MY FUCKING GOD!"
@@ -133,7 +133,7 @@ label chs01_notes:
         imagebutton:
             pos (1090, 223) at Transform(zoom=0.3)
             idle "images/chapter_secret_one/secret_paper1.jpg"
-            hover "images/chapter_secret_one/secret_paper1.jpg"
+            hover At("images/chapter_secret_one/secret_paper1.jpg", animated_outline)
             action Jump("chs01_note1_found")
     label chs01_note1_found:
         hide secret_paper1
@@ -146,7 +146,7 @@ label chs01_notes:
         imagebutton:
             pos (471, 300) at Transform(zoom=0.3)
             idle "images/chapter_secret_one/secret_paper2.jpg"
-            hover "images/chapter_secret_one/secret_paper2.jpg"
+            hover At("images/chapter_secret_one/secret_paper2.jpg", animated_outline)
             action Jump("chs01_note2_found")
     label chs01_note2_found:
         hide secret_paper2
@@ -159,7 +159,7 @@ label chs01_notes:
         imagebutton:
             pos (471, 300) at Transform(zoom=0.3)
             idle "images/chapter_secret_one/secret_paper3.jpg"
-            hover "images/chapter_secret_one/secret_paper3.jpg"
+            hover At("images/chapter_secret_one/secret_paper3.jpg", animated_outline)
             action Jump("chs01_note3_found")
     label chs01_note3_found:
         hide secret_paper3
@@ -172,7 +172,7 @@ label chs01_notes:
         imagebutton:
             pos (1090, 223) at Transform(zoom=0.3)
             idle "images/chapter_secret_one/secret_paper4.jpg"
-            hover "images/chapter_secret_one/secret_paper4.jpg"
+            hover At("images/chapter_secret_one/secret_paper4.jpg", animated_outline)
             action Jump("chs01_note4_found")
     label chs01_note4_found:
         hide secret_paper4
@@ -185,7 +185,7 @@ label chs01_notes:
         imagebutton:
             pos (1090, 223) at Transform(zoom=0.3)
             idle "images/chapter_secret_one/secret_paper5.jpg"
-            hover "images/chapter_secret_one/secret_paper5.jpg"
+            hover At("images/chapter_secret_one/secret_paper5.jpg", animated_outline)
             action Jump("chs01_note5_found")
     label chs01_note5_found:
         hide secret_paper5
@@ -198,7 +198,7 @@ label chs01_notes:
         imagebutton:
             pos (471, 300) at Transform(zoom=0.3)
             idle "images/chapter_secret_one/secret_paper6.jpg"
-            hover "images/chapter_secret_one/secret_paper6.jpg"
+            hover At("images/chapter_secret_one/secret_paper6.jpg", animated_outline)
             action Jump("chs01_note6_found")
     label chs01_note6_found:
         hide secret_paper6
@@ -211,7 +211,7 @@ label chs01_notes:
         imagebutton:
             pos (471, 300) at Transform(zoom=0.3)
             idle "images/chapter_secret_one/secret_paper7.png"
-            hover "images/chapter_secret_one/secret_paper7.png"
+            hover At("images/chapter_secret_one/secret_paper7.png", animated_outline)
             action Jump("chs01_note7_found")
     label chs01_note7_found:
         hide secret_paper7
@@ -224,7 +224,7 @@ label chs01_notes:
         imagebutton:
             pos (1090, 223) at Transform(zoom=0.3)
             idle "images/chapter_secret_one/secret_paper8.png"
-            hover "images/chapter_secret_one/secret_paper8.png"
+            hover At("images/chapter_secret_one/secret_paper8.png", animated_outline)
             action Jump("chs01_note8_found")
     label chs01_note8_found:
         hide secret_paper8

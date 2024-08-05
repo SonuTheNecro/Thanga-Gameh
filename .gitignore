@@ -8,10 +8,8 @@ game/cache/
 *.rpymc
 *.bak
 
-game/renpy-discord-presence/
-game/python-packages/
-
 lint.txt
-trackback.txt
+traceback.txt
 errors.txt
 log.txt
+project.json
