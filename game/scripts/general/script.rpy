@@ -338,7 +338,7 @@ label clickable_menus:
         imagebutton:
             pos (549, 210)
             idle "images/slender_man.png"
-            hover "images/slender_man.png"
+            hover At("images/slender_man.png", animated_outline)
             action Jump("chapter_start_secret1")
     label chapter_start_secret1:
         "Do you want to start the Secret Chapter?"
