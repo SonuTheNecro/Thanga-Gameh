@@ -45,4 +45,4 @@ label chapter_four:
     mt "hoes mad"
     k "I CAN HEAR YOU"
     mt "YOU HAD IT COMING LMAO!!!!!!!!"
-    "test"
+    mt "Trip's Bald"
