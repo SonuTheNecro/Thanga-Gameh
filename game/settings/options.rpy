@@ -218,4 +218,4 @@ init python:
 # Turns Renpy's Auto-save feature Off , I need this off so we can force autosaves better
 define config.has_autosave = False
 # Turns The Back-button off!
-define config.rollback_enabled = False
+define config.rollback_enabled = True

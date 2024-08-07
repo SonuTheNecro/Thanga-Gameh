@@ -530,7 +530,6 @@ label ch03_fnaf_4a:
         subpixel True xpos -234 yzoom 1.1 zoom 1.72 
     call chapter_three_fnaf_restore_screens(location)
 
-
 label chapter_three_ending:
     call chapter_three_fnaf_hide_screens
     show ch03_fnaf_foxy:
@@ -674,6 +673,16 @@ label chapter_three_ending:
         call auto_advance(0)
         hide gunflare
         afton "huh?"
+        hide cody
+        show evil cody:
+            subpixel True pos (1224, 455)
+        pause 1.0
+        hide evil cody
+        show cody:
+            subpixel True pos (1224, 455)
+        hide gun1
+        show gun1:
+            subpixel True pos (1066, 560) yrotate 180.0
         c "stupid afton..."
         c "You really thought bullets stop me?"
         c "this is why I must keep my secret hidden"

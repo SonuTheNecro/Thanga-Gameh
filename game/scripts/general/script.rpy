@@ -331,6 +331,8 @@ label clickable_menus:
                 jump minigame_math
             "Puppet's Paradoxical Plight (idk man)":
                 jump minigame_puppet
+            "debug":
+                jump debug_menu
             "Return to Main Menu":
                 jump main_menu_chapter_select
     
@@ -348,7 +350,11 @@ label clickable_menus:
                 jump chapter_secret_one_start
             "No":
                 jump main_menu_chapter_select
-
+    label debug_menu:
+        call hide_clickable_menus
+        menu:
+            "Chapter Three Secret":
+                jump chapter_three_secret
 
 label test1:
     scene bg room
