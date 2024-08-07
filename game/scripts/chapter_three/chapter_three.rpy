@@ -680,6 +680,9 @@ label chapter_three_ending:
         hide evil cody
         show cody:
             subpixel True pos (1224, 455)
+        hide gun1
+        show gun1:
+            subpixel True pos (1066, 560) yrotate 180.0
         c "stupid afton..."
         c "You really thought bullets stop me?"
         c "this is why I must keep my secret hidden"

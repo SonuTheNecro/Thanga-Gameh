@@ -55,13 +55,13 @@ init python:
 image blood_red = Solid("#790000")
 image evil cody:
     glitch("cody")
-    pause 0.1
+    pause 0.15
     glitch("cody_evil", offset = 60, randomkey=None)
-    pause 0.1
+    pause 0.15
     glitch("cody_evil")
-    pause 0.1
+    pause 0.15
     glitch("cody_evil", offset = 60, randomkey=None)
-    pause 0.1
+    pause 0.15
     glitch("cody")
 #A game over screen for general use, why is Master Igor shit talking so hard
 label game_over:
