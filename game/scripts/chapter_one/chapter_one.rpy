@@ -505,8 +505,11 @@ label chapter_one:
     t "Uh i guess we gotta find Cody and force him to fix this..."
     "You start to delve into the woods"
     play sound "audio/sound/chapter_one/street1.ogg"
-    $ street1_random()
-    "Wait who is that?"
+    pause 0.1
+    play sound "audio/sound/chapter_one/street1.ogg"
+    pause 0.15
+    play sound "audio/sound/chapter_one/street1.ogg"
+    pause 0.25
     stop sound
     t "Who is this green guy?"
     show brian1:
