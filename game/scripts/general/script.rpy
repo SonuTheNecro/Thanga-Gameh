@@ -19,9 +19,9 @@ default choice = -1
 default count = -1
 default count2 = -1
 default time = 0
-default player_name = "Kody"
 default check = False
 
+default persistent.player_name = "Kody"
 # Flags for all Secret Endings Secret0 = Prologue
 default persistent.secret0 = False
 default persistent.secret1 = False
