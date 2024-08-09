@@ -616,7 +616,6 @@ label chapter_three_camera_rng(location):
     if location == 7:
         return
     $ rngint2 = rngint2 / 10 #WHY ARENT SWITCH STATEMENTS A THING IN RENPY/PYTHON UGHHHHHHHHHHHHHHHHHH
-    #$ rngint2 = 8
     if rngint2 == 0:
         $ rngint2 = renpy.random.randint(0,3)
         if rngint2 == 0:
@@ -652,11 +651,17 @@ label chapter_three_events:
         imagebutton:
             pos (1361, 0) at Transform(zoom=1.28)
             idle "images/chapter_three/ch03_shadow_bonnie.png"
-            hover At("images/chapter_three/ch03_shadow_bonnie.png", animated_outline)
+            hover ("images/chapter_three/ch03_shadow_bonnie.png")
             action Jump("chapter_three_shadow_bonnie")
+    image ch03_shadow_bonnie_glitched:
+        glitch("ch03_shadow_bonnie")
+        pause 0.1
+        glitch("ch03_shadow_bonnie", offset = 60, randomkey=None)
+        pause 0.1
+        repeat
     label chapter_three_shadow_bonnie:
         call chapter_three_fnaf_hide_screens()
-        show ch03_shadow_bonnie:
+        show ch03_shadow_bonnie_glitched:
             subpixel True pos (1361, 0) zoom 1.28
         questionmark "WAHNJFijasKUIENFSUIJANSDOIAKM*IHJUAUIJAUIJNV(UIJKN)"
         k "huh?"
