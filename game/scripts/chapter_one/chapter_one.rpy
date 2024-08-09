@@ -653,26 +653,14 @@ label chapter_one:
     label baldi_exit:
         if not chapter_one_item_check("chapter_one_mop"):
             $ count2 += 1
-        call chapter_one_hide_screen()
+        call chapter_one_hide_screens()
         $ location = 1
         scene baldi_exit with dissolve:
             subpixel True pos (-9, -234) zoom 0.92 
-        call chapter_one_restore_buttons(location)
-        label baldi_exit_1:
-        if chapter_one_item_check("chapter_one_key"):
-            show screen clickable_baldi_exit()
-        if not chapter_one_item_check("chapter_one_mop") and count2 >= 4:
-            show screen clickable_chapter_one_mop()
-        elif chapter_one_dirt_piles[0] == False and chapter_one_item_check("chapter_one_mop"):
-            show screen clickable_chapter_one_dirt(0.03, 0.43, 0.46, 0)
-        if chapter_one_item_check("chapter_one_cleanup"):
-            show screen clickable_chapter_one_god_of_sweep()
-        "You are currently located at the EXIT of Baldi's Schoolhouse!"
-        jump baldi_exit_1
-
+        call chapter_one_restore_screens(location)
     #Code for the main area for Baldi's Schoolhouse, if statements check for items and displays certain buttons depending on progression!
     label baldi_main_area:
-        call chapter_one_hide_screen()
+        call chapter_one_hide_screens()
         hide screen clickable_baldi_exit
         $ location = 2
         scene baldi_main with dissolve:
@@ -693,54 +681,26 @@ label chapter_one:
             b "How old are you?"
             t "Ninety-Four..."
             $ count += 1
-        call chapter_one_restore_buttons(location)
-        label baldi_main_area_1:
-        if not chapter_one_item_check("chapter_one_key"):
-            show screen clickable_key_chapter_one
-        if chapter_one_dirt_piles[1] == False and chapter_one_item_check("chapter_one_mop"):
-            show screen clickable_chapter_one_dirt(0.75, 0.69, 0.77, 1)
-        if not chapter_one_item_check("chapter_one_hands"):
-            show screen clickable_chapter_one_itsabully
-        if not chapter_one_item_check("chapter_one_food") and chapter_one_item_check("chapter_one_faculty") and count2 != 0:
-            show screen clickable_chapter_one_playtime
-        "You are currently located at the MAIN AREA of Baldi's Schoolhouse!"
-        jump baldi_main_area_1
+        call chapter_one_restore_screens(location)
 
     #Code for the classroom for Baldi's Schoolhouse, if statements check for items and displays certain buttons depending on progression!
     label baldi_classroom:
-        call chapter_one_hide_screen()
+        call chapter_one_hide_screens()
         $ location = 3
         scene baldi_class with dissolve:
             subpixel True zoom 0.75
-        call chapter_one_restore_buttons(location)
-        label baldi_classroom_1:
-        if chapter_one_dirt_piles[2] == False and chapter_one_item_check("chapter_one_mop"):
-            show screen clickable_chapter_one_dirt(0.7, 0.56, 0.52, 2)
-        if not chapter_one_item_check("chapter_one_faculty"):
-            show screen clickable_chapter_one_principal
-        if count2 != 0 and chapter_one_item_check("chapter_one_faculty"):
-            show screen clickable_chapter_one_brian
-        "You are currently located at the MAIN CLASSROOM of Baldi's Schoolhouse!"
-        jump baldi_classroom_1
+        call chapter_one_restore_screens(location)
 
     #Code for the faculty for Baldi's Schoolhouse, if statements check for items and displays certain buttons depending on progression!
     #Area is locked til you help Principal of the Thing
     label baldi_faculty:
-        call chapter_one_hide_screen() 
+        call chapter_one_hide_screens() 
         $ location = 4
         scene baldi_faculty with dissolve:
             subpixel True zoom 0.75 
-        call chapter_one_restore_buttons(location)
+        call chapter_one_restore_screens(location)
         label baldi_faculty_1:
         # first visit
-        if count2 == 0: 
-            call chapter_one_faculty_first_enter()
-        elif not chapter_one_item_check("chapter_one_clock"):
-            show screen clickable_chapter_one_alarmclock
-        if chapter_one_dirt_piles[3] == False and chapter_one_item_check("chapter_one_mop"):
-            show screen clickable_chapter_one_dirt(0.01, 0.52, 0.36, 3)
-        if count2 != 0 and chapter_one_item_check("chapter_one_faculty"):
-            show screen clickable_chapter_one_thanga
         "You are currently located at the FACULTY ROOM of Baldi's Schoolhouse!"
         jump baldi_faculty_1
     #Code for Baldi's math game, area is unlocked once you beat the bully!
@@ -748,12 +708,12 @@ label chapter_one:
     label baldi_math_puzzle:
         stop music
         play music "audio/music/chapter_one/baldi_math.ogg"
-        call chapter_one_hide_screen()
+        call chapter_one_hide_screens()
         $ location = 5
         scene baldi_q1 with dissolve:
             subpixel True pos (-333, -0.26) 
-        call chapter_one_restore_buttons(location) 
-        call chapter_one_hide_buttons 
+        call chapter_one_restore_screens(location)
+        call chapter_one_hide_screens 
         baldi "Now you gotta solve my math problem!"
         scene baldi_q1 with dissolve:
             subpixel True pos (-333, -0.26) 
