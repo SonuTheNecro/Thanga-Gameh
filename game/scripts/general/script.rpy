@@ -1,5 +1,5 @@
 ﻿# Thanga Gamea (Thang Game) is a creation of SonuTheNecro & TacticalVortex
-# Current Verison 1.3.5
+# Current Verison 1.6.0.1
 
 
 define questionmark = Character("???")
@@ -355,6 +355,8 @@ label clickable_menus:
         menu:
             "Chapter Three Secret":
                 jump chapter_three_secret
+            "Chapter One baldi_math_puzzle":
+                jump baldi_math_puzzle
 
 label test1:
     scene bg room
