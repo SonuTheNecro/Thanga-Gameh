@@ -936,7 +936,7 @@ label chapter_three_chica_mission3:
         imagebutton:
             pos (xpos,ypos) at Transform(zoom = zoom)
             idle "images/chapter_three/ch03_fnaf_cupcake.png"
-            hover At("images/chapter_three/ch03_fnaf_cupcake.png", animated_outline)
+            hover "images/chapter_three/ch03_fnaf_cupcake.png"
             action [
                 #SetVariable("count2", count2-1),
                 Play("sound","audio/sound/chapter_three/gulp1.ogg"),

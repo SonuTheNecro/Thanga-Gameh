@@ -57,3 +57,12 @@ label chapter_four:
     "(Three different mini scenes)"
     "(Scene 1: At a different smash locals, Matt Chokes a 2-0 lead on trip. Trip pops off)"
     #TODO: Add two additional characters, commentator1 and 2.
+    
+    $ count = 0
+
+    show screen chapter_four_ocho_timer(15,"chapter_four_post_ocho")
+    call screen clickable_chapter_four_ocho(30,40,0.25)
+
+    label chapter_four_post_ocho:
+        "wow"
+        "You popped [count] times"
