@@ -59,9 +59,11 @@ label chapter_four:
     #TODO: Add two additional characters, commentator1 and 2.
     
     $ count = 0
-
+    $ xpos = 30
+    $ ypos = 40
+    $ zoom = 0.25
     show screen chapter_four_ocho_timer(15,"chapter_four_post_ocho")
-    call screen clickable_chapter_four_ocho(30,40,0.25)
+    call screen clickable_chapter_four_ocho()
 
     label chapter_four_post_ocho:
         "wow"
