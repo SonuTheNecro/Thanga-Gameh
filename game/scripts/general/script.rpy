@@ -146,62 +146,62 @@ label clickable_menus:
     screen clickable_main_menu_ch00:
         imagebutton:
             pos (140, 13) at Transform(zoom=0.62)
-            idle "images/chapter_zero_screen.png"
-            hover "images/chapter_zero_screen.png"
+            idle "images/main_menu/chapter_zero_screen.png"
+            hover "images/main_menu/chapter_zero_screen.png"
             action Jump("chapter_start0")
     screen clickable_main_menu_ch01:
         imagebutton:
             pos (768, 13) at Transform(zoom=0.62)
-            idle "images/chapter_one_screen.png"
-            hover "images/chapter_one_screen.png"
+            idle "images/main_menu/chapter_one_screen.png"
+            hover "images/main_menu/chapter_one_screen.png"
             action Jump("chapter_start1")
     screen clickable_main_menu_ch02:
         imagebutton:
             pos (1444, 13) at Transform(zoom=0.62)
-            idle "images/chapter_two_screen.png"
-            hover "images/chapter_two_screen.png"
+            idle "images/main_menu/chapter_two_screen.png"
+            hover "images/main_menu/chapter_two_screen.png"
             action Jump("chapter_start2")
     screen clickable_main_menu_ch03:
         imagebutton:
             pos (140, 541) at Transform(zoom=0.62)
-            idle "images/chapter_three_screen.png"
-            hover "images/chapter_three_screen.png"
+            idle "images/main_menu/chapter_three_screen.png"
+            hover "images/main_menu/chapter_three_screen.png"
             action Jump("chapter_start3")
     screen clickable_main_menu_ch04:
         imagebutton:
             pos (768, 541) at Transform(zoom=0.62)
-            idle "images/question_screen.png"
-            hover "images/question_screen.png"
+            idle "images/main_menu/question_screen.png"
+            hover "images/main_menu/question_screen.png"
             action Jump("chapter_start4")
     screen clickable_main_menu_question_screen1(xpos,ypos):
         imagebutton:
             pos (xpos, ypos) at Transform(zoom=0.62)
-            idle "images/question_screen.png"
-            hover "images/question_screen.png"
+            idle "images/main_menu/question_screen.png"
+            hover "images/main_menu/question_screen.png"
             action Jump("chapter_start_question")
     screen clickable_main_menu_question_screen2(xpos,ypos):
         imagebutton:
             pos (xpos, ypos) at Transform(zoom=0.62)
-            idle "images/question_screen.png"
-            hover "images/question_screen.png"
+            idle "images/main_menu/question_screen.png"
+            hover "images/main_menu/question_screen.png"
             action Jump("chapter_start_question")
     screen clickable_main_menu_question_screen3(xpos,ypos):
         imagebutton:
             pos (xpos, ypos) at Transform(zoom=0.62)
-            idle "images/question_screen.png"
-            hover "images/question_screen.png"
+            idle "images/main_menu/question_screen.png"
+            hover "images/main_menu/question_screen.png"
             action Jump("chapter_start_question")
     screen clickable_main_menu_question_screen4(xpos,ypos):
         imagebutton:
             pos (xpos, ypos) at Transform(zoom=0.62)
-            idle "images/question_screen.png"
-            hover "images/question_screen.png"
+            idle "images/main_menu/question_screen.png"
+            hover "images/main_menu/question_screen.png"
             action Jump("chapter_start_question")
     screen clickable_main_menu_question_screen5(xpos,ypos):
         imagebutton:
             pos (xpos, ypos) at Transform(zoom=0.62)
-            idle "images/question_screen.png"
-            hover "images/question_screen.png"
+            idle "images/main_menu/question_screen.png"
+            hover "images/main_menu/question_screen.png"
             action Jump("chapter_start_question")
     label chapter_start0():
         "Do you want to start the Prologue?"
@@ -251,8 +251,8 @@ label clickable_menus:
     screen clickable_main_menu_trash_can:
         imagebutton:
             pos((0, 1020))
-            idle "images/main_menu_delete.png"
-            hover "images/main_menu_delete.png"
+            idle "images/main_menu/main_menu_delete.png"
+            hover "images/main_menu/main_menu_delete.png"
             action Jump("main_menu_delete")
     label main_menu_delete:
         "Do you want to delete all of your Save Data"
@@ -280,8 +280,8 @@ label clickable_menus:
     screen clickable_main_menu_trophy:
         imagebutton:
             pos(60,1020)
-            idle "images/main_menu_trophy.png"
-            hover "images/main_menu_trophy.png"
+            idle "images/main_menu/main_menu_trophy.png"
+            hover "images/main_menu/main_menu_trophy.png"
             action Jump("main_menu_stats")
     label main_menu_stats:
         if persistent.ch00:
@@ -304,8 +304,8 @@ label clickable_menus:
     screen clickable_main_menu_clock:
         imagebutton:
             pos(0,960)
-            idle "images/main_menu_clock.png"
-            hover "images/main_menu_clock.png"
+            idle "images/main_menu/main_menu_clock.png"
+            hover "images/main_menu/main_menu_clock.png"
             action Jump("main_menu_playtime")
     label main_menu_playtime:
         $ persistent.play_time -= temp_playtime
@@ -320,8 +320,8 @@ label clickable_menus:
     screen clickable_main_menu_minigames:
         imagebutton:
             pos(60,960)
-            idle "images/main_menu_minigames.png"
-            hover "images/main_menu_minigames.png"
+            idle "images/main_menu/main_menu_minigames.png"
+            hover "images/main_menu/main_menu_minigames.png"
             action Jump("main_menu_minigames")
     label main_menu_minigames:
         menu:
@@ -339,8 +339,8 @@ label clickable_menus:
     screen clickable_chapter_secret_one:
         imagebutton:
             pos (549, 210)
-            idle "images/slender_man.png"
-            hover At("images/slender_man.png", animated_outline)
+            idle "images/main_menu/slender_man.png"
+            hover At("images/main_menu/slender_man.png", animated_outline)
             action Jump("chapter_start_secret1")
     label chapter_start_secret1:
         "Do you want to start the Secret Chapter?"
