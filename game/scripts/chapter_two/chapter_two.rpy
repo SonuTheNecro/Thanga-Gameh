@@ -1,22 +1,11 @@
 # This is the codebase written for Chapter Two
 # Main Writer: TacticalVortex
 # Extra Help: SonuTheNecro
-# All imagees: Google Images
+# All images: Google Images
 # All sounds: Freesounds.com
 
 
-# Chapter Two Characters/Variables
-define bk = Character("Brian and Kody")
-define bkm = Character("Brian, Kody, and Matt")
-define m = Character("Monokuma")
-define mt = Character("Matt")
-define ocho = Character("Ocho")
-define march = Character("March 7th", who_color="#B0E6FA")
-define emarch = Character("Evil March 7th", who_color="#5c1d1d")
-define heavy = Character("Heavy")
-define pw = Character("Phoenix Wright")
-define ev = Character("Everyone")
-
+# Chapter Two Variables
 default persistent.chapter_two_gym = False
 
 label chapter_two:

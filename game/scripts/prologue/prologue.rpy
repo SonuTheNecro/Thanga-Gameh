@@ -2,8 +2,6 @@
 # Main Writer: SonuTheNecro
 # Images: Google/Images
 # Audio: freesound.org + Audacity Editing :)
-define mcde = Character("McDonalds Cashier")
-define sk = Character("Shadow Kody")
 
 label prologue:
     # The Prologue Scene

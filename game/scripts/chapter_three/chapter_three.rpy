@@ -5,19 +5,6 @@
 # All sounds: Freesounds.com
 
 #Variables
-define jb =     Character("Jewel Osco Butcher")
-define jc =     Character("Jewel Osco Customer")
-define jceo =   Character("Jewel Osco CEO")
-define usps =   Character("USPS Worker Guy")
-define hb =     Character("Herobrine")
-define afton =  Character("William Afton")
-define freddy = Character("Freddy Fazgyatt")
-define bonnie = Character("Bonnie Looksmaxxer")
-define chica =  Character("Chica FanumTaxxer")
-define foxy =   Character("Foxy FurryFukker")
-define fnafpg = Character("Pizza Delivery Guy")
-define puppet = Character("The Puppet")
-define balloon = Character("Balloon Boy")
 default chapter_three_jewels_check = [False, False, False, False, False]
 default chapter_three_secret = 0
 default chapter_three_fnaf_money = [False, False, False, False, False, False, False, False] # 2 $5, 5 $1, 2 0.25

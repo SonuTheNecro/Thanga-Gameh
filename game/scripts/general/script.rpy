@@ -2,15 +2,6 @@
 # Current Verison 1.6.0.1
 
 
-define questionmark = Character("???")
-define t = Character("Thanga")
-define k = Character("Kody")
-define jj = Character("PillowR")
-define c = Character("Cody")
-define b = Character("B-Bop")
-define stn = Character("SonuTheNecro")
-define tv = Character("TacticalVortex")
-define igor = Character("Master Igor")
 
 default location = -1
 default rngint = -1

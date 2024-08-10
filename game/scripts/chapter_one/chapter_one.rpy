@@ -1,20 +1,11 @@
 # This is the codebase written for Chapter One
 # Main Writer: SonuTheNecro
 # Extra Help: TactialVortex
-# All imagees: Google Images
+# All images: Google Images
 # All sounds: Freesounds.com
 
 
-# Chapter One Characters/Variables
-define ce = Character("Chick-Fil-A Employee")
-define pe = Character("Panda Express Employee")
-define se = Character("Subway Employee")
-define bt = Character("Brian and Thang")
-define baldi = Character("Baldi")
-define gos = Character("God of Sweep")
-define pott = Character("Principal Of The Thing!")
-define itsabully = Character("Its a Bully!")
-define pt = Character("Playtime")
+# Chapter One Variables
 default key_items = {
     "chapter_one_clock": ItemState.NOT_OBTAINED,
     "chapter_one_hands": ItemState.NOT_OBTAINED,

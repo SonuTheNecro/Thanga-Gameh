@@ -1,11 +1,4 @@
 
-define trip = Character("Trip")
-define maan = Character("Maan")
-define dante = Character("Dante")
-define carl = Character("Carl")
-
-
-
 label chapter_four:
     "Chapter Four"
     "The Steve Disease"
