@@ -651,47 +651,42 @@ label chapter_three_events:
         imagebutton:
             pos (1361, 0) at Transform(zoom=1.28)
             idle "images/chapter_three/ch03_shadow_bonnie.png"
-            hover ("images/chapter_three/ch03_shadow_bonnie.png")
+            hover At("images/chapter_three/ch03_shadow_bonnie.png", animated_glitch)
             action Jump("chapter_three_shadow_bonnie")
-    image ch03_shadow_bonnie_glitched:
-        glitch("ch03_shadow_bonnie")
-        pause 0.1
-        glitch("ch03_shadow_bonnie", offset = 60, randomkey=None)
-        pause 0.1
-        repeat
     label chapter_three_shadow_bonnie:
-        call chapter_three_fnaf_hide_screens()
-        show ch03_shadow_bonnie_glitched:
+        $ chapter_three_secret += 1
+        show ch03_shadow_bonnie at animated_glitch:
             subpixel True pos (1361, 0) zoom 1.28
         questionmark "WAHNJFijasKUIENFSUIJANSDOIAKM*IHJUAUIJAUIJNV(UIJKN)"
+        call chapter_three_fnaf_hide_screens()
         k "huh?"
         $ renpy.quit()
     screen clickable_chapter_three_shadow_freddy:
         imagebutton:
             pos (-6, 608) at Transform(zoom=0.72)
-            idle "images/chapter_three/ch03_shadow_freddy.png"
-            hover At("images/chapter_three/ch03_shadow_freddy.png", animated_outline)
+            idle At("images/chapter_three/ch03_shadow_freddy.png", animated_glitch)
+            hover "images/chapter_three/ch03_shadow_freddy.png"
             action Jump("chapter_three_shadow_freddy")
-    label chapter_three_shadow_freddy(origin):
+    label chapter_three_shadow_freddy():
         $ chapter_three_secret += 1
+        if rngint2 == 5:
+            show ch03_shadow_freddy at animated_glitch:
+                subpixel True pos (-6, 608) zoom 0.72
+        elif rngint ==7:
+            show ch03_shadow_freddy2 at animated_glitch:
+                subpixel True pos (1, 540) 
         questionmark "The beast is coming..."
         k "huh?"
         questionmark "The thing that turned me into this..."
         k "huh?"
         call chapter_three_fnaf_hide_screens()
-        if origin == 0:
-            show ch03_shadow_freddy:
-                subpixel True pos (-6, 608) zoom 0.72
-        elif origin == 1:
-            show ch03_shadow_freddy2:
-                subpixel True pos (1, 540) 
         questionmark "uBKNDuwHQUJFNejwae9duio239wdeucijnf4haewfvh3jnwafgiwjnf9iwahogjnahwofnojn4ehianjw"
         $ renpy.quit()
     screen clickable_chapter_three_shadow_freddy2:
         imagebutton:
             pos (1, 540)
-            idle "images/chapter_three/ch03_shadow_freddy2.png"
-            hover At("images/chapter_three/ch03_shadow_freddy2.png", animated_outline)
+            idle At("images/chapter_three/ch03_shadow_freddy2.png", animated_glitch)
+            hover "images/chapter_three/ch03_shadow_freddy2.png"
             action Jump("chapter_three_shadow_freddy")
 label chapter_three_chica_mission1:
     screen clickable_chapter_three_chica1_flour:

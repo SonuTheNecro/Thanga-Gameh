@@ -112,3 +112,4 @@ label auto_advance(value):
         $ _preferences.afm_enable = False
         $ _preferences.afm_time = 15
     return
+
