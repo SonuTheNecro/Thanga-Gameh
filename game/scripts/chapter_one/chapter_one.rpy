@@ -451,7 +451,7 @@ label chapter_one:
         subpixel True yrotate 180.0 
     k "It's Him!"
     questionmark "YOU"
-    show cody:
+    show cody at animated_glitch:
         subpixel True pos (-0.4, 324) 
         subpixel True yrotate 180.0
         linear 0.5 subpixel True pos (0.05, 324) 
@@ -616,7 +616,7 @@ label chapter_one:
         linear 0.6 subpixel True pos (0.23, 0.48) 
     k "no i will say it to you bitch boy"
     t "I can smell the smash player breath get outta of my space"
-    $ renpy.pause(0.3)
+    $ renpy.pause(0.3, hard = True)
     show kody:
         yrotate 0.0
     show baldi1:
