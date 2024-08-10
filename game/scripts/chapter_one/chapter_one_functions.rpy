@@ -39,7 +39,7 @@ screen clickable_chapter_one_secret_lopunny(xpos, ypos, zoom):
         pos (xpos,ypos)
         at Transform(zoom = zoom)
         idle "images/lopunny1.png"
-        hover At("images/lopunny1.png", animated_outline)
+        hover "images/lopunny1.png"
         action Call("chapter_one_lopunny_check")
 
 #The clickable SonuTheNecro in Subway

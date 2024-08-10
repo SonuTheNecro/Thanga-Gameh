@@ -37,7 +37,7 @@ label main_menu:
     return
 
 label quit:
-    if check != "bloxwich":
+    if check != "bloxwich": #When you reset data, this stops a crash when you close the game
         $ persistent.play_time += renpy.get_game_runtime()
     return
 label start:
@@ -348,6 +348,8 @@ label clickable_menus:
                 jump chapter_three_secret
             "Chapter One baldi_math_puzzle":
                 jump baldi_math_puzzle
+            "chapter three post map":
+                jump chapter_three_post_map
 
 label test1:
     scene bg room

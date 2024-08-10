@@ -156,7 +156,7 @@ label chapter_three:
         stop music
         play sound "audio/sound/chapter_three/street2.ogg" loop
         scene ch03_alleyway with dissolve:
-            subpixel True xpos -81 xzoom 1.17 zoom 0.43
+            subpixel True xpos -81 xzoom 1.17 yzoom 1.12 zoom 0.9
         $ discord.update(state = "Committing crimes!")
         k "Okay I guess this is the last job I can get..."
         k "Dang its already night damn"

@@ -810,7 +810,7 @@ label chapter_three_mailman:
         subpixel True pos (1918, 145) yrotate 180.0 
         linear 0.556 subpixel True pos (1435, 58) yrotate 180.0 
     show ch03_usps_baby_ocho:
-        subpixel True pos (116, 303) zoom 0.22 
+        subpixel True pos (-210, 166) zoom 0.6
     label chapter_three_usps_dog:
     menu:
         "Run!":
@@ -825,14 +825,14 @@ label chapter_three_mailman:
         "Punt the fucking dog!":
             $ confirm_menu_no_jump("chapter_three_usps_dog")
             show kody:
-                linear 0.556 subpixel True pos (641, 188) 
+                linear 0.556 subpixel True pos (641, 188)
             $ renpy.pause(1.5, hard = True)
             k "goodbye bastard"
             play sound "audio/sound/chapter_three/falcon_kick.ogg"
             pause 1.4
             show ch03_usps_baby_ocho:
                 rotate 0
-                linear 0.1 rotate -360 subpixel True pos (-590, 15)
+                linear 0.1 rotate -360 subpixel True pos (-2084, 960) 
             k "goodbye bastard forever"
     $ location = 7
     $ count += 1
