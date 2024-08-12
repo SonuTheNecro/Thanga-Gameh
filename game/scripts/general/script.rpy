@@ -351,6 +351,8 @@ label clickable_menus:
                 jump baldi_math_puzzle
             "chapter three post map":
                 jump chapter_three_post_map
+            "chapter one ending":
+                jump baldi_beaten
 
 label test1:
     scene bg room

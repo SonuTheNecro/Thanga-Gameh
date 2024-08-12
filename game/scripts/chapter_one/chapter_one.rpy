@@ -907,19 +907,7 @@ label chapter_one:
         baldi "I slipped them into your pocket"
         baldi "You should be safe to leave now"
         k "THANK YOU BALDI WE BIG FANS!"
-        show baldi_exit:
-            matrixcolor SaturationMatrix(0)
-        show baldi1:
-            matrixcolor SaturationMatrix(0)
-        show thanga2:
-            matrixcolor SaturationMatrix(0)
-        show kody:
-            matrixcolor SaturationMatrix(0)
-        show gun1:
-            matrixcolor SaturationMatrix(0)
-        show baldi_exit_hover:
-            matrixcolor SaturationMatrix(0)
-        show brian1:
+        camera:
             matrixcolor SaturationMatrix(0)
         "Well that was a complete travesty..."
         "There were some good and bad things"
@@ -931,15 +919,16 @@ label chapter_one:
         k "Wait why are we black..."
         $ persistent.ch01 = True
         $ if(lopunny_count == 5): persistent.secret1 = True
+        $ reset_camera(0)
         if persistent.secret1 == True:
             label chapter_one_secret:
-            questionmark "That is what the ChatGPT script came up with"
             scene crystalball with easeintop:
                 subpixel True zoom 1.5 
             show cody:
                 subpixel True pos (1516, 275)
             show sonuthenecro:
                 subpixel True anchor (387, 108) pos (310, 156) zoom 0.88 
+            questionmark "That is what the ChatGPT script came up with"
             stn "WHAT THE FUCK MAN!"
             c "IDK MAN"
             stn "YOU LOST TO A BULLET!"
