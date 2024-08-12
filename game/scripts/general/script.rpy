@@ -30,6 +30,7 @@ default persistent.ch03 = False
 default persistent.ch04 = False
 default persistent.ch05 = False
 
+default camera_speed = 0
 #
 default persistent.play_time = 0
 default temp_playtime = 0

@@ -27,6 +27,7 @@ init python:
         else:
             renpy.say(None, "Good luck on your decision")
             renpy.jump(str(original_menu))
+    
     #A confirm menu for important decisions, Paramater is the str for the menu label
     def confirm_menu_no_jump(original_menu):
         renpy.say(None, "This is an Important Decision that will affect your future gameplay, are you sure about this?")
@@ -36,6 +37,7 @@ init python:
             renpy.jump(str(original_menu))
         else:
             renpy.say(None, "Good luck on your decision")
+    
     # Deletes all data in the save file
     def reset_data():
         ## deletes all persistent data use with caution
@@ -48,9 +50,14 @@ init python:
             renpy.unlink_save(slot)
         ## a Ren'Py relaunch is nessesary
         renpy.quit(relaunch=True)
+    
     class ItemState(Enum):
         NOT_OBTAINED = 0
         OBTAINED = 1
+    # Resets the camera and calls it on renpy code
+    def reset_camera(speed: int):
+        setattr(renpy.store, 'camera_speed', speed)
+        renpy.call("camera_reset")
 #Renpy Code
 image blood_red = Solid("#790000")
 image evil cody:
@@ -112,4 +119,8 @@ label auto_advance(value):
         $ _preferences.afm_enable = False
         $ _preferences.afm_time = 15
     return
-
+# Resets the camera to it's original position
+label camera_reset():
+    camera:
+        linear camera_speed subpixel True pos (0,0) xzoom 1.0 yzoom 1.0 zoom 1.0
+    return

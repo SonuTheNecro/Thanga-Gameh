@@ -45,14 +45,9 @@ label chapter_four:
     camera:
         linear 0.45 subpixel True pos (-351, -1773) xzoom 1.0 yzoom 1.0 zoom 3.87 
     $ renpy.pause(0.45, hard = True)
-    
-    
-
-
     scene ch04_smash_locals2 with dissolve:
         subpixel True xzoom 1.22 zoom 2.51 
-    camera:
-        linear 0.45 subpixel True pos (0,0) xzoom 1.0 yzoom 1.0 zoom 1.0
+    $ reset_camera(0.45)
     show matt2:
         subpixel True pos (1041, 11) xzoom 1.12 yzoom 0.64 
     show trip:
