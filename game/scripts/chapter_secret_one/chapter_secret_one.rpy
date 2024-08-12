@@ -6,7 +6,7 @@ label chapter_secret_one_start:
     scene street2 with dissolve:
         subpixel True xzoom 1.16 zoom 0.79
     show matt2:
-        subpixel True crop_relative True pos (1015, 405) zoom 0.08  crop (0.0, 0.0, 1.0, 0.61)
+        subpixel True crop_relative True pos (990, 325) zoom 0.39   crop (0.0, 0.0, 1.0, 0.61)
     show car1:
         subpixel True pos (833, 405) zoom 0.57 
     mt "Damn work fucking sucked dick"
@@ -40,7 +40,9 @@ label chapter_secret_one_start:
     $ renpy.pause(2.5)
     call auto_advance(0)
     show matt2 with dissolve:
-        subpixel True pos (1730, 418) zoom 0.18 
+        subpixel True pos (1521, 10) zoom 1.11 
+
+
     mt "..."
     mt "FUCKING HELL"
     mt "WHO THE HELL CAUSED THIS SHIT"
