@@ -119,8 +119,10 @@ label auto_advance(value):
         $ _preferences.afm_enable = False
         $ _preferences.afm_time = 15
     return
-# Resets the camera to it's original position
+# Resets the camera to it's original position w/ original effects
 label camera_reset():
     camera:
-        linear camera_speed subpixel True pos (0,0) xzoom 1.0 yzoom 1.0 zoom 1.0
+        linear camera_speed subpixel True pos (0,0) xzoom 1.0 yzoom 1.0 zoom 1.0 alpha 1.0 additive 0.0 blur 0.0 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+
+
     return
