@@ -2,15 +2,18 @@
 # Main Writer: SonuTheNecro
 # Images: Google/Images
 # Audio: freesound.org + Audacity Editing :)
-define mcde = Character("McDonalds Cashier")
-define sk = Character("Shadow Kody")
 
 label prologue:
     # The Prologue Scene
     stop music
     scene carontheroad with dissolve:
+        zoom 1.1
         xzoom 1.8
         yzoom 1.3
+    camera:
+        linear 20.0 subpixel True xpos -450
+        linear 20.0 subpixel True xpos 0
+        repeat
     if persistent.ch00:
         $ config.rollback_enabled = True
     $ discord.update(state = "On a road trip!")
@@ -36,6 +39,7 @@ label prologue:
     t "also good luck having some lame ass muscles compared to my gun because i will shoot you"
     k "you don't have a gun and you wouldn't shoot me"
     t "if you keep talking, I will I swear to god"
+    $ reset_camera(0)
     scene mcdonalds_outside with dissolve:
         xzoom 3.2 yzoom 2.6
     $ discord.update(state = "At McDonalds!")
@@ -43,22 +47,26 @@ label prologue:
         xzoom 1.3 yzoom 1.3 xalign 0.3 yalign 0.9
     show kody with moveinright:
         subpixel True xrotate 0.0 yrotate 180.0 xzoom 1.3 yzoom 1.3 xalign 0.8 yalign 0.9
-    
+
     t "well alright"
     t "here we are... the worst place in America"
     k "OMG YES I LOVE YOU THANG YOU ARE THE BEST!"
     k "TIME TO EAT!!"
     show thanga2:
         linear 1 pos (0.04, 0.9) 
-
     t "What the fuck?"
     t "Are you like gay or something?"
+    camera:
+        linear 0.5 subpixel True pos (-171, -18) zoom 1.07 
     k "BRO I AIN'T GAY I JUST LOVE MCDONALDS NOW LETS GO I AM HUNGRY"
+    camera:
+        linear 0.5 subpixel True xpos 0 
     t "you are gay"
     k "FUCK OFF!"
     k "I WILL BEAT YOU OFF!"
     t "..."
     k "..."
+    $ reset_camera(0.4)
     k "wording"
     t "yeah I know"
     scene mcdonalds_inside with fade:

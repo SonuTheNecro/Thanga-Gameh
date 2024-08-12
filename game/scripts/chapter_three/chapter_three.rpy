@@ -5,19 +5,6 @@
 # All sounds: Freesounds.com
 
 #Variables
-define jb =     Character("Jewel Osco Butcher")
-define jc =     Character("Jewel Osco Customer")
-define jceo =   Character("Jewel Osco CEO")
-define usps =   Character("USPS Worker Guy")
-define hb =     Character("Herobrine")
-define afton =  Character("William Afton")
-define freddy = Character("Freddy Fazgyatt")
-define bonnie = Character("Bonnie Looksmaxxer")
-define chica =  Character("Chica FanumTaxxer")
-define foxy =   Character("Foxy FurryFukker")
-define fnafpg = Character("Pizza Delivery Guy")
-define puppet = Character("The Puppet")
-define balloon = Character("Balloon Boy")
 default chapter_three_jewels_check = [False, False, False, False, False]
 default chapter_three_secret = 0
 default chapter_three_fnaf_money = [False, False, False, False, False, False, False, False] # 2 $5, 5 $1, 2 0.25
@@ -64,10 +51,19 @@ label chapter_three:
     k "..."
     t "..."
     k "..."
-    k "So I hit a new record with my MewMaxxing"
-    k "Its now 2 feet now"
+    "Maybe you should say something to clear the air?"
+    menu:
+        "Talk about Mewmaxxing":
+            k "So I hit a new record with my MewMaxxing"
+            k "Its now 2 feet now"
+        "Talk about Robux Free Giveaway":
+            k "So I entered a robux giveaway and I won 99.99$ worth of robux"
+            k "I just had to enter your credit card details for it but I am really excited!"
+        "Talk about Last Week":
+            k "So I finally played that danganronpa game"
+            k "It just wasnt a 1 to 1 scale"
+            k "also it seemed very mid I aint even gonna cap"
     t "..."
-    k "..."
     t "You need a fucking job and a fucking life"
     k "..."
     stop sound
@@ -160,7 +156,7 @@ label chapter_three:
         stop music
         play sound "audio/sound/chapter_three/street2.ogg" loop
         scene ch03_alleyway with dissolve:
-            subpixel True xpos -81 xzoom 1.17 zoom 0.43
+            subpixel True xpos -81 xzoom 1.17 yzoom 1.12 zoom 0.9
         $ discord.update(state = "Committing crimes!")
         k "Okay I guess this is the last job I can get..."
         k "Dang its already night damn"
@@ -336,9 +332,22 @@ label chapter_three:
         afton "I saw you at the Post Office looking for work to do"
         afton "And I saw the Poppy Playtime video"
         afton "I think I have an opportunity for you"
-        k "Does it have to do with looksmaxxing with fanum taxxing"
-        afton "I will have to ask my superior about that but my guess is yes to whatever that is"
-        k "LET'S FUCKING GO!"
+        afton "Any questions?"
+        menu:
+            "'Does it have to do with my fanumtaxxing?'":
+                k "Does it have to do with looksmaxxing with fanum taxxing"
+                afton "I will have to ask my superior about that but my guess is yes to whatever that is"
+                k "LET'S FUCKING GO!"
+            "'Do I get Health benefits?'":
+                k "Do I get any health benefits"
+                k "I require them for my mog sessions"
+                afton "no you don't"
+                k "then I quit the job"
+                afton "wait"
+                afton "You get all the benefits"
+                k "fr? on lebron?"
+                afton "sure 'on lebron...'"
+                k "LETS FUCKING GO!"
         afton "Let me show you what you have to do"
         k "alrighty"
         afton "follow me"
@@ -373,11 +382,6 @@ label chapter_three:
         afton "and the right one is Chica Fanum Taxxer"
         k "I don't remember this in Fnaf"
         afton "This is the new FNAF"
-        scene ch03_fnaf_prep5 with dissolve:
-            subpixel True zoom 0.75
-        afton "This is the backrooms of the building"
-        k "THE BACKROOMS?"
-        afton "yes"
         scene ch03_fnaf_prep4 with dissolve:
             subpixel True zoom 0.75
         afton "and this is the fnaf office"

@@ -104,6 +104,7 @@ label chapter_zero_win:
     "Incredible gameplay"
     hide hands1
     hide chapter_zero_rhand
+    show cody at animated_glitch
     k "Yeah I agree Narrator guy"
     c "WAIT WHAT YOU CAN HEAR HIM TOO?"
     k "I mean it's right there"
@@ -129,6 +130,7 @@ label chapter_zero_win:
     else:
         show wild_west2 with dissolve:
             xzoom 3.9 yzoom 3.2 yalign 0.8 matrixcolor ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0)
+    hide cody
     jump chapter_zero_ending
 
     #c "WHAT! IMPOSSIBLE!"

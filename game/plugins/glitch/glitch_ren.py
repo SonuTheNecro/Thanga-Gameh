@@ -26,7 +26,7 @@ class glitch(renpy.Displayable):
 
     NotSet = object()
 
-    def __init__(self, child, *, randomkey=NotSet, chroma=True, minbandheight=1, offset=30, nslices=None, **properties):
+    def __init__(self, child, *, randomkey=NotSet, chroma=True, minbandheight=1, offset=60, nslices=None, **properties):
         super().__init__(**properties)
         self.child = renpy.displayable(child)
         if randomkey is self.NotSet:
@@ -105,7 +105,7 @@ class animated_glitch(glitch):
         super().__init__(*args, **kwargs)
         if timeout_vanilla is None:
             if timeout_base is None:
-                timeout_vanilla = (1, 3)
+                timeout_vanilla = .2
             else:
                 timeout_vanilla = timeout_base
         if timeout_base is None:

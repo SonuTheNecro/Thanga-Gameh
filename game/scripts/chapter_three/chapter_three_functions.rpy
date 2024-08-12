@@ -106,8 +106,10 @@ label chapter_three_jewel_osco:
     k "yes"
     b "fuck you"
     b "yeah well I work here, what can I help you with?"
-    k "uh"
-    k "gimmie job or i will show off my mogmaxxing"
+    menu:
+        "I will mog on you!":
+            k "uh"
+            k "gimmie job or i will show off my mogmaxxing"
     b "you already showed me that"
     k "oh"
     b "Uh let me see what I can do for you!"
@@ -123,7 +125,11 @@ label chapter_three_jewel_osco:
     call auto_advance(0)
     k "wait you talked with CEO Mr. Jewel Osco?"
     b "yes"
-    k "How does a cashier talk to the CEO for a simple job at one location of a multinational business?"
+    menu:
+        "How?":
+            k "How does a cashier talk to the CEO for a simple job at one location of a multinational business?"
+        "What?":
+            k "How does a cashier talk to the CEO for a simple job at one location of a multinational business?"
     b "yeah its a really bad bottleneck"
     b "The point is"
     b "I got you a trial job"
@@ -295,12 +301,12 @@ label chapter_three_jewel_osco:
         show ch03_man:
             subpixel True pos (-298, 293) zoom 0.54
             linear 0.45 subpixel True xpos 962
-        pause 0.45
+        $ renpy.pause(0.45, True)
         play sound "audio/sound/chapter_three/slip1.ogg"
         show ch03_man:
             linear 0.65 subpixel True pos (953, 63) rotate -90
             linear 0.35 subpixel True pos (936, 541) rotate 270.0
-        pause 1.0
+        $ renpy.pause(1.0, True)
         play sound "audio/sound/chapter_three/back_crack.ogg"
         questionmark "YO WHAT THE HELL!"
         questionmark "MY BACK"
@@ -359,7 +365,15 @@ label chapter_three_jewel_osco:
         k "I am not"
         jb "Sir thats impossible!"
         jb "who is this even for?"
-        k "Elon Musk"
+        menu:
+            "MrBeast":
+                k "MrBeast!"
+            "Elon Musk":
+                k "Elon Musk"
+            "Donald Trump":
+                k "Donald Trump"
+        jb "wait for real?"
+        k "yeah no cap"
         jb "We literally cannot do that"
         k "guess you are fired bozo"
         jb "I need this job to feed my 3 children"
@@ -380,7 +394,7 @@ label chapter_three_jewel_osco:
         k "ate it real fast"
         play sound "audio/sound/chapter_three/chomp.ogg"
         hide ch03_candy
-        k "That was some good candy :)"
+        k "That was some good candy >:)"
         $ chapter_three_jewels_mark(3)
         #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
@@ -401,6 +415,19 @@ label chapter_three_jewel_osco:
         jc "This made my day thanks man"
         hide ch03_woman
         k "ez rizz"
+        menu:
+            "Can I get yo number?":
+                jc "wtf no"
+                k "damn"
+                k "why?"
+                jc "this is harassment!"
+            "You tryna go on a jewel date?":
+                jc "no!"
+                k "why?"
+                jc "I got a boyfriend"
+                jc "and you are weird"
+                jc "and this is harassment!"
+                k "damn"
         $ chapter_three_jewels_mark(4)
         #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1
@@ -452,7 +479,15 @@ label chapter_three_jewel_osco:
         jceo "You are FUCKING BANNED FROM EVERY JEWEL OSCO FOR EVER"
         jceo "YOU HAVE 5 MINUTES TO LEAVE BEFORE I CALL THE FUCKING POLICE!"
         k "Fine jeez"
-        k "Can i still have my paycheck?"
+        menu:
+            "'What about my Paycheck?'":
+                k "Can i still have my paycheck?"
+            "'About Health Benefits'":
+                k "Do I still get my health benefits"
+                k "I need em for my mog sessions"
+            "'About Good work'":
+                k "Was i a better employee than brian?"
+                k "like was i the absolute GOAT of jewel osco"
         jceo "WHAT DO YOU FUCKING THINK?"
         k "yes"
         #jceo "..."
@@ -701,12 +736,14 @@ label chapter_three_mailman:
     k "oh"
     usps "anyways deliver this first house"
     show ch03_usps_van:
-        linear 1.1 subpixel True pos (820, 671) zoom 2.05 
+        linear 1.1 subpixel True pos (820, 671) zoom 2.05
+    $ renpy.pause(1.1, hard = True)
     usps "Drop this package at the front door"
     usps "Super Simple"
     show kody:
         subpixel True pos (1355, 830) zoom 0.34 
         linear 0.556 subpixel True pos (1735, 665) zoom 0.34 
+    $ renpy.pause(0.556, hard = True)
     k "Alright, I just drop the package here and now I am done"
     k "this is pretty easy"
     usps "Yo!"
@@ -716,12 +753,12 @@ label chapter_three_mailman:
     show kody:
         yrotate 0.0
         linear 0.445 subpixel True pos (1355, 830) zoom 0.34
-    pause 0.445
+    $ renpy.pause(0.445, hard = True)
     hide kody
     usps "alright now go next house"
     show ch03_usps_van:
         linear 0.8 subpixel True pos (1286, 915) 
-    $ renpy.pause(1.0)
+    $ renpy.pause(1.0, hard = True)
     scene ch03_usps_suburb2:
         subpixel True
     show ch03_usps_van:
@@ -732,24 +769,26 @@ label chapter_three_mailman:
     usps "We are going to the second house"
     k "got it sir!"
     show ch03_usps_van:
-        linear 1.2 subpixel True pos (935, 726) zoom 1.29 yrotate 180.0 
+        linear 1.2 subpixel True pos (935, 726) zoom 1.29 yrotate 180.0
+    $ renpy.pause(1.2, hard = True)
     usps "Drop this giftbox at the front door"
     show kody:
         subpixel True pos (1303, 781) zoom 0.32 
         linear 0.35 subpixel True pos (1668, 696) 
-    $ renpy.pause(0.35)
+    $ renpy.pause(0.35, hard = True)
     k "Damn, I could get used to this"
     show kody:
         yrotate 180.0
     show ch03_usps_van:
         linear 0.1 subpixel True pos (2560, 1035) 
+    $ renpy.pause(0.1, hard = True)
     k "HEY WAIT FOR ME!"
     k "WHERE ARE YOU GOING"
     k "WTF!"
     show kody:
         yrotate 0
         linear 2.221 subpixel True pos (2590, 1101) 
-    pause 2
+    $ renpy.pause(2.1, hard = True)
     scene ch03_usps_dog:
         subpixel True xpos -18 xzoom 1.88 yzoom 1.06 zoom 1.02 
     k "YO YOU ASS WHY DID YOU LEAVE ME BEHIND"
@@ -771,7 +810,7 @@ label chapter_three_mailman:
         subpixel True pos (1918, 145) yrotate 180.0 
         linear 0.556 subpixel True pos (1435, 58) yrotate 180.0 
     show ch03_usps_baby_ocho:
-        subpixel True pos (116, 303) zoom 0.22 
+        subpixel True pos (-210, 166) zoom 0.6
     label chapter_three_usps_dog:
     menu:
         "Run!":
@@ -786,14 +825,14 @@ label chapter_three_mailman:
         "Punt the fucking dog!":
             $ confirm_menu_no_jump("chapter_three_usps_dog")
             show kody:
-                linear 0.556 subpixel True pos (641, 188) 
-            pause 1.5
+                linear 0.556 subpixel True pos (641, 188)
+            $ renpy.pause(1.5, hard = True)
             k "goodbye bastard"
             play sound "audio/sound/chapter_three/falcon_kick.ogg"
             pause 1.4
             show ch03_usps_baby_ocho:
                 rotate 0
-                linear 0.1 rotate -360 subpixel True pos (-590, 15)
+                linear 0.1 rotate -360 subpixel True pos (-2084, 960) 
             k "goodbye bastard forever"
     $ location = 7
     $ count += 1

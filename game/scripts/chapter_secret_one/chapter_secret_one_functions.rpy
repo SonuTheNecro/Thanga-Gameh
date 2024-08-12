@@ -120,7 +120,7 @@ label chs01_slender_movement:
 label chs01_matt:
     screen clickable_chs01_matt:
         imagebutton:
-            pos((310, 230)) at Transform(zoom=0.18)
+            pos((310, 230)) at Transform(zoom=0.50)
             idle "images/matt2.jpg"
             hover At("images/matt2.jpg", animated_outline)
             action Call("chs01_matt_filler")
