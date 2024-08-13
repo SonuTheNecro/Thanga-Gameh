@@ -35,6 +35,7 @@ init python:
 
 # Renpy Code
 screen clickable_chapter_one_secret_lopunny(xpos, ypos, zoom):
+    layer "master"
     imagebutton:
         pos (xpos,ypos)
         at Transform(zoom = zoom)

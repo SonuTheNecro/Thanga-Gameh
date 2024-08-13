@@ -25,6 +25,8 @@ label chapter_one:
     scene inside car with fade
     if persistent.ch01:
         $ config.rollback_enabled = True
+    camera:
+        subpixel True pos (-1674, -1323) zoom 5.51 
     "Chapter 1: The Hunt for the Elusive..."
     questionmark "Lopunny..."
     questionmark "Why would you write it like this?"
@@ -38,7 +40,7 @@ label chapter_one:
         subpixel True pos (343, 485)  xzoom 2.43 yzoom 0.92 zoom 1.0 
     show kody:
         subpixel True pos (0.6, 0.29) 
-    
+    $ reset_camera(0.45)
     b "so what should we get to eat?"
     t "I am good with whatever."
     b "anything?"
@@ -64,11 +66,14 @@ label chapter_one:
         k "You stupid idiot"
         t "Fuck off you asshat"
         scene chick1:
-            subpixel True zoom 2.46 
+            subpixel True zoom 2.46
+        camera:
+            subpixel True xpos -2043 zoom 2.79 
         b "Well"
         b "Here we are!"
         b "Chick Fil-A"
         t "Why are you announcing where we are going?"
+        $ reset_camera(0.24)
         b "You can walk you know bitch ass"
         t "Maybe I will with your ass driving"
         k "..."
@@ -110,6 +115,12 @@ label chapter_one:
             subpixel True xzoom 1.2 zoom 2.29 
         k "(Dang this line is long)"
         show screen clickable_chapter_one_secret_lopunny(985,3,0.34)
+        camera:
+            linear 0.25 subpixel True pos (-9, -126) zoom 1.18 
+        camera:
+                linear 20.0 subpixel True pos (-342, -126) zoom 1.18 
+                linear 20.0 subpixel True pos (0, -126) zoom 1.18 
+                repeat
         ce "Hello, Welcome to Chick-Fil-A how many I help you?"
         b "I want 3 #2 Spicy Chickens meal plans"
         ce "Alright that will be $23.49 please pull up at the window"
@@ -118,7 +129,8 @@ label chapter_one:
         scene chick_window with dissolve:
             subpixel True pos (-3, 0) xzoom 1.31 zoom 2.48 
         show brian_mcdonalds with dissolve:
-            subpixel True pos (603, 235) 
+            subpixel True pos (603, 235)
+        $ reset_camera(0)
         b "Alright here you go, here is the cash for the meal"
         ce "Alright here is the -0.99 Cents"
         k "What Demonination did Brian pay in again?"
@@ -258,20 +270,33 @@ label chapter_one:
         stop sound
         jump chapter_one_post_lunch
     label chapter_one_subway:
+    play sound "audio/sound/general/vine_boom.ogg"
+    camera:
+        subpixel True pos (-1863, -396) zoom 2.13 
     k "I want to have a long 12 incher"
+    camera:
+        linear 0.15 subpixel True pos (-3384, -1143) zoom 2.77 
     b "don't we all..."
+    camera:
+        linear 0.12 subpixel True pos (-702, -774) zoom 1.96 
     t "ayoooo?"
     b "You aren't austin"
     t "who?"
     t "asked"
     b "..."
     b "..."
+    camera:
+        linear 0.45 subpixel True pos (-432, -243) zoom 1.23 
     t "Do NOT give me the silent treatment you bozo"
     t "kill yourself!"
     b "maybe i will you dickhead"
     t "anyways...."
     t "what do you ACTUALLY want to eat Kody?"
+    play sound "audio/sound/general/vine_boom.ogg"
+    camera:
+        subpixel True pos (-1863, -396) zoom 2.13 
     k "I just fucking said I want a long 12 incher"
+    $ reset_camera(0.25)
     t "ugh this guy"
     k "IM TALKING SUBWAY YOU FUCKING NINKAPOOP HOW YOU NOT UNDERSTAND ME"
     k "YOU GOT COTTIN IN YOUR EAR?????????"
@@ -338,13 +363,25 @@ label chapter_one:
     b "cope harder"
     hide screen clickable_chapter_one_stn
     scene subway3 with pixellate:
-        subpixel True xzoom 1.17 zoom 1.27 
+        subpixel True xzoom 1.17 zoom 1.27
+    camera:
+        subpixel True xpos 0 zoom 1.13 
+    show kody:
+        subpixel True pos (685, 423) zoom 1.29 yrotate 180.0 
+    show thanga2:
+        subpixel True pos (1160, 680) yrotate 180.0 
+    show brian1:
+        subpixel True pos (1370, 488) 
     $ count = 0
     "Sandwich Mini-game! START!"
     tv "Why did you make a Sandwich Minigame and make it like this?"
     stn "Fuck off Kody"
     k "IT WASN'T EVEN ME"
     c "bozo"
+    camera:
+        linear 20.0 subpixel True xpos -261 zoom 1.13 
+        linear 20.0 subpixel True xpos -9 zoom 1.13
+        repeat
     jump chapter_one_subway_minigame
 
     label chapter_one_post_subway:
@@ -356,9 +393,9 @@ label chapter_one:
     t "Brian... why did we let this happen"
     b "idk man"
     stop sound
+    $ reset_camera(0)
     label chapter_one_post_lunch:
-    scene inside car with fade:
-        subpixel True xzoom 1.5 yzoom 1.13 zoom 0.67 
+    scene inside car with fade
     show brian1:
         subpixel True pos (0.75, 406) zpos 0.0 xrotate 0.0 yrotate 0.0    
     show thanga2:

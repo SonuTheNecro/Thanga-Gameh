@@ -39,7 +39,7 @@ label main_menu:
 
 label quit:
     if check != "bloxwich": #When you reset data, this stops a crash when you close the game
-        $ persistent.play_time += renpy.get_game_runtime()
+        $ persistent.play_time += renpy.get_game_runtime() - temp_playtime
     return
 label start:
     if persistent.intro == False:
