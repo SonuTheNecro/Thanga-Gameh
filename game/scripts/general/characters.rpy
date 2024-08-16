@@ -32,6 +32,7 @@ define usps =         Character("USPS Worker Guy")   #CH03
 
 #Prologue
 define igor =         Character("Master Igor")
+define ice =          Character("U.S. ICE Agent")
 define sk =           Character("Shadow Kody")
 
 # Chapter One Specific

@@ -80,7 +80,6 @@ label game_over:
     "You have fallen and lost thy life!"
     show igor with dissolve:
         subpixel True pos (0.21, 0.57) yoffset -585.0 xzoom 1.0 zoom 4.2
-    
     igor "But honestly you suck at the game!"
     igor "Like how do you mess up these basic mechanics"
     igor "I got no legs and I coulda walked further and made it further than you you absolute shitter"
@@ -89,6 +88,38 @@ label game_over:
     igor "You fucking suck, use some common sense"
     igor "Straight up bozo!"
     igor "Goodbye forever (Or not)"
+    $ renpy.quit()
+label game_over_2:
+    stop sound
+    stop music
+    show black with fade
+    play sound "audio/sound/general/police_siren.ogg" loop
+    questionmark "You are under-arrest!"
+    questionmark "President Cody's policy will NOT be disobeyed!"
+    $ renpy.pause(1.0, hard = True)
+    scene ice_game_over with fade:
+        subpixel True
+    show thanga2:
+        subpixel True pos (870, 225) yrotate 180.0 
+    show kody:
+        subpixel True pos (931, 393) matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 180.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) 
+    stop sound
+    ice "You two will be spent far far away"
+    ice "to your country of origin"
+    ice "North Korea Pyongyang"
+    camera:
+        subpixel True pos (-1215, -387) zoom 2.19 
+    t "WAIT WE ARENT KOREAN"
+    t "WE ARE VIETNAMESE"
+    $ reset_camera(0.1)
+    ice "look like a korean to me"
+    t "Bạn hút tinh ranh lớn"
+    t "like that vietnamese?"
+    ice "Tôi có thể nói tiếng Việt mà.  Tôi sẽ đảm bảo bạn sẽ đến Bắc Triều Tiên"
+    t "shit"
+    scene game_over_plane
+    play sound "audio/sound/general/airplane_take_off.ogg"
+    ice "another illegal immigrant out of our country!"
     $ renpy.quit()
 
 label dio_time_stop():

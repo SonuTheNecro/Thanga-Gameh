@@ -353,7 +353,8 @@ label clickable_menus:
                 jump chapter_three_post_map
             "chapter one ending":
                 jump baldi_beaten
-
+            "game_over_2":
+                jump game_over_2
 label test1:
     scene bg room
 
