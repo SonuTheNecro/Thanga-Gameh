@@ -20,7 +20,7 @@ screen clickable_chapter_two_ocho():
 screen clickable_chapter_two_matt():
     imagebutton:
         pos (1008, 585)
-        at Transform(zoom = 0.17)
+        at Transform(zoom = 0.5)
         idle "images/matt2.jpg"
         hover At("images/matt2.jpg", animated_outline)
         action Call("chapter_two_matt")
@@ -48,6 +48,22 @@ screen clickable_chapter_two_heavy():
         idle "images/heavy_tf2.png"
         hover At("images/heavy_tf2.png", animated_outline)
         action Call("chapter_two_heavy")
+
+screen clickable_chapter_two_march2():
+    imagebutton:
+        pos (76, 541)
+        at Transform(zoom = 0.18, yrotate = 180)
+        idle "images/march_7th.png"
+        hover At("images/march_7th.png", animated_outline)
+        action Call("chapter_two_march2")
+
+screen clickable_chapter_two_phoenix2():
+    imagebutton:
+        pos (568, 526)
+        at Transform(zoom = 0.7)
+        idle "images/phoenix_wright.png"
+        hover At("images/phoenix_wright.png", animated_outline)
+        action Call("chapter_two_phoenix2")
 
 label chapter_two_ocho:
         hide screen clickable_chapter_two_ocho
@@ -169,6 +185,33 @@ label chapter_two_phoenix:
         $ count += 1
     $ count2 += 1
     return
+
+label chapter_two_march2:
+    hide screen clickable_chapter_two_march2
+    hide screen clickable_chapter_two_phoenix2
+    march "Hey Thang. It's so sad what happened to Ocho isn't it?"
+    t "yea it sucks"
+    march "We will definitely find whoever did this!"
+    t "did you find any clues besides his time of death?"
+    #TODO:add clue
+    if choice == 0:
+        $ count += 1
+    $ choice += 1
+    return
+  
+label chapter_two_phoenix2:
+    hide screen clickable_chapter_two_march2
+    hide screen clickable_chapter_two_phoenix2
+    t "hey phoenix, did you find anything out?"
+    pw "Yeah, I discovered that there was a puncture wound in the side of his neck"
+    t "yea i knew that it was in the monokuma file"
+    t "what else?"
+    #TODO:add clue
+    if count2 == 0:
+        $ count += 1
+    $ count2 += 1
+    return
+
 label chapter_two_show_character_lists:
     label chapter_two_all_except_cody:
         show thanga2:
@@ -178,7 +221,7 @@ label chapter_two_show_character_lists:
         show brian3:
             subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
         show matt2:
-            subpixel True pos (1065, 580) xzoom 0.17 yzoom 0.17
+            subpixel True pos (1065, 580) xzoom 0.5 yzoom 0.5
         show ocho:
             subpixel True pos (930, 906) xzoom 0.35 yzoom 0.35
         show march_7th:
@@ -299,6 +342,7 @@ label chapter_two_events:
             subpixel True pos (560, 295) 
         t "Why did I get the girl's room"
         t "oh well it has anime guess its my room now"
+        window auto hide
         show black with fade
         pause 3.0
         hide black with fade
@@ -366,7 +410,7 @@ label chapter_two_events:
         show thanga2 with dissolve:
             subpixel True pos (510, 278) 
         show matt2 with dissolve:
-            subpixel True pos (1206, 243) zoom 0.21 
+            subpixel True pos (1206, 243) zoom 0.6 
         t "Yo matt are you good?"
         mt "yeah why?"
         t "you weren't at the meeting in the hall?"
@@ -389,13 +433,13 @@ label chapter_two_events:
             subpixel True pos (1951, 211) yrotate 180.0
             linear 0.6 subpixel True pos (1411, 211) yrotate 180.0 
         show matt2:
-            subpixel True pos (1950, 405) zoom 0.2 
+            subpixel True pos (1950, 405) zoom 0.57 
         t "uhhh wtf"
         t "is that ocho?"
         t "holy shit"
         mt "yo thang are you in there?"
         show matt2:
-            linear 0.6 subpixel True pos (1653, 405) zoom 0.2 
+            linear 0.6 subpixel True pos (1653, 405) zoom 0.57
         mt "The pool's closed thang"
         pause 1.2
         mt "OCHOOOOOOOOOOOOOOOOOOOOOOOOOOO"
@@ -429,7 +473,7 @@ label chapter_two_events:
         pause 1.5
         t "guess we will have to wait here then"
         show matt2:
-            subpixel True pos (1653, 405) zoom 0.2 
+            subpixel True pos (1653, 405) zoom 0.57 
             linear 4.0 xpos 600
         mt "ocho..."
         show thanga2:
@@ -493,7 +537,7 @@ label chapter_two_events:
         show cody:
             subpixel True pos (1628, 330) xzoom 0.85 yzoom 0.85
         show matt2:
-            subpixel True pos (600, 405) zoom 0.2 
+            subpixel True pos (600, 405) zoom 0.57 
         show thanga2:
             subpixel True pos (771, 200) yrotate 180.0
         show kody:
@@ -565,11 +609,11 @@ label chapter_two_events:
         pause 1.3
         mt "i guess ill go with him..."
         show matt2:
-            subpixel True pos (600, 405) zoom 0.2
+            subpixel True pos (600, 405) zoom 0.57
             linear 1.8 xpos 1661 ypos 405
         pause 1.8
         show matt2:
-            subpixel True pos (1661, 405) zoom 0.2
+            subpixel True pos (1661, 405) zoom 0.57
             linear 1.5 xpos 1958 ypos 901
         pause 3.0
         b "..."
@@ -605,9 +649,22 @@ label chapter_two_events:
         hide monokuma_file_ocho with fade
         hide black with fade
         t "guess i should talk to people and look for clues"
-        "test"
+        $ choice = 0
+        $ count2 = 0
+        $ count = 0
 
-        #TODO:more dialogue here
+        label chapter_two_death_repeat:
+            if count == 2:
+                jump chapter_two_after_clue1
+            while count < 2:
+                window hide
+                show screen clickable_chapter_two_march2()
+                show screen clickable_chapter_two_phoenix2()
+                $ renpy.pause()
+
+        label chapter_two_after_clue1:
+            "test"
+            #TODO:more dialogue here
         
         $ count = 4
         return

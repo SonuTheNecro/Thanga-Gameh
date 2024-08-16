@@ -111,7 +111,7 @@ label chapter_two:
         show brian3:
             subpixel True pos (450, 495) xzoom 0.45 yzoom 0.45 
         show matt2:
-            subpixel True pos (1008, 585) xzoom 0.17 yzoom 0.17 
+            subpixel True pos (1008, 585) xzoom 0.5 yzoom 0.5 
         show ocho:
             subpixel True pos (873, 900) xzoom 0.35 yzoom 0.35 
         show march_7th:
@@ -179,7 +179,7 @@ label chapter_two:
         show brian3:
             subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
         show matt2:
-            subpixel True pos (1065, 580) xzoom 0.17 yzoom 0.17
+            subpixel True pos (1065, 580) xzoom 0.5 yzoom 0.5
         show ocho:
             subpixel True pos (930, 906) xzoom 0.35 yzoom 0.35
         show march_7th:
@@ -206,7 +206,7 @@ label chapter_two:
         show brian3:
             subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
         show matt2:
-            subpixel True pos (1065, 580) xzoom 0.17 yzoom 0.17
+            subpixel True pos (1065, 580) xzoom 0.5 yzoom 0.5
         show ocho:
             subpixel True pos (930, 906) xzoom 0.35 yzoom 0.35
         show march_7th:
@@ -249,6 +249,7 @@ label chapter_two:
         pause 5.0
         t "huh"
         t "that wasn't in the game"
+        window auto hide
         show black with fade
         pause 4.0
 
