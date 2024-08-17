@@ -128,6 +128,7 @@ label game_over_2:
     scene game_over_plane
     play sound "audio/sound/general/airplane_take_off.ogg"
     ice "another illegal immigrant out of our country!"
+    ice "amen america!"
     $ renpy.quit()
 
 label dio_time_stop():
@@ -367,11 +368,11 @@ label main_menu_code:
                 action Jump("main_menu_minigames")
         label main_menu_minigames:
             menu:
-                "Cody's Roshambo":
+                "The Clash of Cody's Connundrum!":
                     jump minigame_rps
-                "Baldi's Mathmatical Madness":
+                "Baldi's Mathmatical Madness!":
                     jump minigame_math
-                "Puppet's Paradoxical Plight (idk man)":
+                "Puppet's Paradoxical Predicament!":
                     jump minigame_puppet
                 "debug":
                     jump debug_menu
