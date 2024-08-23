@@ -59,3 +59,7 @@ define foxy =         Character("Foxy FurryFukker")
 define fnafpg =       Character("Pizza Delivery Guy")
 define puppet =       Character("The Puppet")
 define balloon =      Character("Balloon Boy")
+
+#Chapter Four Specific
+define com1 =         Character("Commentator 1")
+define com2 =         Character("Commentator 2")

@@ -62,13 +62,20 @@ label chapter_four:
         subpixel True pos (1243, 150) rotate -45.0 yrotate 180.0 
         linear 0.2 subpixel True pos (1395, 278) rotate -45.0 yrotate 180.0 
         repeat
-    mt "Fuck that. I don't think I can play him right now without potentially getting banned from locals"
+    mt "Fuck that. I don't think I can play him right now without getting banned from locals"
     mt "I'll just practice my movement and combos"
     "While practicing, Matt continues to remember all those times he's lost to Trip"
     "(Three different mini scenes)"
     "(Scene 1: At a different smash locals, Matt Chokes a 2-0 lead on trip. Trip pops off)"
-    #TODO: Add two additional characters, commentator1 and 2.
+    "(Scene 2: At a school tournament, Matt gets wobbled by Trip in melee)"
+    "(Scene 3: Matt gets beat up in some random alleyway)"
+    mt "Next time we play, I'm beating his ass, I don't care what it takes."
+    #ACT 2 STARTS HERE
+    "Matt wakes up the next day"
     
+
+
+    #Save Ocho minigame for act 2.
     $ count = 0
     $ xpos = 30
     $ ypos = 40
