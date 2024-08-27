@@ -62,7 +62,63 @@ label chapter_four:
         subpixel True pos (1243, 150) rotate -45.0 yrotate 180.0 
         linear 0.2 subpixel True pos (1395, 278) rotate -45.0 yrotate 180.0 
         repeat
+    pause 1.0
+    scene ch04_smash_locals:
+        subpixel True xzoom 1.33 zoom 1.06
+    camera:
+        subpixel True pos (-351, -1773) xzoom 1.0 yzoom 1.0 zoom 3.87
+    show matt2:
+        subpixel True pos (60, 515) xzoom 3.22 zoom 0.54
+    pause 0.1
+    $ reset_camera(0.45)
     mt "Fuck that. I don't think I can play him right now without getting banned from locals"
+    mt "I'm just gonna go home"
+    scene ch04_street1 with dissolve:
+        subpixel True yzoom 1.19 zoom 2.0 
+    show matt2:
+        subpixel True pos (1086, 380) zpos 0.0 zoom 0.41 
+    show car1:
+        subpixel True pos (780, 406) 
+    mt "Why am I always driving on these barren roads"
+    "It's because you face the camera so we are very limited for shots here"
+    mt "truuuuuuuu"
+    mt "wait who was that?"
+    "..."
+    mt "..."
+    mt "fucking trip"
+    mt "got me all schizo now"
+    mt "so angry"
+    mt "ima just get to home asap"
+    scene ch04_china_bedroom with dissolve:
+        subpixel True xzoom 1.32 zoom 1.52 
+    show matt2:
+        subpixel True pos (-236, 200) zoom 0.79 
+    pause 0.56789
+    show matt2:
+        linear 0.445 subpixel True pos (286, 200) zoom 0.79 
+    mt "YOOOOOOOOOOOOOOOOO"
+    mt "MY ROOM"
+    mt "WHY IS IT SO CHINESE?!?"
+    mt "..."
+    mt "FUCKING TRIP"
+    mt "MADE MY WHOLE HOUSE FUCKING ASIAN"
+    "Yo matt"
+    mt "huh?"
+    "I think you are going a bit crazy"
+    mt "no"
+    mt "no"
+    mt "IM NOT CRAZY"
+    mt "IM NOT CRAZY"
+    "Why are you repeating yourself then"
+    mt "fuck"
+    mt "listen invisible man"
+    mt "trip got me all worked up"
+    mt "ima just go to bed and sleep off"
+
+
+
+
+    
     mt "I'll just practice my movement and combos"
     "While practicing, Matt continues to remember all those times he's lost to Trip"
     "(Three different mini scenes)"
