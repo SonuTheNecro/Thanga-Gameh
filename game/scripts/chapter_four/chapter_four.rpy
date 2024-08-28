@@ -115,11 +115,45 @@ label chapter_four:
     mt "trip got me all worked up"
     mt "ima just go to bed and sleep off"
 
+    #Black and White Filter Here
 
-
-
-    
+    "..."
+    "..."
+    mt "I GOT IT!"
+    mt "WHY DID I FUCKING PK-FIRE?!?"
+    mt "I SHOULDA HELD YO-YO"
+    mt "FUCKING TRIP!"
+    mt "RUINING ANOTHER ONE OF MY GOD DAMN LOCALS"
+    mt "OH IMA DESTROY HIM NEXT TIME"
+    $ auto_advance(1)
+    mt "I'll ra-"
+    # The Next Day...
+    $ auto_advance(0)
+    scene ch04_china_bedroom with dissolve:
+        subpixel True xzoom 1.32 zoom 1.52 
+    show matt2:
+        subpixel True pos (286, 200) zoom 0.79 
+    mt "holy shit I slept like an eight dog who is morbidly obese and homosexual"
+    "That is oddly specific"
+    mt "mhmm"
+    "So whats the plan today?"
+    mt "Well The Smash Locals, SGS is having a special 2x event thingy"
+    mt "basically its just two events so I can rematch trip"
+    mt "then I can fry his ass"
+    mt "im about to train all day"
+    "Should you just not?"
+    mt "wdym?"
+    "Well you should do some other activities in life and do some warmups and just fight trip"
+    mt "nahhhh I dont think so"    
     mt "I'll just practice my movement and combos"
+    "Well I'm the one reading the book so I could just skip this"
+    mt "yo fourth wall break"
+    "Im skipping you"
+    menu:
+        "Skip":
+            jump chapter_four
+        "Don't Skip":
+            jump chapter_four
     "While practicing, Matt continues to remember all those times he's lost to Trip"
     "(Three different mini scenes)"
     "(Scene 1: At a different smash locals, Matt Chokes a 2-0 lead on trip. Trip pops off)"
@@ -127,7 +161,6 @@ label chapter_four:
     "(Scene 3: Matt gets beat up in some random alleyway)"
     mt "Next time we play, I'm beating his ass, I don't care what it takes."
     #ACT 2 STARTS HERE
-    "Matt wakes up the next day"
     
 
 
