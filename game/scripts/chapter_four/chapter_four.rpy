@@ -114,9 +114,10 @@ label chapter_four:
     mt "listen invisible man"
     mt "trip got me all worked up"
     mt "ima just go to bed and sleep off"
-
-    #Black and White Filter Here
-
+    camera:
+        linear 0.23 subpixel True additive 0.0 matrixcolor InvertMatrix(0.0)*ContrastMatrix(0.98)*SaturationMatrix(0.74)*BrightnessMatrix(-0.54)*HueMatrix(0.0) 
+    show matt2:
+        linear 0.23 subpixel True pos (561, 150) rotate -18.0 
     "..."
     "..."
     mt "I GOT IT!"
@@ -129,6 +130,7 @@ label chapter_four:
     mt "I'll ra-"
     # The Next Day...
     call auto_advance(0)
+    $ reset_camera(0)
     scene ch04_china_bedroom with dissolve:
         subpixel True xzoom 1.32 zoom 1.52 
     show matt2:
@@ -186,21 +188,42 @@ label chapter_four:
         linear 0.312 pos (1501, 435)
         repeat
     with Pause(2.03)
-    #show trip:
-        #subpixel True pos (791, 421)  yrotate 180.0 
-        #linear 0.23 subpixel True pos (976, 430) 
-        #repeat
-
-
-
     mt "WAIT THIS ISN'T EVEN SMASH WAIT"
     mt "STOP TRIP"
     mt "AHHHHHHH"
+    scene ch04_china_bedroom with dissolve:
+        subpixel True xzoom 1.32 zoom 1.52 
+    show matt2:
+        subpixel True pos (286, 200) zoom 0.79
+    mt "huh?"
+    mt "Oh"
+    mt "it was just a dream"
+    mt "Im blaming trip"
+    mt "I swear next set"
+    mt "next fucking set"
     mt "Next time we play, I'm beating his ass, I don't care what it takes."
+    show matt2:
+        linear 0.234567 subpixel True pos (-286, 200) zoom 0.79
     #ACT 2 STARTS HERE
-    
-
-
+    pause 0.3
+    scene ch04_china_living_room with dissolve:
+        subpixel True xzoom 1.24 zoom 2.71 
+    show matt2:
+        subpixel True pos (-236, 200) zoom 0.79 
+    pause 0.56789
+    show matt2:
+        linear 0.445 subpixel True pos (286, 200) zoom 0.79 
+    mt "YO WHY IS MY WHOLE HOUSE TAIWAN???????"
+    mt "WHO DID THIS?"
+    mt "IM BLAMING TRIP"
+    mt "GRRRRRRRRRRRRRRRRRRRRRRRRRRR"
+    show ch04_ocho:
+        subpixel True pos (1050, 356) zoom 0.41 yrotate 180.0 
+    mt "WHY ARE YOU SO BIG?????????????????????????????"
+    mt "WHAT"
+    ocho "woof"
+    mt "THAT DOESN'T ANSWER MY QUESTION"
+    "test"
     #Save Ocho minigame for act 2.
     $ count = 0
     $ xpos = 30
