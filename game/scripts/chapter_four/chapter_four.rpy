@@ -120,6 +120,8 @@ label chapter_four:
         linear 0.23 subpixel True pos (561, 150) rotate -18.0 
     "..."
     "..."
+    show matt2:
+        linear 0.1 subpixel True pos (543, 0) rotate 0.0 
     mt "I GOT IT!"
     mt "WHY DID I FUCKING PK-FIRE?!?"
     mt "I SHOULDA HELD YO-YO"
@@ -131,10 +133,10 @@ label chapter_four:
     # The Next Day...
     call auto_advance(0)
     $ reset_camera(0)
-    scene ch04_china_bedroom with dissolve:
+    scene ch04_china_bedroom with fade: 
         subpixel True xzoom 1.32 zoom 1.52 
     show matt2:
-        subpixel True pos (286, 200) zoom 0.79 
+        subpixel True pos (1435, 180)  zoom 0.79
     mt "holy shit I slept like an eight dog who is morbidly obese and homosexual"
     "That is oddly specific"
     mt "mhmm"
@@ -153,12 +155,23 @@ label chapter_four:
     "Im skipping you"
     menu:
         "Skip":
-            jump chapter_four
+            jump chapter_four_skip
         "Don't Skip":
             jump chapter_four_no_skip
     
     label chapter_four_no_skip:
-        mt "BOOM!"
+    mt "alright Im going to go practice now"
+    scene ch04_gaming_room with dissolve:
+        subpixel True
+    show matt2:
+        subpixel True pos (2600, 256) zoom 0.71 
+    show matt2:
+        linear 0.45 subpixel True pos (1290, 256) zoom 0.71 
+    mt "..."
+    mt "Im not even going to question why my gaming setup is like this"
+    mt "Oh I'm ready for this Game Day its going to be great."
+    "..."
+    mt "BOOM!"
     mt "yeah you like those forward-airs!"
     mt "oh god"
     mt "The memories"
@@ -167,8 +180,8 @@ label chapter_four:
     "While practicing, Matt continues to remember all those times he's lost to Trip"
     "(Three different mini scenes)"
     "(Scene 1: At a different smash locals, Matt Chokes a 2-0 lead on trip. Trip pops off)"
-    "(Scene 2: At a school tournament, Matt gets wobbled by Trip in melee)"
-    "(Scene 3: Matt gets beat up in some random alleyway)"
+    "(Scene 2: At a school tournament, Matt gets wobbled by Trip in melee)" 
+    "(Scene 3: Matt gets beat up in some random alleyway)" #Done
     scene ch03_alleyway with dissolve:
         subpixel True xpos -81 xzoom 1.17 yzoom 1.12 zoom 0.9
     show matt2:
@@ -201,7 +214,8 @@ label chapter_four:
     mt "Im blaming trip"
     mt "I swear next set"
     mt "next fucking set"
-    mt "Next time we play, I'm beating his ass, I don't care what it takes."
+    label chapter_four_skip:
+        mt "Next time we play, I'm beating his ass, I don't care what it takes."
     show matt2:
         linear 0.234567 subpixel True pos (-286, 200) zoom 0.79
     #ACT 2 STARTS HERE
@@ -217,21 +231,47 @@ label chapter_four:
     mt "WHO DID THIS?"
     mt "IM BLAMING TRIP"
     mt "GRRRRRRRRRRRRRRRRRRRRRRRRRRR"
-    show ch04_ocho:
-        subpixel True pos (1050, 356) zoom 0.41 yrotate 180.0 
+    show ch04_ocho with fade:
+        subpixel True 
     mt "WHY ARE YOU SO BIG?????????????????????????????"
     mt "WHAT"
+    show ch04_ocho:
+        linear 0.34567 subpixel True pos (1050, 356) zoom 0.41
+        yrotate 180.0 
     ocho "woof"
     mt "THAT DOESN'T ANSWER MY QUESTION"
-    "test"
+    ocho "barks in sadness"
+    mt "god damn this dog is the literal weirdest dog from ohio"
+    mt "why did they make these fuckers so damn cute wtf"
+    mt "come here ocho"
+    mt "bark"
+    "Pet Ocho as many times as you can!"
+    questionmark "You chose this as your first mini-game?"
+    carl "yes"
     #Save Ocho minigame for act 2.
     $ count = 0
-    $ xpos = 30
-    $ ypos = 40
-    $ zoom = 0.25
+    $ xpos = 1050
+    $ ypos = 356
+    $ zoom = 0.41
     show screen chapter_four_ocho_timer(15,"chapter_four_post_ocho")
+    hide ch04_ocho
     call screen clickable_chapter_four_ocho()
 
     label chapter_four_post_ocho:
-        "wow"
-        "You popped [count] times"
+    show ch04_ocho:
+        subpixel True pos (1050, 356) zoom 0.41
+        yrotate 180.0 
+    "You petted Ocho [count] time(s)!"
+    mt "yeah I bet you liked that"
+    "when do you have work?"
+    mt "uh 12 why?"
+    mt "what time is it currently?"
+    "12:03"
+    mt "am?"
+    mt "pm"
+    hide matt2
+    show ch04_matt_reaction:
+        subpixel True pos (-40, 101) xzoom 1.22 zoom 1.63 
+
+
+    "test"

@@ -27,7 +27,7 @@ label chapter_four_ocho_minigame:
 
     screen clickable_chapter_four_ocho():
         imagebutton:
-            pos(xpos,ypos) at Transform(zoom = zoom)
-            idle "images/chapter_three/ch03_usps_baby_ocho.png"
-            hover "images/chapter_three/ch03_usps_baby_ocho.png"
+            pos(xpos,ypos) at Transform(zoom = zoom, yrotate = 180.0)
+            idle "images/chapter_four/ch04_ocho.png"
+            hover "images/chapter_four/ch04_ocho.png"
             action If(count % 2 == 0, true = [SetVariable("zoom", zoom+0.02), SetVariable("xpos", xpos-2), SetVariable("ypos", ypos-2),Play("sound2","audio/sound/general/pop.ogg"), SetVariable("count", count+1)], false = [Play("sound2","audio/sound/general/pop.ogg"), SetVariable("count", count+1)])
