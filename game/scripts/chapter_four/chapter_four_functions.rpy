@@ -76,17 +76,17 @@ label chapter_four_matts_house:
                 elif origin == 1:
                     action Jump("ch04_matt_area_10")
     label chapter_four_matt_hide_screens:
-        hide chapter_four_matts_house_up_button
-        hide chapter_four_matts_house_down_button
-        hide chapter_four_matts_house_left_button
-        hide chapter_four_matts_house_right_button
+        hide screen chapter_four_matts_house_up_button
+        hide screen chapter_four_matts_house_down_button
+        hide screen chapter_four_matts_house_left_button
+        hide screen chapter_four_matts_house_right_button
         return
     label chapter_four_matt_restore_screens(location):
         if location == 1:
             pass
         elif location == 2:
             pass
-        elif location == 3
+        elif location == 3:
             pass
         elif location == 4:
             pass
@@ -106,34 +106,35 @@ label chapter_four_matts_house:
         return
     label chapter_four_matt_restore_movement(location):
         if location == 1:
-            show chapter_four_matts_house_down_button(location)
-            call chapter_four_matts_house_right_button(location)
+            show screen chapter_four_matts_house_down_button(location)
+            call screen chapter_four_matts_house_right_button(location)
         elif location == 2:
-            call chapter_four_matts_house_down_button(location)
-        elif location == 3
-            call chapter_four_matts_house_right_button(location)
+            call screen chapter_four_matts_house_down_button(location)
+        elif location == 3:
+            call screen chapter_four_matts_house_right_button(location)
         elif location == 4:
-            show chapter_four_matts_house_up_button(location)
-            show chapter_four_matts_house_down_button(location)
-            show chapter_four_matts_house_left_button(location)
-            call chapter_four_matts_house_right_button(location)
+            show screen chapter_four_matts_house_up_button(location)
+            show screen chapter_four_matts_house_down_button(location)
+            show screen chapter_four_matts_house_left_button(location)
+            call screen chapter_four_matts_house_right_button(location)
         elif location == 5:
-            call chapter_four_matts_house_up_button(location)
+            show screen chapter_four_matts_house_right_button(location)
+            call screen chapter_four_matts_house_up_button(location)
         elif location == 6:
-            show chapter_four_matts_house_up_button(location)
-            show chapter_four_matts_house_down_button(location)
-            show chapter_four_matts_house_left_button(location)
-            call chapter_four_matts_house_right_button(location)
+            show screen chapter_four_matts_house_up_button(location)
+            show screen chapter_four_matts_house_down_button(location)
+            show screen chapter_four_matts_house_left_button(location)
+            call screen chapter_four_matts_house_right_button(location)
         elif location == 7:
-            call chapter_four_matts_house_up_button(location)
+            show screen chapter_four_matts_house_left_button(location)
+            call screen chapter_four_matts_house_up_button(location)
         elif location == 8:
-            show chapter_four_matts_house_down_button(location)
-            call chapter_four_matts_house_left_button(location)
+            show screen chapter_four_matts_house_down_button(location)
+            call screen chapter_four_matts_house_left_button(location)
         elif location == 9:
-            call chapter_four_matts_house_up_button(location)
+            call screen chapter_four_matts_house_up_button(location)
         elif location == 10:
-            call chapter_four_matts_house_left_button(location)
-        return
+            call screen chapter_four_matts_house_left_button(location)
 label chapter_four_ocho_minigame:
     screen chapter_four_ocho_timer(max, endup):
         frame:

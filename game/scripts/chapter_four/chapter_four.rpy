@@ -216,14 +216,66 @@ label chapter_four:
     mt "next fucking set"
     label chapter_four_skip:
         mt "Next time we play, I'm beating his ass, I don't care what it takes."
-
-
-
     label ch04_matt_area_1:
         $ location = 1
         call chapter_four_matt_hide_screens
-        scene xyz with dissolve:
-        call chapter_four_matt_restore_screens
+        scene ch04_china_bedroom with dissolve:
+            subpixel True xzoom 1.35 zoom 1.53 
+        call chapter_four_matt_restore_screens(location)
+    label ch04_matt_area_2:
+        $ location = 2
+        call chapter_four_matt_hide_screens
+        scene ch04_china_kitchen with dissolve:
+            subpixel True xzoom 1.77 zoom 1.36 
+        call chapter_four_matt_restore_screens(location)
+    label ch04_matt_area_3:
+        $ location = 3
+        call chapter_four_matt_hide_screens
+        scene ch04_gaming_room with dissolve:
+            subpixel True
+        call chapter_four_matt_restore_screens(location)
+    label ch04_matt_area_4:
+        $ location = 4
+        call chapter_four_matt_hide_screens
+        scene ch04_china_living_room with dissolve:
+            subpixel True xzoom 1.16 zoom 2.77 
+        call chapter_four_matt_restore_screens(location)
+    label ch04_matt_area_5:
+        $ location = 5
+        call chapter_four_matt_hide_screens
+        scene ch04_china_garage with dissolve:
+            subpixel True xzoom 1.2 
+        call chapter_four_matt_restore_screens(location)
+    label ch04_matt_area_6:
+        $ location = 6
+        call chapter_four_matt_hide_screens
+        scene ch04_china_hallway with dissolve:
+            subpixel True xzoom 1.2 zoom 1.64 
+        call chapter_four_matt_restore_screens(location)
+    label ch04_matt_area_7:
+        $ location = 7
+        call chapter_four_matt_hide_screens
+        scene ch04_china_exit with dissolve:
+            subpixel True zoom 1.61 
+        call chapter_four_matt_restore_screens(location)
+    label ch04_matt_area_8:
+        $ location = 8
+        call chapter_four_matt_hide_screens
+        scene ch04_china_master_bedroom with dissolve:
+            subpixel True xzoom 1.38 zoom 2.32 
+        call chapter_four_matt_restore_screens(location)
+    label ch04_matt_area_9:
+        $ location = 9
+        call chapter_four_matt_hide_screens
+        scene ch04_china_master_bathroom with dissolve:
+            subpixel True xzoom 1.17 zoom 1.62 
+        call chapter_four_matt_restore_screens(location)
+    label ch04_matt_area_10:
+        $ location = 10
+        call chapter_four_matt_hide_screens
+        scene ch04_china_bathroom with dissolve:
+            subpixel True xzoom 2.22 yzoom 1.08 
+        call chapter_four_matt_restore_screens(location)
 
 
 
