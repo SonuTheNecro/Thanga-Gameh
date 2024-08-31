@@ -9,7 +9,72 @@ init python:
 
 
 
-
+label chapter_four_matts_house:
+    label chapter_four_matts_house_movement:
+    screen chapter_four_matts_house_up_button(origin):
+        imagebutton:
+            xalign 0.5
+            yalign 0
+            idle "images/ArrowUpPress2.png"
+            hover "images/ArrowUpPress2.png"
+            if origin == 4:
+                action Jump("ch04_matt_area_2")
+            elif origin == 6:
+                action Jump("ch04_matt_area_1")
+            elif origin == 5:
+                action Jump("ch04_matt_area_4")
+            elif origin == 7:
+                action Jump("ch04_matt_area_6")
+            elif origin == 9:
+                action Jump("ch04_matt_area_8")
+    screen chapter_four_matts_house_down_button(origin):
+        imagebutton:
+            xalign 0.5
+            yalign 1.0
+            idle "images/ArrowDownPress2.png"
+            hover "images/ArrowDownPress2.png"
+            if origin == 2:
+                action Jump("ch04_matt_area_4")
+            elif origin == 1:
+                action Jump("ch04_matt_area_6")
+            elif origin == 4:
+                action Jump("ch04_matt_area_5")
+            elif origin == 6:
+                action Jump("ch04_matt_area_7")
+            elif origin == 8:
+                action Jump("ch04_matt_area_9")
+    screen chapter_four_matts_house_left_button(origin):
+        imagebutton:
+            xalign 0.0
+            yalign 0.5
+            idle "images/ArrowLeftPress2.png"
+            hover "images/ArrowLeftPress2.png"
+            if origin == 4:
+                action Jump("ch04_matt_area_3")
+            elif origin == 6:
+                action Jump("ch04_matt_area_4")
+            elif origin == 7:
+                action Jump("ch04_matt_area_5")
+            elif origin == 8:
+                action Jump("ch04_matt_area_6")
+            elif origin == 10:
+                action Jump("ch04_matt_area_1")
+    screen chapter_four_matts_house_right_button(origin):
+        imagebutton:
+            xalign 1.0
+            yalign 0.5
+            idle "images/ArrowRightPress2.png"
+            hover "images/ArrowRightPress2.png"
+            if origin == 3:
+                action Jump("ch04_matt_area_4")
+            elif origin == 4:
+                action Jump("ch04_matt_area_6")
+            elif origin == 5:
+                action Jump("ch04_matt_area_7")
+            elif origin == 6:
+                action Jump("ch04_matt_area_8")
+            elif origin == 1:
+                action Jump("ch04_matt_area_10")
 
 
 label chapter_four_ocho_minigame:

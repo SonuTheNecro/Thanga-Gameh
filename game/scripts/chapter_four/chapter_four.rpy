@@ -216,6 +216,20 @@ label chapter_four:
     mt "next fucking set"
     label chapter_four_skip:
         mt "Next time we play, I'm beating his ass, I don't care what it takes."
+
+
+
+    label ch04_matt_area_1:
+        $ location = 1
+        call chapter_four_matt_hide_screens
+        scene xyz with dissolve:
+        call chapter_four_matt_restore_screens
+
+
+
+
+
+    
     show matt2:
         linear 0.234567 subpixel True pos (-286, 200) zoom 0.79
     #ACT 2 STARTS HERE
@@ -272,6 +286,29 @@ label chapter_four:
     hide matt2
     show ch04_matt_reaction:
         subpixel True pos (-40, 101) xzoom 1.22 zoom 1.63 
-
-
+    mt "WHAT"
+    mt "NO WAY I AM LATE FOR WORK"
+    "So lets go"
+    mt "IM WAITING FOR THE FADE CUT"
+    call auto_advance(1)
+    "huh?"
+    call auto_advance(0)
+    scene ch04_street1 with dissolve:
+        subpixel True yzoom 1.19 zoom 2.0 
+    show matt2:
+        subpixel True pos (1086, 380) zpos 0.0 zoom 0.41 
+    show car1:
+        subpixel True pos (780, 406)
+    pause 3.5
+    "what"
+    mt "see told ya"
+    "Where do you even work at?"
+    mt "I work at this legally distinct american ice cream shop"
+    call auto_advance(1)
+    "You can say ba-"
+    call auto_advance(0)
+    mt "NO WE CANNOT"
+    "okay"
+    "Generic Ice Cream Store here we go."
+    
     "test"
