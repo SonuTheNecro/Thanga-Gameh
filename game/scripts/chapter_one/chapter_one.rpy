@@ -6,7 +6,7 @@
 
 
 # Chapter One Variables
-default key_items = {
+default chapter_one_key_items = {
     "chapter_one_clock": ItemState.NOT_OBTAINED,
     "chapter_one_hands": ItemState.NOT_OBTAINED,
     "chapter_one_battery": ItemState.NOT_OBTAINED,

@@ -22,12 +22,12 @@ init python:
         return choice
 
     def chapter_one_item_check(item):
-        return key_items.get(item, ItemState.NOT_OBTAINED) == ItemState.OBTAINED
+        return chapter_one_key_items.get(item, ItemState.NOT_OBTAINED) == ItemState.OBTAINED
 
     def chapter_one_obtain_item(item):
-        key_items[item] = ItemState.OBTAINED
+        chapter_one_key_items[item] = ItemState.OBTAINED
     def chapter_one_unobtain_item(item):
-        key_items[item] = ItemState.NOT_OBTAINED
+        chapter_one_key_items[item] = ItemState.NOT_OBTAINED
 
     def chapter_one_clean_dirt(id):
         chapter_one_dirt_piles[id] = True
