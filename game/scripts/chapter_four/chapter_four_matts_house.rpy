@@ -13,8 +13,8 @@ default chapter_four_key_items = {
     "matt_dog_food"        : ItemState.NOT_OBTAINED,
     "matt_lock_pick"       : ItemState.NOT_OBTAINED,
     "matt_hammer"          : ItemState.NOT_OBTAINED,
+    "matt_toothpath"       : ItemState.NOT_OBTAINED,
 }
-
 
 
 label chapter_four_matts_house_movement:
@@ -96,7 +96,8 @@ label chapter_four_matt_restore_screens(location):
     elif location == 3:
         pass
     elif location == 4:
-        pass
+        if not chapter_four_matt_house_fte[0]:
+            call ch04_lr_ocho_meet
     elif location == 5:
         pass
     elif location == 6:
@@ -142,3 +143,30 @@ label chapter_four_matt_restore_movement(location):
         call screen chapter_four_matts_house_up_button(location)
     elif location == 10:
         call screen chapter_four_matts_house_left_button(location)
+label chapter_four_matt_events:
+    label ch04_lr_ocho_meet:
+        show matt2:
+            subpixel True pos (-236, 200) zoom 0.79 
+        pause 0.56789
+        show matt2:
+            linear 0.445 subpixel True pos (286, 200) zoom 0.79 
+        mt "YO WHY IS MY WHOLE HOUSE TAIWAN???????"
+        mt "WHO DID THIS?"
+        mt "IM BLAMING TRIP"
+        mt "GRRRRRRRRRRRRRRRRRRRRRRRRRRR"
+        show ch04_ocho with fade:
+            subpixel True 
+        mt "WHY ARE YOU SO BIG?????????????????????????????"
+        mt "WHAT"
+        show ch04_ocho:
+            linear 0.34567 subpixel True pos (1050, 356) zoom 0.41
+            yrotate 180.0 
+        ocho "woof"
+        mt "THAT DOESN'T ANSWER MY QUESTION"
+        ocho "barks in sadness"
+        mt "god damn this dog is the literal weirdest dog from ohio"
+        mt "why did they make these fuckers so damn cute wtf"
+        mt "come here ocho"
+        mt "bark"
+        $ chapter_four_matt_house_fte[0] = True
+        return

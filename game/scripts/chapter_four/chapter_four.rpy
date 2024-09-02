@@ -1,3 +1,4 @@
+default chapter_four_matt_house_fte = [False, False]
 
 label chapter_four:
     "Chapter Four"
@@ -288,29 +289,6 @@ label chapter_four:
     pause 0.3
     scene ch04_china_living_room with dissolve:
         subpixel True xzoom 1.24 zoom 2.71 
-    show matt2:
-        subpixel True pos (-236, 200) zoom 0.79 
-    pause 0.56789
-    show matt2:
-        linear 0.445 subpixel True pos (286, 200) zoom 0.79 
-    mt "YO WHY IS MY WHOLE HOUSE TAIWAN???????"
-    mt "WHO DID THIS?"
-    mt "IM BLAMING TRIP"
-    mt "GRRRRRRRRRRRRRRRRRRRRRRRRRRR"
-    show ch04_ocho with fade:
-        subpixel True 
-    mt "WHY ARE YOU SO BIG?????????????????????????????"
-    mt "WHAT"
-    show ch04_ocho:
-        linear 0.34567 subpixel True pos (1050, 356) zoom 0.41
-        yrotate 180.0 
-    ocho "woof"
-    mt "THAT DOESN'T ANSWER MY QUESTION"
-    ocho "barks in sadness"
-    mt "god damn this dog is the literal weirdest dog from ohio"
-    mt "why did they make these fuckers so damn cute wtf"
-    mt "come here ocho"
-    mt "bark"
     "Pet Ocho as many times as you can!"
     questionmark "You chose this as your first mini-game?"
     carl "yes"
