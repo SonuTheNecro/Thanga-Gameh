@@ -14,6 +14,7 @@ default chapter_four_key_items = {
     "matt_lock_pick"       : ItemState.NOT_OBTAINED,
     "matt_hammer"          : ItemState.NOT_OBTAINED,
     "matt_toothpath"       : ItemState.NOT_OBTAINED,
+    "matt_love"            : ItemState.NOT_OBTAINED,
 }
 
 
@@ -83,6 +84,7 @@ label chapter_four_matts_house_movement:
             elif origin == 1:
                 action Jump("ch04_matt_area_10")
 label chapter_four_matt_hide_screens:
+    hide screen clickable_chapter_four_matts_house_ocho
     hide screen chapter_four_matts_house_up_button
     hide screen chapter_four_matts_house_down_button
     hide screen chapter_four_matts_house_left_button
@@ -98,6 +100,8 @@ label chapter_four_matt_restore_screens(location):
     elif location == 4:
         if not chapter_four_matt_house_fte[0]:
             call ch04_lr_ocho_meet
+        elif not chapter_four_item_check("matt_love"):
+            show screen clickable_chapter_four_matts_house_ocho
     elif location == 5:
         pass
     elif location == 6:
@@ -170,3 +174,51 @@ label chapter_four_matt_events:
         mt "bark"
         $ chapter_four_matt_house_fte[0] = True
         return
+    label ch04_ocho_event:
+        screen clickable_chapter_four_matts_house_ocho:
+            imagebutton:
+                pos (1050,356) at Transform(zoom = 0.41)
+                idle "images/chapter_four/ch04_ocho.png"
+                hover "images/chapter_four/ch04_ocho.png"
+                action Call("ch04_ocho_mash")
+        screen chapter_four_ocho_timer(max, endup):
+            frame:
+                xalign 0.5
+                yalign 0.0
+                hbox:
+                    timer 0.1 action If(time > max, false = SetVariable("time", time + 0.1), true = [Hide("chapter_four_ocho_timer"), SetVariable("time", 0), Jump("%s"%endup) ]) repeat True
+                    bar: #an animated bar top center screen
+                        value AnimatedValue(value=time, range=max, delay= 0.1)
+                        xalign 0.0
+                        yalign 0.0
+                        xmaximum 600
+
+        screen clickable_chapter_four_ocho():
+            imagebutton:
+                pos(xpos,ypos) at Transform(zoom = zoom,yrotate = 180.0)
+                idle "images/chapter_four/ch04_ocho.png"
+                hover "images/chapter_four/ch04_ocho.png"
+                action If(count % 2 == 0, true = [SetVariable("zoom", zoom+0.02), SetVariable("xpos", xpos-2), SetVariable("ypos", ypos-2),Play("sound2","audio/sound/general/pop.ogg"), SetVariable("count", count+1)], false = [Play("sound2","audio/sound/general/pop.ogg"), SetVariable("count", count+1)])
+        label ch04_ocho_mash:
+            call chapter_four_matt_hide_screens
+            show ch04_ocho:
+                subpixel True pos (1050,356) zoom 0.41
+            "Pet Ocho as many times as you can!"
+            questionmark "You chose this as your first mini-game?"
+            carl "yes"
+            #Save Ocho minigame for act 2.
+            $ count = 0
+            $ xpos = 1050
+            $ ypos = 356
+            $ zoom = 0.41
+            show screen chapter_four_ocho_timer(15,"chapter_four_post_ocho")
+            hide ch04_ocho
+            call screen clickable_chapter_four_ocho()
+            label chapter_four_post_ocho:
+            show ch04_ocho:
+                subpixel True pos (1050, 356) zoom 0.41
+                yrotate 180.0 
+            "You petted Ocho [count] time(s)!"
+            mt "yeah I bet you liked that"
+            jump ch04_matt_area_4
+            return

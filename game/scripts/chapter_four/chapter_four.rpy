@@ -289,24 +289,6 @@ label chapter_four:
     pause 0.3
     scene ch04_china_living_room with dissolve:
         subpixel True xzoom 1.24 zoom 2.71 
-    "Pet Ocho as many times as you can!"
-    questionmark "You chose this as your first mini-game?"
-    carl "yes"
-    #Save Ocho minigame for act 2.
-    $ count = 0
-    $ xpos = 1050
-    $ ypos = 356
-    $ zoom = 0.41
-    show screen chapter_four_ocho_timer(15,"chapter_four_post_ocho")
-    hide ch04_ocho
-    call screen clickable_chapter_four_ocho()
-
-    label chapter_four_post_ocho:
-    show ch04_ocho:
-        subpixel True pos (1050, 356) zoom 0.41
-        yrotate 180.0 
-    "You petted Ocho [count] time(s)!"
-    mt "yeah I bet you liked that"
     "when do you have work?"
     mt "uh 12 why?"
     mt "what time is it currently?"
