@@ -13,11 +13,11 @@ default chapter_four_key_items = {
     "matt_dog_food"        : ItemState.NOT_OBTAINED,
     "matt_lock_pick"       : ItemState.NOT_OBTAINED,
     "matt_hammer"          : ItemState.NOT_OBTAINED,
-    "matt_toothpath"       : ItemState.NOT_OBTAINED,
+    "matt_toothpaste"       : ItemState.NOT_OBTAINED,
     "matt_love"            : ItemState.NOT_OBTAINED,
 }
-
-
+default chapter_four_matt_house_chores = [False,]
+# The onscreens buttons to handle movement
 label chapter_four_matts_house_movement:
     screen chapter_four_matts_house_up_button(origin):
         imagebutton:
@@ -83,14 +83,15 @@ label chapter_four_matts_house_movement:
                 action Jump("ch04_matt_area_8")
             elif origin == 1:
                 action Jump("ch04_matt_area_10")
-label chapter_four_matt_hide_screens:
+label chapter_four_matt_hide_screens: #Resets every clickable thing when we swap screens
+    hide screen clickable_chapter_four_toothpaste
     hide screen clickable_chapter_four_matts_house_ocho
     hide screen chapter_four_matts_house_up_button
     hide screen chapter_four_matts_house_down_button
     hide screen chapter_four_matts_house_left_button
     hide screen chapter_four_matts_house_right_button
     return
-label chapter_four_matt_restore_screens(location):
+label chapter_four_matt_restore_screens(location): #Handles spawning events based on which room we are. Switches are not a thing in Renpy so enjoy the if-else chain
     if location == 1:
         pass
     elif location == 2:
@@ -99,7 +100,7 @@ label chapter_four_matt_restore_screens(location):
         pass
     elif location == 4:
         if not chapter_four_matt_house_fte[0]:
-            call ch04_lr_ocho_meet
+            call ch04_fte_ocho_meet
         elif not chapter_four_item_check("matt_love"):
             show screen clickable_chapter_four_matts_house_ocho
     elif location == 5:
@@ -111,12 +112,17 @@ label chapter_four_matt_restore_screens(location):
     elif location == 8:
         pass
     elif location == 9:
-        pass
+        if not chapter_four_item_check("matt_toothpaste"):
+            show screen clickable_chapter_four_toothpaste
     elif location == 10:
-        pass
+        if not chapter_four_matt_house_fte[1]:
+            call ch04_fte_bathroom
+        if not chapter_four_matt_house_chores[0] and chapter_four_item_check("matt_toothpaste"):
+            call ch04_brush_teeth
     call chapter_four_matt_restore_movement(location)
     return
-label chapter_four_matt_restore_movement(location):
+#Controls which movement buttons are shown based on which room we are in
+label chapter_four_matt_restore_movement(location): 
     if location == 1:
         show screen chapter_four_matts_house_down_button(location)
         call screen chapter_four_matts_house_right_button(location)
@@ -147,8 +153,9 @@ label chapter_four_matt_restore_movement(location):
         call screen chapter_four_matts_house_up_button(location)
     elif location == 10:
         call screen chapter_four_matts_house_left_button(location)
+# Handles Every event as well as the buttons and any labels or images needed for the event
 label chapter_four_matt_events:
-    label ch04_lr_ocho_meet:
+    label ch04_fte_ocho_meet:
         show matt2:
             subpixel True pos (-236, 200) zoom 0.79 
         pause 0.56789
@@ -173,7 +180,49 @@ label chapter_four_matt_events:
         mt "come here ocho"
         mt "bark"
         $ chapter_four_matt_house_fte[0] = True
+        call chapter_four_matt_restore_screens(location)
         return
+    label ch04_fte_bathroom:
+        show matt2:
+            subpixel True pos (-221, 173) zoom 0.77 
+        show matt2:
+            linear 0.45 subpixel True pos (526, 175) zoom 0.77 
+        pause 0.5
+        mt "Yo why is my bathroom like clean af now?"
+        "This is always your bathroom"
+        mt "NAH I HAD THE NASTIEST BATHROOM"
+        mt "WHAT THE HELL HAPPENED?"
+        "Writing happened"
+        mt "mmmmmmmm"
+        $ renpy.pause(2.666666, hard = True)
+        mt "..."
+        mt "I should go brush my teeth for the day"
+        "Yeah probably"
+        show matt2:
+            linear 0.56 subpixel True pos (1258, 275) zoom 0.5 
+        #TODO: Sink audio
+        $ renpy.pause(2.0, hard = True)
+        mt "fuck"
+        "what..."
+        mt "there is no toothpaste"
+        "use water man"
+        mt "NAH I ESCAPED THE PHILIPHINES TO NOT BE POOR"
+        "isnt that like near philadelphia?"
+        "isn't that poor"
+        mt "BRO ARE YOU THANG"
+        "no"
+        mt "BRIAN??????"
+        "no"
+        mt "SO WHO ARE YOU?"
+        " " #TODO:Glitch text plugin here
+        mt "right"
+        mt "well I need TOOTHPASTE or I AINT BRUSHING MY TEETH"
+        "guess you aint brushing your teeth smelly smash player"
+        mt 'hahahahha funny joke man'
+        mt "fuck off you bitch"
+        mt "ima go steal some toothpaste rq"
+        $ chapter_four_matt_house_fte[1] = True
+        return 
     label ch04_ocho_event:
         screen clickable_chapter_four_matts_house_ocho:
             imagebutton:
@@ -220,5 +269,47 @@ label chapter_four_matt_events:
                 yrotate 180.0 
             "You petted Ocho [count] time(s)!"
             mt "yeah I bet you liked that"
-            jump ch04_matt_area_4
+            if count > 90:
+                $ chapter_four_obtain_item("matt_love")
+            hide ch04_ocho
+            call chapter_four_matt_restore_screens(location)
             return
+    label ch04_toothpaste:
+        screen clickable_chapter_four_toothpaste:
+            imagebutton:
+                pos (-170, 376) at Transform(zoom = 0.71 )
+                idle "images/chapter_four/ch04_toothpaste.png"
+                hover "images/chapter_four/ch04_toothpaste.png"
+                action Call("chapter_four_toothpaste")
+        label chapter_four_toothpaste:
+            call chapter_four_matt_hide_screens
+
+            mt "GOTCHA TOOTHPASTE"
+            "You have obtained Generic Toothpaste!"
+            $ chapter_four_obtain_item("matt_toothpaste")
+            call chapter_four_matt_restore_screens(location)
+            return
+    label ch04_brush_teeth:
+        call chapter_four_matt_hide_screens
+        show matt2:
+            subpixel True pos (-221, 173) zoom 0.77 
+        show matt2:
+            linear 0.56 subpixel True pos (1258, 275) zoom 0.5
+        mt "ALRIGHT LETS BRUSH THESE TEETH"
+        "Why are you so excited lol"
+        mt "BECAUSE MY BREATH IS SO BAD"
+        mt "EVEN I CAN SMELL IT"
+        stn "that's disgusting carl"
+        stn "why would you write it like this?"
+        carl "IT AINT ME ITS HIM!"
+        mt "huh who was that?"
+        "who was who?"
+        mt "nvm"
+        mt "lets BRUSH THESE TEETHS LETS FUCKING GO"
+        #TODO: brushing sfx
+        $ renpy.pause(2.5, hard = True)
+        mt "that was fun"
+        "im glad"
+        $ chapter_four_matt_house_chores[0] = True
+        call chapter_four_matt_restore_screens(location)
+        return

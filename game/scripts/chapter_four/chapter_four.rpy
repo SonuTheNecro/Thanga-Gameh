@@ -1,4 +1,4 @@
-default chapter_four_matt_house_fte = [False, False]
+default chapter_four_matt_house_fte = [False, False,False, False,False, False,False, False,False]
 
 label chapter_four:
     "Chapter Four"
