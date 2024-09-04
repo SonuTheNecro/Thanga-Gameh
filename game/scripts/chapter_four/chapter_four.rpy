@@ -154,57 +154,6 @@ label chapter_four:
     "Well I'm the one reading the book so I could just skip this"
     mt "yo fourth wall break"
     "Im skipping you"
-    menu:
-        "Skip":
-            jump chapter_four_skip
-        "Don't Skip":
-            jump chapter_four_no_skip
-    
-    label chapter_four_no_skip:
-    mt "alright Im going to go practice now"
-    scene ch04_gaming_room with dissolve:
-        subpixel True
-    show matt2:
-        subpixel True pos (2600, 256) zoom 0.71 
-    show matt2:
-        linear 0.45 subpixel True pos (1290, 256) zoom 0.71 
-    mt "..."
-    mt "Im not even going to question why my gaming setup is like this"
-    mt "Oh I'm ready for this Game Day its going to be great."
-    "..."
-    mt "BOOM!"
-    mt "yeah you like those forward-airs!"
-    mt "oh god"
-    mt "The memories"
-    mt "AHHHHHHHH"
-    
-    "While practicing, Matt continues to remember all those times he's lost to Trip"
-    "(Three different mini scenes)"
-    "(Scene 1: At a different smash locals, Matt Chokes a 2-0 lead on trip. Trip pops off)"
-    "(Scene 2: At a school tournament, Matt gets wobbled by Trip in melee)" 
-    "(Scene 3: Matt gets beat up in some random alleyway)" #Done
-    scene ch03_alleyway with dissolve:
-        subpixel True xpos -81 xzoom 1.17 yzoom 1.12 zoom 0.9
-    show matt2:
-        subpixel True pos (1178, 638) rotate 450.0  zoom 0.58
-    show trip:
-        subpixel True yrotate 180.0
-        subpixel True 
-        pos (843, 280) 
-        linear 0.21 pos (1133, 316) 
-        linear 0.34 pos (1251, 18) 
-        linear 0.26 pos (1255, 463) 
-        linear 0.25 pos (1486, 213) 
-        linear 0.08 pos (1413, 48) 
-        linear 0.31 pos (1316, 435) 
-        linear 0.13 pos (1510, 130) 
-        linear 0.35 pos (1501, 435)
-        linear 0.312 pos (1501, 435)
-        repeat
-    with Pause(2.03)
-    mt "WAIT THIS ISN'T EVEN SMASH WAIT"
-    mt "STOP TRIP"
-    mt "AHHHHHHH"
     scene ch04_china_bedroom with dissolve:
         subpixel True xzoom 1.32 zoom 1.52 
     show matt2:
@@ -215,8 +164,7 @@ label chapter_four:
     mt "Im blaming trip"
     mt "I swear next set"
     mt "next fucking set"
-    label chapter_four_skip:
-        mt "Next time we play, I'm beating his ass, I don't care what it takes."
+    mt "Next time we play, I'm beating his ass, I don't care what it takes."
     label ch04_matt_area_1:
         $ location = 1
         call chapter_four_matt_hide_screens

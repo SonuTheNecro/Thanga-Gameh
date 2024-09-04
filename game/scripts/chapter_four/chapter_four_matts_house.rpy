@@ -84,6 +84,7 @@ label chapter_four_matts_house_movement:
             elif origin == 1:
                 action Jump("ch04_matt_area_10")
 label chapter_four_matt_hide_screens: #Resets every clickable thing when we swap screens
+    hide screen clickable_chapter_four_matts_house_controller
     hide screen clickable_chapter_four_dogfood
     hide screen clickable_chapter_four_makeup
     hide screen clickable_chapter_four_toothpaste
@@ -101,7 +102,8 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
         if not chapter_four_item_check("matt_dog_food"): 
             show screen clickable_chapter_four_dogfood
     elif location == 3:
-        pass
+        if not chapter_four_matt_house_chores[3]:
+            show screen clickable_chapter_four_matts_house_controller
     elif location == 4:
         if not chapter_four_matt_house_fte[0]:
             call ch04_fte_ocho_meet
@@ -110,12 +112,12 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
         elif not chapter_four_matt_house_chores[2] and chapter_four_item_check("matt_dog_food"):
             call ch04_feed_ocho
     elif location == 5:
-        pass
+        if not chapter_four_matt_house_fte[2]:
+            call ch04_fte_garage
     elif location == 6:
         pass
     elif location == 7:
-        if not chapter_four_matt_house_fte[2]:
-            call ch04_fte_garage
+        pass
     elif location == 8:
         pass
     elif location == 9:
@@ -406,3 +408,76 @@ label chapter_four_matt_events:
         $ chapter_four_matt_house_chores[2] = True
         call chapter_four_matt_restore_screens(location)
         return
+    label ch04_smash:
+        screen clickable_chapter_four_matts_house_controller:
+            imagebutton:
+                pos (726, 331) at Transform(zoom = 0.71)
+                idle "images/chapter_four/ch04_controller.png"
+                hover "images/chapter_four/ch04_controller.png"
+                action Call("chapter_four_smash_practice")
+        label chapter_four_smash_practice:
+            call chapter_four_matt_hide_screens
+            show matt2:
+                subpixel True pos (2600, 256) zoom 0.71 
+            show matt2:
+                linear 0.45 subpixel True pos (1290, 256) zoom 0.71 
+            mt "alright Im going to go practice now"
+            mt "..."
+            mt "Im not even going to question why my gaming setup is like this"
+            mt "Oh I'm ready for this Game Day its going to be great."
+            "..."
+            mt "BOOM!"
+            mt "yeah you like those forward-airs!"
+            mt "oh god"
+            mt "The memories"
+            mt "AHHHHHHHH"
+            
+            "While practicing, Matt continues to remember all those times he's lost to Trip"
+            "(Three different mini scenes)"
+            "(Scene 1: At a different smash locals, Matt Chokes a 2-0 lead on trip. Trip pops off)"
+            "(Scene 2: At a school tournament, Matt gets wobbled by Trip in melee)" 
+            "(Scene 3: Matt gets beat up in some random alleyway)" #Done
+            scene ch03_alleyway with dissolve:
+                subpixel True xpos -81 xzoom 1.17 yzoom 1.12 zoom 0.9
+            show matt2:
+                subpixel True pos (1178, 638) rotate 450.0  zoom 0.58
+            show trip:
+                subpixel True yrotate 180.0
+                subpixel True 
+                pos (843, 280) 
+                linear 0.21 pos (1133, 316) 
+                linear 0.34 pos (1251, 18) 
+                linear 0.26 pos (1255, 463) 
+                linear 0.25 pos (1486, 213) 
+                linear 0.08 pos (1413, 48) 
+                linear 0.31 pos (1316, 435) 
+                linear 0.13 pos (1510, 130) 
+                linear 0.35 pos (1501, 435)
+                linear 0.312 pos (1501, 435)
+                repeat
+            with Pause(2.03)
+            mt "WAIT THIS ISN'T EVEN SMASH WAIT"
+            mt "STOP TRIP"
+            mt "AHHHHHHH"
+            scene ch04_gaming_room
+            camera:
+                subpixel True pos (-4347, -801) zoom 3.81 
+            show matt2:
+                subpixel True pos (1290, 256) zoom 0.71
+            pause 0.1
+            $ reset_camera(0.45)
+            pause 0.45
+            mt "AH"
+            mt "oh"
+            mt "why am I getting Schizo"
+            mt "..."
+            "You good man?"
+            mt "yeah yeah"
+            mt "im just"
+            mt "im just"
+            mt "im good okay"
+            "right..."
+            mt "I think thats all the practice I need"
+            $ chapter_four_matt_house_chores[3] = True
+            call chapter_four_matt_restore_screens(location)
+            return

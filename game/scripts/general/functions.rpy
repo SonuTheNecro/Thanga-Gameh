@@ -405,6 +405,6 @@ label main_menu_code:
                 "chapter one ending":
                     jump baldi_beaten
                 "Chapter Four Matt's House":
-                    jump chapter_four_skip
+                    jump chapter_four_matt_area_1
                 "game_over":
                     jump game_over
