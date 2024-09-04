@@ -16,7 +16,7 @@ default chapter_four_key_items = {
     "matt_toothpaste"       : ItemState.NOT_OBTAINED,
     "matt_love"            : ItemState.NOT_OBTAINED,
 }
-default chapter_four_matt_house_chores = [False,]
+default chapter_four_matt_house_chores = [False,False, False, False, False, False]
 # The onscreens buttons to handle movement
 label chapter_four_matts_house_movement:
     screen chapter_four_matts_house_up_button(origin):
@@ -84,6 +84,7 @@ label chapter_four_matts_house_movement:
             elif origin == 1:
                 action Jump("ch04_matt_area_10")
 label chapter_four_matt_hide_screens: #Resets every clickable thing when we swap screens
+    hide screen clickable_chapter_four_makeup
     hide screen clickable_chapter_four_toothpaste
     hide screen clickable_chapter_four_matts_house_ocho
     hide screen chapter_four_matts_house_up_button
@@ -93,7 +94,8 @@ label chapter_four_matt_hide_screens: #Resets every clickable thing when we swap
     return
 label chapter_four_matt_restore_screens(location): #Handles spawning events based on which room we are. Switches are not a thing in Renpy so enjoy the if-else chain
     if location == 1:
-        pass
+        if not chapter_four_matt_house_chores[1]:
+            show screen clickable_chapter_four_makeup
     elif location == 2:
         pass
     elif location == 3:
@@ -313,3 +315,28 @@ label chapter_four_matt_events:
         $ chapter_four_matt_house_chores[0] = True
         call chapter_four_matt_restore_screens(location)
         return
+    label ch04_makeup:
+        screen clickable_chapter_four_makeup:
+            imagebutton:
+                pos (1648, 715) at Transform(zoom=0.22)
+                idle "images/chapter_four/ch04_makeup.png"
+                hover "images/chapter_four/ch04_makeup.png"
+                action Call("chapter_four_makeup")
+        label chapter_four_makeup:
+            call chapter_four_matt_hide_screens
+            mt "Time to look good af"
+            "hA"
+            "gay"
+            mt "wdym"
+            "Gay men use make-up"
+            mt "shut yo bish ass up"
+            "gay"
+            mt "I will not tolerate homophobia"
+            mt "also you prob crusty af"
+            $ renpy.pause(2.5)
+            "..."
+            "fuck you"
+            "You have put on men's makeup!"
+            $ chapter_four_matt_house_chores[1] = True
+            call chapter_four_matt_restore_screens(location)
+            return
