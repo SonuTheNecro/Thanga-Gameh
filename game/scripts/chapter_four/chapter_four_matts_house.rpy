@@ -84,6 +84,7 @@ label chapter_four_matts_house_movement:
             elif origin == 1:
                 action Jump("ch04_matt_area_10")
 label chapter_four_matt_hide_screens: #Resets every clickable thing when we swap screens
+    hide screen clickable_chapter_four_dogfood
     hide screen clickable_chapter_four_makeup
     hide screen clickable_chapter_four_toothpaste
     hide screen clickable_chapter_four_matts_house_ocho
@@ -97,7 +98,8 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
         if not chapter_four_matt_house_chores[1]:
             show screen clickable_chapter_four_makeup
     elif location == 2:
-        pass
+        if not chapter_four_item_check("matt_dog_food"): 
+            show screen clickable_chapter_four_dogfood
     elif location == 3:
         pass
     elif location == 4:
@@ -105,6 +107,8 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
             call ch04_fte_ocho_meet
         elif not chapter_four_item_check("matt_love"):
             show screen clickable_chapter_four_matts_house_ocho
+        elif not chapter_four_matt_house_chores[2] and chapter_four_item_check("matt_dog_food"):
+            call ch04_feed_ocho
     elif location == 5:
         pass
     elif location == 6:
@@ -182,6 +186,7 @@ label chapter_four_matt_events:
         mt "come here ocho"
         mt "bark"
         $ chapter_four_matt_house_fte[0] = True
+        hide ch04_ocho
         call chapter_four_matt_restore_screens(location)
         return
     label ch04_fte_bathroom:
@@ -340,3 +345,46 @@ label chapter_four_matt_events:
             $ chapter_four_matt_house_chores[1] = True
             call chapter_four_matt_restore_screens(location)
             return
+    label ch04_dog_food:
+        screen clickable_chapter_four_dogfood:
+            imagebutton:
+                pos (896, 141) at Transform(zoom=0.8, yrotate=180.0 )
+                idle "images/chapter_four/ch04_dog_food.png"
+                hover "images/chapter_four/ch04_dog_food.png"
+                action Call("chapter_four_dogfood")
+        label chapter_four_dogfood:
+            call chapter_four_matt_hide_screens
+            "You have obtained Ocho Food"
+            mt "ocho food?"
+            mt "shouldn't that be dogfood?"
+            "I am just reading the book man"
+            mt "so..."
+            mt "that means the writer of the plot is someone who is obsessed with ocho"
+            "STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT STANLEY PARABLE 4TH WALL BREAK YOU GET IT "
+            $ chapter_four_obtain_item("matt_dog_food")
+            call chapter_four_matt_restore_screens(location)
+            return
+    label ch04_feed_ocho:
+        call chapter_four_matt_hide_screens
+        show matt2:
+            subpixel True pos (-236, 200) zoom 0.79 
+        pause 0.56789
+        show matt2:
+            linear 0.445 subpixel True pos (286, 200) zoom 0.79 
+        show ch04_ocho:
+            subpixel True pos (1050, 356) zoom 0.41
+            yrotate 180.0
+        pause 1.3
+        show ch04_dog_food:
+            subpixel True pos (283, 228) zoom 0.79 
+            linear 1.0 subpixel True pos (513, 366) zoom 0.79 
+
+
+        mt "This dog is so fat istg"
+        ocho "hello matt"
+        call auto_advance(1)
+        mt "WHATTTTTTTTTTTTTTTTTT"
+        call auto_advance(0)
+        $ chapter_four_matt_house_chores[2] = True
+        call chapter_four_matt_restore_screens(location)
+        return
