@@ -13,8 +13,9 @@ default chapter_four_key_items = {
     "matt_dog_food"        : ItemState.NOT_OBTAINED,
     "matt_lock_pick"       : ItemState.NOT_OBTAINED,
     "matt_hammer"          : ItemState.NOT_OBTAINED,
-    "matt_toothpaste"       : ItemState.NOT_OBTAINED,
+    "matt_toothpaste"      : ItemState.NOT_OBTAINED,
     "matt_love"            : ItemState.NOT_OBTAINED,
+    "matt_suit"            : ItemState.NOT_OBTAINED, 
 }
 default chapter_four_matt_house_chores = [False,False, False, False, False, False]
 # The onscreens buttons to handle movement
@@ -84,6 +85,7 @@ label chapter_four_matts_house_movement:
             elif origin == 1:
                 action Jump("ch04_matt_area_10")
 label chapter_four_matt_hide_screens: #Resets every clickable thing when we swap screens
+    hide screen clickable_chapter_four_clothes
     hide screen clickable_chapter_four_matts_house_controller
     hide screen clickable_chapter_four_dogfood
     hide screen clickable_chapter_four_makeup
@@ -98,6 +100,8 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
     if location == 1:
         if not chapter_four_matt_house_chores[1]:
             show screen clickable_chapter_four_makeup
+        if not chapter_four_matt_house_chores[4] and chapter_four_item_check("matt_suit"):
+            call ch04_suit_up
     elif location == 2:
         if not chapter_four_item_check("matt_dog_food"): 
             show screen clickable_chapter_four_dogfood
@@ -119,7 +123,8 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
     elif location == 7:
         pass
     elif location == 8:
-        pass
+        if not chapter_four_matt_house_chores[4] and not chapter_four_item_check("matt_suit"):
+            show screen clickable_chapter_four_clothes
     elif location == 9:
         if not chapter_four_item_check("matt_toothpaste"):
             show screen clickable_chapter_four_toothpaste
@@ -481,3 +486,30 @@ label chapter_four_matt_events:
             $ chapter_four_matt_house_chores[3] = True
             call chapter_four_matt_restore_screens(location)
             return
+    label ch04_work_clothes:
+        screen clickable_chapter_four_clothes:
+            imagebutton:
+                pos (810, 370) at Transform(zoom = 0.21 )
+                idle "images/chapter_four/ch04_clown_suit.png"
+                hover "images/chapter_four/ch04_clown_suit.png"
+                action Call("chapter_four_dress_up")
+        label chapter_four_dress_up:
+            call chapter_four_matt_hide_screens
+            mt "okay whoever chose a clown suit as my work clothes"
+            mt "yeah you a real funny guy CARL"
+            mt "CARLLLLLLLLLLLLLLLLLLLL"
+            "You have obtained your working clothes"
+            "be sure to wear it though"
+            mt "I aint stupid I know how to wear clothes"
+            $ chapter_four_obtain_item("matt_suit")
+            call chapter_four_matt_restore_screens(location)
+            return
+    label ch04_suit_up:
+        call chapter_four_matt_hide_screens
+        mt "alright I got this suit on"
+        mt "how come I cannot see it"
+        "Just wait, it will be funny for all of us if you just wait for it"
+        mt "ugh"
+        $ chapter_four_matt_house_chores[4] = True
+        call chapter_four_matt_restore_screens(location)
+        return

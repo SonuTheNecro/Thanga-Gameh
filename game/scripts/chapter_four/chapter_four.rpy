@@ -153,18 +153,23 @@ label chapter_four:
     mt "I'll just practice my movement and combos"
     "Well I'm the one reading the book so I could just skip this"
     mt "yo fourth wall break"
-    "Im skipping you"
-    scene ch04_china_bedroom with dissolve:
-        subpixel True xzoom 1.32 zoom 1.52 
-    show matt2:
-        subpixel True pos (286, 200) zoom 0.79
-    mt "huh?"
-    mt "Oh"
-    mt "it was just a dream"
-    mt "Im blaming trip"
-    mt "I swear next set"
-    mt "next fucking set"
-    mt "Next time we play, I'm beating his ass, I don't care what it takes."
+    "when do you have work?"
+    mt "uh 12 why?"
+    mt "what time is it currently?"
+    "12:03"
+    mt "am?"
+    mt "pm"
+    hide matt2
+    show ch04_matt_reaction:
+        subpixel True pos (-40, 101) xzoom 1.22 zoom 1.63 
+    mt "WHAT"
+    mt "NO WAY I AM LATE FOR WORK"
+    "So lets go"
+    mt "I NEED TO GET READY FOR WORK THOUGH"
+    "ugh"
+    call auto_advance(1)
+    "huh?"
+    call auto_advance(0)
     label ch04_matt_area_1:
         $ location = 1
         call chapter_four_matt_hide_screens
@@ -237,22 +242,7 @@ label chapter_four:
     pause 0.3
     scene ch04_china_living_room with dissolve:
         subpixel True xzoom 1.24 zoom 2.71 
-    "when do you have work?"
-    mt "uh 12 why?"
-    mt "what time is it currently?"
-    "12:03"
-    mt "am?"
-    mt "pm"
-    hide matt2
-    show ch04_matt_reaction:
-        subpixel True pos (-40, 101) xzoom 1.22 zoom 1.63 
-    mt "WHAT"
-    mt "NO WAY I AM LATE FOR WORK"
-    "So lets go"
-    mt "IM WAITING FOR THE FADE CUT"
-    call auto_advance(1)
-    "huh?"
-    call auto_advance(0)
+
     scene ch04_street1 with dissolve:
         subpixel True yzoom 1.19 zoom 2.0 
     show matt2:
