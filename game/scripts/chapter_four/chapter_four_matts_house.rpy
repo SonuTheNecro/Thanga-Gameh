@@ -114,7 +114,8 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
     elif location == 6:
         pass
     elif location == 7:
-        pass
+        if not chapter_four_matt_house_fte[2]:
+            call ch04_fte_garage
     elif location == 8:
         pass
     elif location == 9:
@@ -229,6 +230,23 @@ label chapter_four_matt_events:
         mt "fuck off you bitch"
         mt "ima go steal some toothpaste rq"
         $ chapter_four_matt_house_fte[1] = True
+        return 
+    label ch04_fte_garage:
+        show matt2:
+            subpixel True pos(2120,175) zoom 0.77 
+            linear 0.3456 subpixel True pos(1400,175) zoom 0.77
+        $ renpy.pause(0.4, hard = True)
+        mt "What happened to the garage?????"
+        mt "THIS IS AN AUTOSHOP WHAT!"
+        "Its chinese"
+        "Like your house"
+        mt "nahhhhhhhhhhhhhhhhhhh"
+        mt "this isn't chinese"
+        "There is chinese text behind you"
+        pause 1.0
+        mt "..."
+        mt "fuck"
+        $ chapter_four_matt_house_fte[2] = True
         return 
     label ch04_ocho_event:
         screen clickable_chapter_four_matts_house_ocho:
