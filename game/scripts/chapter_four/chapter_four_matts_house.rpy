@@ -133,6 +133,8 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
             call ch04_fte_bathroom
         if not chapter_four_matt_house_chores[0] and chapter_four_item_check("matt_toothpaste"):
             call ch04_brush_teeth
+    if count2 == 5 and not chapter_four_matt_house_fte[3]:
+        call ch04_work_ready
     call chapter_four_matt_restore_movement(location)
     return
 #Controls which movement buttons are shown based on which room we are in
@@ -255,6 +257,20 @@ label chapter_four_matt_events:
         mt "fuck"
         $ chapter_four_matt_house_fte[2] = True
         return 
+    label ch04_work_ready:
+        mt "alright I got ready for work"
+        "nice nice"
+        mt "wait I gotta POOOOOOOOOOOOOOOOOOOOOO"
+        "..."
+        "you serious?!?"
+        mt "yes"
+        "just do it at work"
+        "poo on their time"
+        mt "nahhh"
+        mt "this is an S+ emergency"
+        "..."
+        $ chapter_four_matt_house_fte[3] = True
+        return
     label ch04_ocho_event:
         screen clickable_chapter_four_matts_house_ocho:
             imagebutton:
@@ -343,6 +359,7 @@ label chapter_four_matt_events:
         mt "that was fun"
         "im glad"
         $ chapter_four_matt_house_chores[0] = True
+        $ count2 += 1
         call chapter_four_matt_restore_screens(location)
         return
     label ch04_makeup:
@@ -368,6 +385,7 @@ label chapter_four_matt_events:
             "fuck you"
             "You have put on men's makeup!"
             $ chapter_four_matt_house_chores[1] = True
+            $ count2 += 1
             call chapter_four_matt_restore_screens(location)
             return
     label ch04_dog_food:
@@ -411,6 +429,7 @@ label chapter_four_matt_events:
         mt "WHATTTTTTTTTTTTTTTTTT"
         call auto_advance(0)
         $ chapter_four_matt_house_chores[2] = True
+        $ count2 += 1
         call chapter_four_matt_restore_screens(location)
         return
     label ch04_smash:
@@ -484,6 +503,7 @@ label chapter_four_matt_events:
             "right..."
             mt "I think thats all the practice I need"
             $ chapter_four_matt_house_chores[3] = True
+            $ count2 += 1
             call chapter_four_matt_restore_screens(location)
             return
     label ch04_work_clothes:
@@ -511,5 +531,6 @@ label chapter_four_matt_events:
         "Just wait, it will be funny for all of us if you just wait for it"
         mt "ugh"
         $ chapter_four_matt_house_chores[4] = True
+        $ count2 += 1
         call chapter_four_matt_restore_screens(location)
         return

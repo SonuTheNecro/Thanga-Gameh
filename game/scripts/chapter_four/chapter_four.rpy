@@ -170,6 +170,7 @@ label chapter_four:
     call auto_advance(1)
     "huh?"
     call auto_advance(0)
+    $ count2 = 0
     label ch04_matt_area_1:
         $ location = 1
         call chapter_four_matt_hide_screens
