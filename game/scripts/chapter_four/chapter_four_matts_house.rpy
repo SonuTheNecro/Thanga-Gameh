@@ -11,12 +11,13 @@ init python:
 
 default chapter_four_key_items = {
     "matt_dog_food"        : ItemState.NOT_OBTAINED,
-    "matt_lock_pick"       : ItemState.NOT_OBTAINED,
+    "matt_lockpick"       : ItemState.NOT_OBTAINED,
     "matt_hammer"          : ItemState.NOT_OBTAINED,
     "matt_toothpaste"      : ItemState.NOT_OBTAINED,
     "matt_love"            : ItemState.NOT_OBTAINED,
     "matt_suit"            : ItemState.NOT_OBTAINED, 
     "matt_bathroom_access" : ItemState.OBTAINED, 
+    "matt_ready"           : ItemState.NOT_OBTAINED, 
 }
 default chapter_four_matt_house_chores = [False,False, False, False, False, False]
 # The onscreens buttons to handle movement
@@ -86,6 +87,8 @@ label chapter_four_matts_house_movement:
             elif origin == 1:
                 action Jump("ch04_matt_area_10")
 label chapter_four_matt_hide_screens: #Resets every clickable thing when we swap screens
+    hide screen clickable_chapter_four_toni
+    hide screen clickable_chapter_four_hammer
     hide screen clickable_chapter_four_clothes
     hide screen clickable_chapter_four_matts_house_controller
     hide screen clickable_chapter_four_dogfood
@@ -119,14 +122,20 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
     elif location == 5:
         if not chapter_four_matt_house_fte[2]:
             call ch04_fte_garage
+        if not chapter_four_item_check("matt_hammer") and chapter_four_matt_house_fte[4]:
+            show screen clickable_chapter_four_hammer
     elif location == 6:
         pass
     elif location == 7:
         if not chapter_four_matt_house_fte[4]:
             call ch04_attempt_leave_home
+        if chapter_four_item_check("matt_ready"):
+            jump chapter_four_act_2
     elif location == 8:
         if not chapter_four_matt_house_chores[4] and not chapter_four_item_check("matt_suit"):
             show screen clickable_chapter_four_clothes
+        if not chapter_four_item_check("matt_lockpick") and chapter_four_matt_house_fte[4]:
+            show screen clickable_chapter_four_toni
     elif location == 9:
         if not chapter_four_item_check("matt_toothpaste"):
             show screen clickable_chapter_four_toothpaste
@@ -548,12 +557,13 @@ label chapter_four_matt_events:
         return
     label chapter_four_matt_bathroom_locked:
         call chapter_four_matt_hide_screens
-        if chapter_four_item_check("matt_lock_pick") or chapter_four_item_check("matt_hammer"):
+        if chapter_four_item_check("matt_lockpick") or chapter_four_item_check("matt_hammer"):
             mt "TIME TO OPEN THIS STUPID FUCKING DOOR"
             #TODO: Door unlock sfx
             mt "alright lets go"
+            $ chapter_four_obtain_item("matt_ready")
             $ chapter_four_obtain_item("matt_bathroom_access")
-            $ chapter_four_obtain_item("matt_lock_pick")
+            $ chapter_four_obtain_item("matt_lockpick")
             $ chapter_four_obtain_item("matt_hammer")
         else:
             mt "OPEN THE DOOR PLEASE"
@@ -561,7 +571,7 @@ label chapter_four_matt_events:
     label ch04_hammer:
         screen clickable_chapter_four_hammer:
             imagebutton:
-                pos (0, 0)
+                pos (395, 270) at Transform (zoom =0.42 )
                 idle "images/chapter_four/ch04_hammer.png"
                 hover "images/chapter_four/ch04_hammer.png"
                 action Call("ch04_get_hammer")
@@ -569,19 +579,19 @@ label chapter_four_matt_events:
             call chapter_four_matt_hide_screens
             "You have received a hammer!"#TODO: text and anything here
             $ chapter_four_obtain_item("matt_hammer")
-            call chapter_four_matt_restore_screens
+            call chapter_four_matt_restore_screens(location)
             return
     label ch04_toni:
         screen clickable_chapter_four_toni:
             imagebutton:
-                pos (0,0)
+                pos (831, 11) at Transform( zoom = 0.99, crop = (0.0, 0.0, 1.0, 0.88) )
                 idle "images/chapter_four/ch04_toni.jpg"
                 hover "images/chapter_four/ch04_toni.jpg"
                 action Call("ch04_toni_bed")
         label ch04_toni_bed:
             call chapter_four_matt_hide_screens
             show ch04_toni:
-                subpixel
+                subpixel True pos (831, 11)  zoom  0.99 crop  (0.0, 0.0, 1.0, 0.88) 
             mt "TONIIIIIIIIIIII"
             toni "whats good homes"
             mt "WHY ARE YOU IN MY HOUSE?!?!"
@@ -595,5 +605,5 @@ label chapter_four_matt_events:
             "Im blaming carl"
             carl "ITS NOT MEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe"
             $ chapter_four_obtain_item("matt_lockpick")
-            call chapter_four_matt_restore_screens
+            call chapter_four_matt_restore_screens(location)
             return
