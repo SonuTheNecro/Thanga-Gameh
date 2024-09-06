@@ -127,7 +127,7 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
     elif location == 6:
         pass
     elif location == 7:
-        if not chapter_four_matt_house_fte[4]:
+        if not chapter_four_matt_house_fte[4] and chapter_four_matt_house_fte[3]:
             call ch04_attempt_leave_home
         if chapter_four_item_check("matt_ready"):
             jump chapter_four_act_2
