@@ -227,6 +227,8 @@ label chapter_four:
         call chapter_four_matt_restore_screens(location)
     label ch04_matt_area_10:
         $ location = 10
+        if not chapter_four_item_check("matt_bathroom_access"):
+            call chapter_four_matt_bathroom_locked
         call chapter_four_matt_hide_screens
         scene ch04_china_bathroom with dissolve:
             subpixel True xzoom 2.22 yzoom 1.08 

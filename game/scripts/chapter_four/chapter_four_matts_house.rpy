@@ -16,6 +16,7 @@ default chapter_four_key_items = {
     "matt_toothpaste"      : ItemState.NOT_OBTAINED,
     "matt_love"            : ItemState.NOT_OBTAINED,
     "matt_suit"            : ItemState.NOT_OBTAINED, 
+    "matt_bathroom_access" : ItemState.OBTAINED, 
 }
 default chapter_four_matt_house_chores = [False,False, False, False, False, False]
 # The onscreens buttons to handle movement
@@ -121,7 +122,8 @@ label chapter_four_matt_restore_screens(location): #Handles spawning events base
     elif location == 6:
         pass
     elif location == 7:
-        pass
+        if not chapter_four_matt_house_fte[4]:
+            call ch04_attempt_leave_home
     elif location == 8:
         if not chapter_four_matt_house_chores[4] and not chapter_four_item_check("matt_suit"):
             show screen clickable_chapter_four_clothes
@@ -260,15 +262,7 @@ label chapter_four_matt_events:
     label ch04_work_ready:
         mt "alright I got ready for work"
         "nice nice"
-        mt "wait I gotta POOOOOOOOOOOOOOOOOOOOOO"
-        "..."
-        "you serious?!?"
-        mt "yes"
-        "just do it at work"
-        "poo on their time"
-        mt "nahhh"
-        mt "this is an S+ emergency"
-        "..."
+        mt "lets go!"
         $ chapter_four_matt_house_fte[3] = True
         return
     label ch04_ocho_event:
@@ -534,3 +528,33 @@ label chapter_four_matt_events:
         $ count2 += 1
         call chapter_four_matt_restore_screens(location)
         return
+    label ch04_attempt_leave_home:
+        call chapter_four_matt_hide_screens
+        mt "alright lets get out of here"
+        "yeah honestly"
+        mt "wait I gotta POOOOOOOOOOOOOOOOOOOOOO"
+        "..."
+        "you serious?!?"
+        mt "yes"
+        "just do it at work"
+        "poo on their time"
+        mt "nahhh"
+        mt "this is an S+ emergency"
+        "..."
+        mt "I NEED TO GO TO THE BATHROOM!"
+        $ chapter_four_matt_house_fte[4] = True
+        $ chapter_four_unobtain_item("matt_bathroom_access")
+        call chapter_four_matt_restore_screens(location)
+        return
+    label chapter_four_matt_bathroom_locked:
+        call chapter_four_matt_hide_screens
+        if chapter_four_item_check("matt_lock_pick") or chapter_four_item_check("matt_hammer"):
+            mt "TIME TO OPEN THIS STUPID FUCKING DOOR"
+            #TODO: Door unlock sfx
+            mt "alright lets go"
+            $ chapter_four_obtain_item("matt_bathroom_access")
+            $ chapter_four_obtain_item("matt_lock_pick")
+            $ chapter_four_obtain_item("matt_hammer")
+        else:
+            mt "OPEN THE DOOR PLEASE"
+        jump ch04_matt_area_1
