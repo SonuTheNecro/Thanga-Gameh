@@ -558,3 +558,42 @@ label chapter_four_matt_events:
         else:
             mt "OPEN THE DOOR PLEASE"
         jump ch04_matt_area_1
+    label ch04_hammer:
+        screen clickable_chapter_four_hammer:
+            imagebutton:
+                pos (0, 0)
+                idle "images/chapter_four/ch04_hammer.png"
+                hover "images/chapter_four/ch04_hammer.png"
+                action Call("ch04_get_hammer")
+        label ch04_get_hammer:
+            call chapter_four_matt_hide_screens
+            "You have received a hammer!"#TODO: text and anything here
+            $ chapter_four_obtain_item("matt_hammer")
+            call chapter_four_matt_restore_screens
+            return
+    label ch04_toni:
+        screen clickable_chapter_four_toni:
+            imagebutton:
+                pos (0,0)
+                idle "images/chapter_four/ch04_toni.jpg"
+                hover "images/chapter_four/ch04_toni.jpg"
+                action Call("ch04_toni_bed")
+        label ch04_toni_bed:
+            call chapter_four_matt_hide_screens
+            show ch04_toni:
+                subpixel
+            mt "TONIIIIIIIIIIII"
+            toni "whats good homes"
+            mt "WHY ARE YOU IN MY HOUSE?!?!"
+            toni "lets just say"
+            toni "I was going to pound town"
+            toni "and the only resident of that town is your mother"
+            toni "and im the new resident"
+            mt "WHATTTTTTTTTTTTTTTTTTTTTT"
+            "wow that was so mature"
+            "We put a your mom joke in 2026"
+            "Im blaming carl"
+            carl "ITS NOT MEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe"
+            $ chapter_four_obtain_item("matt_lockpick")
+            call chapter_four_matt_restore_screens
+            return

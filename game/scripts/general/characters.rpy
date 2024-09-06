@@ -14,6 +14,7 @@ define trip =         Character("Trip")
 define maan =         Character("Maan")
 define dante =        Character("Dante")
 define carl =         Character("Carl")
+define toni =         Character("Toni")
 # TagTeam
 define bt =           Character("Brian and Thang")
 define bk =           Character("Brian and Kody")
