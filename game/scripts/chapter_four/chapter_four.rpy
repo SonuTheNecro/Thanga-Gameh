@@ -234,21 +234,23 @@ label chapter_four:
             subpixel True xzoom 2.22 yzoom 1.08 
         call chapter_four_matt_restore_screens(location)
 
-
-
-    label chapter_four_act_2:
-        show matt2:
-            subpixel True
-        "test"
-
-    
+label chapter_four_act_2:
+    show matt2:
+        subpixel True pos (861, 206) zoom 0.74 
+    mt "oh fuck"
+    mt "what time is it?"
+    "12:32"
+    mt "WE HAVE TO GO NOW"
+    "well you are the mc"
+    "its literally up to you"
+    mt "I'm waiting for the jumpcut"
+    call auto_advance(1)
+    "huh?"
+    call auto_advance(0)
     show matt2:
         linear 0.234567 subpixel True pos (-286, 200) zoom 0.79
     #ACT 2 STARTS HERE
     pause 0.3
-    scene ch04_china_living_room with dissolve:
-        subpixel True xzoom 1.24 zoom 2.71 
-
     scene ch04_street1 with dissolve:
         subpixel True yzoom 1.19 zoom 2.0 
     show matt2:
@@ -266,5 +268,14 @@ label chapter_four:
     mt "NO WE CANNOT"
     "okay"
     "Generic Ice Cream Store here we go."
+    scene ch04_ice_cream_exterior with dissolve:
+        subpixel True xzoom 1.26 yzoom 1.09 
+    show matt2:
+        subpixel True pos (1935, 263) zoom 0.63 
+        linear 0.234567 subpixel True pos (1505, 268) zoom 0.63 
+    mt "WHAT CITY ARE WE IN?????????????????????????????????????????????????????????????????"
+    mt "THIS IS THE MOST GHETTO AND UGLY STORE EVER"
     
+
+
     "test"
