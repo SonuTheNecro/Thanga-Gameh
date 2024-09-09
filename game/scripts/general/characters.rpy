@@ -18,6 +18,7 @@ define toni =         Character("Toni")
 # TagTeam
 define bt =           Character("Brian and Thang")
 define bk =           Character("Brian and Kody")
+define bm =           Character("Brian and Matt")
 define bkm =          Character("Brian, Kody, and Matt")
 define ev =           Character("Everyone")
 

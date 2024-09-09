@@ -275,7 +275,77 @@ label chapter_four_act_2:
         linear 0.234567 subpixel True pos (1505, 268) zoom 0.63 
     mt "WHAT CITY ARE WE IN?????????????????????????????????????????????????????????????????"
     mt "THIS IS THE MOST GHETTO AND UGLY STORE EVER"
-    
+    mt "well I guess I gotta clock in..."
+    camera:
+        linear 0.56 subpixel True pos (-1584, -1773) zoom 4.13
+    pause 0.6
+    $ reset_camera(0)
+    scene ch04_ice_cream_interior with dissolve:
+        subpixel True xzoom 1.18 zoom 1.64 
+    show matt2:
+        subpixel True pos (1923, 208) zoom 0.67 
+        linear 0.45 subpixel True pos (1212, 208) zoom 0.67 
+    mt "damn"
+    "is this your workplace?"
+    mt "I guess?"
+    "what do you mean by 'I Guess'"
+    mt "well it is an icecream store"
+    mt "but like its so girly and gay"
+    mt "oh right..."
+    pause 1.0
+    "what?"
+    mt "I got this new boss.."
+    "isn't that a good thing?"
+    mt "well apparently my co-worker was just laying about how he is the worst"
+    mt "like apparently he is the hitler of bosses"
+    "damn we are allowed to say that word?"
+    mt "uhhhhhh yeah?"
+    mt "well I suppose I gotta meet this asshole"
+    show brian1:
+        subpixel True pos (-627, 203) zoom 1.17 
+        linear 0.5 subpixel True pos (300, 203) zoom 1.17 
+    bm "ITS YOU"
+    bm "WHY ARE YOU THERE"
+    bm "STOP COPYING ME!"
+    $ renpy.pause(1.5, hard = True)
+    b "you first"
+    mt "okay"
+    mt "WHY ARRE YOUUUUUUUUUUUUUUUUUUUUUUUUUUUU HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+    b "Oh i got offered a management position here thanks to my credentials!"
+    mt "ughhhhhhhh"
+    b "well what would you like to have?"
+    b "we got a chocolate sale"
+    mt "i work here..."
+    b "wait"
+    b "really?"
+    mt "yes"
+    b "well thats cool"
+    mt "where are the other employees?"
+    b "oh its just us"
+    mt "You think two people can handle the whole store"
+    mt "especially when you don't even know how any of the machiens work"
+    b "I dont handle the machines bozo"
+    mt "GRRRRRRRRRRRRRRRRRRR"
+    mt "THATS THE PROBLEM"
+    mt "BRIANNNNNNNNNNNNNNNN"
+    b "well I gotta pick my sister up from the airport" #TODO Phone call thing segment here
+    mt "WHATTTTTTTTTTTTTTTTTTTTTT"
+    b "you got it right?"
+    call auto_advance(1)
+    mt "wait no"
+    mt "I can't one-man a whole fucking store"
+    b "later matt!"
+    show brian1:
+        linear 0.45 subpixel True xpos 2091
+    pause 0.2
+    show matt2:
+        linear 0.5 subpixel True pos (908, 211) 
+    call auto_advance(0)
+    "..."
+    mt "..."
+    mt "im so fucked"
+
+
 
 
     "test"
