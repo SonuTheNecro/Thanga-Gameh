@@ -14,6 +14,7 @@ define trip =         Character("Trip")
 define maan =         Character("Maan")
 define dante =        Character("Dante")
 define carl =         Character("Carl")
+define toni =         Character("Toni")
 # TagTeam
 define bt =           Character("Brian and Thang")
 define bk =           Character("Brian and Kody")
@@ -32,6 +33,7 @@ define usps =         Character("USPS Worker Guy")   #CH03
 
 #Prologue
 define igor =         Character("Master Igor")
+define ice =          Character("U.S. ICE Agent")
 define sk =           Character("Shadow Kody")
 
 # Chapter One Specific
@@ -58,3 +60,7 @@ define foxy =         Character("Foxy FurryFukker")
 define fnafpg =       Character("Pizza Delivery Guy")
 define puppet =       Character("The Puppet")
 define balloon =      Character("Balloon Boy")
+
+#Chapter Four Specific
+define com1 =         Character("Commentator 1")
+define com2 =         Character("Commentator 2")

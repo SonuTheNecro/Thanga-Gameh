@@ -105,6 +105,8 @@ label chapter_zero_win:
     hide hands1
     hide chapter_zero_rhand
     show cody at animated_glitch
+    camera:
+        linear 0.21 subpixel True xpos -126 zoom 1.14
     k "Yeah I agree Narrator guy"
     c "WAIT WHAT YOU CAN HEAR HIM TOO?"
     k "I mean it's right there"
@@ -158,14 +160,16 @@ label chapter_zero_lose:
     c "You lost"
     c "You Trash"
     c "Goodbye bozo"
+    camera:
+        linear 0.1 subpixel True xpos 0 zoom 1.01 
     play sound "audio/sound/prologue/laser.ogg" loop
     show laser with dissolve:
         subpixel True offset (-1071.0, -432.0) pos (1303, 23) rotate 30.0 zoom 3.29 
-
     k "WHAT THE FUCK IS THIS?"
     c "Die"
     stop sound
     hide kody with dissolve
     c "You are trash!"
+    $ reset_camera(0)
     jump game_over
 

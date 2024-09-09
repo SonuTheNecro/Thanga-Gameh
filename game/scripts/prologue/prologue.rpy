@@ -105,6 +105,9 @@ label prologue:
     t "I don't even care enough anymore, just do whatever"
     show brian_mcdonalds with dissolve:
         subpixel True crop_relative True pos (450, 223) crop (0.0, -0.11, 1.0, 1.0) 
+    camera:
+        linear 0.5 subpixel True xpos 0 zoom 1.2 
+
 
     mcde "Hello, welcome to McDonalds! May I take your order?"
 
@@ -143,7 +146,7 @@ label prologue:
     mcde "The IceCream Machine is..."
     mcde "FUCKING BROKEN!"
     mcde "L BOZO!"
-
+    $ reset_camera(0.5)
     #Denial
     k "What..."
     k "..."
@@ -201,7 +204,8 @@ label prologue:
         xalign 0.2 yalign 0.5 xzoom 1.3 yzoom 1.3
     show cody:         
         linear 0.1 xalign 0.8
-
+    camera:
+        linear 0.5 subpixel True xpos -153 zoom 1.16 
     k "Huh?"
     k "Who are you?"
     questionmark "I am the true self."
@@ -261,6 +265,7 @@ label prologue:
         c "You were always the weak part of me..."
         c "I think its time if we made some changes around here."
         c "goodbye forver kody"
+    $ reset_camera(0.5)
     stop music
     scene mcdonalds_playplace with fade:
         xalign 0.8 xzoom 3.9 yzoom 3.3
@@ -315,7 +320,9 @@ label prologue:
     c "can we do something fucking normal"
     k "You want to arm wrestle?"
     c "???"
-    c "You realize I am going to cook you like you are some meatball and I am the fucking goat lol"
+    c "You realize I am going to cook you like you are some meatball and I am the fucking goat lol" 
+    camera:
+        linear 0.35 subpixel True xpos -270 zoom 1.29 
     "The battle begins now! Make your choice now!"
     $ count = 0
     jump chapter_zero_battle
@@ -325,14 +332,8 @@ label chapter_zero_ending:
     k "I assume I am the supreme Kody now..."
     k "wait..."
     k "My BigMac!"
-    show kody:
-        matrixcolor SaturationMatrix(0)
-    if rngint1 == 1:
-        show wild_west1 with dissolve:
-            xzoom 3.9 yzoom 3.2 yalign 0.8 matrixcolor SaturationMatrix(0)
-    else:
-        show wild_west2 with dissolve:
-            xzoom 3.9 yzoom 3.2 yalign 0.8 matrixcolor SaturationMatrix(0)
+    camera:
+        subpixel True matrixcolor SaturationMatrix(0)
     "Should..."
     "Should we stop cody?"
     "He seems kinda like a menace..."
@@ -343,5 +344,6 @@ label chapter_zero_ending:
     "or did he?"
     $ persistent.ch00 = True
     stop music
+    $ reset_camera(0)
     $ renpy.quit()
     jump chapter_one
