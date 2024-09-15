@@ -408,5 +408,7 @@ label main_menu_code:
                     jump ch04_matt_area_1
                 "Chapter_Four Act 2":
                     jump chapter_four_act_2
+                "Chapter_Four_Office":
+                    jump chapter_four_office
                 "game_over":
                     jump game_over

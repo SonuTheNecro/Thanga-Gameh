@@ -45,7 +45,26 @@ init python:
 
 
 
+label chapter_four_office:
+    scene ch04_work_bg with dissolve:
+        subpixel True xzoom 1.28 zoom 2.4 
+    show ch04_counter:
+        subpixel True pos (290, 508) zoom 1.4 
+    show ch04_register:
+        subpixel True pos (736, 353) zoom 0.41 
+    show ch04_mop:
+        subpixel True pos (1375, 391) zoom 0.76 xrotate 0.0 yrotate 180.0 
+    show ch04_exit_door:
+        subpixel True pos (-320, 176) rotate -9.0 zoom 0.4 
 
+
+
+
+
+
+
+
+    "test"
 
 
 
