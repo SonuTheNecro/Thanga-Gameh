@@ -410,5 +410,7 @@ label main_menu_code:
                     jump chapter_four_act_2
                 "Chapter_Four_Office":
                     jump chapter_four_office
+                "Chapter_Four_office_create":
+                    jump chapter_four_setup_resources
                 "game_over":
                     jump game_over

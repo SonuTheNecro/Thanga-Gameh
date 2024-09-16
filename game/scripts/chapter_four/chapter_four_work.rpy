@@ -46,6 +46,14 @@ init python:
 label chapter_four_hide_office:
     hide screen clickable_chapter_four_register
     return
+label chapter_four_setup_resources:
+    python:
+        work_events = 0
+        rngint = 0
+        resource_manager = ResourceHandler()
+        customer_enjoyment = Resource("customer_enjoyment", 50)
+        resource_manager.add_resource(customer_enjoyment)
+    jump chapter_four_office
 
 label chapter_four_office:
     scene ch04_work_bg with dissolve:
@@ -158,11 +166,11 @@ label chapter_four_work_events():
         t "my ORDER"
         menu:
             "Skibidi Crunch Bar":
-                $ customer_enjoyment += 5
+                $ customer_enjoyment.set_level(5)
             "Caseoh Creampies":
-                $ customer_enjoyment += 5
+                $ customer_enjoyment.set_level(5)
             "Kai Cenat Cookies":
-                $ customer_enjoyment += 5
+                $ customer_enjoyment.set_level(5)
         mt "what did BRIAN DO?"
         mt "WHY ARE THESE ON THE MENU!"
         mt "HERES YOUR FUCKING BRAIN-ROT FOOD"
