@@ -87,6 +87,90 @@ label chapter_four_random_work:
 label chapter_four_work_events():
     label ch04_event_1:
 
-        scene ch04_ice_cream_exterior with dissolve:
-            subpixel True xzoom 1.26 yzoom 1.09 
-        "test2"
+        scene ch04_ice_cream_interior with dissolve:
+            subpixel True xzoom 1.18 zoom 1.64
+        show matt2 with moveinleft:
+            pos (513, 151)  zoom 0.75
+        show thanga2 with dissolve:
+            subpixel True pos (1331, 166) zoom 1.17 yrotate 180.0 
+        mt "THANG!"
+        t "yo" #TODO: DIscord join sfx here
+        mt "..."
+        t "so what are you doing here?"
+        mt "I WORK HERE DUMBASS"
+        t "kill yourself"
+        mt "okay you are real"
+        t "?"
+        mt "DUDE WE ARE IN SOME SORTA BOOK OR NOVEL OR GAME"
+        mt "THERE IS THIS GUY WHO IS LIKE GOD"
+        mt "AND HE IS TELLING ME WHAT TO DO"
+        t "ugh"
+        mt "WHY ARE YOU SIGHING?????"
+        mt "DO YOU KNOW?!?"
+        t "kody has been going off about it for like 2 months now"
+        t "I really don't care"
+        t "I dont need to hear more yapping about this nonsense"
+        mt "DON'T YOU REMEMBER CODY AT THE VAULT?"
+        mt "WE HAVE PROOF IT WAS REAL!"
+        t "yeah that was kinda strange..."
+        t "but just because you have one weird day doesn't mean you are suddenly the protagonist of a book"
+        mt "I AM THOUGH!!!!!!!!"
+        t "idgaf"
+        $ renpy.pause(2.0, hard = True)
+        mt "..."
+        mt "fuck you"
+        t "well kill yourself too"
+        call auto_advance(1)
+        mt "THAT DOESN'T MEAN ANYTHING"
+        mt "okay whatever"
+        call auto_advance(0)
+        mt "What do you want to order?"
+        t "I would like something that will increase my rizz for my girl"
+        mt "you have a girlfriend?"
+        t "yeah hutao"
+        mt "yeah okay man"
+        show ch04_hutao:
+            subpixel True pos (1908, 156) 
+            linear 0.34 subpixel True pos (1530, 156)
+        hutao "my mans need to increase his skibidi rizz"
+        show thanga2:
+            yrotate 0.0
+        t "thanks babe"
+        show ch04_hutao:
+            linear 0.24 subpixel True pos (1908, 156)
+        show thanga2:
+            yrotate 180.0
+        pause 0.3
+        hide matt2
+        show ch04_matt_reaction:
+            subpixel True pos (99, 198) 
+        mt "WHATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+        hide ch04_matt_reaction
+        show matt2:
+            pos (513, 151)  zoom 0.75
+        mt "HOW DID YOU DO THAT?"
+        t "idk i went onto tinder and found her"
+        mt "alright man"
+        t "well"
+        t "Im waiting..."
+        mt "huh?"
+        t "my ORDER"
+        menu:
+            "Skibidi Crunch Bar":
+                $ customer_enjoyment += 5
+            "Caseoh Creampies":
+                $ customer_enjoyment += 5
+            "Kai Cenat Cookies":
+                $ customer_enjoyment += 5
+        mt "what did BRIAN DO?"
+        mt "WHY ARE THESE ON THE MENU!"
+        mt "HERES YOUR FUCKING BRAIN-ROT FOOD"
+        t "thanks matt, I really enjoy this food lol"
+        mt "YOU BETTER!"
+        show thanga2:
+            yrotate 0.0 
+            linear 0.23 subpixel True pos (1963, 203)
+        mt "(sigh)"
+        $ work_events += 1
+        jump chapter_four_office
+

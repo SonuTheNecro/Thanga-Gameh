@@ -65,3 +65,4 @@ define balloon =      Character("Balloon Boy")
 #Chapter Four Specific
 define com1 =         Character("Commentator 1")
 define com2 =         Character("Commentator 2")
+define hutao =        Character("Hu Tao")
