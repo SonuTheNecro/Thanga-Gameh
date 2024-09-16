@@ -43,15 +43,18 @@ init python:
             for resource in self.resources.values():
                 print(str(resource.get_name()) + ":" + str(resource.get_level()))
 
-
+label chapter_four_hide_office:
+    hide screen clickable_chapter_four_register
+    return
 
 label chapter_four_office:
     scene ch04_work_bg with dissolve:
         subpixel True xzoom 1.28 zoom 2.4 
     show ch04_counter:
         subpixel True pos (290, 508) zoom 1.4 
-    show ch04_register:
-        subpixel True pos (736, 353) zoom 0.41 
+    #show ch04_register:
+        #subpixel True pos (736, 353) zoom 0.41 
+    show screen clickable_chapter_four_register
     show ch04_mop:
         subpixel True pos (1375, 391) zoom 0.76 xrotate 0.0 yrotate 180.0 
     show ch04_exit_door:
@@ -61,16 +64,29 @@ label chapter_four_office:
 
 
 
+    $ renpy.pause(hard = True, delay = 10)
 
 
+    "test1"
+    jump chapter_four_office
 
-    "test"
+screen clickable_chapter_four_register:
+    imagebutton:
+        pos (736, 353) at Transform(zoom =0.41 )
+        idle "images/chapter_four/ch04_register.png"
+        hover "images/chapter_four/ch04_register.png"
+        action Jump("chapter_four_random_work")
 
 
-
-
-
+label chapter_four_random_work:
+    #$ rngint = renpy.random.randint(0,5)
+    $ rngint = 1
+    call chapter_four_hide_office
+    jump expression "ch04_event_" + str(rngint)
 
 label chapter_four_work_events():
     label ch04_event_1:
-        "test"
+
+        scene ch04_ice_cream_exterior with dissolve:
+            subpixel True xzoom 1.26 yzoom 1.09 
+        "test2"
