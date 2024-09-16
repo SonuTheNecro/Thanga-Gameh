@@ -1,5 +1,5 @@
 # Code for the Work Section of Chapter Four
-default chapter_four_work_event_check[False, False,]
+default chapter_four_work_event_check = [False, False,]
 init python:
     class Resource:
         level = 0
