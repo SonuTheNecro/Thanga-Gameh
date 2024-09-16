@@ -1,5 +1,5 @@
 # Code for the Work Section of Chapter Four
-
+default chapter_four_work_event_check[False, False,]
 init python:
     class Resource:
         level = 0
@@ -81,12 +81,13 @@ screen clickable_chapter_four_register:
 label chapter_four_random_work:
     #$ rngint = renpy.random.randint(0,5)
     $ rngint = 1
+    if chapter_four_work_event_check[rngint - 1]:
+        jump chapter_four_random_work
     call chapter_four_hide_office
     jump expression "ch04_event_" + str(rngint)
 
 label chapter_four_work_events():
     label ch04_event_1:
-
         scene ch04_ice_cream_interior with dissolve:
             subpixel True xzoom 1.18 zoom 1.64
         show matt2 with moveinleft:
@@ -172,5 +173,6 @@ label chapter_four_work_events():
             linear 0.23 subpixel True pos (1963, 203)
         mt "(sigh)"
         $ work_events += 1
+        $ chapter_four_work_event_check[rngint - 1] = True
         jump chapter_four_office
-
+    label ch04_event_2:
