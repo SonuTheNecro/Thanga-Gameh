@@ -13,10 +13,15 @@ init python:
             return self.level
         def set_level(self, new_level : int):
             self.level = new_level
-        def level_minus(self):
+        def decrement(self):
             self.level -= 1
-        def level_plus(self):
+        def increment(self):
             self.level += 1
+        def plus(self, add):
+            self.level += add
+        def minus(self, sub):
+            self.level -= sub
+
     class ResourceHandler:
         def __init__(self):
             self.resources = {}
@@ -27,8 +32,8 @@ init python:
         def set_all_levels(self, new_level: int):
             for resource in self.resources.values():
                 cases = {
-                    -1 :  resource.level_minus,
-                    101 : resource.level_plus
+                    -1 :  resource.decrement,
+                    101 : resource.increment
                 }
                 try:
                     cases[new_level]()
@@ -42,6 +47,9 @@ init python:
         def print_all(self):
             for resource in self.resources.values():
                 print(str(resource.get_name()) + ":" + str(resource.get_level()))
+        def food_down_level_up(self,nfood,nlevel):
+            self.resources['food'].plus(nfood)
+            self.resources['customer_enjoyment'].minus(nlevel)
 
 label chapter_four_hide_office:
     hide screen clickable_chapter_four_register
@@ -53,6 +61,8 @@ label chapter_four_setup_resources:
         resource_manager = ResourceHandler()
         customer_enjoyment = Resource("customer_enjoyment", 50)
         resource_manager.add_resource(customer_enjoyment)
+        food = Resource("food", 100)
+        resource_manager.add_resource(food)
     jump chapter_four_office
 
 label chapter_four_office:
@@ -87,9 +97,9 @@ screen clickable_chapter_four_register:
 
 
 label chapter_four_random_work:
-    #$ rngint = renpy.random.randint(0,5)
-    $ rngint = 1
-    if chapter_four_work_event_check[rngint - 1]:
+    #$ rngint = renpy.random.randint(1,5 + int(work_event * 0.2) * 10)
+    $ rngint = 2
+    if chapter_four_work_event_check[rngint - 1] or rngint > 50 or rngint < 0:
         jump chapter_four_random_work
     call chapter_four_hide_office
     jump expression "ch04_event_" + str(rngint)
@@ -166,11 +176,11 @@ label chapter_four_work_events():
         t "my ORDER"
         menu:
             "Skibidi Crunch Bar":
-                $ customer_enjoyment.set_level(5)
+                $ customer_enjoyment.plus(5)
             "Caseoh Creampies":
-                $ customer_enjoyment.set_level(5)
+                $ customer_enjoyment.plus(5)
             "Kai Cenat Cookies":
-                $ customer_enjoyment.set_level(5)
+                $ customer_enjoyment.plus(5)
         mt "what did BRIAN DO?"
         mt "WHY ARE THESE ON THE MENU!"
         mt "HERES YOUR FUCKING BRAIN-ROT FOOD"
@@ -184,3 +194,156 @@ label chapter_four_work_events():
         $ chapter_four_work_event_check[rngint - 1] = True
         jump chapter_four_office
     label ch04_event_2:
+        scene ch04_ice_cream_interior with dissolve:
+            subpixel True xzoom 1.18 zoom 1.64
+        show matt2 with moveinleft:
+            pos (513, 151)  zoom 0.75
+        show kody with dissolve:
+            subpixel True pos (1185, 290) zoom 1.21 yrotate 180.0 
+        mt "KODY!"
+        k "It's me the goat"
+        mt "right..."
+        k "I haven't been in this chapter yet"
+        mt "you literally have..."
+        window auto hide
+        $ renpy.pause(0.5, hard = True)
+        mt "wait"
+        mt "SO YOU KNOW?!?"
+        k "know what?"
+        mt "THAT WE ARE IN A BOOK AND SOME NARRATOR BOZO IS READING OUR LIVES?"
+        k "lol"
+        mt "FUCK YOU MEAN LOL?"
+        k "I thought that, then I just stopped having schizoprenia"
+        mt "FUCK YOU"
+        mt "IT AINT SCHIZO IF WE BOTH HAVE IT!"
+        k "nah im just a mogger and you are just a dogger"
+        mt "FUCK DOES THAT EVEN MEAN!"
+        k "idk"
+        mt "wait..."
+        mt "ISN'T THERE SCHOOL?"
+        "its sunday"
+        mt "right..."
+        k "it is indeed sunday man"
+        $ renpy.pause(2.0, hard = True)
+        mt "YOU HEARD HIM"
+        mt "IM NOT SCHIZO"
+        mt "YOU ARE JUST CAPPING ME"
+        k "nah you just weird"
+        mt "fucking hell"
+        mt "i dont even give a fuck rn"
+        k "nah you do"
+        mt "nah nah idgaf"
+        k "'idgaf' as you gaf"
+        mt "shut up"
+        mt "fuck you even want here?"
+        k "oh you guys got some beast bars"
+        mt "this is an ice cream shop"
+        k "nah the plot demands mr beast bars so ima get some"
+        mt "what..."
+        show ch04_beast_bar_ac with dissolve:
+            subpixel True pos (448, 198) rotate 18.0 
+        mt "WHATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+        k "oh shit what flavors you got?"
+        menu:
+            "Milk Chocolate":
+                $ resource_manager.food_down_level_up(10,10)
+            "Peanut Butter Crunch":
+                $ resource_manager.food_down_level_up(5,5)
+            "Dark Chocolate":
+                $ resource_manager.food_down_level_up(5,4)
+            "Almond":
+                $ resource_manager.food_down_level_up(2,2)
+            "Peanut Butter":
+                $ resource_manager.food_down_level_up(1,4)
+            "Dark Chocolate Sea Salt":
+                $ resource_manager.food_down_level_up(6,2)
+            "Milk Crunch":
+                $ resource_manager.food_down_level_up(5,5)
+            "Crimson Blood Toasted":
+                $ resource_manager.food_down_level_up(3,3)
+            "Clipped Toe-Nails Beard Shavings":
+                $ resource_manager.food_down_level_up(1,5)
+            "Sea Turtle Shell with Toasted used baby-wipes":
+                $ resource_manager.food_down_level_up(15,20)
+            "Chinese worker factory blood infused with type 0 diabetes":
+                $ resource_manager.food_down_level_up(1,15)
+            "Mogging Juice":
+                $ resource_manager.food_down_level_up(3,7)
+            "Goon Liquid fried in a grill-pan":
+                $ resource_manager.food_down_level_up(1,1)
+            "Mayonaise with a hint of Ice":
+                $ resource_manager.food_down_level_up(3,6)
+            "Anime-Girl Thigh-High Sweat":
+                $ resource_manager.food_down_level_up(20,15)
+            "Glass Shards with Chex Mix":
+                $ resource_manager.food_down_level_up(5,4)
+            "Cheetos with Pizza Crust":
+                $ resource_manager.food_down_level_up(4,5)
+            "Chocolate Milk with Mustard, Ketchup, Baby Skull Dust, and Lettuce":
+                $ resource_manager.food_down_level_up(2,3)
+            "Gluten-Free Chocolate":
+                $ resource_manager.food_down_level_up(3,4)
+            "Chocolate with the choco and is very Late":
+                $ resource_manager.food_down_level_up(5,5)
+            "Romanian styled Mulch":
+                $ resource_manager.food_down_level_up(4,7)
+            "Vietnamease Styled Slavery":
+                $ resource_manager.food_down_level_up(0,2)
+            "Chinese Flavored Dog":
+                $ resource_manager.food_down_level_up(1,1)
+            "Indian Flavored Curry with a hint of butter chicken but without the er and chicken":
+                $ resource_manager.food_down_level_up(17,21)
+            "Poison":
+                $ resource_manager.food_down_level_up(0,-5)
+            "Rat Poison":
+                $ resource_manager.food_down_level_up(1,-10)
+            "Red-40.1 Chimkin Flavor":
+                $ resource_manager.food_down_level_up(3,13)
+            "Dominos Pizza but its just the eruption cake":
+                $ resource_manager.food_down_level_up(2,6)
+            "breadstick without cheese":
+                $ resource_manager.food_down_level_up(3,5)
+            "pretzel":
+                $ resource_manager.food_down_level_up(3,6)
+            "German Wine from the 20th Century":
+                $ resource_manager.food_down_level_up(10,10)
+            "Vietnamese Relics passed down from Thanga's Great-Great-Great-good-Great-Mediocre-bad-horrible-atriocious-good-great godfather":
+                $ resource_manager.food_down_level_up(15,10)
+            "Burnt Mac & Cheese":
+                $ resource_manager.food_down_level_up(3,2)
+            "Mac & Dog":
+                $ resource_manager.food_down_level_up(2,2)
+            "Spicy Mac & Dog":
+                $ resource_manager.food_down_level_up(4,6)
+            "cuCUMber in water":
+                $ resource_manager.food_down_level_up(1,2)
+            "Pickle Juice in a glass jar":
+                $ resource_manager.food_down_level_up(2,4)
+            "Rick's Alcohol":
+                $ resource_manager.food_down_level_up(3,4)
+            "Quakers":
+                $ resource_manager.food_down_level_up(2,5)
+            "Vegan Nuts":
+                $ resource_manager.food_down_level_up(1,0)
+            "The Glazing off of a MrBeast Fan":
+                $ resource_manager.food_down_level_up(1,1)
+            "Keyboard SKin Cells":
+                $ resource_manager.food_down_level_up(0,1)
+            "Brian's Computer Dust":
+                $ resource_manager.food_down_level_up(3,4)
+            "Vu's Basement average liquid (ppm)":
+                $ resource_manager.food_down_level_up(4,3)
+        show ch04_beast_bar_ac:
+            linear 0.5 subpixel True xpos 943 
+        pause 0.5
+        hide ch04_beast_bar_ac
+        mt "WHAT ARE THESE FLAVORS!"
+        k "these are great flavors for great moggers"
+        mt "BRO THESE AREN'T EVEN FLAVORS"
+        k "well thanks for the mog fuel"
+        show kody:
+            yrotate 0.0
+            linear 0.45 subpixel True pos (1953, 288) 
+        $ work_events += 1
+        $ chapter_four_work_event_check[rngint - 1] = True
+        jump chapter_four_office
