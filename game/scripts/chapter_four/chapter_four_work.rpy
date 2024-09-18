@@ -1,5 +1,5 @@
 # Code for the Work Section of Chapter Four
-default chapter_four_work_event_check = [False, False,]
+default chapter_four_work_event_check = [False, False, False]
 init python:
     class Resource:
         level = 0
@@ -63,6 +63,8 @@ label chapter_four_setup_resources:
         resource_manager.add_resource(customer_enjoyment)
         food = Resource("food", 100)
         resource_manager.add_resource(food)
+        money = Resource("money", 35)
+        resource_manager.add_resource(money)
     jump chapter_four_office
 
 label chapter_four_office:
@@ -98,7 +100,7 @@ screen clickable_chapter_four_register:
 
 label chapter_four_random_work:
     #$ rngint = renpy.random.randint(1,5 + int(work_event * 0.2) * 10)
-    $ rngint = 2
+    $ rngint = 3
     if chapter_four_work_event_check[rngint - 1] or rngint > 50 or rngint < 0:
         jump chapter_four_random_work
     call chapter_four_hide_office
@@ -344,6 +346,89 @@ label chapter_four_work_events():
         show kody:
             yrotate 0.0
             linear 0.45 subpixel True pos (1953, 288) 
+        mt "jesus christ"
+        $ work_events += 1
+        $ chapter_four_work_event_check[rngint - 1] = True
+        jump chapter_four_office
+    label ch04_event_3:
+        scene ch04_ice_cream_interior with dissolve:
+            subpixel True xzoom 1.18 zoom 1.64
+        show matt2 with moveinleft:
+            pos (513, 151)  zoom 0.75
+        mt "oh god I wonder who is gonna come in next"
+        show ch04_toni with dissolve:
+            subpixel True crop_relative True pos (1920, 27) zoom 0.9 crop (0.0, -0.07, 1.0, 1.0) matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) yrotate 180.0 
+            linear 0.45 subpixel True xpos 1110 
+        toni "yooooooo matt"
+        toni "what is up my f#gg0t!"
+        mt "YOOOOOOOOOOOOOOOOOOOOO"
+        mt "YOU CAN'T SAY THAT THAT IS HOMOPHOBIC!"
+        call auto_advance(1)
+        toni "i dont care ni-"
+        mt "NO NO NO NO"
+        call auto_advance(0)
+        mt "IMA KICK YOU OUT IF YOU KEEP SLURRING"
+        toni "awwwwww"
+        toni "you gay or something?"
+        mt "yeah just keep going with the homophobia"
+        mt "it feels like thang"
+        toni "yeah man"
+        toni "I taught thang the ways of the idubbbz fanboy"
+        mt "mmmmmmmmm"
+        mt "so uh"
+        mt "What do you want exactly?"
+        show gun1:
+            subpixel True pos (931, 331) yrotate 180.0 
+        #TODO: Play audio here
+        toni "I want the money in the register"
+        show matt2:
+            linear 0.345 subpixel True pos (325, 151) 
+        mt "DUDE"
+        mt "YOU ARE ROBBING AN ICE CREAM STORE FOR MONEY!"
+        mt "WHY NOT GO TO THE BANK?!?"
+        toni "everyone expects a bank robbery"
+        toni "no one expects a ice cream robbery"
+        toni "so make it snappy buddy"
+        menu:
+            "Give Toni All The Money":
+                mt "uh here is the money man!"
+                "You Gave Toni all of your money!"
+                $ money.set_level(0)
+            "Give Toni All The Ice Cream":
+                mt "Uh here is the ice cream man"
+                "You Gave Toni all of the ice cream supplies!"
+                $ food.set_level(0)
+            "Give Toni Nothing":
+                mt "NAH FUCK YOU"
+                mt "I AINT GIVING SHIT"
+                toni "well man"
+                toni "Guess you gotta go"
+                show gunflare:
+                    subpixel True  pos (466, 95) zoom 0.69 
+                $ fnaf_shoot(10)
+                jump game_over
+        toni "alright thanks man for the loot"
+        toni "I think I can buy my citizenship with this"
+        hide gun1
+        toni "I'll see you later and I will be telling my fellow romanians about this hotspot!"
+        show ch04_toni:
+            yrotate 0.0
+            linear 0.456 subpixel True xpos 2046 
+        mt "WHATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+        show matt2:
+            linear 0.2 pos (513, 151)  zoom 0.75
+        mt "DID I JUST GET FUCKING ROBBED"
+        "Yeah I guess you did"
+        mt "BRIANS GONNA KILL ME!"
+        "maybe we can earn it back and he wont notice?"
+        mt "HOW IS BRIAN NOT GONNA NOTICE WE GOT ROBEBD"
+        "well if we got cameras then we are good potentially..."
+        mt "NO THERE IS NO CAMERAS"
+        mt "WE SOLD THEM BECAUSE KIDS WERE SPITTING FOOD AT THEM"
+        "oh"
+        mt "guess I just gotta earn ALL OF THAT FUCKING MONEY BACK"
+        mt "GREAT!"
+        "good luck man!"
         $ work_events += 1
         $ chapter_four_work_event_check[rngint - 1] = True
         jump chapter_four_office
