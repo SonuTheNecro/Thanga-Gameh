@@ -747,6 +747,11 @@ label chapter_three_ending:
             linear 0.45 xpos 2070
         show sonuthenecro:
             linear 0.45 subpixel True xpos 1800 
+        
+        camera:
+            linear 0.5 subpixel True pos (-1080, -999) zoom 2.07 
+
+
         "..."
         "..."
         "..."
@@ -756,4 +761,5 @@ label chapter_three_ending:
             subpixel True pos (935, 655) zoom 0.06
         play sound "audio/sound/chapter_three/come_back.ogg"
         questionmark "I always come back"
+        $ reset_camera(1)
     return

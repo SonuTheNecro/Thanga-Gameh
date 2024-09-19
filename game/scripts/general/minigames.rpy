@@ -172,7 +172,8 @@ label minigame_puppet:
                 jump return_to_main_from_minigames
     label minigame_puppet_timers:
         screen minigame_puppet_cupcakes(xpos,ypos,zoom,count):
-            timer -(9.5 / math.log(61,10)) * math.log(-count+61,10) + 5 action Jump("minigame_puppet_death")
+            modal True
+            timer (4.75 / math.log(61,10)) * math.log(-count+61,10) + 5 action Jump("minigame_puppet_death")
             imagebutton:
                 pos (xpos,ypos) at Transform(zoom = zoom)
                 idle "images/chapter_three/ch03_giftbox.png"
@@ -181,6 +182,7 @@ label minigame_puppet:
                     #SetVariable("count2", count2-1),
                     Play("sound","audio/sound/chapter_three/the_voices.ogg"),
                     Hide("minigame_puppet_cupcakes"),
+                    Pause(0.0)
                     #Return()
                 ]
         screen minigame_puppet_timer_event(key_input, xalign1, yalign1):
