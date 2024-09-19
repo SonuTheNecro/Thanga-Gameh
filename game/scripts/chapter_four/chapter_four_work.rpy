@@ -1,5 +1,5 @@
 # Code for the Work Section of Chapter Four
-default chapter_four_work_event_check = [False, False, False]
+default chapter_four_work_event_check = [False, False, False, False, False, False]
 init python:
     class Resource:
         level = 0
@@ -100,7 +100,7 @@ screen clickable_chapter_four_register:
 
 label chapter_four_random_work:
     #$ rngint = renpy.random.randint(1,5 + int(work_event * 0.2) * 10)
-    $ rngint = 3
+    $ rngint = 4
     if chapter_four_work_event_check[rngint - 1] or rngint > 50 or rngint < 0:
         jump chapter_four_random_work
     call chapter_four_hide_office
@@ -429,6 +429,102 @@ label chapter_four_work_events():
         mt "guess I just gotta earn ALL OF THAT FUCKING MONEY BACK"
         mt "GREAT!"
         "good luck man!"
+        $ work_events += 1
+        $ chapter_four_work_event_check[rngint - 1] = True
+        jump chapter_four_office
+    label ch04_event_4:
+        scene ch04_ice_cream_interior with dissolve:
+            subpixel True xzoom 1.18 zoom 1.64
+        show matt2 with moveinleft:
+            pos (513, 151)  zoom 0.75
+        mt "oh god I wonder who is gonna come in next"
+        show ch04_toni with dissolve:
+            subpixel True crop_relative True pos (1920, 27) zoom 0.9 crop (0.0, -0.07, 1.0, 1.0) matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) yrotate 180.0 
+            linear 0.45 subpixel True xpos 1110
+        call auto_advance(1)
+        toni "YO WHAT IS GOOD MY NI-"
+        mt "NO!"
+        toni "MY NI-"
+        mt "NO!"
+        toni "YOU FA!"
+        mt "NO!"
+        toni "YOU RE-"
+        call auto_advance(0)
+        mt "NO NO NO NO"
+        mt "NONE OF THESE SLURS!"
+        toni "what?"
+        toni "why?"
+        mt "we need to keep a pg-13 rating"
+        toni "this isn't a movie man"
+        mt "you wouldn't get it"
+        $ renpy.pause(2.0, hard = True)
+        mt "sooooo what can I get you"
+        toni "some weed"
+        mt "bro its an ice cream store"
+        toni "I NEED THE WEEEEDDDDDDDD!"
+        mt "uh i got marijuana"
+        toni "what kind?!?"
+        menu:
+            "Medical":
+                $ customer_enjoyment.plus(5)
+            "Medicinal":
+                $ customer_enjoyment.plus(4)
+            "Meditation":
+                $ customer_enjoyment.plus(3)
+            "Straight up Illegal":
+                $ customer_enjoyment.plus(2)
+        show ch04_marijuana with dissolve:
+            subpixel True pos (541, 355) 
+            linear 0.345 subpixel True pos (892, 355) 
+        pause 0.345
+        toni "yo thanks for the stick-up man"
+        mt "yeah..."
+        mt "your welcome..."
+        toni "whats wrong man?"
+        mt "I don't really like these drugs"
+        toni "nah its the shit"
+        toni "you should do some"
+        mt "i dont think i should"
+        toni "i didnt know we had a loser like thang!"
+        mt "WHATTTTTTTTTTT"
+        mt "I am not a loser!!1111!!!"
+        mt "I AM A WINNER"
+        mt "GIVE IT TO ME"
+        show ch04_marijuana:
+            linear 0.345 subpixel True pos (541, 355) 
+        pause 0.345
+        
+        window auto hide
+        camera:
+            subpixel True 
+            matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(45.0) 
+            linear 0.13 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(75.0) 
+            linear 0.15 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(105.0) 
+            linear 0.14 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(130.0) 
+            linear 0.17 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(160.0) 
+            linear 0.09 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(190.0) 
+            linear 0.14 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(220.0) 
+            linear 0.13 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(260.0)
+            linear 0.13 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(290.0)
+            linear 0.13 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(320.0)
+            linear 0.13 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(360.0)
+            linear 0.13 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(320.0)
+            linear 0.13 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(290.0)
+            linear 0.13 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(260.0)
+            linear 0.14 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(180.0)
+            linear 0.14 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(140.0)
+            linear 0.14 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(100.0)
+            linear 0.14 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(60.0)
+            linear 0.14 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(30.0)
+            linear 0.14 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0)
+            repeat 
+        window auto show
+        mt "WHAT"
+        mt "I SEE SO MANY COLORS WHATTTTTTTTTTTTTTTT"
+        toni "yeah its great man"
+        "WHAT HAVE YOU GUYS DONE?!?"
+        mt "MAN IM TRIPPING"
+        $ reset_camera(0)
         $ work_events += 1
         $ chapter_four_work_event_check[rngint - 1] = True
         jump chapter_four_office
