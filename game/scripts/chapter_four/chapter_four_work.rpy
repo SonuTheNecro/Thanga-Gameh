@@ -99,13 +99,15 @@ screen clickable_chapter_four_register:
 
 
 label chapter_four_random_work:
-    #$ rngint = renpy.random.randint(1,5 + int(work_event * 0.2) * 10)
-    $ rngint = 4
+    $ rngint = renpy.random.randint(1,4)
+    #$ rngint = 5
+    if work_events == 4:
+        $ rngint = 5
     if chapter_four_work_event_check[rngint - 1] or rngint > 50 or rngint < 0:
         jump chapter_four_random_work
     call chapter_four_hide_office
     jump expression "ch04_event_" + str(rngint)
-
+#TODO: Add a lot more visual flair to each and every event so they are prime neeto
 label chapter_four_work_events():
     label ch04_event_1:
         scene ch04_ice_cream_interior with dissolve:
@@ -426,7 +428,7 @@ label chapter_four_work_events():
         mt "NO THERE IS NO CAMERAS"
         mt "WE SOLD THEM BECAUSE KIDS WERE SPITTING FOOD AT THEM"
         "oh"
-        mt "guess I just gotta earn ALL OF THAT FUCKING MONEY BACK"
+        mt "guess I just gotta earn ALL OF THAT FUCKING MONEY BACK" #TODO: This kinda sort, make this longer
         mt "GREAT!"
         "good luck man!"
         $ work_events += 1
@@ -525,6 +527,72 @@ label chapter_four_work_events():
         "WHAT HAVE YOU GUYS DONE?!?"
         mt "MAN IM TRIPPING"
         $ reset_camera(0)
+        $ work_events += 1
+        $ chapter_four_work_event_check[rngint - 1] = True
+        jump chapter_four_office
+    label ch04_event_5:
+        scene ch04_ice_cream_interior with dissolve:
+            subpixel True xzoom 1.18 zoom 1.64
+        show matt2:
+            subpixel True pos (-202, 200) zoom 0.68 
+            linear 0.456 subpixel True  pos (536, 200) zoom 0.68 
+        pause 0.5
+        mt "I am so done with all of these weirdos coming to work"
+        mt "wonder who is coming to work"
+        questionmark "I would like to place an order..."
+        mt "uh sure"
+        mt "where are you sir and or madam?"
+        show cody with dissolve: #TODO: This sequence could be better
+            subpixel True pos (1186, 213) zoom 1.31 
+        c "OF VIOLENCE!"
+        mt "..."
+        c "that was cooler in my head"
+        show matt2:
+            linear 0.123 subpixel True pos (-15, 211) 
+        pause 0.2
+        mt "get away from me you weirdo"
+        c "why so..."
+        
+        show cody:
+            linear 0.2 subpixel True pos (271, 15) zoom 4.52  #TODO: make a cody jumpscare
+        $ renpy.pause(hard = True, delay = 0.2)
+        c "SCARED?!?"
+        mt "WTF"
+        mt "WHAT DO YOU WANT FROM ME?"
+        show cody:
+            linear 0.2 subpixel True pos (890, 680) zoom 0.49 
+        c "does this make you more comfortable?"
+        c "I need some questions answered and you are my best bet?"
+        mt "NAH"
+        
+        window auto hide
+        show matt2:
+            subpixel True 
+            pos (-15, 211) 
+            linear 0.20 pos (771, 215) 
+            linear 0.15 pos (776, 0) 
+            linear 0.10 pos (803, 256) 
+            linear 0.10 pos (843, 3)
+        with Pause(0.5)
+        hide cody
+        show matt2:
+            subpixel True
+            linear 0.15 pos (845, 223) 
+            linear 0.18 pos (890, 0) 
+            linear 0.19 pos (870, 183) 
+            linear 0.23 pos (1193, 225) 
+        with Pause(0.9)
+        show matt2:
+            pos (1193, 225) 
+        window auto show
+        mt "gottem"
+        mt "WAIT?!?"
+        mt "THAT WAS THE FINAL BOSS?!?!"
+        mt "HOW DID THANG AND CODY STRUGGLE WITH THIS BOZO?!?"
+        "I guess?"
+        "I think its.... over?"
+        # TODO: Roll credits Fake Ending
+        $ renpy.quit()
         $ work_events += 1
         $ chapter_four_work_event_check[rngint - 1] = True
         jump chapter_four_office
