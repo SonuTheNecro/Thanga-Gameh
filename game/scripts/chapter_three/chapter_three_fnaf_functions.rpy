@@ -183,7 +183,7 @@ label chapter_three_fnaf_restore_screens(location):
         elif Chica.get_happiness() == 1 and Chica.get_mission() and not chapter_three_fnaf_money[6]:
             show screen clickable_chapter_three_chica2_1bill(635,518,0.4,6)
     elif location == 12:
-        if Freddy.get_mission() and Freddy.get_happiness() == 0 and count == 7 and not chapter_three_item_check("chapter_three_gun"):
+        if Freddy.get_mission() and Freddy.get_happiness() == 0 and freddy_count == 7 and not chapter_three_item_check("chapter_three_gun"):
             show screen clickable_chapter_three_freddy1_gun
         if Chica.get_mission() and not chapter_three_item_check("chapter_three_garlic"):
             show screen clickable_chapter_three_chica1_garlic
@@ -543,7 +543,7 @@ label chapter_three_freddy:
         freddy "please hurry :("
         freddy "I am big sad"
         k "ok man :)"
-    elif Freddy.get_happiness() == 0 and not Freddy.get_mission() and count >= 5 and not chapter_three_item_check("chapter_three_pills"):
+    elif Freddy.get_happiness() == 0 and not Freddy.get_mission() and freddy_count >= 5 and not chapter_three_item_check("chapter_three_pills"):
         freddy "what do you want from me"
         freddy ":("
         k "You look super sad man"
@@ -568,9 +568,9 @@ label chapter_three_freddy:
         "Misison Unlocked: Make Freddy happy?"
         $ Freddy.set_mission(True)
         k "idk either man"
-    elif Freddy.get_happiness() == 0 and not Freddy.get_mission() and count < 5 and not count == 0:
+    elif Freddy.get_happiness() == 0 and not Freddy.get_mission() and freddy_count < 5 and not freddy_count == 0:
         freddy "leave me alone man"
-        $ count += 1
+        $ freddy_count += 1
     elif Freddy.get_happiness() == 0 and not Freddy.get_mission():
         k "omg its the freddy five nights o mai gahd"
         freddy "..."
@@ -583,7 +583,7 @@ label chapter_three_freddy:
         k "fnaf freddy"
         freddy "Leave me alone..."
         k "ok man :("
-        $ count = 1
+        $ freddy_count = 1
     #call chapter_three_fnaf_restore_screens(location)
     jump ch03_fnaf_1a
 label chapter_three_foxy:
@@ -1573,7 +1573,7 @@ label chapter_three_freddy_mission1:
     call chapter_three_fnaf_hide_screens
     show ch03_fnaf_pills:
         subpixel True pos (438, 88) xzoom 1.0 zoom 0.16
-    if count == 7 and chapter_three_item_check("chapter_three_gun"):
+    if freddy_count == 7 and chapter_three_item_check("chapter_three_gun"):
         show ch03_fnaf_bb with dissolve:
             subpixel True pos (888, 116) zoom 1.95
         balloon "FUCK OFF YOU BITCH!"
@@ -1600,13 +1600,13 @@ label chapter_three_freddy_mission1:
         play sound "audio/sound/chapter_three/item_pickup.ogg"
         "You have obtained pills!"
         $ chapter_three_obtain_item("chapter_three_pills")
-    elif count == 7 and not chapter_three_item_check("chapter_three_gun"):
+    elif freddy_count == 7 and not chapter_three_item_check("chapter_three_gun"):
         hide ch03_fnaf_pills
         show ch03_fnaf_bb with dissolve:
             subpixel True pos (888, 116) zoom 1.95
         balloon "FUCK OFF YOU BITCH ASS!"
         k "k man leave me alone"
-    elif count == 5:
+    elif freddy_count == 5:
         k "dang these pills are just so open"
         k "Wonder if these things will help with my mewing and mogging streak"
         "We have to stop..."
@@ -1641,7 +1641,7 @@ label chapter_three_freddy_mission1:
         balloon "FUCK OFFFFFFFFFFFFFFFFFFF"
         k "so what do you want for those pills"
         balloon "I DO NOT WANT ANYTHING FUCK OFF!"
-        $ count = 7
+        $ freddy_count = 7
     call chapter_three_fnaf_restore_screens(location)
     return
     screen clickable_chapter_three_freddy1_gun:
