@@ -193,24 +193,47 @@ label chapter_two_march2:
     t "yea it sucks"
     march "We will definitely find whoever did this!"
     t "did you find any clues besides his time of death?"
-    #TODO:add clue
+    march "Yea, there was one thing I noticed that was weird"
+    t "what was it?"
+    march "There are no blood stains anywhere"
+    t "couldnt they have just cleaned it up?"
+    march "Yes, but there should have been some kind of residue or something left behind"
+    march "But everything around Ocho is spotless"
+    t "Does that mean he was killed somewhere else?"
+    march "That's what I'm thinking"
+    march "But I haven't checked any of the other rooms yet"
+    march "So I'm not sure where it could have been done"
+    t "guess ill have to do it"
+    #TODO:make clue picture
     if choice == 0:
         $ count += 1
     $ choice += 1
-    return
+    jump chapter_two_death_repeat
   
 label chapter_two_phoenix2:
     hide screen clickable_chapter_two_march2
     hide screen clickable_chapter_two_phoenix2
     t "hey phoenix, did you find anything out?"
     pw "Yeah, I discovered that there was a puncture wound in the side of his neck"
-    t "yea i knew that it was in the monokuma file"
+    t "yea i knew that, it was in the monokuma file"
     t "what else?"
-    #TODO:add clue
+    pw "I found some liquid under this bench"
+    t "damn who pissed under there?"
+    t "it was probably kody"
+    pw "No, I think it's just water"
+    t "thats boring"
+    t "couldnt it just be from someone using the pool?"
+    pw "Don't you remember?"
+    pw "The pool is closed, so no one could have gone in"
+    t "then what about the sinks in the back?"
+    pw "There's a chance, but it's unlikely"
+    pw "I would just keep this in mind"
+    t "whatever you say bro"
+    #TODO:make clue picture
     if count2 == 0:
         $ count += 1
     $ count2 += 1
-    return
+    jump chapter_two_death_repeat
 
 label chapter_two_show_character_lists:
     label chapter_two_all_except_cody:
@@ -322,7 +345,8 @@ label chapter_two_restore_screens(location):
         if count == 3:
             call chapter_two_ocho_dead
     elif location == 3:
-        pass
+        if count == 4:
+            call chapter_two_heavy_clue
     elif location == 4:
         if count == 1:
             call chapter_two_intro_meeting
@@ -663,8 +687,53 @@ label chapter_two_events:
                 $ renpy.pause()
 
         label chapter_two_after_clue1:
+            pause 1.0
+            t "i dont think im gonna find anything that they cant"
+            t "guess its time to look for clues somewhere else"
+            $ count = 4
+            call chapter_two_restore_movement(2)
+
+        label chapter_two_heavy_clue:
+            show thanga2 with dissolve:
+                subpixel True pos (538, 240) 
+            show heavy_tf2 with dissolve:
+                subpixel True pos (1120, 223) zoom 0.45 
+            pause 1.0
+            t "what are you doing here heavy"
+            t "i thought you went to look for clues"
+            heavy "heavy no can run far"
+            heavy "get out of breath easy"
+            t "well have you found anything so far?"
+            heavy "still out of breath, no time to look"
+            t "alright well should i come back later?"
+            heavy "no no, heavy find clue now"
+            show heavy_tf2:
+                zoom 0.45 subpixel True pos (1120, 223)
+                linear 0.3 xpos 1848 ypos 1020
+            pause 3.0
+            show heavy_tf2:
+                zoom 0.45 subpixel True pos (1848, 1020)
+                linear 0.3 xpos 1120 ypos 223
+            heavy "alright heavy found clue"
+            t "how"
+            t "and i thought you were out of breath"
+            heavy "heavy find lopunny plush with hole in back"
+            t "..."
+            t "thats just brians"
+            t "i dont think that is a clue"
+            t "also why was that here?"
+            heavy "ok then heavy search for more clues"
+            show heavy_tf2:
+                zoom 0.45 subpixel True pos (1120, 223)
+                linear 0.2 xpos 1848 ypos 1020
+            pause 5.0
+            show heavy_tf2:
+                zoom 0.45 subpixel True pos (1848, 1020)
+                linear 0.2 xpos 1120 ypos 223
+            heavy "ok heavy find another clue"
+            t "it better be one this time"
+            t "and how were you running faster?"
             "test"
-            #TODO:more dialogue here
+            #TODO: add more dialogue and clue
         
-        $ count = 4
         return
