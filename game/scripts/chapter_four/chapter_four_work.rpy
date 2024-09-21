@@ -591,8 +591,12 @@ label chapter_four_work_events():
         mt "HOW DID THANG AND CODY STRUGGLE WITH THIS BOZO?!?"
         "I guess?"
         "I think its.... over?"
+        jump chapter_four_early_ending_1
         # TODO: Roll credits Fake Ending
-        $ renpy.quit()
+        if not persistent.secret0:
+            $ renpy.quit()
+        
+        "test"
         $ work_events += 1
         $ chapter_four_work_event_check[rngint - 1] = True
         jump chapter_four_office
