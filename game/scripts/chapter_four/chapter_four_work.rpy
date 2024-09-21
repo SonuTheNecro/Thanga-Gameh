@@ -1,97 +1,5 @@
 # Code for the Work Section of Chapter Four
 default chapter_four_work_event_check = [False, False, False, False, False, False, False, False]
-init python:
-    class Event:
-        nid : int
-        diff : int
-        desc : str
-        def __init__(self, nid : int, diff : int, desc : str):
-            self.nid = nid
-            self.diff = diff
-            self.desc = desc
-        def get_id(self):
-            return self.nid
-        def get_diff(self):
-            return self.diff
-        def get_desc(self):
-            return self.desc
-
-        def complete(self):
-            setattr(renpy.store, 'chapter_four_work_event_check[self.get_id() - 1]', True)
-            setattr(renpy.store, 'work_events',work_events + 1)
-            renpy.Jump("chapter_four_office")
-        def print_info(self):
-            return f"Event {self.get_id()}: Difficulty {self.get_diff()}"
-    class EventHandler:
-        def __init__(self):
-            self.events = {}
-        def add_event(self, added_event : Event):
-            self.events[added_event.get_id()] = added_event
-        def pick_three_events(self, limit : int):
-            while True:
-                rngint = random.randint(1, limit)
-                if not chapter_four_work_event_check[rngint - 1]:
-                    break
-            while True:
-                rngint1 = random.randint(1, limit)
-                if not chapter_four_work_event_check[rngint1 - 1]:
-                    break
-            while True:
-                rngint2 = random.randint(1, limit)
-                if not chapter_four_work_event_check[rngint2 - 1]:
-                    break
-            check = renpy.display_menu([(events[rngint - 1].print_info,  events[rngint-1].get_id), 
-                                        (events[rngint1 - 1].print_info, events[rngint1-1].get_id),
-                                        (events[rngint2 - 1].print_info, events[rngint2-1].get_id)])
-            Renpy.Jump(f"ch04_event_{check}")
-    class Resource:
-        level = 0
-        def __init__(self, name, level = None):
-            self.name = name
-            self.level = level
-        def get_name(self):
-            return self.name
-        def get_level(self):
-            return self.level
-        def set_level(self, new_level : int):
-            self.level = new_level
-        def decrement(self):
-            self.level -= 1
-        def increment(self):
-            self.level += 1
-        def plus(self, add):
-            self.level += add
-        def minus(self, sub):
-            self.level -= sub
-
-    class ResourceHandler:
-        def __init__(self):
-            self.resources = {}
-            
-        def add_resource(self, added_resource : Resource):
-            self.resources[added_resource.get_name()] = added_resource
-        
-        def set_all_levels(self, new_level: int):
-            for resource in self.resources.values():
-                cases = {
-                    -1 :  resource.decrement,
-                    101 : resource.increment
-                }
-                try:
-                    cases[new_level]()
-                except:
-                    resource.set_level(new_level)
-        def get_total_levels(self):
-            total = 0
-            for resource in self.resources.values():
-                total += resource.get_level()
-            return total
-        def print_all(self):
-            for resource in self.resources.values():
-                print(str(resource.get_name()) + ":" + str(resource.get_level()))
-        def food_down_level_up(self,nfood,nlevel):
-            self.resources['food'].plus(nfood)
-            self.resources['customer_enjoyment'].minus(nlevel)
 
 label chapter_four_hide_office:
     hide screen clickable_chapter_four_register
@@ -108,11 +16,17 @@ label chapter_four_setup_resources:
         money = Resource("money", 35)
         resource_manager.add_resource(money)
 
+        event_manager = EventHandler()
         event_1 = Event(1, 1, "Serve an Old Friend")
         event_2 = Event(2, 1, "Help a sad fool")
         event_3 = Event(3, 4, "A New Challenger Appears!")
         event_4 = Event(4, 1, "Stay High!")
         event_5 = Event(5, 1, "HIM!")
+        event_manager.add_event(event_1)
+        event_manager.add_event(event_2)
+        event_manager.add_event(event_3)
+        event_manager.add_event(event_4)
+        event_manager.add_event(event_5)
         
     jump chapter_four_office
 
@@ -169,6 +83,7 @@ label chapter_four_random_work:
     $ event_option_2 = str(f"{eval('event_' + str(rngint1)).print_info()}")
     $ event_option_3 = str(f"{eval('event_' + str(rngint2)).print_info()}")
     call chapter_four_hide_office
+    $ event_manager.pick_three_events(4)
     #menu:
         #f"{event_option_1}":
             #jump expression "ch04_event_" + str(rngint)

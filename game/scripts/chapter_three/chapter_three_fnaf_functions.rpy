@@ -1498,7 +1498,7 @@ label chapter_three_bonnie_mission3:
             
             bar:
                 value time
-                range 5.85 - (rngint / 5)
+                range 6.25 - (rngint / 5)
                 xalign 0.5
                 xmaximum 100
                 

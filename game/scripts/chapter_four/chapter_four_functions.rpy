@@ -22,7 +22,7 @@ init python:
         def complete(self):
             setattr(renpy.store, 'chapter_four_work_event_check[self.get_id() - 1]', True)
             setattr(renpy.store, 'work_events',work_events + 1)
-            renpy.Jump("chapter_four_office")
+            renpy.jump("chapter_four_office")
         def print_info(self):
             return f"Event {self.get_id()}: Difficulty {self.get_diff()}"
     class EventHandler:
@@ -43,10 +43,10 @@ init python:
                 rngint2 = random.randint(1, limit)
                 if not chapter_four_work_event_check[rngint2 - 1]:
                     break
-            check = renpy.display_menu([(events[rngint - 1].print_info,  events[rngint-1].get_id), 
-                                        (events[rngint1 - 1].print_info, events[rngint1-1].get_id),
-                                        (events[rngint2 - 1].print_info, events[rngint2-1].get_id)])
-            Renpy.Jump(f"ch04_event_{check}")
+            check = renpy.display_menu([(self.events[rngint].print_info(),  self.events[rngint].get_id()), 
+                                        (self.events[rngint1].print_info(), self.events[rngint1].get_id()),
+                                        (self.events[rngint2].print_info(), self.events[rngint2].get_id())])
+            renpy.jump(f"ch04_event_{check}")
     class Resource:
         level = 0
         def __init__(self, name, level = None):
