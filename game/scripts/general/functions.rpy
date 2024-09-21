@@ -106,6 +106,7 @@ label game_over_2:
     play sound "audio/sound/general/police_siren.ogg" loop
     questionmark "You are under-arrest!"
     questionmark "President Cody's policy will NOT be disobeyed!"
+    window auto hide
     $ renpy.pause(1.0, hard = True)
     scene ice_game_over with fade:
         subpixel True

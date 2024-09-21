@@ -115,6 +115,7 @@ label chapter_four_work_events():
         t "but just because you have one weird day doesn't mean you are suddenly the protagonist of a book"
         mt "I AM THOUGH!!!!!!!!"
         t "idgaf"
+        window auto hide
         $ renpy.pause(2.0, hard = True)
         mt "..."
         mt "fuck you"
@@ -204,6 +205,7 @@ label chapter_four_work_events():
         "its sunday"
         mt "right..."
         k "it is indeed sunday man"
+        window auto hide
         $ renpy.pause(2.0, hard = True)
         mt "YOU HEARD HIM"
         mt "IM NOT SCHIZO"
@@ -435,6 +437,7 @@ label chapter_four_work_events():
         mt "we need to keep a pg-13 rating"
         toni "this isn't a movie man"
         mt "you wouldn't get it"
+        window auto hide
         $ renpy.pause(2.0, hard = True)
         mt "sooooo what can I get you"
         toni "some weed"
@@ -531,6 +534,7 @@ label chapter_four_work_events():
         
         show cody:
             linear 0.2 subpixel True pos (271, 15) zoom 4.52  #TODO: make a cody jumpscare
+        window auto hide
         $ renpy.pause(hard = True, delay = 0.2)
         c "SCARED?!?"
         mt "WTF"

@@ -404,6 +404,7 @@ label chapter_three:
             count = 0
             count2 = 0
             location = 1
+            freddy_count = 0
             Freddy = Animatronic("Freddy Fazgyatt")
             Bonnie = Animatronic("Bonnie Looksmaxxer")
             Chica = Animatronic("Chica Fanum Taxxer")

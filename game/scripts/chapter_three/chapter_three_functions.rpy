@@ -737,12 +737,14 @@ label chapter_three_mailman:
     usps "anyways deliver this first house"
     show ch03_usps_van:
         linear 1.1 subpixel True pos (820, 671) zoom 2.05
+    window auto hide
     $ renpy.pause(1.1, hard = True)
     usps "Drop this package at the front door"
     usps "Super Simple"
     show kody:
         subpixel True pos (1355, 830) zoom 0.34 
         linear 0.556 subpixel True pos (1735, 665) zoom 0.34 
+    window auto hide
     $ renpy.pause(0.556, hard = True)
     k "Alright, I just drop the package here and now I am done"
     k "this is pretty easy"
@@ -753,11 +755,13 @@ label chapter_three_mailman:
     show kody:
         yrotate 0.0
         linear 0.445 subpixel True pos (1355, 830) zoom 0.34
+    window auto hide
     $ renpy.pause(0.445, hard = True)
     hide kody
     usps "alright now go next house"
     show ch03_usps_van:
         linear 0.8 subpixel True pos (1286, 915) 
+    window auto hide
     $ renpy.pause(1.0, hard = True)
     scene ch03_usps_suburb2:
         subpixel True
@@ -770,17 +774,20 @@ label chapter_three_mailman:
     k "got it sir!"
     show ch03_usps_van:
         linear 1.2 subpixel True pos (935, 726) zoom 1.29 yrotate 180.0
+    window auto hide
     $ renpy.pause(1.2, hard = True)
     usps "Drop this giftbox at the front door"
     show kody:
         subpixel True pos (1303, 781) zoom 0.32 
         linear 0.35 subpixel True pos (1668, 696) 
+    window auto hide
     $ renpy.pause(0.35, hard = True)
     k "Damn, I could get used to this"
     show kody:
         yrotate 180.0
     show ch03_usps_van:
         linear 0.1 subpixel True pos (2560, 1035) 
+    window auto hide
     $ renpy.pause(0.1, hard = True)
     k "HEY WAIT FOR ME!"
     k "WHERE ARE YOU GOING"
@@ -788,6 +795,7 @@ label chapter_three_mailman:
     show kody:
         yrotate 0
         linear 2.221 subpixel True pos (2590, 1101) 
+    window auto hide
     $ renpy.pause(2.1, hard = True)
     scene ch03_usps_dog:
         subpixel True xpos -18 xzoom 1.88 yzoom 1.06 zoom 1.02 
@@ -826,6 +834,7 @@ label chapter_three_mailman:
             $ confirm_menu_no_jump("chapter_three_usps_dog")
             show kody:
                 linear 0.556 subpixel True pos (641, 188)
+            window auto hide
             $ renpy.pause(1.5, hard = True)
             k "goodbye bastard"
             play sound "audio/sound/chapter_three/falcon_kick.ogg"
