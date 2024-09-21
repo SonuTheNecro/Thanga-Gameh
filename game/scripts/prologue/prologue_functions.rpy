@@ -145,13 +145,13 @@ label chapter_zero_lose:
     
     if choice1 == 1:
         $ choice1 = "Rock"
-        $ rngint = "Scissors"
+        $ rngint = "Paper"
     elif choice1 == 2:
         $ choice1 = "Paper"
-        $ rngint = "Rock"
+        $ rngint = "Scissors"
     elif choice1 == 3:
         $ choice1 = "Scissors"
-        $ rngint = "paper"
+        $ rngint = "Rock"
     hide hands1
     hide chapter_zero_rhand
     "You picked [choice1] which loses to Cody's [rngint]!"
