@@ -413,7 +413,6 @@ label chapter_three_jewel_osco:
         jc "omg really?"
         k "yes"
         jc "This made my day thanks man"
-        hide ch03_woman
         k "ez rizz"
         menu:
             "Can I get yo number?":
@@ -428,6 +427,7 @@ label chapter_three_jewel_osco:
                 jc "and you are weird"
                 jc "and this is harassment!"
                 k "damn"
+        hide ch03_woman
         $ chapter_three_jewels_mark(4)
         #call chapter_three_jewel_restore_buttons(location)
         $ count2 += 1

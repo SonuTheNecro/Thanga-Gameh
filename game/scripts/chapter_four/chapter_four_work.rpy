@@ -77,20 +77,11 @@ label chapter_four_random_work:
 
 
     $ rngint = 5
-    #if chapter_four_work_event_check[rngint - 1] or rngint > 50 or rngint < 0:
-        #jump chapter_four_random_work
     $ event_option_1 = str(f"{eval('event_' + str(rngint)).print_info()}")
     $ event_option_2 = str(f"{eval('event_' + str(rngint1)).print_info()}")
     $ event_option_3 = str(f"{eval('event_' + str(rngint2)).print_info()}")
     call chapter_four_hide_office
     $ event_manager.pick_three_events(4)
-    #menu:
-        #f"{event_option_1}":
-            #jump expression "ch04_event_" + str(rngint)
-        #f"{event_option_2}":
-            #jump expression "ch04_event_" + str(rngint1)
-        #f"{event_option_3}":
-            #jump expression "ch04_event_" + str(rngint2)
     jump expression "ch04_event_" + str(rngint)
 #TODO: Add a lot more visual flair to each and every event so they are prime neeto
 label chapter_four_work_events():
