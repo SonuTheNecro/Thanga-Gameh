@@ -1,6 +1,49 @@
 # Code for the Work Section of Chapter Four
 default chapter_four_work_event_check = [False, False, False, False, False, False, False, False]
 init python:
+    class Event:
+        nid : int
+        diff : int
+        desc : str
+        def __init__(self, nid : int, diff : int, desc : str):
+            self.nid = nid
+            self.diff = diff
+            self.desc = desc
+        def get_id(self):
+            return self.nid
+        def get_diff(self):
+            return self.diff
+        def get_desc(self):
+            return self.desc
+
+        def complete(self):
+            setattr(renpy.store, 'chapter_four_work_event_check[self.get_id() - 1]', True)
+            setattr(renpy.store, 'work_events',work_events + 1)
+            renpy.Jump("chapter_four_office")
+        def print_info(self):
+            return f"Event {self.get_id()}: Difficulty {self.get_diff()}"
+    class EventHandler:
+        def __init__(self):
+            self.events = {}
+        def add_event(self, added_event : Event):
+            self.events[added_event.get_id()] = added_event
+        def pick_three_events(self, limit : int):
+            while True:
+                rngint = random.randint(1, limit)
+                if not chapter_four_work_event_check[rngint - 1]:
+                    break
+            while True:
+                rngint1 = random.randint(1, limit)
+                if not chapter_four_work_event_check[rngint1 - 1]:
+                    break
+            while True:
+                rngint2 = random.randint(1, limit)
+                if not chapter_four_work_event_check[rngint2 - 1]:
+                    break
+            check = renpy.display_menu([(events[rngint - 1].print_info,  events[rngint-1].get_id), 
+                                        (events[rngint1 - 1].print_info, events[rngint1-1].get_id),
+                                        (events[rngint2 - 1].print_info, events[rngint2-1].get_id)])
+            Renpy.Jump(f"ch04_event_{check}")
     class Resource:
         level = 0
         def __init__(self, name, level = None):
@@ -8,7 +51,6 @@ init python:
             self.level = level
         def get_name(self):
             return self.name
-    
         def get_level(self):
             return self.level
         def set_level(self, new_level : int):
@@ -65,6 +107,13 @@ label chapter_four_setup_resources:
         resource_manager.add_resource(food)
         money = Resource("money", 35)
         resource_manager.add_resource(money)
+
+        event_1 = Event(1, 1, "Serve an Old Friend")
+        event_2 = Event(2, 1, "Help a sad fool")
+        event_3 = Event(3, 4, "A New Challenger Appears!")
+        event_4 = Event(4, 1, "Stay High!")
+        event_5 = Event(5, 1, "HIM!")
+        
     jump chapter_four_office
 
 label chapter_four_office:
@@ -99,13 +148,34 @@ screen clickable_chapter_four_register:
 
 
 label chapter_four_random_work:
-    #$ rngint = renpy.random.randint(1,4)
+    label ch04_rng_1:
+    $ rngint = renpy.random.randint(1, 5)
+    if chapter_four_work_event_check[rngint - 1]:
+        jump ch04_rng_1
+    label ch04_rng_2:
+    $ rngint1 = renpy.random.randint(1, 5)
+    if chapter_four_work_event_check[rngint1 - 1]:
+        jump ch04_rng_2
+    label ch04_rng_3:
+    $ rngint2 = renpy.random.randint(1, 5)
+    if chapter_four_work_event_check[rngint2 - 1]:
+        jump ch04_rng_3
+
+
     $ rngint = 5
-    #if work_events == 4:
-        #$ rngint = 5
-    if chapter_four_work_event_check[rngint - 1] or rngint > 50 or rngint < 0:
-        jump chapter_four_random_work
+    #if chapter_four_work_event_check[rngint - 1] or rngint > 50 or rngint < 0:
+        #jump chapter_four_random_work
+    $ event_option_1 = str(f"{eval('event_' + str(rngint)).print_info()}")
+    $ event_option_2 = str(f"{eval('event_' + str(rngint1)).print_info()}")
+    $ event_option_3 = str(f"{eval('event_' + str(rngint2)).print_info()}")
     call chapter_four_hide_office
+    #menu:
+        #f"{event_option_1}":
+            #jump expression "ch04_event_" + str(rngint)
+        #f"{event_option_2}":
+            #jump expression "ch04_event_" + str(rngint1)
+        #f"{event_option_3}":
+            #jump expression "ch04_event_" + str(rngint2)
     jump expression "ch04_event_" + str(rngint)
 #TODO: Add a lot more visual flair to each and every event so they are prime neeto
 label chapter_four_work_events():
