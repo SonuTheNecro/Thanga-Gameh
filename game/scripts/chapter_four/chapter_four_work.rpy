@@ -22,11 +22,13 @@ label chapter_four_setup_resources:
         event_3 = Event(3, 4, "A New Challenger Appears!")
         event_4 = Event(4, 1, "Stay High!")
         event_5 = Event(5, 1, "HIM!")
+        event_6 = Event(6, 3, "Mathematics is the most important Subject!")
         event_manager.add_event(event_1)
         event_manager.add_event(event_2)
         event_manager.add_event(event_3)
         event_manager.add_event(event_4)
         event_manager.add_event(event_5)
+        event_manager.add_event(event_6)
         lower_value = 1
         
     jump chapter_four_office
@@ -64,6 +66,7 @@ screen clickable_chapter_four_register:
 
 label chapter_four_random_work:
     call chapter_four_hide_office
+    $ event_manager.pick_three_events(6,6)
     if work_events == 5:
         $ lower_value = 5
         $ event_manager.pick_three_events(5,5)
@@ -157,9 +160,7 @@ label chapter_four_work_events():
             yrotate 0.0 
             linear 0.23 subpixel True pos (1963, 203)
         mt "(sigh)"
-        $ work_events += 1
-        $ chapter_four_work_event_check[rngint - 1] = True
-        jump chapter_four_office
+        $ event_1.complete()
     label ch04_event_2:
         scene ch04_ice_cream_interior with dissolve:
             subpixel True xzoom 1.18 zoom 1.64
@@ -313,9 +314,7 @@ label chapter_four_work_events():
             yrotate 0.0
             linear 0.45 subpixel True pos (1953, 288) 
         mt "jesus christ"
-        $ work_events += 1
-        $ chapter_four_work_event_check[rngint - 1] = True
-        jump chapter_four_office
+        $ event_2.complete()
     label ch04_event_3:
         scene ch04_ice_cream_interior with dissolve:
             subpixel True xzoom 1.18 zoom 1.64
@@ -395,9 +394,7 @@ label chapter_four_work_events():
         mt "guess I just gotta earn ALL OF THAT FUCKING MONEY BACK" #TODO: This kinda sort, make this longer
         mt "GREAT!"
         "good luck man!"
-        $ work_events += 1
-        $ chapter_four_work_event_check[rngint - 1] = True
-        jump chapter_four_office
+        $ event_3.complete()
     label ch04_event_4:
         scene ch04_ice_cream_interior with dissolve:
             subpixel True xzoom 1.18 zoom 1.64
@@ -492,9 +489,7 @@ label chapter_four_work_events():
         "WHAT HAVE YOU GUYS DONE?!?"
         mt "MAN IM TRIPPING"
         $ reset_camera(0)
-        $ work_events += 1
-        $ chapter_four_work_event_check[rngint - 1] = True
-        jump chapter_four_office
+        $ event_4.complete()
     label ch04_event_5:
         scene ch04_ice_cream_interior with dissolve:
             subpixel True xzoom 1.18 zoom 1.64
@@ -622,6 +617,15 @@ label chapter_four_work_events():
             linear 0.34 subpixel True pos (875, 235) 
         show cody:
             linear 0.19 subpixel True xpos 2423 
-        $ work_events += 1
-        $ chapter_four_work_event_check[rngint - 1] = True
-        jump chapter_four_office
+        $ event_5.complete()
+    label ch04_event_6:
+        scene ch04_ice_cream_interior2 with dissolve:
+            subpixel True xzoom 1.15 zoom 2.38 
+
+
+        
+        show matt2:
+            subpixel True
+        
+        "Test"
+        $ event_6.complete()

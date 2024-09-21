@@ -24,7 +24,7 @@ init python:
             setattr(renpy.store, 'work_events',work_events + 1)
             renpy.jump("chapter_four_office")
         def print_info(self):
-            return f"Event {self.get_id()}: Difficulty {self.get_diff()}"
+            return f"Event {self.get_id()}: Difficulty {self.get_diff()}\n Desc: {self.get_desc()}"
     class EventHandler:
         def __init__(self):
             self.events = {}
