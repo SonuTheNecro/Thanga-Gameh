@@ -927,7 +927,7 @@ label chapter_three_chica_mission3:
                     yalign 0.0
                     xmaximum 600
     screen clickable_chapter_three_chica3_cupcakes(xpos,ypos,zoom,count2):
-        timer 0.35 + (count2 / 10) action Jump("chapter_three_chica_death")
+        timer 0.75 + (count2 / 10) action Jump("chapter_three_chica_death")
         imagebutton:
             pos (xpos,ypos) at Transform(zoom = zoom)
             idle "images/chapter_three/ch03_fnaf_cupcake.png"
@@ -975,7 +975,7 @@ label chapter_three_chica_mission3:
             $ randint2 = renpy.random.randint(400,750) # Y-Value
             show screen clickable_chapter_three_chica3_cupcakes(randint,randint2,1.0,count2)
             $ count2 -= 1
-            $ renpy.pause(delay = 0.25 + (count2/10), hard=True)
+            $ renpy.pause(delay = 0.75 + (count2/10), hard=True)
         label chapter_three_chica_victory:
         chica "OW!"
         chica "WTF!"
