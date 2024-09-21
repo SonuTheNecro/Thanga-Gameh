@@ -30,17 +30,17 @@ init python:
             self.events = {}
         def add_event(self, added_event : Event):
             self.events[added_event.get_id()] = added_event
-        def pick_three_events(self, limit : int):
+        def pick_three_events(self, lower_limit : int, upper_limit : int):
             while True:
-                rngint = random.randint(1, limit)
+                rngint = random.randint(lower_limit, upper_limit)
                 if not chapter_four_work_event_check[rngint - 1]:
                     break
             while True:
-                rngint1 = random.randint(1, limit)
+                rngint1 = random.randint(lower_limit, upper_limit)
                 if not chapter_four_work_event_check[rngint1 - 1]:
                     break
             while True:
-                rngint2 = random.randint(1, limit)
+                rngint2 = random.randint(lower_limit, upper_limit)
                 if not chapter_four_work_event_check[rngint2 - 1]:
                     break
             check = renpy.display_menu([(self.events[rngint].print_info(),  self.events[rngint].get_id()), 

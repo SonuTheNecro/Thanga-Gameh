@@ -27,6 +27,7 @@ label chapter_four_setup_resources:
         event_manager.add_event(event_3)
         event_manager.add_event(event_4)
         event_manager.add_event(event_5)
+        lower_value = 1
         
     jump chapter_four_office
 
@@ -62,26 +63,11 @@ screen clickable_chapter_four_register:
 
 
 label chapter_four_random_work:
-    label ch04_rng_1:
-    $ rngint = renpy.random.randint(1, 5)
-    if chapter_four_work_event_check[rngint - 1]:
-        jump ch04_rng_1
-    label ch04_rng_2:
-    $ rngint1 = renpy.random.randint(1, 5)
-    if chapter_four_work_event_check[rngint1 - 1]:
-        jump ch04_rng_2
-    label ch04_rng_3:
-    $ rngint2 = renpy.random.randint(1, 5)
-    if chapter_four_work_event_check[rngint2 - 1]:
-        jump ch04_rng_3
-
-
-    $ rngint = 5
-    $ event_option_1 = str(f"{eval('event_' + str(rngint)).print_info()}")
-    $ event_option_2 = str(f"{eval('event_' + str(rngint1)).print_info()}")
-    $ event_option_3 = str(f"{eval('event_' + str(rngint2)).print_info()}")
     call chapter_four_hide_office
-    $ event_manager.pick_three_events(4)
+    if work_events == 5:
+        $ lower_value = 5
+        $ event_manager.pick_three_events(5,5)
+    $ event_manager.pick_three_events(lower_value,4)
     jump expression "ch04_event_" + str(rngint)
 #TODO: Add a lot more visual flair to each and every event so they are prime neeto
 label chapter_four_work_events():
