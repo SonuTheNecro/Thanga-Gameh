@@ -16,6 +16,8 @@ init python:
     config.keymap['inspector'].remove('alt_K_i')
     config.keymap['inspector'].remove('shift_K_i')
     config.keymap['full_inspector'].remove('alt_shift_K_i')
+    config.keymap['hide_windows'].remove('mouseup_2')
+    config.keymap['hide_windows'].remove('noshift_K_h')
     # returns the label of the game_over screen based on value
     def game_over_jump(value):
         return f"game_over_{value}"
