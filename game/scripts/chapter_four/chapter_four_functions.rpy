@@ -9,6 +9,7 @@ init python:
 
 label chapter_four_early_ending_1:
     #TODO: Clock speed effect
+    #TODO: More Visual Flair + Longer
     scene ch04_lab with dissolve:
         subpixel True zoom 1.2 
     show matt2:

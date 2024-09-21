@@ -1,5 +1,5 @@
 # Code for the Work Section of Chapter Four
-default chapter_four_work_event_check = [False, False, False, False, False, False]
+default chapter_four_work_event_check = [False, False, False, False, False, False, False, False]
 init python:
     class Resource:
         level = 0
@@ -99,10 +99,10 @@ screen clickable_chapter_four_register:
 
 
 label chapter_four_random_work:
-    $ rngint = renpy.random.randint(1,4)
-    #$ rngint = 5
-    if work_events == 4:
-        $ rngint = 5
+    #$ rngint = renpy.random.randint(1,4)
+    $ rngint = 5
+    #if work_events == 4:
+        #$ rngint = 5
     if chapter_four_work_event_check[rngint - 1] or rngint > 50 or rngint < 0:
         jump chapter_four_random_work
     call chapter_four_hide_office
@@ -591,12 +591,71 @@ label chapter_four_work_events():
         mt "HOW DID THANG AND CODY STRUGGLE WITH THIS BOZO?!?"
         "I guess?"
         "I think its.... over?"
-        jump chapter_four_early_ending_1
         # TODO: Roll credits Fake Ending
         if not persistent.secret0:
-            $ renpy.quit()
-        
-        "test"
+            jump chapter_four_early_ending_1
+        "Congrats matt..."
+        mt "YIPPIE!"
+        #TODO: Laugh audio
+        c "YOU!"
+        c "YOU REALLY THOUGHT YOU COULD DEFEAT ME?!?"
+        show cody with dissolve:
+            subpixel True pos (488, 256) zoom 1.31 yrotate 180.0 
+        mt "fuck..."
+        mt "who and what even are you?"
+        mt "I wasn't there..."
+        c "well i am a supreme being of intellectual power of infinite ability meant to devesate the universe using the great Shrody Mogging Technique used to levitate and embalance the photosynthesis and divide the diamater of the logarthmitic of the mangos mirroed glasses pepsi you will need all secrets in each chapter to beat this."
+        mt "Whole lotta yapping"
+        c "shut the FUCK UP"
+        mt "You said earlier you had some questions?"
+        c "..."
+        mt "well?"
+        c "Oh I thought you didn't want me yapping"
+        mt "Dang you are still just an annoying 14 year old..."
+        c "HEY!"
+        mt "well...."
+        c "huh?"
+        c "oh yeah"
+        c "Im meeting up with a boy with a Little Lord Fauntleroy Blue Cap?"
+        mt "huh?"
+        c "Its like a sailor cap..."
+        mt "Seems awfully familar"
+        c "I am also meeting up with someone with a blue shirt"
+        mt "are your friends just the blue boys?"
+        mt "like blue da be dah"
+        window auto hide
+        $ renpy.pause(hard = True, delay = 1.0)
+        c "..."
+        c "That wasn't funny"
+        mt "Are they evil?"
+        mt "like hitler evil?!?"
+        c "They are probably worse than me lol"
+        mt "So why ask me?"
+        c "You know more than everyone"
+        c "lets just say something awesome is going to happen at tonight's smash tournament"
+        mt "!"
+        mt "wtf are you gonna do"
+        c "lets' just say tonight is the final day you will see your friends"
+        mt "!"
+        mt "oh yeah?"
+        mt "I will tell everyone to not come to the LGS"
+        c "You really think Thang and Brian and Kody and everyone will believe you?"
+        c "They won't care about what you say til its too late :)"
+        mt "fuck..."
+        mt "Well I will stand on guard at the LGS til you show up"
+        c "mmmm I dont think so"
+        mt "wdym"
+        c "You are on the clock buddy"
+        c "and I will make sure you go through living hell"
+        c "and you will get hella overtime too..."
+        c "So thats cool i guess"
+        mt "fuck you"
+        c "toodles bitch boy"
+        c "Say Hi to Igor for me!"
+        show matt2:
+            linear 0.34 subpixel True pos (875, 235) 
+        show cody:
+            linear 0.19 subpixel True xpos 2423 
         $ work_events += 1
         $ chapter_four_work_event_check[rngint - 1] = True
         jump chapter_four_office
