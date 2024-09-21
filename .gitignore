@@ -2,7 +2,7 @@
 game/saves/
 game/tmp/
 game/cache/
-
+.vscode/
 *.rpyc
 *.rpyb
 *.rpymc
@@ -13,3 +13,4 @@ traceback.txt
 errors.txt
 log.txt
 project.json
+settings.json
