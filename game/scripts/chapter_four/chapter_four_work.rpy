@@ -1,13 +1,13 @@
 # Code for the Work Section of Chapter Four
 default chapter_four_work_event_check = [False, False, False, False, False, False, False, False]
-
 label chapter_four_hide_office:
     hide screen clickable_chapter_four_register
     return
 label chapter_four_setup_resources:
     python:
-        work_events = 0
+        #work_events = 0
         rngint = 0
+        lower_value = 1
         resource_manager = ResourceHandler()
         customer_enjoyment = Resource("customer_enjoyment", 50)
         resource_manager.add_resource(customer_enjoyment)
@@ -15,6 +15,8 @@ label chapter_four_setup_resources:
         resource_manager.add_resource(food)
         money = Resource("money", 35)
         resource_manager.add_resource(money)
+        count = Resource("work_events", 0)
+
 
         event_manager = EventHandler()
         event_1 = Event(1, 1, "Serve an Old Friend")
@@ -29,7 +31,6 @@ label chapter_four_setup_resources:
         event_manager.add_event(event_4)
         event_manager.add_event(event_5)
         event_manager.add_event(event_6)
-        lower_value = 1
         
     jump chapter_four_office
 
@@ -66,8 +67,8 @@ screen clickable_chapter_four_register:
 
 label chapter_four_random_work:
     call chapter_four_hide_office
-    $ event_manager.pick_three_events(6,6)
-    if work_events == 5:
+    #$ event_manager.pick_three_events(6,6)
+    if count.get_level() == 5:
         $ lower_value = 5
         $ event_manager.pick_three_events(5,5)
     $ event_manager.pick_three_events(lower_value,4)
