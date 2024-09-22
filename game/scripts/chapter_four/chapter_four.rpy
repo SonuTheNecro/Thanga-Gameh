@@ -344,8 +344,6 @@ label chapter_four_act_2:
     "..."
     mt "..."
     mt "im so fucked"
-
-
-
-
-    "test"
+    mt "Alright..."
+    mt "let's get this break"
+    jump chapter_four_setup_resources
