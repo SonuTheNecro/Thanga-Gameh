@@ -28,6 +28,7 @@ label chapter_four_setup_resources:
         event_6 = Event(6, 2, "Mathematics is the most important Subject!")
         event_7 = Event(7, 2, "Remember! No Gooning!")
         event_8 = Event(8, 1, "For the 8th Day of Christmas...")
+        event_9 = Event(9, 3, "Fish outta water (h20)!")
         event_manager.add_event(event_1)
         event_manager.add_event(event_2)
         event_manager.add_event(event_3)
@@ -36,6 +37,7 @@ label chapter_four_setup_resources:
         event_manager.add_event(event_6)
         event_manager.add_event(event_7)
         event_manager.add_event(event_8)
+        event_manager.add_event(event_9)
         
     jump chapter_four_office
 
@@ -111,14 +113,26 @@ label chapter_four_attempt_leave_work:
             mt "so exciting!"
         
         return
-
-#TODO: Add a lot more visual flair to each and every event so they are prime neeto
-label chapter_four_work_events():
-    label ch04_event_1:
+# calls a random background from a variety of backgrounds
+label chapter_four_random_background():
+    $ rngint = renpy.random.randint(0,1)
+    # $ rngint = 1
+    if rngint == 0:
         scene ch04_ice_cream_interior with dissolve:
             subpixel True xzoom 1.18 zoom 1.64
         show matt2 with moveinleft:
             pos (513, 151)  zoom 0.75
+    elif rngint == 1:
+        scene ch04_ice_cream_interior2 with dissolve:
+            subpixel True xzoom 1.15 zoom 2.38 
+        show matt2:
+            subpixel True pos (-314, 160) zoom 0.75
+            linear 0.345 subpixel True pos (847, 160) zoom 0.75
+    return
+#TODO: Add a lot more visual flair to each and every event so they are prime neeto
+label chapter_four_work_events():
+    label ch04_event_1:
+        call chapter_four_random_background()
         show thanga2 with dissolve:
             subpixel True pos (1331, 166) zoom 1.17 yrotate 180.0 
         mt "THANG!"
@@ -202,10 +216,7 @@ label chapter_four_work_events():
         mt "(sigh)"
         $ event_1.complete()
     label ch04_event_2:
-        scene ch04_ice_cream_interior with dissolve:
-            subpixel True xzoom 1.18 zoom 1.64
-        show matt2 with moveinleft:
-            pos (513, 151)  zoom 0.75
+        call chapter_four_random_background()
         show kody with dissolve:
             subpixel True pos (1185, 290) zoom 1.21 yrotate 180.0 
         mt "KODY!"
@@ -356,10 +367,7 @@ label chapter_four_work_events():
         mt "jesus christ"
         $ event_2.complete()
     label ch04_event_3:
-        scene ch04_ice_cream_interior with dissolve:
-            subpixel True xzoom 1.18 zoom 1.64
-        show matt2 with moveinleft:
-            pos (513, 151)  zoom 0.75
+        call chapter_four_random_background()
         mt "oh god I wonder who is gonna come in next"
         show ch04_toni with dissolve:
             subpixel True crop_relative True pos (1920, 27) zoom 0.9 crop (0.0, -0.07, 1.0, 1.0) matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) yrotate 180.0 
@@ -436,10 +444,7 @@ label chapter_four_work_events():
         "good luck man!"
         $ event_3.complete()
     label ch04_event_4:
-        scene ch04_ice_cream_interior with dissolve:
-            subpixel True xzoom 1.18 zoom 1.64
-        show matt2 with moveinleft:
-            pos (513, 151)  zoom 0.75
+        call chapter_four_random_background()
         mt "oh god I wonder who is gonna come in next"
         show ch04_toni with dissolve:
             subpixel True crop_relative True pos (1920, 27) zoom 0.9 crop (0.0, -0.07, 1.0, 1.0) matrixtransform ScaleMatrix(1.0, 1.0, 1.0)*OffsetMatrix(0.0, 0.0, 0.0)*RotateMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0)*OffsetMatrix(0.0, 0.0, 0.0) yrotate 180.0 
@@ -531,11 +536,7 @@ label chapter_four_work_events():
         $ reset_camera(0)
         $ event_4.complete()
     label ch04_event_5:
-        scene ch04_ice_cream_interior with dissolve:
-            subpixel True xzoom 1.18 zoom 1.64
-        show matt2:
-            subpixel True pos (-202, 200) zoom 0.68 
-            linear 0.456 subpixel True  pos (536, 200) zoom 0.68 
+        call chapter_four_random_background()
         pause 0.5
         mt "I am so done with all of these weirdos coming to work"
         mt "wonder who is coming to work"
@@ -659,11 +660,7 @@ label chapter_four_work_events():
             linear 0.19 subpixel True xpos 2423 
         $ event_5.complete()
     label ch04_event_6:
-        scene ch04_ice_cream_interior2 with dissolve:
-            subpixel True xzoom 1.15 zoom 2.38 
-        show matt2:
-            subpixel True pos (-314, 160) zoom 0.75 
-            linear 0.345 subpixel True pos (847, 160) zoom 0.75 
+        call chapter_four_random_background()
         mt "I Should start doing my math homework..."
         mt "since brian is going to be forcing me to DO THE WHOLE SHIFT BY MY FUCKING SELF"
         mt "might as well do some math problems :)"
@@ -799,11 +796,7 @@ label chapter_four_work_events():
         mt "WHAT A FUCKING DICKHEAD BRO!"
         $ event_6.complete()
     label ch04_event_7:
-        scene ch04_ice_cream_interior2 with dissolve:
-            subpixel True xzoom 1.15 zoom 2.38 
-        show matt2:
-            subpixel True pos (-314, 160) zoom 0.75 
-            linear 0.345 subpixel True pos (847, 160) zoom 0.75 
+        call chapter_four_random_background()
         mt "Can't wait for another annoying prick"
         window auto hide
         show march_7th:
@@ -903,11 +896,7 @@ label chapter_four_work_events():
         "lol"
         $ event_7.complete()
     label ch04_event_8:
-        scene ch04_ice_cream_interior2 with dissolve:
-            subpixel True xzoom 1.15 zoom 2.38 
-        show matt2:
-            subpixel True pos (-314, 160) zoom 0.75
-            linear 0.345 subpixel True pos (847, 160) zoom 0.75 
+        call chapter_four_random_background()
         mt "So who even called for the order"
         mt "order 8..."
         mt "WAIT"
@@ -952,5 +941,7 @@ label chapter_four_work_events():
         mt "pretty sweet"
         $ event_8.complete()
     label ch04_event_9:
-        return
-        #$ event_9.complete()
+        call chapter_four_random_background()
+
+        $ event_9.complete()
+    label ch04_event_10:
