@@ -621,11 +621,140 @@ label chapter_four_work_events():
     label ch04_event_6:
         scene ch04_ice_cream_interior2 with dissolve:
             subpixel True xzoom 1.15 zoom 2.38 
-
-
-        
         show matt2:
-            subpixel True
-        
-        "Test"
+            subpixel True pos (-314, 160) zoom 0.75 
+            linear 0.345 subpixel True pos (847, 160) zoom 0.75 
+        mt "I Should start doing my math homework..."
+        mt "since brian is going to be forcing me to DO THE WHOLE SHIFT BY MY FUCKING SELF"
+        mt "might as well do some math problems :)"
+        mt "hmmm what did Mr Maths give me for today..."
+        mt "100 CALCULUS PROBLEMS?"
+        mt "ugh lets start this"
+        mt "Find the Derivative of e^2x..."
+        mt "IDK THIS?!?"
+        mt "YO NARRATOR YOU KNOW THIS SHIT"
+        "I'm Just reading the book man"
+        "I can guess though"
+        menu:
+            "2e^2x":
+                $ resource_manager.food_up_level_up(5,5)
+            "e^x":
+                $ resource_manager.food_down_level_down(1,1)
+            "e^2x":
+                $ resource_manager.food_down_level_down(1,1)
+            "(e^x / 2)":
+                $ resource_manager.food_down_level_down(4,4)
+            "e^x^2":
+                $ resource_manager.food_down_level_down(5,5)
+            "4e":
+                $ resource_manager.food_down_level_down(10,10)
+        mt "Dang that was a hard problem..."
+        mt "I wish I could just be like Kody and just have ez math problems"
+        "You mean like a super senior?"
+        mt "yeah I will have all day to myself"
+        mt "me and my goon day"
+        mt "...."
+        mt "wait."
+        mt "I WANNA BE LIKE KODY?!?"
+        mt "oh god"
+        questionmark "IS SOMEONE DOING MATH?"
+        show baldi1:
+            subpixel True pos (-612, 126) 
+            linear 0.345 subpixel True pos (243, 126) 
+        show matt2:
+            linear 0.345 subpixel True xpos 1162 
+        $ renpy.pause(hard = True, delay = 0.4)
+        baldi "ITS ME!"
+        mt "who?"
+        baldi "TIME TO TEACH EVERYBODY'S FAVORITE SUBJECT!"
+        baldi "MATH!"
+        mt "are you MR MATH?"
+        baldi "My name Is Baldi!"
+        baldi "Welcome to My SCHOOL HOUSE!"
+        mt "but its my school house..."
+        mt "wait this isn't even a schoolhouse"
+        mt "thsi is an ice cream store"
+        scene baldi_q1 with dissolve:
+            subpixel True pos (-333, -0.26) 
+        baldi "What is 120 - 91?"
+        $ choice = renpy.input("What is 120-91?", length = 10)
+        if choice != "29":
+            play sound "audio/sound/chapter_one/glock_magchange.ogg"
+            show baldi_q1:
+                subpixel True pos (-333, -0.26) blur 7.82 
+            show baldi2:
+                subpixel True xpos 702
+            show gun2:
+                subpixel True pos (361, 193)
+            baldi "You are stupid as fuck!"
+            stop sound
+            baldi "begone"
+            show gunflare:
+                subpixel True
+            $ baldi_shoot(10)
+            # baldi "How you mess up math this bad?"
+            jump game_over
+        baldi "WOW!"
+        baldi "You are Incredible!"
+
+
+        baldi "Problem #2!"
+        scene baldi_q2 with dissolve:
+            subpixel True pos (-333, -0.26)
+        baldi "What is the value of the mathematical constant e, rounded to three decimal places?"
+        $ choice = renpy.input("What is the value of the mathematical constant e, rounded to three decimal places?", length = 5)
+        if choice != "2.718":
+            play sound "audio/sound/chapter_one/glock_magchange.ogg"
+            show baldi_q2:
+                subpixel True pos (-333, -0.26) blur 7.82 
+            show baldi2:
+                subpixel True xpos 702
+            show gun2:
+                subpixel True pos (361, 193)
+            baldi "Wow you suck at mathematics!"
+            baldi "DIE!"
+            show gunflare:
+                subpixel True
+            $ baldi_shoot(15)
+            jump game_over
+        baldi "Incredible!"
+        baldi "You might even be smarter than me!"
+        baldi "Time for problem 3!"
+        scene baldi_q3 with dissolve:
+                subpixel True 
+        baldi "Whats 9 + 10?"
+        menu:
+            "19":
+                baldi "WOW THAT'S CRAZY!"
+                baldi "SHIT TALK MATH AND YOU CAN'T EVEN DO IT?"
+                baldi "DIE! YOU SHITTER!"
+                show baldi_q3_mad:
+                    subpixel True pos (-333, -0.26) blur 7.82 
+                show baldi2:
+                    subpixel True xpos 702
+                show gun2:
+                    subpixel True pos (361, 193)
+                show gunflare:
+                    subpixel True
+                $ baldi_shoot(25)
+                jump game_over
+            "21":
+                pass
+        scene baldi_q3_happy with dissolve:
+            subpixel True pos (-333, -0.26)
+        baldi "I guess you do know a thing or two about math!"
+        scene ch04_ice_cream_interior2 with dissolve:
+            subpixel True xzoom 1.15 zoom 2.38 
+        show baldi1:
+            subpixel True pos (243, 126) 
+        show matt2:
+            subpixel True pos (1180, 130) zoom 0.74 
+        mt "WHAT WAS THE FUCKING POINT TO THAT"
+        baldi "idk man"
+        mt "GET THE FUCK OUT OF HERE"
+        baldi "okay :("
+        show baldi1:
+            linear 0.5 subpixel True xpos 1701 
+        $ renpy.pause(0.5, hard = True)
+        mt "WHAT A FUCKING DICKHEAD BRO!"
         $ event_6.complete()

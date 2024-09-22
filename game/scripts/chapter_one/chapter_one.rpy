@@ -749,7 +749,7 @@ label chapter_one:
         if choice != "0":
             play sound "audio/sound/chapter_one/glock_magchange.ogg"
             show baldi_q1:
-                subpixel True blur 7.82 
+                subpixel True pos (-333, -0.26) blur 7.82 
             show baldi2:
                 subpixel True xpos 702
             show gun2:
@@ -774,7 +774,7 @@ label chapter_one:
         if choice != "2.718":
             play sound "audio/sound/chapter_one/glock_magchange.ogg"
             show baldi_q2:
-                subpixel True blur 7.82 
+                subpixel True pos (-333, -0.26) blur 7.82 
             show baldi2:
                 subpixel True xpos 702
             show gun2:
@@ -807,7 +807,7 @@ label chapter_one:
             baldi "SHIT TALK MATH AND YOU CAN'T EVEN DO IT?"
             baldi "DIE! YOU SHITTER!"
             show baldi_q3_mad:
-                subpixel True blur 7.82 
+                subpixel True pos (-333, -0.26) blur 7.82 
             show baldi2:
                 subpixel True xpos 702
             show gun2:
