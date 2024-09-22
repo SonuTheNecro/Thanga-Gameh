@@ -40,29 +40,33 @@ label chapter_four_setup_resources:
         event_manager.add_event(event_9)
         
     jump chapter_four_office
-
-label chapter_four_office:
-    scene ch04_work_bg with dissolve:
-        subpixel True xzoom 1.28 zoom 2.4 
+# Recover Screens
+label chapter_four_office_show_screens:
+    show screen clickable_chapter_four_register
+    call screen clickable_chapter_four_door
+    return
+# Shows all images when we dont wanna show screens
+label chapter_four_office_show_images:
+    show ch04_exit_door:
+        subpixel True pos (-320, 176) rotate -9.0 zoom 0.4 
     show ch04_counter:
         subpixel True pos (290, 508) zoom 1.4 
-    #show ch04_register:
-        #subpixel True pos (736, 353) zoom 0.41 
-    show screen clickable_chapter_four_register
+    show ch04_register:
+        subpixel True pos (736, 353) zoom 0.41 
     show ch04_mop:
         subpixel True pos (1375, 391) zoom 0.76 xrotate 0.0 yrotate 180.0 
-    #show ch04_exit_door:
-        #subpixel True pos (-320, 176) rotate -9.0 zoom 0.4 
-    call screen clickable_chapter_four_door
+    show ch04_exit_door:
+        subpixel True pos (-320, 176) rotate -9.0 zoom 0.4 
+    return
+label chapter_four_office:
+    scene ch04_work_bg with dissolve:
+        subpixel True xzoom 1.28 zoom 2.4
+    show ch04_counter:
+        subpixel True pos (290, 508) zoom 1.4
+    show ch04_mop:
+        subpixel True pos (1375, 391) zoom 0.76 xrotate 0.0 yrotate 180.0 
+    call chapter_four_office_show_screens
 
-
-
-
-    $ renpy.pause(hard = True, delay = 10)
-
-
-    "test1"
-    jump chapter_four_office
 
 screen clickable_chapter_four_register:
     imagebutton:
@@ -79,9 +83,8 @@ screen clickable_chapter_four_door:
 
 label chapter_four_random_work:
     call chapter_four_hide_office
-    show ch04_register:
-        subpixel True pos (736, 353) zoom 0.41 
-    $ event_manager.pick_three_events(7,8)
+    call chapter_four_office_show_images 
+    #$ event_manager.pick_three_events(7,8)
     if work_events.get_level() == 5:
         $ lower_value = 5
         $ event_manager.pick_three_events(5,5)
@@ -89,10 +92,7 @@ label chapter_four_random_work:
     jump expression "ch04_event_" + str(rngint)
 label chapter_four_attempt_leave_work:
     call chapter_four_hide_office
-    show ch04_register:
-        subpixel True pos (736, 353) zoom 0.41 
-    show ch04_exit_door:
-        subpixel True pos (-320, 176) rotate -9.0 zoom 0.4 
+    call chapter_four_office_show_images
     if work_events.get_level() >= 25:
         pass #Leave the area
     else:
@@ -111,7 +111,9 @@ label chapter_four_attempt_leave_work:
             mt "my favorite part of work.  The last hour"
             mt "kinda like its the last hour of school"
             mt "so exciting!"
-        
+        hide ch04_register
+        hide ch04_exit_door
+        call chapter_four_office_show_screens
         return
 # calls a random background from a variety of backgrounds
 label chapter_four_random_background():
@@ -120,14 +122,12 @@ label chapter_four_random_background():
     if rngint == 0:
         scene ch04_ice_cream_interior with dissolve:
             subpixel True xzoom 1.18 zoom 1.64
-        show matt2 with moveinleft:
-            pos (513, 151)  zoom 0.75
     elif rngint == 1:
         scene ch04_ice_cream_interior2 with dissolve:
             subpixel True xzoom 1.15 zoom 2.38 
-        show matt2:
-            subpixel True pos (-314, 160) zoom 0.75
-            linear 0.345 subpixel True pos (847, 160) zoom 0.75
+    show matt2:
+        subpixel True pos (-314, 160) zoom 0.75
+        linear 0.345 subpixel True pos (847, 160) zoom 0.75
     return
 #TODO: Add a lot more visual flair to each and every event so they are prime neeto
 label chapter_four_work_events():
@@ -136,6 +136,8 @@ label chapter_four_work_events():
         show thanga2 with dissolve:
             subpixel True pos (1331, 166) zoom 1.17 yrotate 180.0 
         mt "THANG!"
+        show matt2:
+            linear 0.345 subpixel True xpos 559 
         t "yo" #TODO: DIscord join sfx here
         mt "..."
         t "so what are you doing here?"
@@ -218,7 +220,9 @@ label chapter_four_work_events():
     label ch04_event_2:
         call chapter_four_random_background()
         show kody with dissolve:
-            subpixel True pos (1185, 290) zoom 1.21 yrotate 180.0 
+            subpixel True pos (1185, 290) zoom 1.21 yrotate 180.0
+        show matt2:
+            linear 0.3 subpixel True xpos 550 
         mt "KODY!"
         k "It's me the goat"
         mt "right..."
@@ -374,6 +378,8 @@ label chapter_four_work_events():
             linear 0.45 subpixel True xpos 1110 
         toni "yooooooo matt"
         toni "what is up my f#gg0t!"
+        show matt2:
+            linear 0.3 subpixel True xpos 550 
         mt "YOOOOOOOOOOOOOOOOOOOOO"
         mt "YOU CAN'T SAY THAT THAT IS HOMOPHOBIC!"
         call auto_advance(1)
@@ -451,6 +457,8 @@ label chapter_four_work_events():
             linear 0.45 subpixel True xpos 1110
         call auto_advance(1)
         toni "YO WHAT IS GOOD MY NI-"
+        show matt2:
+            linear 0.24 subpixel True pos (573, 153) 
         mt "NO!"
         toni "MY NI-"
         mt "NO!"
@@ -537,6 +545,8 @@ label chapter_four_work_events():
         $ event_4.complete()
     label ch04_event_5:
         call chapter_four_random_background()
+        show matt2:
+            linear 0.3 subpixel True xpos 550 
         pause 0.5
         mt "I am so done with all of these weirdos coming to work"
         mt "wonder who is coming to work"
@@ -942,6 +952,6 @@ label chapter_four_work_events():
         $ event_8.complete()
     label ch04_event_9:
         call chapter_four_random_background()
-
+        "test"
         $ event_9.complete()
     label ch04_event_10:
