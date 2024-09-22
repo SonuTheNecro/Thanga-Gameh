@@ -1,6 +1,7 @@
 # Code for the Work Section of Chapter Four
 default chapter_four_work_event_check = [False, False, False, False, False, False, False, False, False, False]
 label chapter_four_hide_office:
+    hide screen clickable_chapter_four_door
     hide screen clickable_chapter_four_register
     return
 label chapter_four_setup_resources:
@@ -15,7 +16,7 @@ label chapter_four_setup_resources:
         resource_manager.add_resource(food)
         money = Resource("money", 35)
         resource_manager.add_resource(money)
-        count = Resource("work_events", 0)
+        work_events = Resource("work_events", 0)
 
 
         event_manager = EventHandler()
@@ -48,9 +49,9 @@ label chapter_four_office:
     show screen clickable_chapter_four_register
     show ch04_mop:
         subpixel True pos (1375, 391) zoom 0.76 xrotate 0.0 yrotate 180.0 
-    show ch04_exit_door:
-        subpixel True pos (-320, 176) rotate -9.0 zoom 0.4 
-
+    #show ch04_exit_door:
+        #subpixel True pos (-320, 176) rotate -9.0 zoom 0.4 
+    call screen clickable_chapter_four_door
 
 
 
@@ -67,16 +68,50 @@ screen clickable_chapter_four_register:
         idle "images/chapter_four/ch04_register.png"
         hover "images/chapter_four/ch04_register.png"
         action Jump("chapter_four_random_work")
-
+screen clickable_chapter_four_door:
+    imagebutton:
+        pos (-320, 176) at Transform(rotate=-9.0, zoom =0.4 )
+        idle "images/chapter_four/ch04_exit_door.png"
+        hover "images/chapter_four/ch04_exit_door.png"
+        action Call("chapter_four_attempt_leave_work")
 
 label chapter_four_random_work:
     call chapter_four_hide_office
+    show ch04_register:
+        subpixel True pos (736, 353) zoom 0.41 
     $ event_manager.pick_three_events(7,8)
-    if count.get_level() == 5:
+    if work_events.get_level() == 5:
         $ lower_value = 5
         $ event_manager.pick_three_events(5,5)
     $ event_manager.pick_three_events(lower_value,4)
     jump expression "ch04_event_" + str(rngint)
+label chapter_four_attempt_leave_work:
+    call chapter_four_hide_office
+    show ch04_register:
+        subpixel True pos (736, 353) zoom 0.41 
+    show ch04_exit_door:
+        subpixel True pos (-320, 176) rotate -9.0 zoom 0.4 
+    if work_events.get_level() >= 25:
+        pass #Leave the area
+    else:
+        mt "idk if I can leave yet..."
+        "why not?"
+        mt "I gotta fulful my work quote"
+        "well how much closer are we to hitting it?"
+        mt "well we are [25 - work_events.get_level()] commissions left"
+        if 25 - work_events.get_level() > 20:
+            "damn thats alot let"
+            mt "yeah"
+        elif 25 - work_events.get_levels() > 10:
+            "we aren't that far away, we are making our way"
+            mt "trudat"
+        elif 25 - work_events.get_levels() > 5:
+            mt "my favorite part of work.  The last hour"
+            mt "kinda like its the last hour of school"
+            mt "so exciting!"
+        
+        return
+
 #TODO: Add a lot more visual flair to each and every event so they are prime neeto
 label chapter_four_work_events():
     label ch04_event_1:
