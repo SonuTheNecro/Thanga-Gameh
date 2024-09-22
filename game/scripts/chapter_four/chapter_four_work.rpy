@@ -85,7 +85,7 @@ screen clickable_chapter_four_door:
 label chapter_four_random_work:
     call chapter_four_hide_office
     call chapter_four_office_show_images 
-    #$ event_manager.pick_three_events(7,8)
+    $ event_manager.pick_three_events(9,9)
     if work_events.get_level() == 5:
         $ lower_value = 5
         $ event_manager.pick_three_events(5,5)
@@ -953,6 +953,137 @@ label chapter_four_work_events():
         $ event_8.complete()
     label ch04_event_9:
         call chapter_four_random_background()
-        "test"
+        mt "oh god"
+        camera:
+            linear 1.0 subpixel True matrixcolor InvertMatrix(0.0)*ContrastMatrix(9.15)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(0.0) 
+        mt "my head really hurts badly..."
+        mt "I feel like I'm about to be annoyed"
+        mt "IS TRIP COMING IN?!?"
+        questionmark "OH I LOVE ICE CREAM"
+        mt "that isn't trip"
+        window auto hide
+        show ch04_fishy_boopkins:
+            subpixel True pos (1928, 261) zoom 0.64 yrotate 180.0 
+            linear 0.6 subpixel True pos (1019, 261) zoom 0.64 yrotate 180.0 
+        $ renpy.pause(0.6, hard = True)
+        mt "who"
+        mt "THE FUCK ARE YOU????????????????????"
+        questionmark "They call me"
+        boopkins "FISHY BOOPKINS : D"
+        mt "what"
+        $ reset_camera(0.5)
+        mt "oh good my headache cleared..."
+        camera:
+            linear 5.0 subpixel True alpha 1.0 additive 0.09 matrixcolor InvertMatrix(0.0)*ContrastMatrix(9.29)*SaturationMatrix(9.27)*BrightnessMatrix(-0.47)*HueMatrix(0.0) 
+        mt "nevermind"
+        mt "this is like stage 5 terminal cancer..."
+        mt "get away from me you creature"
+        show matt2:
+            linear 0.345 subpixel True xpos 514 
+        boopkins "why..."
+        boopkins "I am just here for some food"
+        call auto_advance(1)
+        mt "make an order"
+        mt "make"
+        mt "it"
+        mt "fast"
+        mt "I dont wanna hear your voice"
+        call auto_advance(0)
+        mt "I never thought I'd find something more annoying than Thang and Brian's yapping"
+        show ch04_bob:
+            subpixel True xpos 1872 
+            linear 0.4 subpixel True xpos 1206 
+        pause 0.4
+        bob "yo what is up my og top g boopkins"
+        boopkins "HI BOB"
+        mt "fuck off"
+        camera:
+            linear 1.0 subpixel True additive 0.0 matrixcolor InvertMatrix(0.29)*ContrastMatrix(13.37)*SaturationMatrix(12.64)*BrightnessMatrix(-0.51)*HueMatrix(-270.0) 
+        mt "OH GOD I CAN'T HANDLE THIS"
+        mt "I NEED TO FUCKING PUKE"
+        show matt2:
+            linear 0.189 subpixel True xpos 2116 
+        pause 0.189
+        scene ch04_ice_cream_exterior with dissolve:
+            subpixel True xzoom 1.26 yzoom 1.09 
+        show ch04_trash_can:
+            subpixel True pos (1563, 515) zoom 0.39 
+        show matt2:
+            subpixel True
+        window auto hide
+        show matt2:
+            subpixel True zoom 0.61 
+            parallel:
+                pos (428, 170) 
+                linear 0.42 pos (1465, 240) 
+                linear 0.31 pos (1145, 296) 
+                linear 0.99 pos (1176, 165) 
+            parallel:
+                rotate 0.0 
+                linear 0.73 rotate 45.0 
+                linear 0.31 rotate -27.0 
+                linear 0.13 rotate 108.0 
+                linear 0.18 rotate -99.0 
+                linear 0.09 rotate 63.0 
+                linear 0.15 rotate -495.0 
+                linear 0.13 rotate 0.0 
+                linear 0.34 rotate -63.0 
+                linear 0.09 rotate 126.0 
+        with Pause(2.25)
+        show matt2:
+            pos (1176, 165) rotate 126.0 
+        window auto show
+        mt "oh my god" #TODO: Puking sfx here
+        $ reset_camera(1.5)
+        mt "okay im starting to feel a bit better."
+        window auto hide
+        show matt2:
+            linear 0.23 subpixel True pos (948, 291) rotate 0.0 
+        $ renpy.pause(0.23, hard = True)
+        mt "well fuck"
+        mt "idk what to do now"
+        window auto hide
+        show ch04_bob with dissolve:
+            subpixel True zoom 0.83 yrotate 180.0 
+            pos (6, 140) 
+            linear 0.24 pos (21, 191) 
+            linear 0.01 pos (26, 243) 
+        show ch04_fishy_boopkins with dissolve:
+            subpixel True zoom 0.53 
+            pos (351, 350) 
+            linear 0.24 pos (461, 465) 
+            linear 0.01 pos (541, 525) 
+        with Pause(0.35)
+        show ch04_bob:
+            pos (26, 243) 
+        show ch04_fishy_boopkins:
+            pos (541, 525) 
+        window auto show
+        bob "btw we robbed your store :)"
+        bob "thanks for the mr beast bars and candy bars"
+        window auto hide
+        show ch04_bob:
+            subpixel True 
+            pos (26, 243) 
+            linear 0.25 pos (1950, 251) 
+        show ch04_fishy_boopkins:
+            subpixel True 
+            pos (541, 525) 
+            linear 0.25 pos (2045, 443) 
+        with Pause(0.35)
+        show ch04_bob:
+            pos (1950, 251) 
+        show ch04_fishy_boopkins:
+            pos (2045, 443) 
+        window auto show
+        mt "you fucking kidding me..."
+        mt "ugh Idgaf anymore"
+        $ resource_manager.food_down_level_down(10,5)
+        bob "OH YEAH WE ALSO CLEANED YOUR STORE"
+        bob "IM JUST A NICE CLEANER"
+        boopkins "hey!"
+        boopkins "That was me!"
+        bob "shut up retard it was me im the rapper bob and i am the goat so stfu"
+        mt "ugh"
         $ event_9.complete()
     label ch04_event_10:
