@@ -216,8 +216,8 @@ label main_menu_code:
         screen clickable_main_menu_ch04:
             imagebutton:
                 pos (768, 541) at Transform(zoom=0.62)
-                idle "images/main_menu/question_screen.png"
-                hover "images/main_menu/question_screen.png"
+                idle "images/main_menu/chapter_four_screen.png"
+                hover "images/main_menu/chapter_four_screen.png"
                 action Jump("chapter_start4")
         screen clickable_main_menu_question_screen1(xpos,ypos):
             imagebutton:
