@@ -59,6 +59,7 @@ label chapter_four_office_show_images:
         subpixel True pos (-320, 176) rotate -9.0 zoom 0.4 
     return
 label chapter_four_office:
+    call auto_advance(0)
     scene ch04_work_bg with dissolve:
         subpixel True xzoom 1.28 zoom 2.4
     show ch04_counter:
@@ -94,7 +95,7 @@ label chapter_four_attempt_leave_work:
     call chapter_four_hide_office
     call chapter_four_office_show_images
     if work_events.get_level() >= 25:
-        pass #Leave the area
+        jump chapter_four_post_work
     else:
         mt "idk if I can leave yet..."
         "why not?"
