@@ -20,12 +20,13 @@ label chapter_four_setup_resources:
 
         event_manager = EventHandler()
         event_1 = Event(1, 1, "Serve an Old Friend")
-        event_2 = Event(2, 1, "Help a sad fool")
-        event_3 = Event(3, 2, "A New Challenger Appears!")
+        event_2 = Event(2, 1, "Help a mogger")
+        event_3 = Event(3, 3, "A New Challenger Appears!")
         event_4 = Event(4, 1, "Stay High!")
-        event_5 = Event(5, 150, "HIM!")
+        event_5 = Event(5, 9999, "????????????????????????????????????????")
         event_6 = Event(6, 2, "Mathematics is the most important Subject!")
         event_7 = Event(7, 2, "Remember! No Gooning!")
+        event_8 = Event(8, 1, "For the 8th Day of Christmas...")
         event_manager.add_event(event_1)
         event_manager.add_event(event_2)
         event_manager.add_event(event_3)
@@ -33,6 +34,7 @@ label chapter_four_setup_resources:
         event_manager.add_event(event_5)
         event_manager.add_event(event_6)
         event_manager.add_event(event_7)
+        event_manager.add_event(event_8)
         
     jump chapter_four_office
 
@@ -69,7 +71,7 @@ screen clickable_chapter_four_register:
 
 label chapter_four_random_work:
     call chapter_four_hide_office
-    $ event_manager.pick_three_events(6,7)
+    $ event_manager.pick_three_events(7,8)
     if count.get_level() == 5:
         $ lower_value = 5
         $ event_manager.pick_three_events(5,5)
@@ -865,3 +867,55 @@ label chapter_four_work_events():
         mt "WHO EVER WROTE THIS IM OVER HERE YOU FUCKER"
         "lol"
         $ event_7.complete()
+    label ch04_event_8:
+        scene ch04_ice_cream_interior2 with dissolve:
+            subpixel True xzoom 1.15 zoom 2.38 
+        show matt2:
+            subpixel True pos (-314, 160) zoom 0.75
+            linear 0.345 subpixel True pos (847, 160) zoom 0.75 
+        mt "So who even called for the order"
+        mt "order 8..."
+        mt "WAIT"
+        "what"
+        mt "DON'T DO THE OBVIOUS JOKE"
+        window auto hide
+        show ch04_ocho with dissolve:
+            subpixel True xpos 1899 yrotate 180.0 
+            linear 0.5 subpixel True xpos 9 yrotate 180.0 
+        $ renpy.pause(0.5, hard = True)
+        mt "AH"
+        mt "WHY ARE YOU SO BIGGGGGGGGGGGGGGGGGG"
+        "Thats what she said"
+        mt "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+        mt "WHAT DO YOU WANT OCHO"
+        ocho "food"
+        mt "WHATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+        mt "YOU CAN TALK NOW?"
+        ocho "bark"
+        mt "NAH YOU AIN'T PULLING THIS SHIT ON ME"
+        ocho "I'm here to give food :)"
+        mt "YOOOOOOOOOOOOOOOO IM GETTING MATS?"
+        window auto hide
+        show ch04_ice_cream_supplies with dissolve:
+            subpixel True pos (310, 643) zoom 0.33 
+            linear 0.4 subpixel True pos (936, 338) zoom 0.33
+        $ renpy.pause(0.5, hard= True)
+        mt "wtf"
+        ocho "My people need me"
+        ocho "good bye mathew soya125 beans man"
+        window auto hide
+        show ch04_ocho:
+            yrotate 0.0 
+            linear 0.3 subpixel True xpos 2088 
+        pause 0.31
+        mt "wtf"
+        mt "did my dog just get me fortnite mats?"
+        "I guess so?"
+        mt "im not even gonna question this anymore"
+        "You have received max food supplies!"
+        $ food.set_level(100)
+        mt "pretty sweet"
+        $ event_8.complete()
+    label ch04_event_9:
+        return
+        #$ event_9.complete()
