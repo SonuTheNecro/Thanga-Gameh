@@ -26,12 +26,12 @@ label chapter_four_setup_resources:
         event_2 = Event(2, 1, "Help a mogger")
         event_3 = Event(3, 3, "A New Challenger Appears!")
         event_4 = Event(4, 1, "Stay High!")
-        event_5 = Event(5, 9999, "????????????????????????????????????????")
+        event_5 = Event(5, 9999, "????????????????????????????????????????") #TODO: Error and glitch text here
         event_6 = Event(6, 2, "Mathematics is the most important Subject!")
         event_7 = Event(7, 2, "Remember! No Gooning!")
         event_8 = Event(8, 1, "For the 8th Day of Christmas...")
-        event_9 = Event(9, 3, "Fish outta water (h20)!")
-        event_10 = Event(10,4, "Work should be the safest place of all... right?")
+        event_9 = Event(9, 3, "Fish outta water!")
+        event_10 = Event(10,4, "Remember to restock those shelves!")
         event_manager.add_event(event_1)
         event_manager.add_event(event_2)
         event_manager.add_event(event_3)
@@ -1180,15 +1180,15 @@ label chapter_four_work_events():
         show matt2:
             linear .345 subpixel True pos (1013, 711) zoom 0.2 
         pause 0.345
-        scene ch04_walmart_inside_main with dissolve:
-            subpixel True xzoom 1.21 
+        
         mt "alright so I got..."
         mt "damn"
         "how much you got?"
         mt "I got like $[money.get_level()].99"
         mt "alright what do I need..."
-        label ch04_walmart_main:
-
+        label ch04_walmart_main: #TODO: Implement an rng op that appears kinda like playing with fire
+        scene ch04_walmart_inside_main with dissolve:
+            subpixel True xzoom 1.21 
         menu:
             "ICE":
                 jump ch04_walmart_ice
@@ -1203,22 +1203,100 @@ label chapter_four_work_events():
             "Leave Walmart":
                 jump ch04_post_walmart
         label ch04_walmart_ice:
+            scene ch04_walmart_ice with dissolve:
+                subpixel True xzoom 1.33 zoom 1.43 
+            show matt2 with moveinright:
+                subpixel True pos (1150, 268) zoom 1.91 
+            mt "alright so according to this manifesto"
+            $ randint2 = renpy.random.randint(1,5)
+            mt "The Ice costs $[randint2 - 0.50]"
+            mt "now if I wanna pay that price for this..."
+            menu:
+                "Pay":
+                    $ money.minus(randint2 - 0.50)
+                    $ food.plus(10)
+                "Leave":
+                    "Maybe if we come back later, the price will be better..."
+                    mt "yeah true"
+            jump ch04_walmart_main
         label ch04_walmart_sugar:
+            scene ch04_walmart_sugar with dissolve:
+                subpixel True xzoom 1.21 
+            show matt2 with moveinleft:
+                subpixel True
+            mt "alright so according to this manifesto"
+            $ randint2 = renpy.random.randint(4,6)
+            mt "The Sugar costs $[randint2 - 1.50]"
+            mt "now if I wanna pay that price for this..."
+            menu:
+                "Pay":
+                    $ money.minus(randint2 - 1.50)
+                    $ food.plus(20)
+                "Leave":
+                    "Maybe if we come back later, the price will be better..."
+                    mt "yeah true"
+            jump ch04_walmart_main
         label ch04_walmart_eggs:
+            scene ch04_walmart_eggs with dissolve:
+                subpixel True xzoom 1.2 
+            show matt2 with moveinleft:
+                subpixel True
+            mt "alright so according to this manifesto"
+            $ randint2 = renpy.random.randint(1,3)
+            mt "The eggs costs $[randint2 + 1.50]"
+            mt "now if I wanna pay that price for this..."
+            menu:
+                "Pay":
+                    $ money.minus(randint2 + 1.50)
+                    $ food.plus(7 + randint2)
+                "Leave":
+                    "Maybe if we come back later, the price will be better..."
+                    mt "yeah true"
+            jump ch04_walmart_main
         label ch04_walmart_chocolate:
+            scene ch04_walmart_chocolate with dissolve:
+                subpixel True zoom 1.53 
+            show matt2 with moveinright:
+                subpixel True xpos 1485 
+            mt "alright so according to this manifesto"
+            $ randint2 = renpy.random.randint(10,12)
+            mt "The chocolate costs $[randint2 - 4]"
+            mt "damn"
+            mt "now if I wanna pay that price for this..."
+            menu:
+                "Pay":
+                    $ money.minus(randint2 - 4)
+                    $ food.plus(30 - randint2)
+                "Leave":
+                    "Maybe if we come back later, the price will be better..."
+                    mt "yeah true"
+            jump ch04_walmart_main
         label ch04_walmart_baking:
+            scene ch04_walmart_baking with dissolve:
+                subpixel True xzoom 1.38 zoom 1.82 
+            show matt2 with moveinright:
+                subpixel True xpos 1485 
+            mt "alright so according to this manifesto"
+            $ randint2 = renpy.random.randint(2,4)
+            mt "The baking ingredient costs $[randint2 * 2 + 1]"
+            mt "damn"
+            mt "now if I wanna pay that price for this..."
+            menu:
+                "Pay":
+                    $ money.minus(randint2 * 2 + 1)
+                    $ food.plus(12 - randint2)
+                "Leave":
+                    "Maybe if we come back later, the price will be better..."
+                    mt "yeah true"
+            jump ch04_walmart_main
         label ch04_post_walmart:
-
-
-
-
-
-
-
-
-
-
-
-        
-        "test"
+            mt "alright I got all I wanted"
+            "I feel like you coulda haggled for a bit more"
+            mt "yeah maybe but the walmart crowd is super ghetto so ima just dip from that shit"
+            "fair I guess"
+            "You are the protagonist rn"
+            mt "YESSSSSSSSSSSSSSSSSSSSSSS"
+            mt "wait rn?"
+            "dont worry about it"
+            mt "ok"
         $ event_10.complete()
