@@ -131,6 +131,7 @@ label minigame_puppet:
     "Death Approaches!"
     show ch03_fnaf_puppet2:
         subpixel True xanchor 873 pos (1413, 16) zoom 5.43 
+    $ jumpscare_check = False
     $ check = 1
     $ location = 1
     $ puppet_keys = ["w","a","s","d","i","j","k","l","f","h", "g", "r", "u"]
@@ -163,7 +164,9 @@ label minigame_puppet:
         hide minigame_puppet_cupcakes
         hide minigame_puppet_three_puppet_timer
         hide minigame_puppet_timer_event
-        play movie "video/chapter_three/puppet.webm"
+        if not jumpscare_check:
+            $ jumpscare_check = True
+            play movie "video/chapter_three/puppet.webm"
         "Score: [60 - count]"
         menu:
             "Retry?":
