@@ -22,7 +22,7 @@ init python:
         def complete(self):
             #setattr(renpy.store, 'chapter_four_work_event_check[self.get_id() - 1]', True)
             chapter_four_work_event_check[self.get_id() - 1] = True
-            count.plus(1)
+            work_events.plus(1)
             renpy.jump("chapter_four_office")
         def print_info(self):
             return f"Event {self.get_id()}: Difficulty {self.get_diff()}\n Desc: {self.get_desc()}"

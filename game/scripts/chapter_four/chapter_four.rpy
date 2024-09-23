@@ -347,3 +347,6 @@ label chapter_four_act_2:
     mt "Alright..."
     mt "let's get this break"
     jump chapter_four_setup_resources
+
+label chapter_four_post_work:
+    pass
