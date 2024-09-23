@@ -26,12 +26,13 @@ label chapter_four_setup_resources:
         event_2 = Event(2, 1, "Help a mogger")
         event_3 = Event(3, 3, "A New Challenger Appears!")
         event_4 = Event(4, 1, "Stay High!")
-        event_5 = Event(5, 9999, "????????????????????????????????????????") #TODO: Error and glitch text here
+        event_5 = Event(5, 9999999, "????????????????????????????????????????") #TODO: Error and glitch text here
         event_6 = Event(6, 2, "Mathematics is the most important Subject!")
         event_7 = Event(7, 2, "Remember! No Gooning!")
         event_8 = Event(8, 1, "For the 8th Day of Christmas...")
         event_9 = Event(9, 3, "Fish outta water!")
         event_10 = Event(10,4, "Remember to restock those shelves!")
+        event_11 = Event(11,1, "TBD" )
         event_manager.add_event(event_1)
         event_manager.add_event(event_2)
         event_manager.add_event(event_3)
@@ -42,6 +43,7 @@ label chapter_four_setup_resources:
         event_manager.add_event(event_8)
         event_manager.add_event(event_9)
         event_manager.add_event(event_10)
+        event_manager.add_event(event_11)
         
     jump chapter_four_office
 # Recover Screens

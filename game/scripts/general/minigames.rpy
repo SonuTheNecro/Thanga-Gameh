@@ -89,7 +89,7 @@ label minigame_math:
     $ rngint2 = renpy.random.randint(9 - count2 * count - count, 11 + location * count2)
     baldi "What is [rngint] * [rngint2] + [rngint//2]?"
     $ choice = renpy.input("What is [rngint] * [rngint2] + [rngint//2]?", length = 25)
-    if choice != str(rngint * rngint2 + rngint // 2):
+    if choice != str(rngint * rngint2 + (rngint // 2)):
         $ count2 +=1
     else:
         $ count += 1
@@ -98,9 +98,9 @@ label minigame_math:
         subpixel True pos (-333, -0.26)
     $ rngint = renpy.random.randint(4 + count, 7 + count)
     $ rngint2 = renpy.random.randint(1 + 2 * count2, 1 + 222 * count2)
-    baldi "WHAT IS [rngint] * [rngint2] - [location] / [rngint2 // 2]"
-    $ choice = renpy.input("What is [rngint] * [rngint2] - [location] / [rngint//2]?", length = 25)
-    if choice != str(rngint * rngint2 - location / (rngint2 // 2)):
+    baldi "WHAT IS [rngint] * [rngint2] - [location] * [rngint2 // 2]"
+    $ choice = renpy.input("What is [rngint] * [rngint2] - [location] * [rngint2//2]?", length = 25)
+    if choice != str((rngint * rngint2) - location * (rngint2 // 2)):
         $ count2 +=1
     else:
         $ count += 1
