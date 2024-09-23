@@ -16,6 +16,8 @@ label chapter_four_setup_resources:
         resource_manager.add_resource(food)
         money = Resource("money", 35)
         resource_manager.add_resource(money)
+        clean = Resource("clean", 100)
+        resource_manager.add_resource(clean)
         work_events = Resource("work_events", 0)
 
 
@@ -29,6 +31,7 @@ label chapter_four_setup_resources:
         event_7 = Event(7, 2, "Remember! No Gooning!")
         event_8 = Event(8, 1, "For the 8th Day of Christmas...")
         event_9 = Event(9, 3, "Fish outta water (h20)!")
+        event_10 = Event(10,4, "Work should be the safest place of all... right?")
         event_manager.add_event(event_1)
         event_manager.add_event(event_2)
         event_manager.add_event(event_3)
@@ -38,6 +41,7 @@ label chapter_four_setup_resources:
         event_manager.add_event(event_7)
         event_manager.add_event(event_8)
         event_manager.add_event(event_9)
+        event_manager.add_event(event_10)
         
     jump chapter_four_office
 # Recover Screens
@@ -85,7 +89,7 @@ screen clickable_chapter_four_door:
 label chapter_four_random_work:
     call chapter_four_hide_office
     call chapter_four_office_show_images 
-    $ event_manager.pick_three_events(9,9)
+    $ event_manager.pick_three_events(10,10)
     if work_events.get_level() == 5:
         $ lower_value = 5
         $ event_manager.pick_three_events(5,5)
@@ -1087,3 +1091,134 @@ label chapter_four_work_events():
         mt "ugh"
         $ event_9.complete()
     label ch04_event_10:
+        scene ch04_storeroom with dissolve:
+            subpixel True xzoom 1.12 zoom 2.12 
+        show matt2:
+            subpixel True pos (-194, 220) zoom 0.66 
+            linear 0.345 subpixel True pos (553, 220) zoom 0.66 
+        $ renpy.pause(0.4, hard = True)
+        mt "okay so I have to check the supplies"
+        mt "apparently we are out of..."
+        call auto_advance(1)
+        window auto hide
+        show matt2:
+            subpixel True zoom 0.66 
+            pos (553, 220) 
+            linear 0.10 pos (683, 211) 
+            linear 0.10 pos (1063, 230) 
+            linear 0.20 pos (1415, 190) 
+            linear 0.18 pos (1560, 216) 
+            linear 0.15 pos (1400, 306) 
+            linear 0.12 pos (1043, 306) 
+            linear 0.14 pos (795, 341) 
+            linear 0.19 pos (610, 330) 
+            linear 0.18 pos (286, 331) 
+            linear 0.17 pos (426, 163) 
+            linear 0.11 pos (653, 123) 
+            linear 0.11 pos (753, 116) 
+            linear 0.13 pos (903, 165) 
+            linear 0.11 pos (1006, 156) 
+            linear 0.13 pos (1101, 131) 
+            linear 0.10 pos (1658, 305) 
+            linear 0.23 pos (1298, 353) 
+            linear 0.12 pos (1078, 333) 
+            linear 0.09 pos (813, 376) 
+            linear 0.09 pos (645, 373) 
+            linear 0.12 pos (433, 333) 
+            repeat
+        window auto show
+        mt "milk"
+        mt "eggs"
+        mt "cream"
+        mt "ice"
+        mt "strawberry"
+        mt "milk"
+        mt "flour"
+        mt "baking powder"
+        call auto_advance(0)
+        mt "HUH?"
+        show matt2:
+            subpixel True
+        mt "HOW ARE WE OUT OF EVERY FUCKING SUPPLY"
+        mt "ugh guess I gotta buy mats..."
+        window auto hide
+        show matt2:
+            linear 0.5 subpixel True pos (-215, 236) 
+        pause 0.4
+        scene ch04_street2 with dissolve:
+            subpixel True zoom 1.51 
+        show matt2:
+            subpixel True pos (928, 185) zoom 0.55 crop_relative True crop (0.0, 0.0, 1.0, 0.7) 
+        show car1:
+            subpixel True pos (521, 238) zoom 1.3 
+        mt "I better get some good gas mileage and grocery bill recovery"
+        mt "brian better pay up"
+        window auto hide
+        show matt2:
+            crop_relative True crop (0.0, 0.0, 1.0, 0.7) 
+            linear 0.45 subpixel True pos (875, -63) zoom 1.34 
+        show car1:
+            linear 0.45 subpixel True pos (51, -18) zoom 2.84 
+        pause 0.45
+        mt "damn I look good"
+        "nah"
+        mt "fuck you"
+        scene ch04_walmart with dissolve:
+            subpixel True zoom 1.62 
+        show matt2:
+            subpixel True pos (-258, 393) zoom 0.61 
+            linear 0.345 subpixel True xpos 552 
+        pause 0.345
+        mt "I fucking hate walmart"
+        mt "this is the black people store"
+        "YOU CAN'T SAY THAT!!!!!!!!!!!!!!!!!!!!!!!1"
+        mt "fuckkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+        mt "its the ghetto white people store"
+        "yeah thats fine"
+        "we can make fun of white people and not black people"
+        mt ":ThumbsUp:"
+        show matt2:
+            linear .345 subpixel True pos (1013, 711) zoom 0.2 
+        pause 0.345
+        scene ch04_walmart_inside_main with dissolve:
+            subpixel True xzoom 1.21 
+        mt "alright so I got..."
+        mt "damn"
+        "how much you got?"
+        mt "I got like $[money.get_level()].99"
+        mt "alright what do I need..."
+        label ch04_walmart_main:
+
+        menu:
+            "ICE":
+                jump ch04_walmart_ice
+            "Sugar":
+                jump ch04_walmart_sugar
+            "Eggs":
+                jump ch04_walmart_eggs
+            "Chocolate":
+                jump ch04_walmart_chocolate
+            "Baking Powder & Soda":
+                jump ch04_walmart_baking
+            "Leave Walmart":
+                jump ch04_post_walmart
+        label ch04_walmart_ice:
+        label ch04_walmart_sugar:
+        label ch04_walmart_eggs:
+        label ch04_walmart_chocolate:
+        label ch04_walmart_baking:
+        label ch04_post_walmart:
+
+
+
+
+
+
+
+
+
+
+
+        
+        "test"
+        $ event_10.complete()
