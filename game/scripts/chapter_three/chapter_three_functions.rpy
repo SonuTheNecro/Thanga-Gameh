@@ -42,7 +42,7 @@ init python:
     def chapter_three_unobtain_item(item):
         chapter_three_key_items[item] = ItemState.NOT_OBTAINED
     def fnaf_shoot(count):
-        random_number = randint(count,count*2)
+        random_number = random.randint(count,count*2)
         count = 0
         while count < random_number:
             renpy.sound.play("audio/sound/chapter_one/gun_shot1.ogg")

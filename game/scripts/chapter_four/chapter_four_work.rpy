@@ -1,5 +1,5 @@
 # Code for the Work Section of Chapter Four
-default chapter_four_work_event_check = [False, False, False, False, False, False, False, False, False, False]
+default chapter_four_work_event_check = [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False] #15 events stored :)
 label chapter_four_hide_office:
     hide screen clickable_chapter_four_door
     hide screen clickable_chapter_four_register
@@ -1189,6 +1189,9 @@ label chapter_four_work_events():
         label ch04_walmart_main: #TODO: Implement an rng op that appears kinda like playing with fire
         scene ch04_walmart_inside_main with dissolve:
             subpixel True xzoom 1.21 
+        $ randint = renpy.random.randint(1,20)
+        if randint == 7:
+            jump ch04_walmart_death
         menu:
             "ICE":
                 jump ch04_walmart_ice
@@ -1218,6 +1221,7 @@ label chapter_four_work_events():
                 "Leave":
                     "Maybe if we come back later, the price will be better..."
                     mt "yeah true"
+            $ randint2 = renpy.random.randint(1,100)
             jump ch04_walmart_main
         label ch04_walmart_sugar:
             scene ch04_walmart_sugar with dissolve:
@@ -1235,6 +1239,7 @@ label chapter_four_work_events():
                 "Leave":
                     "Maybe if we come back later, the price will be better..."
                     mt "yeah true"
+            $ randint2 = renpy.random.randint(1,100)
             jump ch04_walmart_main
         label ch04_walmart_eggs:
             scene ch04_walmart_eggs with dissolve:
@@ -1252,6 +1257,7 @@ label chapter_four_work_events():
                 "Leave":
                     "Maybe if we come back later, the price will be better..."
                     mt "yeah true"
+            $ randint2 = renpy.random.randint(1,100)
             jump ch04_walmart_main
         label ch04_walmart_chocolate:
             scene ch04_walmart_chocolate with dissolve:
@@ -1270,6 +1276,7 @@ label chapter_four_work_events():
                 "Leave":
                     "Maybe if we come back later, the price will be better..."
                     mt "yeah true"
+            $ randint2 = renpy.random.randint(1,100)
             jump ch04_walmart_main
         label ch04_walmart_baking:
             scene ch04_walmart_baking with dissolve:
@@ -1288,7 +1295,69 @@ label chapter_four_work_events():
                 "Leave":
                     "Maybe if we come back later, the price will be better..."
                     mt "yeah true"
+            $ randint2 = renpy.random.randint(1,100)
             jump ch04_walmart_main
+        label ch04_walmart_death:
+            show ch04_toon_link with dissolve:
+                subpixel True xpos 432 
+            mt "WHATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+            toonlink "yo you iz that nigga I met online"
+            mt "YOU AREN'T EVEN BLACK YOU CANNOT SAY THAT"
+            toonlink "I DONT GIVE A FLYING FUCK NIGAAAAAAAAAAAAAAAAAAAAAAAAAA!"
+            mt "you are a loser"
+            show gun2:
+                subpixel True pos (296, 526) 
+            mt "fuck"
+            toonlink "I want it all!"
+            menu:
+                "Give ALL Food":
+                    $ food.set_level(0)
+                    toonlink "thanks fucker"
+                    mt "no problem sir"
+                    hide ch04_toon_link with dissolve
+                    mt "what a shithole..."
+                    mt "let's get out of here..."
+                    "yeah..."
+                    $ event_10.complete()
+                "Give ALL Money":
+                    $ money.set_level(0)
+                    toonlink "thanks for the bread you idiot"
+                    mt "got it sir man thing!"
+                    hide ch04_toon_link with dissolve
+                    mt "what a dick"
+                    mt "let's get out of here..."
+                    $ event_10.complete()
+                "Attempt to Negoiate":
+                    $ rngint = renpy.random.randint(1,4)
+                    mt "listen man"
+                    mt "I need some of this since its for work"
+                    $ money_value = int(money.get_level() / 4)
+                    mt "best I can give you is $[money_value]"
+                    mt "that good man?"
+                    if rngint == 2:
+                        toonlink "NAH YOU FUCKER LATER BOZO"
+                        show gunflare:
+                            subpixel True pos (-78, 328) 
+                        $ fnaf_shoot(20)
+                        jump game_over
+                    toonlink "eh I will take it"
+                    toonlink "I only need cash for some snacks"
+                    "Toon Link Takes Your Deal!"
+                    $ food.minus(money_value)
+                    toonlink "see ya man"
+                    hide ch04_toon_link with dissolve
+                    mt "ugh atleast I didn't get fully robbed"
+                    mt "let's get out of here"
+                    $ event_10.complete()
+                "Don't Give anything":
+                    mt "NAH I AINT GIVING SHIT"
+                    toonlink "okay man"
+                    toonlink "makes it easier for me"
+                    show gunflare:
+                            subpixel True pos (-78, 328) 
+                    $ fnaf_shoot(20)
+                    jump game_over
+
         label ch04_post_walmart:
             mt "alright I got all I wanted"
             "I feel like you coulda haggled for a bit more"
@@ -1300,3 +1369,4 @@ label chapter_four_work_events():
             "dont worry about it"
             mt "ok"
         $ event_10.complete()
+    label ch04_event_11:
