@@ -32,7 +32,7 @@ label chapter_four_setup_resources:
         event_8 = Event(8, 1, "For the 8th Day of Christmas...")
         event_9 = Event(9, 3, "Fish outta water!")
         event_10 = Event(10,4, "Remember to restock those shelves!")
-        event_11 = Event(11,1, "TBD" )
+        event_11 = Event(11,3, "Do you jump for the beef?" )
         event_manager.add_event(event_1)
         event_manager.add_event(event_2)
         event_manager.add_event(event_3)
@@ -91,7 +91,7 @@ screen clickable_chapter_four_door:
 label chapter_four_random_work:
     call chapter_four_hide_office
     call chapter_four_office_show_images 
-    $ event_manager.pick_three_events(10,10)
+    $ event_manager.pick_three_events(11,11)
     if work_events.get_level() == 5:
         $ lower_value = 5
         $ event_manager.pick_three_events(5,5)
@@ -1372,3 +1372,109 @@ label chapter_four_work_events():
             mt "ok"
         $ event_10.complete()
     label ch04_event_11:
+        call chapter_four_random_background()
+        mt "I really wish I had more freetime..."
+        mt "IMAGINE THE SMASH PRACTICE I'D GET"
+        mt "I'd BE SMASH BROS PRO"
+        questionmark "pro?"
+        show ch04_evbo with moveinright:
+            subpixel True pos (1038, 108) zoom 1.98 
+        show matt2:
+            linear 0.23 subpixel True pos (550, 168) 
+        evbo "LIKE PARKOUR PRO?"
+        mt "huh"
+        mt "who are you?"
+        evbo "oh im the champion of the parkour civilization"
+        mt "dafaq is a parkour civilization"
+        evbo "you don't even have the noob boots"
+        evbo "are you below a noob?"
+        mt "I AM NOT A NOOB"
+        mt "I AM A PRO"
+        mt "GRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRr"
+        mt "also you don't have boots either"
+        evbo "..."
+        evbo "bet you cannot even do the 1 by 1 block jump"
+        mt "OH YEAH I CAN!"
+        evbo "bet"
+        scene ch04_parkour_civilization with dissolve:
+            subpixel True xzoom 1.02 yzoom 1.06 zoom 1.38 
+        show ch04_evbo:
+            subpixel True pos (715, 111) rotate 0.0 zoom 1.12 
+        evbo "Time for your mandatory parkour check"
+        evbo "you can do the one-block jump for the raw chicken"
+        evbo "or you can attempt the one-block vertical jump for the raw beef"
+        mt "and what should I do"
+        evbo "here in parkour civilization, no one chooses to jump for the beef"
+        evbo "its better to be safe and do the one-block jump for chicken"
+        evbo "rather than risk your entire life for just half a hunger bar more"
+        mt "this is just stolen from some internet meme i bet..."
+        mt "do i have to do this?"
+        evbo "so you are parkour SUPER NOOB"
+        mt "FINE"
+        menu: #TODO: visuals here
+            "jump for the chicken":
+                show matt2:
+                    subpixel True pos (921, 1048) zoom 0.5 
+                window auto hide
+                show matt2:
+                    subpixel True 
+                    pos (921, 1048) 
+                    linear 0.20 pos (1213, 1) 
+                    linear 0.20 pos (1428, 410) 
+                    linear 0.20 pos (1105, 6) 
+                    linear 0.20 pos (936, 408) 
+                with Pause(0.90)
+                show matt2:
+                    pos (936, 408) 
+                window auto show
+                $ resource_manager.food_up_level_up(5,5)
+                "You have obtained the chicken!"
+                evbo "oooo that was a nice little trick!"
+            "jump for the beef":
+                $ rngint = renpy.random.randint(0,0)
+                if rngint == 1:
+                    show matt2:
+                        subpixel True pos (921, 1048) zoom 0.5 
+                    window auto hide
+                    show matt2:
+                        subpixel True 
+                        pos (921, 1048) 
+                        linear 0.30 pos (605, -233) 
+                        linear 0.20 pos (386, 133) 
+                    with Pause(0.60)
+                    show matt2:
+                        pos (386, 133) 
+                    window auto show
+                    evbo "wait you hit the beef jump"
+                    mt "yeah im like a pro"
+                    evbo "damn that was nice nice"
+                    "You have obtained the beef!"
+                    $ resource_manager.food_up_level_up(10,10)
+                    "test"
+                else:
+                    show matt2:
+                        subpixel True pos (921, 1048) zoom 0.5
+                    window auto hide
+                    show matt2:
+                        subpixel True 
+                        pos (921, 1048) 
+                        linear 0.30 pos (766, 0) 
+                        linear 0.30 pos (313, 1796) 
+                    with Pause(0.70)
+                    show matt2:
+                        pos (313, 1796) 
+                    window auto show
+                    mt "FUCK"
+                    mt "can i get a redo?"
+                    evbo "i warned you man"
+                    "You have lost resources!"
+                    $ resource_manager.food_down_level_down(5,5)
+                    $ event_11.complete()
+        mt "thanks man"
+        mt "are we done here?"
+        evbo "depends"
+        evbo "you want a whole parkour civilization chapter?"
+        mt "yes!"
+        stn "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+        stn "HELL FUCKING NAH WE AIN'T DOING THAT FUCK OFF"
+        $ event_11.complete()
