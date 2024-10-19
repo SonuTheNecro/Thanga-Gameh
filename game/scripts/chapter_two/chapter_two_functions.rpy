@@ -199,12 +199,15 @@ label chapter_two_march2:
     t "couldnt they have just cleaned it up?"
     march "Yes, but there should have been some kind of residue or something left behind"
     march "But everything around Ocho is spotless"
+    #TODO:make clue picture
     t "Does that mean he was killed somewhere else?"
     march "That's what I'm thinking"
     march "But I haven't checked any of the other rooms yet"
     march "So I'm not sure where it could have been done"
     t "guess ill have to do it"
-    #TODO:make clue picture
+    march "Thanks Thang!"
+    march "I think I'll go to my room to review the clues so far"
+    t "ok"
     if choice == 0:
         $ count += 1
     $ choice += 1
@@ -230,6 +233,8 @@ label chapter_two_phoenix2:
     pw "I would just keep this in mind"
     t "whatever you say bro"
     #TODO:make clue picture
+    pw "Well I'm probably gonna go to my room to think some stuff through"
+    t "alright, ill look for more stuff then"
     if count2 == 0:
         $ count += 1
     $ count2 += 1
@@ -341,6 +346,8 @@ label chapter_two_restore_screens(location):
     if location == 1:
         if count == 0:
             call chapter_two_wake_up
+        elif count == 7:
+            call chapter_two_after_clues
     elif location == 2:
         if count == 3:
             call chapter_two_ocho_dead
@@ -351,10 +358,14 @@ label chapter_two_restore_screens(location):
         if count == 1:
             call chapter_two_intro_meeting
     elif location == 5:
+        if count == 6:
+            call chapter_two_matt_clue
         pass
     elif location == 6:
         if count == 2:
             call chapter_two_matt_meeting1
+        elif count == 5:
+            call chapter_two_brian_clue
     elif location == 7:
         pass
     call chapter_two_restore_movement(location)
@@ -720,7 +731,7 @@ label chapter_two_events:
             heavy "heavy find lopunny plush with hole in back"
             t "..."
             t "thats just brians"
-            t "i dont think that is a clue"
+            t "i dont think thats a clue"
             t "also why was that here?"
             heavy "ok then heavy search for more clues"
             show heavy_tf2:
@@ -733,7 +744,177 @@ label chapter_two_events:
             heavy "ok heavy find another clue"
             t "it better be one this time"
             t "and how were you running faster?"
+            heavy "heavy find picture of dog"
+            t "where did you find a picture of ocho?"
+            heavy "it was on floor over there"
+            heavy "why would someone take photo of dog?"
+            t "idk it could be matts or monokumas or something"
+            heavy "ok that makes sense"
+            heavy "you take photo"
+            t "alright"
+            #TODO: add clue picture
+            t "guess I should look for matt or brian"
+            $ count = 5
+            call chapter_two_restore_movement(3)
+            
+        label chapter_two_brian_clue:
+            show thanga2 with dissolve:
+                subpixel True pos (538, 240) 
+            show brian1 with dissolve:
+                subpixel True pos (955, 246)
+            pause 1.0
+            t "what are you doing here brian?"
+            t "i thought you were going after matt"
+            b "yea dumbass i was going after him"
+            b "i just didnt know japanese people were that fast"
+            t "damn you slow and fat as hell"
+            t "also matt is not japanese hes filipino"
+            b "i literally dont care"
+            t "..."
+            t "anyway, did you find anything else?"
+            b "no i was too busy chasing after matt"
+            t "damn you suck, everyone else had something"
+            b "shut the fuck up bitch"
+            b "what was so good that they found?"
+            t "march found no blood at the scene"
+            t "phoenix found liquid near ocho"
+            t "and heavy found a picture of ocho in the lobby"
+            b "..."
+            b "damn"
+            b "how did they find that shit so fast"
+            t "also i think heavy found your lopunny plush"
+            b "WHAT"
+            show brian1:
+                subpixel True pos (955, 246)
+                linear 0.2 xpos 953 ypos 485 zoom 0.16
+            pause 0.2
+            hide brian1 with dissolve
+            pause 1.0
+            t "wow"
+            t "never seen him run that fast"
+            pause 1.0
+            t "guess matt is over here then"
+            $ count = 6
+            call chapter_two_restore_movement(6)
+
+        label chapter_two_matt_clue:
+            show thanga2 with dissolve:
+                subpixel True pos (445, 343) 
+            show matt2 with dissolve:
+                subpixel True pos (995, 313) zoom 0.58
+            pause 1.0
+            t "hey matt"
+            mt "oh..."
+            mt "hi thang"
+            t "i though you were going with heavy?"
+            mt "i was, but he stopped going after like 6 feet"
+            mt "so i decided to keep going to look for stuff"
+            t "so did you find anything?"
+            mt "not really"
+            mt "but i did notice that all of the toilet paper and paper towels are gone"
+            t "that is kind of interesting"
+            t "might as well take note of it"
+            #TODO: add clue picture
+            t "well is there anything else you found?"
+            mt "no thats it"
+            mt "this is the only place that i have checked"
+            t "alright, well i talked to the others and they found some stuff too"
+            mt "ok thats cool"
+            t "dont worry matt we will find who did this"
+            mt "thanks thang"
+            t "im gonna go to my room now"
+            t "bye bitch"
+            $ count = 7
+            call chapter_two_restore_movement(5)
+
+        label chapter_two_after_clues:
+            show thanga2 with dissolve:
+                subpixel True pos (445, 343)
+            t "alright, so we collected a couple of clues"
+            t "but we still dont know the most important parts"
+            t "like where the murder happened"
+            t "or who did it"
+            t "..."
+            t "idk when the trial is but it should be soon"
+            show kody with dissolve:
+                subpixel True pos (1060, 383) zoom 0.75 
+            pause 1.0
+            k "hi thang"
+            t "WHAT THE FUCK"
+            t "WHY ARE YOU AND BRIAN ALWAYS IN MY BATHROOM"
+            k "i was busy gooning"
+            t "DO THAT IN YOUR OWN ROOM"
+            k "sucks to suck"
+            t "???"
+            k "so what happened"
+            t "march, phoenix, and matt found some useful clues"
+            t "heavy found a picture of ocho"
+            t "and brian found nothing"
+            k "well thats expected"
+            k "but thats all you guys found?"
+            k "yall suck ass"
+            t "ok bitch all you did was goon"
+            k "i found this tape of the security footage"
+            t "..."
+            t "...."
+            t "where the fuck did you find that"
+            k "it was in the gym"
+            k "that bear must have dropped it"
+            t "when did you go to the gym?"
+            k "i checked the whole building before i started gooning"
+            t "bro how fast are you"
+            k "well im going to my room to goon more"
+            show kody:
+                subpixel True pos (1060, 383) zoom 0.75
+                linear 0.2 xpos 1541 ypos 328
+            pause 0.2
+            hide kody with dissolve
+            pause 1.0
+            t "how the fuck is he gooning more"
+            t "anyway, that tape is super important"
+            t "i should keep track of it"
+            #TODO: make clue picture
+            t "guess i should wait until something happens"
+            pause 7.0
+            t "..."
+            t "is something gonna happen"
+            play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+            play music "audio/music/chapter_two/monokuma_theme.ogg"
+            show monokuma:
+                subpixel True pos (0.54, 0.48) zoom 0.7
+                ypos 0.82
+                yzoom 0.0
+                linear 0.35 ypos 0.48 yzoom 1.0
+            window auto hide
+            with Pause(1.5)
+            play sound "audio/sound/chapter_two/monokuma_hey.ogg"
+            m "hello thang"
+            t "get the fuck out"
+            m "dont be like that thang"
+            m "i just wanted to tell you to meet in the hall"
+            m "everyone else is there"
+            t "ok now get out"
+            play sound "audio/sound/chapter_two/monokuma_confused.ogg"
+            m "why do you want me to leave so bad?"
+            m "dont tell me your gooning like kody"
+            t "hell no i dont goon like him"
+            play sound "audio/sound/chapter_two/monokuma_wrong.ogg"
+            m "yeah sure buddy"
+            m "anyway i lost something i had"
+            m "did you find anything in the gym or the hall?"
+            t "no i didnt"
+            m "alright well tell me if you find it"
+            play sound "audio/sound/chapter_two/monokuma_laugh.ogg"
+            m "see you in the hall"
+            stop music
+            show monokuma:
+                subpixel True pos (0.54, 0.48) zoom 0.7
+                linear 0.2 xpos 0.75 ypos 0.31
+            pause 0.2
+            hide monokuma with dissolve
+            pause 1.0
+            t "guess i should go to the hall then"
+            $ count = 8
+            call chapter_two_restore_movement(1)
             "test"
-            #TODO: add more dialogue and clue
-        
         return
