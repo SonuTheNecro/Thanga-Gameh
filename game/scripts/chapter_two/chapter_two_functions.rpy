@@ -347,7 +347,7 @@ label chapter_two_restore_screens(location):
         if count == 0:
             call chapter_two_wake_up
         elif count == 7:
-            call chapter_two_after_clues
+            call chapter_two_kody_clue
     elif location == 2:
         if count == 3:
             call chapter_two_ocho_dead
@@ -357,6 +357,8 @@ label chapter_two_restore_screens(location):
     elif location == 4:
         if count == 1:
             call chapter_two_intro_meeting
+        elif count == 8:
+            call chapter_two_after_clues
     elif location == 5:
         if count == 6:
             call chapter_two_matt_clue
@@ -690,14 +692,14 @@ label chapter_two_events:
 
         label chapter_two_death_repeat:
             if count == 2:
-                jump chapter_two_after_clue1
+                jump chapter_two_after_two_clues
             while count < 2:
                 window hide
                 show screen clickable_chapter_two_march2()
                 show screen clickable_chapter_two_phoenix2()
                 $ renpy.pause()
 
-        label chapter_two_after_clue1:
+        label chapter_two_after_two_clues:
             pause 1.0
             t "i dont think im gonna find anything that they cant"
             t "guess its time to look for clues somewhere else"
@@ -827,7 +829,7 @@ label chapter_two_events:
             $ count = 7
             call chapter_two_restore_movement(5)
 
-        label chapter_two_after_clues:
+        label chapter_two_kody_clue:
             show thanga2 with dissolve:
                 subpixel True pos (445, 343)
             t "alright, so we collected a couple of clues"
@@ -916,5 +918,180 @@ label chapter_two_events:
             t "guess i should go to the hall then"
             $ count = 8
             call chapter_two_restore_movement(1)
+        
+        label chapter_two_after_clues:
+            call chapter_two_all_except_cody
+            hide ocho
+            hide monokuma
+            hide kody
+            hide brian3
+            hide thanga2
+            pause 0.6           
+            show thanga2 with dissolve:
+                subpixel True pos (3, 556)
+            t "hey guys"
+            t "did monokuma tell you to meet here too?"
+            mt "..."
+            pw "Yes, he did"
+            pw "Do you know where the others are?"
+            t "kody is too busy gooning"
+            t "idk about brian and i dont care about cody"
+            march "What do you think he is going to make us do now?"
+            t "im guessing the trial is going to start"
+            t "thats how it works in this game"
+            march "I just don't want any other murders to happen!"
+            pw "I agree"
+            heavy "heavy agree too"
+            mt "..."
+            pause 2.0
+            show brian3 with dissolve:
+                subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
+            b "sup fuckers"
+            t "where the fuck were you?"
+            b "i had to buy some remote raid passes"
+            b "today was the last Hoenn Tour day"
+            t "WHAT"
+            t "I THOUGHT YOUR PHONE WAS DEAD"
+            b "oh i tried turning it on again and it had 2 percent left"
+            t "AND YOU PLAYED POKEMON GO"
+            t "INSTEAD OF CALLING ANYONE?"
+            b "but it was the last day of the tour"
+            t "AND I BET YOU WERE USING THAT LOPUNNY PLUSH TOO"
+            b "..."
+            t "brotha"
+            t "now we got 2 gooners in here"
+            show kody with dissolve:
+                subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
+            k "sup fuckers"
+            t "..."
+            t "just kill me now"
+            play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+            play music "audio/music/chapter_two/monokuma_theme.ogg"
+            show monokuma:
+                subpixel True pos (0.37, 0.76) xzoom 0.5 yzoom 0.5
+                ypos 1.0
+                yzoom 0.0
+                linear 0.35 ypos 0.76 yzoom 0.5
+            window auto hide
+            with Pause(0.7)
+            m "everyone important is here so lets start the meeting"
+            t "what about cody?"
+            m "he doesnt matter"
+            m "also i havent been able to get into his room since yesterday"
+            t "thats weird"
+            m "oh well"
+            pw "So, what's this meeting about?"
+            march "Yeah! Are you going to make us do more bad stuff?"
+            mt "..."
+            t "no i think the trial is going to start"
+            m "the trial is being delayed until tomorrow"
+            t "what?"
+            t "the trial usually starts by now"
+            m "well it would but the room isnt ready yet"
+            m "i didnt think the first murder would happen this fast"
+            t "so what are we going to do then?"
+            m "idk just wait until tomorrow"
+            b "bro we gotta wait even longer?"
+            b "i cant even play pokemon go"
+            m "i can charge your phone for it"
+            b "LETS FUCKING GO"
+            show brian3:
+                subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
+                linear 0.2 xpos 1961 ypos 498
+            pause 1.0
+            t "hes not even gonna call anyone is he"
+            pw "Is there anything else you're going to tell us?"
+            m "no thats it"
+            t "really?"
+            t "we all met up just for that?"
+            t "couldnt you have just told us this individually?"
+            m "shut up thang"
+            m "also if any of you find something weird in the gym or anywhere else tell me"
+            k "oh like this ta-"
+            t "SHUT THE FUCK UP KODY"
+            play sound "audio/sound/chapter_two/monokuma_confused.ogg"
+            m "did you find something?"
+            t "no he didnt find anything"
+            m "i know you lyin boy"
+            m "anyway just do whatever until tomorrow"
+            stop music
+            play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+            show monokuma:
+                subpixel True pos (0.37, 0.76) xzoom 0.5 yzoom 0.5
+                ypos 0.76
+                yzoom 0.5
+                linear 0.2 ypos 1.0 yzoom 0.5
+            window auto hide
+            with Pause(1.5)
+            t "well"
+            t "what are you guys gonna do"
+            show kody:
+                subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
+                linear 0.2 xpos 1200 ypos 625
+            pause 0.2
+            show phoenix_wright:
+                subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
+                linear 0.2 xpos 975 ypos 558
+            show matt2:
+                subpixel True pos (1065, 580) xzoom 0.5 yzoom 0.5
+                linear 0.2 xpos 850 ypos 580
+            pause 0.2
+            play sound "audio/sound/general/rizz.ogg"
+            k "hello march"
+            march "Uhh... hey kody"
+            k "what do you say we..."
+            k "go back to my room?"
+            march "Umm..."
+            march "I'm gonna head back to my room"
+            show march_7th:
+                subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
+                linear 0.3 xpos 2100 ypos 605
+            pause 0.7
+            k "WAIT"
+            play sound "audio/sound/chapter_two/body_fall.ogg"
+            pause 0.2
+            show kody:
+                subpixel True pos (1200, 625) xzoom 0.85 yzoom 0.85
+                linear 0.1 xpos 1500 ypos 625 
+            pause 0.6
+            k "oof"
+            heavy "heavy stop weird kid"
+            k "WHY YOU COCKBLOCKING ME HEAVY"
+            k "GET THE FUCK OUT OF MY WAY"
+            show kody:
+                subpixel True pos (1500, 625) xzoom 0.85 yzoom 0.85
+                linear 0.1 xpos 2100 ypos 625
+            show heavy_tf2:
+                subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
+                linear 0.1 xpos 1200 ypos 498
+            pause 1.0
+            t "damn"
+            show thanga2:
+                subpixel True pos (3, 556)
+                linear 0.5 xpos 600 ypos 556
+            pause 1.0
+            t "well what are you guys going to do?"
+            heavy "heavy going to polish gun"
+            show heavy_tf2:
+                subpixel True pos (1200, 498) xzoom 0.4 yzoom 0.4
+                linear 0.6 xpos 2100 ypos 498
+            pause 1.0
+            pw "I think I'm going to look over some of the clues again"
+            pw "Do you want to come with me Matt?"
+            mt "..."
+            mt "sure"
+            show phoenix_wright:
+                subpixel True pos (975, 558) xzoom 0.6 yzoom 0.6
+                linear 0.8 xpos 2225 ypos 558
+            show matt2:
+                subpixel True pos (850, 580) xzoom 0.5 yzoom 0.5
+                linear 0.8 xpos 2100 ypos 580
+            pause 1.5
+            t "WHY DOES NO ONE WANT TO TALK TO ME"
+            t "FUCK ALL OF YOU"
+            t "IM GOING TO MY ROOM"
+            $ count = 9
+            call chapter_two_restore_movement(4)
             "test"
+
         return
