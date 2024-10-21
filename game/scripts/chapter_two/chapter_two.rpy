@@ -480,3 +480,20 @@ label chapter_two:
         scene danganronpa_gym with fade:
             subpixel True xzoom 0.76 yzoom 0.76
         call chapter_two_restore_screens(location)
+
+    label chapter_two_trial:
+        hide screen clickable_chapter_two_hidden_door
+        show black with fade
+        pause 1.5
+        hide danganronpa_dorm
+        t "wow... its dark in here"
+        t "and why was the hidden door my bathroom?"
+        t "how did i never notice?"
+        questionmark "cause you suck thang"
+        t "WHO SAID THAT"
+        show danganronpa_elevator with fade:
+            subpixel True zoom 0.75
+        pause 0.5
+        b "i did, bitch"
+        hide black
+        "test"
