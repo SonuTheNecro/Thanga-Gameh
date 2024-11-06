@@ -494,6 +494,44 @@ label chapter_two:
         show danganronpa_elevator with fade:
             subpixel True zoom 0.75
         pause 0.5
-        b "i did, bitch"
+        b "i did"
+        b "bitch"
         hide black
+        t "how are all of you in here"
+        t "this was in my bathroom"
+        b "cause we all found it before you"
+        b "your slow ass took 4 hours to find it"
+        k "yea i found it when i was gooning in here before"
+        t "..."
+        pw "Well, now that we are all here..."
+        pw "What's going to happen?"
+        march "I'm wondering that too!"
+        t "well im guessing that the elevator is going to..."
+        window auto hide
+        play sound "audio/sound/chapter_two/elevator_sound.ogg"
+        pause 0.3
+        show danganronpa_elevator with vpunch:
+            subpixel True zoom 0.75
+        $ renpy.pause(19.4, hard=True)
+        show danganronpa_elevator with vpunch:
+            subpixel True zoom 0.75
+        pause 1.0
+        t "..."
+        t "really"
+        t "we had to wait 20 seconds for that?"
+        pw "It seems we have reached the bottom"
+        pw "Is everyone ready?"
+        march "I think I am..."
+        heavy "heavy going in"
+        t "WAIT"
+        window auto hide
+        show black with fade
+        pause 3.0
+        show danganronpa_trial_monokuma with dissolve:
+            subpixel True zoom 0.77
+        pause 0.6
+        play sound "audio/sound/chapter_two/monokuma_laugh.ogg"
+        m "guess you guys are finally here"
+        m "it is finally time to..."
+        m "START THE TRIAL"
         "test"

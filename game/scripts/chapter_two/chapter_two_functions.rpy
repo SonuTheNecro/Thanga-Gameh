@@ -399,7 +399,7 @@ label chapter_two_events:
         hide black with fade
         play sound "audio/sound/chapter_two/monokuma_morning.ogg"
         window auto hide
-        pause 16.0
+        $ renpy.pause(16.0, hard=True)
         play sound "audio/sound/chapter_two/monokuma_angry.ogg"
         m "GOD FUCKING DAMMMN STUPID FUCKING PIECE OF SHIT ANNOUNCER"
         m "It's time to wake up fuckers. Meet at the hall"
@@ -1109,7 +1109,7 @@ label chapter_two_events:
             pause 3.5
             play sound "audio/sound/chapter_two/monokuma_morning.ogg"
             window auto hide
-            pause 17.0
+            $ renpy.pause(17.0, hard=True)
             t "i dont wanna..."
             t "10 more minutes..."
             window auto hide
