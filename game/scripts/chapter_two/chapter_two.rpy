@@ -534,4 +534,72 @@ label chapter_two:
         m "guess you guys are finally here"
         m "it is finally time to..."
         m "START THE TRIAL"
+        window auto hide
+        hide danganronpa_trial_monokuma with fade
+        pause 2.0
+        show danganronpa_full_trial with dissolve:
+            subpixel True zoom 1.88
+        show danganronpa_full_trial with dissolve:
+            subpixel True zoom 1.88
+            linear 20.0 xpos -7665
+        $ renpy.pause(20.5, hard=True)
+        t "what the...."
+        show danganronpa_full_trial with hpunch:
+            subpixel True zoom 1.88
+            linear 1.0 xpos -3201
+        pause 1.5
+        t "this is the trial room?"
+        call chapter_two_trial_phoenix
+        pw "What is all of this?"
+        call chapter_two_trial_brian
+        b "yea why the fuck am i next to thang"
+        call chapter_two_trial_thang
+        t "idk bitch ask monokuma"
+        call chapter_two_trial_kody
+        k "YEA STUPID BEAR WHY AM I NOT NEXT TO MARCH"
+        call chapter_two_trial_heavy
+        heavy "heavy is confused"
+        play sound "audio/sound/chapter_two/monokuma_mad.ogg"
+        m "CAN ALL OF YOU SHUT THE FUCK UP"
+        m "YOU ARE MAKING THE CAMERA MOVE TOO MUCH"
+        call chapter_two_trial_thang
+        t "how is that our problem?"
+        t "and where the fuck is there a camera?"
+        m "bro you are looking straight at it"
+        m "..."
+        m "fine"
+        m "ill make it so the camera is focused on the most important person talking"
+        call chapter_two_trial_kody
+        play sound "audio/sound/general/rizz.ogg"
+        k "thats gotta be me right?"
+        call chapter_two_trial_brian
+        b "no fucker its me"
+        t "can you guys stop talking?"
+        t "..."
+        t "WHY THE FUCK IS IT NOT FOCUSING ON ME"
+        m "cuz you a bitch"
+        m "anyway..."
+        m "its time for the trial to commence!"
+        call chapter_two_trial_thang
+        m "all of you will discuss the evidence you have collected..."
+        call chapter_two_trial_phoenix
+        m "in this special game of whodunnit"
+        call chapter_two_trial_march
+        m "if you can figure out who the whitened is..."
+        call chapter_two_trial_cody
+        m "then only they will die"
+        call chapter_two_trial_heavy
+        m "however, if anyone guesses incorrectly..."
+        call chapter_two_trial_matt
+        m "then everyone except for the whitened will die"
+        call chapter_two_trial_brian
+        m "who will be voted out?"
+        call chapter_two_trial_kody
+        m "who is the true whitened?"
+        call chapter_two_trial_thang
+        m "play the game to find out"
+        t "..."
+        t "thats what they are doing dumbass"
+        t "also i thought it was the blackened not the whitened"
+        m "bro thats racist"
         "test"

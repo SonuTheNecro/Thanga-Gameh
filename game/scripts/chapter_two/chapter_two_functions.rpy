@@ -270,6 +270,70 @@ label chapter_two_show_character_lists:
             subpixel True pos (0.38, 0.76) xzoom 0.5 yzoom 0.5
         return
 
+label chapter_two_trial_thang:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -3201
+    pause 1.4
+    return
+
+label chapter_two_trial_brian:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -2076
+    pause 1.4
+    return
+
+label chapter_two_trial_kody:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -4452
+    pause 1.4
+    return
+
+label chapter_two_trial_matt:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -5685
+    pause 1.4
+    return
+
+label chapter_two_trial_cody:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -7665
+    pause 1.4
+    return
+
+label chapter_two_trial_march:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -838
+    pause 1.4
+    return
+
+label chapter_two_trial_phoenix:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -6846
+    pause 1.4
+    return
+
+label chapter_two_trial_heavy:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos 0
+    pause 1.4
+    return
+
 # Handles the movement for the investigation part for chapter two
 label chapter_two_movement:
     screen chapter_two_danganronpa_up_button(origin):
