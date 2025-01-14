@@ -602,4 +602,167 @@ label chapter_two:
         t "thats what they are doing dumbass"
         t "also i thought it was the blackened not the whitened"
         m "bro thats racist"
+        t "..."
+        m "anyway..."
+        m "start talking"
+        t "..."
+        t "i mean"
+        t "its definitely cody right?"
+        call chapter_two_trial_cody
+        c "WHAT THE FUCK ARE YOU TALKING ABOUT"
+        c "I WOULD NEVER DO THAT TO OCHO"
+        c "IF ANYTHING"
+        c "I THINK ITS KODY"
+        c "HE DIDNT SEEM TO CARE WHEN OCHO DIED"
+        call chapter_two_trial_kody
+        k "..."
+        c "WELL KODY"
+        c "WHAT DO YOU HAVE TO SAY"
+        k "..."
+        k "i was gooning bro"
+        t "..."
+        t "yea that sounds about right"
+        b "yup"
+        mt "yup"
+        k "and what reason would i have to kill ocho anyway?"
+        c "cause he got in the way of your gooning"
+        k "..."
+        t "kody"
+        k "..."
+        c "SEE"
+        c "NOW LETS VOTE HIM OUT"
+        $ count = 0
+        "Are you ready to vote?"
+        menu:
+            "Yes":
+                jump chapter_two_vote
+            "No":
+                jump chapter_two_deny_first_vote
+
+    label chapter_two_deny_first_vote:
+        t "NO NOT YET"
+        t "we havent even gone over any of the clues"
+        pw "Correct, we need to look at every piece of evidence"
+        call chapter_two_trial_heavy
+        heavy "heavy find picture"
+        march "You did? Does it show who did it?"
+        heavy "heavy forgot"
+        heavy "heavy gave picture to thang"
+        t "yea he found it after running around a bit in the lobby"
+        t "its just a picture of ocho"
+        t "but it was taken when he was still alive"
+        t "it could have been used to plan the murder..."
+        t "or planted to blame someone else"
+        c "OR KODY COULD HAVE USED IT FOR GOONING"
+        t "..."
+        t "no"
+        t "but i dont think this helps us that much"
+        t "anyone could have taken a picture of him"
+        pw "But who would most likely have it?"
+        call chapter_two_trial_matt
+        pw "It would of course be Matt!"
+        t "and?"
+        t "it wouldnt be weird that he had a picture of his dog"
+        t "that doesnt help us"
+        mt "but i didnt"
+        t "what"
+        mt "why would i just have a picture of him on me?"
+        mt "he was literally with me"
+        t "idk cause you love him?"
+        mt "well thats fair"
+        pw "So, if Matt didn't have the picture..."
+        pw "Then who did?"
+        t "yeah bro thats what we are trying to figure out"
+        t "did anyone have this picture"
+        heavy "no"
+        march "no"
+        b "no"
+        k "no"
+        c "no"
+        m "no"
+        t "we didnt ask you"
+        t "so, someone is lying"
+        c "IT HAS TO BE KODY"
+        t "SHUT UP"
+        pw "Well should we look at the other clues?"
+        call chapter_two_trial_phoenix
+        pw "I found some liquid under one of the benches"
+        b "was it kodys piss"
+        t "no i already asked that"
+        t "it was apparently just water"
+        pw "Yes, and based off of the temperature..."
+        pw "It was only there for around an hour"
+        pw "Which lines up with the murder"
+        t "how did you even calculate that?"
+        mt "so the murderer messed up some how?"
+        pw "That is a possibility"
+        c "THAT MEANS IT HAS TO BE KODY"
+        c "BRO HAS BEEN WATERMAXXING"
+        t "but i dont think he would spill it"
+        k "..."
+        t "kody"
+        k "..."
+        c "AGAIN ITS GOTTA BE HIM"
+        t "chill out"
+        t "we still have some clues to look at"
         "test"
+
+    label chapter_two_vote:
+        m "looks like everyone is ready to vote"
+        "Who are you voting for?"
+        menu:
+            "Thang":
+                jump chapter_two_trial_fail
+            "Brian":
+                jump chapter_two_trial_fail
+            "Kody":
+                jump chapter_two_trial_fail
+            "Phoenix":
+                jump chapter_two_trial_fail
+            "March":
+                if count == 0:
+                    jump chapter_two_trial_fail
+                else:
+                    jump chapter_two_trial_march_win
+            "Matt":
+                jump chapter_two_trial_fail
+            "Heavy":
+                jump chapter_two_trial_fail
+            "Cody":
+                if count == 0:
+                    jump chapter_two_trial_fail
+                else:
+                    jump chapter_two_trial_cody_win
+    
+    label chapter_two_trial_fail:
+        scene black with fade
+        pause 1.5
+        show danganronpa_trial_monokuma with dissolve:
+            subpixel True zoom 0.77
+        pause 0.6
+        if count == 0:
+            m "everyone voted for the wrong person"      
+            show gun2:
+                subpixel True pos (0.37, 0.27) xzoom 0.28 yzoom 0.28  
+            play sound "audio/sound/chapter_one/glock_magchange.ogg"
+            pause 2.0       
+            show gunflare:
+                subpixel True pos (621, 256) xzoom 0.25 yzoom 0.25  
+            $ baldi_shoot(15)
+            jump game_over
+        else:
+            m "thangs dumbass voted for the wrong person"
+            show gun2:
+                subpixel True pos (0.37, 0.27) xzoom 0.28 yzoom 0.28  
+            play sound "audio/sound/chapter_one/glock_magchange.ogg"
+            pause 2.0 
+            show gunflare:
+                subpixel True pos (621, 256) xzoom 0.25 yzoom 0.25 
+            $ baldi_shoot(15)
+            jump game_over
+
+    label chapter_two_trial_march_win:
+        #TODO add stuff
+
+    label chapter_two_trial_cody_win:
+        #TODO add stuff
