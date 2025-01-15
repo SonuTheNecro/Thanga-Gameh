@@ -451,6 +451,42 @@ label chapter_two_restore_screens(location):
     call chapter_two_restore_movement(location)
     return
 
+label chapter_two_hangman:
+    scene black with fade
+    pause 1.5
+    show danganronpa_classroom with fade:
+        subpixel True xzoom 0.76 yzoom 0.76
+
+    "Welcome to Hangman!" 
+
+    screen clickable_grid(rows, columns, labels): 
+        vbox:
+            xalign 0.5
+            yalign 0.85
+            grid rows columns spacing 10: 
+                for label in labels: 
+                    textbutton label action Function(handle_click, label) style "large_button"
+
+    style large_button: 
+        size 80 
+        padding (20, 20) 
+        background "#666"  
+        hover_background "#333" 
+
+    python: 
+        def handle_click(label): 
+            print(f"Button '{label}' clicked") 
+
+    $ rows = 13 
+    $ columns = 2
+    $ letters = "abcdefghijklmnopqrstuvwxyz" 
+
+    $ labels = [str(i) for i in letters] 
+
+    call screen clickable_grid(rows, columns, labels) 
+
+    #TODO finish hangman
+
 label chapter_two_events:
     label chapter_two_wake_up:
         show thanga2:

@@ -705,6 +705,59 @@ label chapter_two:
         c "AGAIN ITS GOTTA BE HIM"
         t "chill out"
         t "we still have some clues to look at"
+        c "FORGET ABOUT THAT"
+        c "WE NEED TO FIGURE OUT HOW HE DIED"
+        pw "I found a puncture wound in the side of his neck"
+        c "THEN THERE SHOULD HAVE BEEN BLOOD"
+        c "WAS THE WATER USED TO CLEAN IT UP?"
+        pw "No, the water was not disturbed at all"
+        pw "And if they used it to clean up..."
+        pw "Then they would not have left any at the scene"
+        t "wait..."
+        t "this doesnt add up"
+        t "something contradicts this"
+        $ count2 = 0
+        "What clue contradicts Phoenix's claim?"
+        menu:
+            "Spotless Crime Scene":
+                t "THEN HOW WAS THE CRIME SCENE SPOTLESS?"
+                $ count2 = 1    
+            "Water Puddle":
+                t "THEN WHY WAS THE WATER PUDDLE THERE?"
+            "Picture of Ocho":
+                t "THEN WHY WAS THERE A PICTURE OF OCHO?"
+            "Missing Paper Towels and Toilet Paper":
+                t "THEN WHY WERE THE PAPER TOWELS AND TOILET PAPER MISSING?"
+            "Monokumas Tape":
+                t "THEN WHY DOES MONOKUMA HAVE A SEXTAPE?"
+                m "HOW THE FUCK DO YOU KNOW ABOUT THAT"
+        if count2 == 0:
+            b "thang you dumb as hell boy"
+            k "yea thang that has nothing to do with this"
+            march "I think that there being no blood is weird though..."
+            march "How would the scene be spotless if the water wasn't used?"
+        else:
+            b "wow thang you actually thought of something good for once"
+        pw "I do find that peculiar..."
+        pw "One theory I have is that Ocho was killed somewhere else..."
+        pw "And brought to the changing room"
+        march "Oh yeah, me and Thang talked about that too"
+        pw "That seems the most plausible..."
+        pw "But then what about the smell of the blood?"
+        pw "Did anyone smell anything when searching the building?"
+        ev "No"
+        pw "Then this just adds more questions to the equation"
+        mt "couldnt they have just cleaned it up in another room?"
+        pw "To do that, they would need a lot of supplies to clean it up"
+        mt "well i went to the nurses office and a lot of stuff was gone"
+        mt "like the paper towels and toilet paper"
+        pw "..."
+        pw "THAT'S A MASSIVE CLUE"
+        pw "Does anyone know who took them?"
+        t "..."
+        t "i think i have an idea"
+        call chapter_two_hangman
+        #TODO write rest of trial
         "test"
 
     label chapter_two_vote:
@@ -723,7 +776,8 @@ label chapter_two:
                 if count == 0:
                     jump chapter_two_trial_fail
                 else:
-                    jump chapter_two_trial_march_win
+                    $ choice = 0
+                    jump chapter_two_trial_win
             "Matt":
                 jump chapter_two_trial_fail
             "Heavy":
@@ -732,7 +786,8 @@ label chapter_two:
                 if count == 0:
                     jump chapter_two_trial_fail
                 else:
-                    jump chapter_two_trial_cody_win
+                    $ choice = 1
+                    jump chapter_two_trial_win
     
     label chapter_two_trial_fail:
         scene black with fade
@@ -761,8 +816,14 @@ label chapter_two:
             $ baldi_shoot(15)
             jump game_over
 
-    label chapter_two_trial_march_win:
-        #TODO add stuff
-
-    label chapter_two_trial_cody_win:
-        #TODO add stuff
+    label chapter_two_trial_win:
+        scene black with fade
+        pause 1.5
+        show danganronpa_trial_monokuma with dissolve:
+            subpixel True zoom 0.77
+        pause 0.6
+        m "lets see who everyone voted for!"
+        if choice == 1:
+            "test"
+            #TODO add stuff for picking cody
+        #TODO add stuff for picking march
