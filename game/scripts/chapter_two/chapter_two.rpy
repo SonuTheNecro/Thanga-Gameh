@@ -480,3 +480,350 @@ label chapter_two:
         scene danganronpa_gym with fade:
             subpixel True xzoom 0.76 yzoom 0.76
         call chapter_two_restore_screens(location)
+
+    label chapter_two_trial:
+        hide screen clickable_chapter_two_hidden_door
+        show black with fade
+        pause 1.5
+        hide danganronpa_dorm
+        t "wow... its dark in here"
+        t "and why was the hidden door my bathroom?"
+        t "how did i never notice?"
+        questionmark "cause you suck thang"
+        t "WHO SAID THAT"
+        show danganronpa_elevator with fade:
+            subpixel True zoom 0.75
+        pause 0.5
+        b "i did"
+        b "bitch"
+        hide black
+        t "how are all of you in here"
+        t "this was in my bathroom"
+        b "cause we all found it before you"
+        b "your slow ass took 4 hours to find it"
+        k "yea i found it when i was gooning in here before"
+        t "..."
+        pw "Well, now that we are all here..."
+        pw "What's going to happen?"
+        march "I'm wondering that too!"
+        t "well im guessing that the elevator is going to..."
+        window auto hide
+        play sound "audio/sound/chapter_two/elevator_sound.ogg"
+        pause 0.3
+        show danganronpa_elevator with vpunch:
+            subpixel True zoom 0.75
+        $ renpy.pause(19.4, hard=True)
+        show danganronpa_elevator with vpunch:
+            subpixel True zoom 0.75
+        pause 1.0
+        t "..."
+        t "really"
+        t "we had to wait 20 seconds for that?"
+        pw "It seems we have reached the bottom"
+        pw "Is everyone ready?"
+        march "I think I am..."
+        heavy "heavy going in"
+        t "WAIT"
+        window auto hide
+        show black with fade
+        pause 3.0
+        show danganronpa_trial_monokuma with dissolve:
+            subpixel True zoom 0.77
+        pause 0.6
+        play sound "audio/sound/chapter_two/monokuma_laugh.ogg"
+        m "guess you guys are finally here"
+        m "it is finally time to..."
+        m "START THE TRIAL"
+        window auto hide
+        hide danganronpa_trial_monokuma with fade
+        pause 2.0
+        show danganronpa_full_trial with dissolve:
+            subpixel True zoom 1.88
+        show danganronpa_full_trial with dissolve:
+            subpixel True zoom 1.88
+            linear 20.0 xpos -7665
+        $ renpy.pause(20.5, hard=True)
+        t "what the...."
+        show danganronpa_full_trial with hpunch:
+            subpixel True zoom 1.88
+            linear 1.0 xpos -3201
+        pause 1.5
+        t "this is the trial room?"
+        call chapter_two_trial_phoenix
+        pw "What is all of this?"
+        call chapter_two_trial_brian
+        b "yea why the fuck am i next to thang"
+        call chapter_two_trial_thang
+        t "idk bitch ask monokuma"
+        call chapter_two_trial_kody
+        k "YEA STUPID BEAR WHY AM I NOT NEXT TO MARCH"
+        call chapter_two_trial_heavy
+        heavy "heavy is confused"
+        play sound "audio/sound/chapter_two/monokuma_mad.ogg"
+        m "CAN ALL OF YOU SHUT THE FUCK UP"
+        m "YOU ARE MAKING THE CAMERA MOVE TOO MUCH"
+        call chapter_two_trial_thang
+        t "how is that our problem?"
+        t "and where the fuck is there a camera?"
+        m "bro you are looking straight at it"
+        m "..."
+        m "fine"
+        m "ill make it so the camera is focused on the most important person talking"
+        call chapter_two_trial_kody
+        play sound "audio/sound/general/rizz.ogg"
+        k "thats gotta be me right?"
+        call chapter_two_trial_brian
+        b "no fucker its me"
+        t "can you guys stop talking?"
+        t "..."
+        t "WHY THE FUCK IS IT NOT FOCUSING ON ME"
+        m "cuz you a bitch"
+        m "anyway..."
+        m "its time for the trial to commence!"
+        call chapter_two_trial_thang
+        m "all of you will discuss the evidence you have collected..."
+        call chapter_two_trial_phoenix
+        m "in this special game of whodunnit"
+        call chapter_two_trial_march
+        m "if you can figure out who the whitened is..."
+        call chapter_two_trial_cody
+        m "then only they will die"
+        call chapter_two_trial_heavy
+        m "however, if anyone guesses incorrectly..."
+        call chapter_two_trial_matt
+        m "then everyone except for the whitened will die"
+        call chapter_two_trial_brian
+        m "who will be voted out?"
+        call chapter_two_trial_kody
+        m "who is the true whitened?"
+        call chapter_two_trial_thang
+        m "play the game to find out"
+        t "..."
+        t "thats what they are doing dumbass"
+        t "also i thought it was the blackened not the whitened"
+        m "bro thats racist"
+        t "..."
+        m "anyway..."
+        m "start talking"
+        t "..."
+        t "i mean"
+        t "its definitely cody right?"
+        call chapter_two_trial_cody
+        c "WHAT THE FUCK ARE YOU TALKING ABOUT"
+        c "I WOULD NEVER DO THAT TO OCHO"
+        c "IF ANYTHING"
+        c "I THINK ITS KODY"
+        c "HE DIDNT SEEM TO CARE WHEN OCHO DIED"
+        call chapter_two_trial_kody
+        k "..."
+        c "WELL KODY"
+        c "WHAT DO YOU HAVE TO SAY"
+        k "..."
+        k "i was gooning bro"
+        t "..."
+        t "yea that sounds about right"
+        b "yup"
+        mt "yup"
+        k "and what reason would i have to kill ocho anyway?"
+        c "cause he got in the way of your gooning"
+        k "..."
+        t "kody"
+        k "..."
+        c "SEE"
+        c "NOW LETS VOTE HIM OUT"
+        $ count = 0
+        "Are you ready to vote?"
+        menu:
+            "Yes":
+                jump chapter_two_vote
+            "No":
+                jump chapter_two_deny_first_vote
+
+    label chapter_two_deny_first_vote:
+        t "NO NOT YET"
+        t "we havent even gone over any of the clues"
+        pw "Correct, we need to look at every piece of evidence"
+        call chapter_two_trial_heavy
+        heavy "heavy find picture"
+        march "You did? Does it show who did it?"
+        heavy "heavy forgot"
+        heavy "heavy gave picture to thang"
+        t "yea he found it after running around a bit in the lobby"
+        t "its just a picture of ocho"
+        t "but it was taken when he was still alive"
+        t "it could have been used to plan the murder..."
+        t "or planted to blame someone else"
+        c "OR KODY COULD HAVE USED IT FOR GOONING"
+        t "..."
+        t "no"
+        t "but i dont think this helps us that much"
+        t "anyone could have taken a picture of him"
+        pw "But who would most likely have it?"
+        call chapter_two_trial_matt
+        pw "It would of course be Matt!"
+        t "and?"
+        t "it wouldnt be weird that he had a picture of his dog"
+        t "that doesnt help us"
+        mt "but i didnt"
+        t "what"
+        mt "why would i just have a picture of him on me?"
+        mt "he was literally with me"
+        t "idk cause you love him?"
+        mt "well thats fair"
+        pw "So, if Matt didn't have the picture..."
+        pw "Then who did?"
+        t "yeah bro thats what we are trying to figure out"
+        t "did anyone have this picture"
+        heavy "no"
+        march "no"
+        b "no"
+        k "no"
+        c "no"
+        m "no"
+        t "we didnt ask you"
+        t "so, someone is lying"
+        c "IT HAS TO BE KODY"
+        t "SHUT UP"
+        pw "Well should we look at the other clues?"
+        call chapter_two_trial_phoenix
+        pw "I found some liquid under one of the benches"
+        b "was it kodys piss"
+        t "no i already asked that"
+        t "it was apparently just water"
+        pw "Yes, and based off of the temperature..."
+        pw "It was only there for around an hour"
+        pw "Which lines up with the murder"
+        t "how did you even calculate that?"
+        mt "so the murderer messed up some how?"
+        pw "That is a possibility"
+        c "THAT MEANS IT HAS TO BE KODY"
+        c "BRO HAS BEEN WATERMAXXING"
+        t "but i dont think he would spill it"
+        k "..."
+        t "kody"
+        k "..."
+        c "AGAIN ITS GOTTA BE HIM"
+        t "chill out"
+        t "we still have some clues to look at"
+        c "FORGET ABOUT THAT"
+        c "WE NEED TO FIGURE OUT HOW HE DIED"
+        pw "I found a puncture wound in the side of his neck"
+        c "THEN THERE SHOULD HAVE BEEN BLOOD"
+        c "WAS THE WATER USED TO CLEAN IT UP?"
+        pw "No, the water was not disturbed at all"
+        pw "And if they used it to clean up..."
+        pw "Then they would not have left any at the scene"
+        t "wait..."
+        t "this doesnt add up"
+        t "something contradicts this"
+        $ count2 = 0
+        "What clue contradicts Phoenix's claim?"
+        menu:
+            "Spotless Crime Scene":
+                t "THEN HOW WAS THE CRIME SCENE SPOTLESS?"
+                $ count2 = 1    
+            "Water Puddle":
+                t "THEN WHY WAS THE WATER PUDDLE THERE?"
+            "Picture of Ocho":
+                t "THEN WHY WAS THERE A PICTURE OF OCHO?"
+            "Missing Paper Towels and Toilet Paper":
+                t "THEN WHY WERE THE PAPER TOWELS AND TOILET PAPER MISSING?"
+            "Monokumas Tape":
+                t "THEN WHY DOES MONOKUMA HAVE A SEXTAPE?"
+                m "HOW THE FUCK DO YOU KNOW ABOUT THAT"
+        if count2 == 0:
+            b "thang you dumb as hell boy"
+            k "yea thang that has nothing to do with this"
+            march "I think that there being no blood is weird though..."
+            march "How would the scene be spotless if the water wasn't used?"
+        else:
+            b "wow thang you actually thought of something good for once"
+        pw "I do find that peculiar..."
+        pw "One theory I have is that Ocho was killed somewhere else..."
+        pw "And brought to the changing room"
+        march "Oh yeah, me and Thang talked about that too"
+        pw "That seems the most plausible..."
+        pw "But then what about the smell of the blood?"
+        pw "Did anyone smell anything when searching the building?"
+        ev "No"
+        pw "Then this just adds more questions to the equation"
+        mt "couldnt they have just cleaned it up in another room?"
+        pw "To do that, they would need a lot of supplies to clean it up"
+        mt "well i went to the nurses office and a lot of stuff was gone"
+        mt "like the paper towels and toilet paper"
+        pw "..."
+        pw "THAT'S A MASSIVE CLUE"
+        pw "Does anyone know who took them?"
+        t "..."
+        t "i think i have an idea"
+        call chapter_two_hangman
+        #TODO write rest of trial
+        "test"
+
+    label chapter_two_vote:
+        m "looks like everyone is ready to vote"
+        "Who are you voting for?"
+        menu:
+            "Thang":
+                jump chapter_two_trial_fail
+            "Brian":
+                jump chapter_two_trial_fail
+            "Kody":
+                jump chapter_two_trial_fail
+            "Phoenix":
+                jump chapter_two_trial_fail
+            "March":
+                if count == 0:
+                    jump chapter_two_trial_fail
+                else:
+                    $ choice = 0
+                    jump chapter_two_trial_win
+            "Matt":
+                jump chapter_two_trial_fail
+            "Heavy":
+                jump chapter_two_trial_fail
+            "Cody":
+                if count == 0:
+                    jump chapter_two_trial_fail
+                else:
+                    $ choice = 1
+                    jump chapter_two_trial_win
+    
+    label chapter_two_trial_fail:
+        scene black with fade
+        pause 1.5
+        show danganronpa_trial_monokuma with dissolve:
+            subpixel True zoom 0.77
+        pause 0.6
+        if count == 0:
+            m "everyone voted for the wrong person"      
+            show gun2:
+                subpixel True pos (0.37, 0.27) xzoom 0.28 yzoom 0.28  
+            play sound "audio/sound/chapter_one/glock_magchange.ogg"
+            pause 2.0       
+            show gunflare:
+                subpixel True pos (621, 256) xzoom 0.25 yzoom 0.25  
+            $ baldi_shoot(15)
+            jump game_over
+        else:
+            m "thangs dumbass voted for the wrong person"
+            show gun2:
+                subpixel True pos (0.37, 0.27) xzoom 0.28 yzoom 0.28  
+            play sound "audio/sound/chapter_one/glock_magchange.ogg"
+            pause 2.0 
+            show gunflare:
+                subpixel True pos (621, 256) xzoom 0.25 yzoom 0.25 
+            $ baldi_shoot(15)
+            jump game_over
+
+    label chapter_two_trial_win:
+        scene black with fade
+        pause 1.5
+        show danganronpa_trial_monokuma with dissolve:
+            subpixel True zoom 0.77
+        pause 0.6
+        m "lets see who everyone voted for!"
+        if choice == 1:
+            "test"
+            #TODO add stuff for picking cody
+        #TODO add stuff for picking march

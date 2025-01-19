@@ -65,6 +65,14 @@ screen clickable_chapter_two_phoenix2():
         hover At("images/phoenix_wright.png", animated_outline)
         action Call("chapter_two_phoenix2")
 
+screen clickable_chapter_two_hidden_door():
+    imagebutton:
+        pos (1020, 423)
+        at Transform(zoom = 1.114)
+        idle "images/danganronpa_hidden_door.png"
+        hover At("images/danganronpa_hidden_door.png", animated_outline)
+        action Call("chapter_two_trial")
+
 label chapter_two_ocho:
         hide screen clickable_chapter_two_ocho
         hide screen clickable_chapter_two_march
@@ -199,12 +207,15 @@ label chapter_two_march2:
     t "couldnt they have just cleaned it up?"
     march "Yes, but there should have been some kind of residue or something left behind"
     march "But everything around Ocho is spotless"
+    #TODO:make clue picture
     t "Does that mean he was killed somewhere else?"
     march "That's what I'm thinking"
     march "But I haven't checked any of the other rooms yet"
     march "So I'm not sure where it could have been done"
     t "guess ill have to do it"
-    #TODO:make clue picture
+    march "Thanks Thang!"
+    march "I think I'll go to my room to review the clues so far"
+    t "ok"
     if choice == 0:
         $ count += 1
     $ choice += 1
@@ -230,6 +241,8 @@ label chapter_two_phoenix2:
     pw "I would just keep this in mind"
     t "whatever you say bro"
     #TODO:make clue picture
+    pw "Well I'm probably gonna go to my room to think some stuff through"
+    t "alright, ill look for more stuff then"
     if count2 == 0:
         $ count += 1
     $ count2 += 1
@@ -256,6 +269,70 @@ label chapter_two_show_character_lists:
         show monokuma:
             subpixel True pos (0.38, 0.76) xzoom 0.5 yzoom 0.5
         return
+
+label chapter_two_trial_thang:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -3201
+    pause 1.4
+    return
+
+label chapter_two_trial_brian:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -2076
+    pause 1.4
+    return
+
+label chapter_two_trial_kody:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -4452
+    pause 1.4
+    return
+
+label chapter_two_trial_matt:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -5685
+    pause 1.4
+    return
+
+label chapter_two_trial_cody:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -7665
+    pause 1.4
+    return
+
+label chapter_two_trial_march:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -838
+    pause 1.4
+    return
+
+label chapter_two_trial_phoenix:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos -6846
+    pause 1.4
+    return
+
+label chapter_two_trial_heavy:
+    window auto hide
+    show danganronpa_full_trial:
+        subpixel True zoom 1.88
+        linear 1.0 xpos 0
+    pause 1.4
+    return
 
 # Handles the movement for the investigation part for chapter two
 label chapter_two_movement:
@@ -314,6 +391,8 @@ label chapter_two_hide_screens():
     hide screen chapter_two_danganronpa_down_button
     hide screen chapter_two_danganronpa_left_button
     hide screen chapter_two_danganronpa_right_button
+    if count == 10:
+        hide screen clickable_chapter_two_hidden_door
     return
 # Restores the movement, do this last so its on top of everything else
 label chapter_two_restore_movement(location):
@@ -341,6 +420,10 @@ label chapter_two_restore_screens(location):
     if location == 1:
         if count == 0:
             call chapter_two_wake_up
+        elif count == 7:
+            call chapter_two_kody_clue
+        elif count == 10:
+            show screen clickable_chapter_two_hidden_door()
     elif location == 2:
         if count == 3:
             call chapter_two_ocho_dead
@@ -350,15 +433,59 @@ label chapter_two_restore_screens(location):
     elif location == 4:
         if count == 1:
             call chapter_two_intro_meeting
+        elif count == 8:
+            call chapter_two_after_clues
+        elif count == 9:
+            call chapter_two_before_trial
     elif location == 5:
+        if count == 6:
+            call chapter_two_matt_clue
         pass
     elif location == 6:
         if count == 2:
             call chapter_two_matt_meeting1
+        elif count == 5:
+            call chapter_two_brian_clue
     elif location == 7:
         pass
     call chapter_two_restore_movement(location)
     return
+
+label chapter_two_hangman:
+    scene black with fade
+    pause 1.5
+    show danganronpa_classroom with fade:
+        subpixel True xzoom 0.76 yzoom 0.76
+
+    "Welcome to Hangman!" 
+
+    screen clickable_grid(rows, columns, labels): 
+        vbox:
+            xalign 0.5
+            yalign 0.85
+            grid rows columns spacing 10: 
+                for label in labels: 
+                    textbutton label action Function(handle_click, label) style "large_button"
+
+    style large_button: 
+        size 80 
+        padding (20, 20) 
+        background "#666"  
+        hover_background "#333" 
+
+    python: 
+        def handle_click(label): 
+            print(f"Button '{label}' clicked") 
+
+    $ rows = 13 
+    $ columns = 2
+    $ letters = "abcdefghijklmnopqrstuvwxyz" 
+
+    $ labels = [str(i) for i in letters] 
+
+    call screen clickable_grid(rows, columns, labels) 
+
+    #TODO finish hangman
 
 label chapter_two_events:
     label chapter_two_wake_up:
@@ -372,7 +499,7 @@ label chapter_two_events:
         hide black with fade
         play sound "audio/sound/chapter_two/monokuma_morning.ogg"
         window auto hide
-        pause 16.0
+        $ renpy.pause(16.0, hard=True)
         play sound "audio/sound/chapter_two/monokuma_angry.ogg"
         m "GOD FUCKING DAMMMN STUPID FUCKING PIECE OF SHIT ANNOUNCER"
         m "It's time to wake up fuckers. Meet at the hall"
@@ -607,7 +734,7 @@ label chapter_two_events:
         pause 1.5
         t "alright guys lets look at this and solve the crime"
         pw "No, why should we trust what he's giving us?"
-        march "Yeah, he's already kidnapped us who knows what else he'll do!"
+        march "Yeah, he's already kidnapped us, who knows what else he'll do!"
         k "i agree with whatever this lady says"
         t "guys thats not how the game works"
         show march_7th:
@@ -679,14 +806,14 @@ label chapter_two_events:
 
         label chapter_two_death_repeat:
             if count == 2:
-                jump chapter_two_after_clue1
+                jump chapter_two_after_two_clues
             while count < 2:
                 window hide
                 show screen clickable_chapter_two_march2()
                 show screen clickable_chapter_two_phoenix2()
                 $ renpy.pause()
 
-        label chapter_two_after_clue1:
+        label chapter_two_after_two_clues:
             pause 1.0
             t "i dont think im gonna find anything that they cant"
             t "guess its time to look for clues somewhere else"
@@ -720,7 +847,7 @@ label chapter_two_events:
             heavy "heavy find lopunny plush with hole in back"
             t "..."
             t "thats just brians"
-            t "i dont think that is a clue"
+            t "i dont think thats a clue"
             t "also why was that here?"
             heavy "ok then heavy search for more clues"
             show heavy_tf2:
@@ -733,7 +860,510 @@ label chapter_two_events:
             heavy "ok heavy find another clue"
             t "it better be one this time"
             t "and how were you running faster?"
-            "test"
-            #TODO: add more dialogue and clue
+            heavy "heavy find picture of dog"
+            t "where did you find a picture of ocho?"
+            heavy "it was on floor over there"
+            heavy "why would someone take photo of dog?"
+            t "idk it could be matts or monokumas or something"
+            heavy "ok that makes sense"
+            heavy "you take photo"
+            t "alright"
+            #TODO: add clue picture
+            t "guess I should look for matt or brian"
+            $ count = 5
+            call chapter_two_restore_movement(3)
+            
+        label chapter_two_brian_clue:
+            show thanga2 with dissolve:
+                subpixel True pos (538, 240) 
+            show brian1 with dissolve:
+                subpixel True pos (955, 246)
+            pause 1.0
+            t "what are you doing here brian?"
+            t "i thought you were going after matt"
+            b "yea dumbass i was going after him"
+            b "i just didnt know japanese people were that fast"
+            t "damn you slow and fat as hell"
+            t "also matt is not japanese hes filipino"
+            b "i literally dont care"
+            t "..."
+            t "anyway, did you find anything else?"
+            b "no i was too busy chasing after matt"
+            t "damn you suck, everyone else had something"
+            b "shut the fuck up bitch"
+            b "what was so good that they found?"
+            t "march found no blood at the scene"
+            t "phoenix found liquid near ocho"
+            t "and heavy found a picture of ocho in the lobby"
+            b "..."
+            b "damn"
+            b "how did they find that shit so fast"
+            t "also i think heavy found your lopunny plush"
+            b "WHAT"
+            show brian1:
+                subpixel True pos (955, 246)
+                linear 0.2 xpos 953 ypos 485 zoom 0.16
+            pause 0.2
+            hide brian1 with dissolve
+            pause 1.0
+            t "wow"
+            t "never seen him run that fast"
+            pause 1.0
+            t "guess matt is over here then"
+            $ count = 6
+            call chapter_two_restore_movement(6)
+
+        label chapter_two_matt_clue:
+            show thanga2 with dissolve:
+                subpixel True pos (445, 343) 
+            show matt2 with dissolve:
+                subpixel True pos (995, 313) zoom 0.58
+            pause 1.0
+            t "hey matt"
+            mt "oh..."
+            mt "hi thang"
+            t "i though you were going with heavy?"
+            mt "i was, but he stopped going after like 6 feet"
+            mt "so i decided to keep going to look for stuff"
+            t "so did you find anything?"
+            mt "not really"
+            mt "but i did notice that all of the toilet paper and paper towels are gone"
+            t "that is kind of interesting"
+            t "might as well take note of it"
+            #TODO: add clue picture
+            t "well is there anything else you found?"
+            mt "no thats it"
+            mt "this is the only place that i have checked"
+            t "alright, well i talked to the others and they found some stuff too"
+            mt "ok thats cool"
+            t "dont worry matt we will find who did this"
+            mt "thanks thang"
+            t "im gonna go to my room now"
+            t "bye bitch"
+            $ count = 7
+            call chapter_two_restore_movement(5)
+
+        label chapter_two_kody_clue:
+            show thanga2 with dissolve:
+                subpixel True pos (445, 343)
+            t "alright, so we collected a couple of clues"
+            t "but we still dont know the most important parts"
+            t "like where the murder happened"
+            t "or who did it"
+            t "..."
+            t "idk when the trial is but it should be soon"
+            show kody with dissolve:
+                subpixel True pos (1060, 383) zoom 0.75 
+            pause 1.0
+            k "hi thang"
+            t "WHAT THE FUCK"
+            t "WHY ARE YOU AND BRIAN ALWAYS IN MY BATHROOM"
+            k "i was busy gooning"
+            t "DO THAT IN YOUR OWN ROOM"
+            k "sucks to suck"
+            t "???"
+            k "so what happened"
+            t "march, phoenix, and matt found some useful clues"
+            t "heavy found a picture of ocho"
+            t "and brian found nothing"
+            k "well thats expected"
+            k "but thats all you guys found?"
+            k "yall suck ass"
+            t "ok bitch all you did was goon"
+            k "i found this tape of the security footage"
+            t "..."
+            t "...."
+            t "where the fuck did you find that"
+            k "it was in the gym"
+            k "that bear must have dropped it"
+            t "when did you go to the gym?"
+            k "i checked the whole building before i started gooning"
+            t "bro how fast are you"
+            k "well im going to my room to goon more"
+            show kody:
+                subpixel True pos (1060, 383) zoom 0.75
+                linear 0.2 xpos 1541 ypos 328
+            pause 0.2
+            hide kody with dissolve
+            pause 1.0
+            t "how the fuck is he gooning more"
+            t "anyway, that tape is super important"
+            t "i should keep track of it"
+            #TODO: make clue picture
+            t "guess i should wait until something happens"
+            pause 7.0
+            t "..."
+            t "is something gonna happen"
+            play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+            play music "audio/music/chapter_two/monokuma_theme.ogg"
+            show monokuma:
+                subpixel True pos (0.54, 0.48) zoom 0.7
+                ypos 0.82
+                yzoom 0.0
+                linear 0.35 ypos 0.48 yzoom 1.0
+            window auto hide
+            with Pause(1.5)
+            play sound "audio/sound/chapter_two/monokuma_hey.ogg"
+            m "hello thang"
+            t "get the fuck out"
+            m "dont be like that thang"
+            m "i just wanted to tell you to meet in the hall"
+            m "everyone else is there"
+            t "ok now get out"
+            play sound "audio/sound/chapter_two/monokuma_confused.ogg"
+            m "why do you want me to leave so bad?"
+            m "dont tell me your gooning like kody"
+            t "hell no i dont goon like him"
+            play sound "audio/sound/chapter_two/monokuma_wrong.ogg"
+            m "yeah sure buddy"
+            m "anyway i lost something i had"
+            m "did you find anything in the gym or the hall?"
+            t "no i didnt"
+            m "alright well tell me if you find it"
+            play sound "audio/sound/chapter_two/monokuma_laugh.ogg"
+            m "see you in the hall"
+            stop music
+            show monokuma:
+                subpixel True pos (0.54, 0.48) zoom 0.7
+                linear 0.2 xpos 0.75 ypos 0.31
+            pause 0.2
+            hide monokuma with dissolve
+            pause 1.0
+            t "guess i should go to the hall then"
+            $ count = 8
+            call chapter_two_restore_movement(1)
         
+        label chapter_two_after_clues:
+            call chapter_two_all_except_cody
+            hide ocho
+            hide monokuma
+            hide kody
+            hide brian3
+            hide thanga2
+            pause 0.6           
+            show thanga2 with dissolve:
+                subpixel True pos (3, 556)
+            t "hey guys"
+            t "did monokuma tell you to meet here too?"
+            mt "..."
+            pw "Yes, he did"
+            pw "Do you know where the others are?"
+            t "kody is too busy gooning"
+            t "idk about brian and i dont care about cody"
+            march "What do you think he is going to make us do now?"
+            t "im guessing the trial is going to start"
+            t "thats how it works in this game"
+            march "I just don't want any other murders to happen!"
+            pw "I agree"
+            heavy "heavy agree too"
+            mt "..."
+            pause 2.0
+            show brian3 with dissolve:
+                subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
+            b "sup fuckers"
+            t "where the fuck were you?"
+            b "i had to buy some remote raid passes"
+            b "today was the last Hoenn Tour day"
+            t "WHAT"
+            t "I THOUGHT YOUR PHONE WAS DEAD"
+            b "oh i tried turning it on again and it had 2 percent left"
+            t "AND YOU PLAYED POKEMON GO"
+            t "INSTEAD OF CALLING ANYONE?"
+            b "but it was the last day of the tour"
+            t "AND I BET YOU WERE USING THAT LOPUNNY PLUSH TOO"
+            b "..."
+            t "brotha"
+            t "now we got 2 gooners in here"
+            show kody with dissolve:
+                subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
+            k "sup fuckers"
+            t "..."
+            t "just kill me now"
+            play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+            play music "audio/music/chapter_two/monokuma_theme.ogg"
+            show monokuma:
+                subpixel True pos (0.37, 0.76) xzoom 0.5 yzoom 0.5
+                ypos 1.0
+                yzoom 0.0
+                linear 0.35 ypos 0.76 yzoom 0.5
+            window auto hide
+            with Pause(0.7)
+            m "everyone important is here so lets start the meeting"
+            t "what about cody?"
+            m "he doesnt matter"
+            m "also i havent been able to get into his room since yesterday"
+            t "thats weird"
+            m "oh well"
+            pw "So, what's this meeting about?"
+            march "Yeah! Are you going to make us do more bad stuff?"
+            mt "..."
+            t "no i think the trial is going to start"
+            m "the trial is being delayed until tomorrow"
+            t "what?"
+            t "the trial usually starts by now"
+            m "well it would but the room isnt ready yet"
+            m "i didnt think the first murder would happen this fast"
+            t "so what are we going to do then?"
+            m "idk just wait until tomorrow"
+            b "bro we gotta wait even longer?"
+            b "i cant even play pokemon go"
+            m "i can charge your phone for it"
+            b "LETS FUCKING GO"
+            show brian3:
+                subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
+                linear 0.2 xpos 1961 ypos 498
+            pause 1.0
+            t "hes not even gonna call anyone is he"
+            pw "Is there anything else you're going to tell us?"
+            m "no thats it"
+            t "really?"
+            t "we all met up just for that?"
+            t "couldnt you have just told us this individually?"
+            m "shut up thang"
+            m "also if any of you find something weird in the gym or anywhere else tell me"
+            k "oh like this ta-"
+            t "SHUT THE FUCK UP KODY"
+            play sound "audio/sound/chapter_two/monokuma_confused.ogg"
+            m "did you find something?"
+            t "no he didnt find anything"
+            m "i know you lyin boy"
+            m "anyway just do whatever until tomorrow"
+            stop music
+            play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+            show monokuma:
+                subpixel True pos (0.37, 0.76) xzoom 0.5 yzoom 0.5
+                ypos 0.76
+                yzoom 0.5
+                linear 0.2 ypos 1.0 yzoom 0.5
+            window auto hide
+            with Pause(1.5)
+            t "well"
+            t "what are you guys gonna do"
+            show kody:
+                subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
+                linear 0.2 xpos 1200 ypos 625
+            pause 0.2
+            show phoenix_wright:
+                subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
+                linear 0.2 xpos 975 ypos 558
+            show matt2:
+                subpixel True pos (1065, 580) xzoom 0.5 yzoom 0.5
+                linear 0.2 xpos 850 ypos 580
+            pause 0.2
+            play sound "audio/sound/general/rizz.ogg"
+            k "hello march"
+            march "Uhh... hey kody"
+            k "what do you say we..."
+            k "go back to my room?"
+            march "Umm..."
+            march "I'm gonna head back to my room"
+            show march_7th:
+                subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
+                linear 0.3 xpos 2100 ypos 605
+            pause 0.7
+            k "WAIT"
+            play sound "audio/sound/chapter_two/body_fall.ogg"
+            pause 0.2
+            show kody:
+                subpixel True pos (1200, 625) xzoom 0.85 yzoom 0.85
+                linear 0.1 xpos 1500 ypos 625 
+            pause 0.6
+            k "oof"
+            heavy "heavy stop weird kid"
+            k "WHY YOU COCKBLOCKING ME HEAVY"
+            k "GET THE FUCK OUT OF MY WAY"
+            show kody:
+                subpixel True pos (1500, 625) xzoom 0.85 yzoom 0.85
+                linear 0.1 xpos 2100 ypos 625
+            show heavy_tf2:
+                subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
+                linear 0.1 xpos 1200 ypos 498
+            pause 1.0
+            t "damn"
+            show thanga2:
+                subpixel True pos (3, 556)
+                linear 0.5 xpos 600 ypos 556
+            pause 1.0
+            t "well what are you guys going to do?"
+            heavy "heavy going to polish gun"
+            show heavy_tf2:
+                subpixel True pos (1200, 498) xzoom 0.4 yzoom 0.4
+                linear 0.6 xpos 2100 ypos 498
+            pause 1.0
+            pw "I think I'm going to look over some of the clues again"
+            pw "Do you want to come with me Matt?"
+            mt "..."
+            mt "sure"
+            show phoenix_wright:
+                subpixel True pos (975, 558) xzoom 0.6 yzoom 0.6
+                linear 0.8 xpos 2225 ypos 558
+            show matt2:
+                subpixel True pos (850, 580) xzoom 0.5 yzoom 0.5
+                linear 0.8 xpos 2100 ypos 580
+            pause 1.5
+            t "WHY DOES NO ONE WANT TO TALK TO ME"
+            t "FUCK ALL OF YOU"
+            t "IM GOING TO MY ROOM"
+            window auto hide
+            show black with fade
+            pause 3.5
+            play sound "audio/sound/chapter_two/monokuma_morning.ogg"
+            window auto hide
+            $ renpy.pause(17.0, hard=True)
+            t "i dont wanna..."
+            t "10 more minutes..."
+            window auto hide
+            play sound "audio/sound/chapter_one/glock_magchange.ogg"
+            pause 2.0
+            $ baldi_shoot(20)
+            scene danganronpa_dorm with fade:
+                subpixel True
+            show thanga2 with dissolve:
+                subpixel True pos (445, 343)
+            t "AAAAHHHHHH"
+            t "IM FUCKING DEAD"
+            t "..."
+            t "huh?"
+            t "i thought i got shot"
+            play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+            play music "audio/music/chapter_two/monokuma_theme.ogg"
+            show monokuma:
+                subpixel True pos (0.54, 0.48) zoom 0.7
+                ypos 0.82
+                yzoom 0.0
+                linear 0.35 ypos 0.48 yzoom 1.0
+            window auto hide
+            with Pause(1.5)
+            play sound "audio/sound/chapter_two/monokuma_mad.ogg"
+            m "I FUCKING HATE THAT ANNOUNCER"
+            t "oh i thought you shot me for not waking up"
+            m "oh i was about to but you already woke up"      
+            show gun2:
+                subpixel True pos (0.5, 0.62) xzoom 0.3 yzoom 0.25 
+            play sound "audio/sound/chapter_one/glock_magchange.ogg"
+            pause 2.5
+            m "now get your ass down to the hall"
+            t "is the trial ready yet?"
+            t "and why are you so mad?"
+            m "cause everyone else is already there"
+            m "and no, the trial is not ready yet"
+            m "but it will be soon"
+            t "how is everyone at the hall already?"
+            t "the alarm literally went off like 10 seconds ago"
+            m "brotha"
+            m "you went back to sleep for 30 minutes"
+            m "even brian and his slow ass is in the hall"
+            m "SO GET MOVING"
+            hide gun2
+            stop music
+            show monokuma:
+                subpixel True pos (0.54, 0.48) zoom 0.7
+                linear 0.2 xpos 0.75 ypos 0.31
+            pause 0.2
+            hide monokuma with dissolve
+            pause 1.0
+            t "alright jeez"
+            t "can i not sleep in just for one day?"
+            $ count = 9
+            call chapter_two_restore_movement(1)
+
+        label chapter_two_before_trial:
+            call chapter_two_all_except_cody
+            hide ocho
+            hide thanga2
+            pause 0.6           
+            show thanga2 with dissolve:
+                subpixel True pos (3, 556)
+            pause 0.5
+            b "look whos slow ass finally got out of bed"
+            k "shut up brian you only got here 3 minutes ago"
+            b "..."
+            m "now that everyone is here"
+            m "the trial will be ready soon"
+            m "you just need to find the hidden door"
+            t "what?"
+            t "i thought we would take an elevator down"
+            m "WELL SOME STUFF CHANGES OKAY THANG"
+            m "SHUT YOUR WEEB ASS UP AND FIND THE HIDDEN DOOR"
+            t "..."
+            pw "What is going to happen during the trial?"
+            march "Will we have to blame someone for the murder?"
+            play sound "audio/sound/chapter_two/monokuma_agree.ogg"
+            m "yup"
+            m "you will decide who killed ocho and they will face a horrible death"
+            march "There's no way we can do that!"
+            march "And I still believe that no one killed him!"
+            pw "Me too!"
+            mt "..."
+            m "WELL SOMEONE DID"
+            m "AND I WANT TO KNOW AS WELL"
+            t "then how is this going to be a fair trial?"
+            m "SHUT UP"
+            m "JUST GO AND FIND THE HIDDEN DOOR"
+            m "BY THE TIME YOUR SLOW ASS FINDS IT THE TRIAL WILL PROBABLY BE OVER"
+            play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+            show monokuma:
+                subpixel True pos (0.37, 0.76) xzoom 0.5 yzoom 0.5
+                ypos 0.76
+                yzoom 0.5
+                linear 0.2 ypos 1.0 yzoom 0.5
+            window auto hide
+            with Pause(1.5)
+            t "damn, why does he hate me so much?"
+            k "..."
+            b "..."
+            mt "..."
+            march "..."
+            heavy "..."
+            pw "..."
+            t "come on..."
+            pw "Well, we should try to find that hidden door he mentioned"
+            heavy "heavy will find it first"
+            show heavy_tf2:
+                subpixel True pos (1563, 498) xzoom 0.4 yzoom 0.4
+                linear 0.3 xpos 2100 ypos 498
+            pause 1.5
+            march "I will go with him as well"
+            show march_7th:
+                subpixel True pos (1373, 605) xzoom 0.15 yzoom 0.15
+                linear 0.3 xpos 2100 ypos 605
+            pause 1.0
+            k "COME BACK MY MAIDEN"
+            show kody:
+                subpixel True pos (186, 625) xzoom 0.85 yzoom 0.85
+                linear 0.2 xpos 2100 ypos 625
+            pause 3.5
+            b "fine..."
+            b "ill go after that gooner"
+            b "lets go matt"
+            show brian3:
+                subpixel True pos (381, 498) xzoom 0.45 yzoom 0.45
+                linear 0.5 xpos 1961 ypos 498
+            pause 1.0
+            mt "ok..."
+            show matt2:
+                subpixel True pos (1065, 580) xzoom 0.5 yzoom 0.5
+                linear 0.8 xpos 2100 ypos 580
+            pause 1.5
+            show thanga2:
+                subpixel True pos (3, 556)
+                linear 6.0 xpos 900 ypos 556
+            t "please phoenix... please stay with me"
+            pw "uhh..."
+            pw "I'm going to go look for the door as well"
+            t "NOOO PLEASE"
+            t "I NEED AT LEAST ONE FRIEND"
+            show phoenix_wright:
+                subpixel True pos (1171, 558) xzoom 0.6 yzoom 0.6
+                linear 0.3 xpos 2100 ypos 558
+            window auto hide
+            pause 3.0
+            t "fine..."
+            t "ill show you all..."
+            t "ILL SHOW ALL OF YOU HOW COOL I AM!!!"
+            t "I WILL FIND THE HIDDEN DOOR FIRST!!!"
+            t "AND PROVE HOW GOOD I AM!!!"
+            $ count = 10
+            call chapter_two_restore_movement(4)
+
         return
