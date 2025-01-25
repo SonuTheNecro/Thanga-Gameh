@@ -454,38 +454,134 @@ label chapter_two_restore_screens(location):
 label chapter_two_hangman:
     scene black with fade
     pause 1.5
-    show danganronpa_classroom with fade:
-        subpixel True xzoom 0.76 yzoom 0.76
+    show danganronpa_hangman with fade:
+        subpixel True
 
     "Welcome to Hangman!" 
+    "You get 6 incorrect guesses to guess the word"
+    "If you fail, you die"
+    "Good luck"
 
-    screen clickable_grid(rows, columns, labels): 
-        vbox:
+    default word_to_guess = "GOONER"
+    default guessed_word = ["_"] * len(word_to_guess)
+    default guessed_letters = []
+    default remaining_guesses = 6
+    default letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    default hangman_check = None
+
+    label start_hangman:
+        $ guessed_word = ["_"] * len(word_to_guess)
+        $ guessed_letters = []
+        $ remaining_guesses = 6
+        $ hangman_check = None
+
+        call screen hangman_game
+
+        while hangman_check is None:
+            $ renpy.pause(1.0)
+            $ check_game_outcome()
+
+    screen hangman_game():
+        text "Hangman Game" size 80:
             xalign 0.5
-            yalign 0.85
-            grid rows columns spacing 10: 
-                for label in labels: 
-                    textbutton label action Function(handle_click, label) style "large_button"
+            yalign 0.15
+            color '#ffe600ff'
 
-    style large_button: 
-        size 80 
-        padding (20, 20) 
-        background "#666"  
-        hover_background "#333" 
+        text "Remaining Guesses: [remaining_guesses]" size 60:
+            xalign 0.5
+            yalign 0.25
+            color '#ffe600ff'
+            
+        hbox:
+            spacing 10
+            xalign 0.5
+            yalign 0.5
+            for letter in guessed_word:
+                text letter size 50 color '#ffe600ff'
+        
+        grid 13 2:
+            spacing 10
+            xalign 0.9
+            yalign 0.5
+            for letter in guessed_letters:
+                text letter size 50 color '#ffe600ff'
 
-    python: 
-        def handle_click(label): 
-            print(f"Button '{label}' clicked") 
+        grid 13 2:
+            spacing 20
+            xalign 0.5
+            yalign 0.8
+            for letter in letters:
+                if letter in guessed_letters:
+                    textbutton letter action None style "letter_button_disabled"
+                else:
+                    textbutton letter action Function(guess_letter, letter) style "letter_button"
 
-    $ rows = 13 
-    $ columns = 2
-    $ letters = "abcdefghijklmnopqrstuvwxyz" 
+    style letter_button:
+        color '#726915ff'
+        size 50
+        font "PatrickHand-Regular.ttf"
+        background '#ffffff'
+        insensitive_color '#726915ff'
+        hover_color '#726915ff'
+        text_align 0.5
 
-    $ labels = [str(i) for i in letters] 
+    style letter_button_disabled is letter_button:
+        color '#726915ff'
+        size 50
+        insensitive_color '#726915ff'
+        background '#a5a5a5'
+        hover_color '#726915ff'
 
-    call screen clickable_grid(rows, columns, labels) 
 
-    #TODO finish hangman
+    init python:
+        def guess_letter(letter):
+            global remaining_guesses, hangman_check
+            if hangman_check is not None:
+                return
+
+            if letter in guessed_letters:
+                return
+
+            guessed_letters.append(letter)
+
+            if letter in word_to_guess:
+                for i, l in enumerate(word_to_guess):
+                    if l == letter:
+                        guessed_word[i] = letter
+            else:
+                remaining_guesses -= 1
+
+            if "_" not in guessed_word:
+                hangman_check = 1
+                renpy.jump("chapter_two_hangman_win")
+            elif remaining_guesses <= 0:
+                hangman_check = 0
+                renpy.jump("chapter_two_hangman_lose")
+
+            renpy.restart_interaction()
+
+    init python:
+        def check_game_outcome():
+            if hangman_check == 1:
+                renpy.jump("chapter_two_hangman_win")
+            elif hangman_check == 0:
+                renpy.jump("chapter_two_hangman_lose")
+
+label chapter_two_hangman_lose:
+    scene black with fade
+    pause 1.5
+    show danganronpa_trial_monokuma with dissolve:
+        subpixel True zoom 0.77
+    pause 0.6
+    m "brotha you suck at guessing"      
+    show gun2:
+        subpixel True pos (0.37, 0.27) xzoom 0.28 yzoom 0.28  
+    play sound "audio/sound/chapter_one/glock_magchange.ogg"
+    pause 2.0       
+    show gunflare:
+        subpixel True pos (621, 256) xzoom 0.25 yzoom 0.25  
+    $ baldi_shoot(15)
+    jump game_over
 
 label chapter_two_events:
     label chapter_two_wake_up:

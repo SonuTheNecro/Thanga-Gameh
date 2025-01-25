@@ -757,6 +757,28 @@ label chapter_two:
         t "..."
         t "i think i have an idea"
         call chapter_two_hangman
+    
+    label chapter_two_hangman_win:
+        scene black with fade
+        pause 1.5
+        window auto hide  
+        show danganronpa_full_trial with dissolve:
+            subpixel True xpos -3201 zoom 1.88 
+        pause 0.6
+        t "its gotta be kody"
+        t "bro has been gooning the whole time"
+        k "..."
+        pw "Kody..."
+        b "of course it would be him"
+        k "yea it was"
+        t "..."
+        t "guess thats one less clue we have"
+        k "i didnt take all of them tho"
+        k "i left behind half of a toilet paper roll"
+        t "..."
+        t "thats it?"
+        t "but thats still important"
+        t "we dont know who took that"
         #TODO write rest of trial
         "test"
 
