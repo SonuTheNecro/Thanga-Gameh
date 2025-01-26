@@ -609,6 +609,7 @@ label chapter_two:
         t "i mean"
         t "its definitely cody right?"
         call chapter_two_trial_cody
+        march "Yeah, i was suspecting him too"
         c "WHAT THE FUCK ARE YOU TALKING ABOUT"
         c "I WOULD NEVER DO THAT TO OCHO"
         c "IF ANYTHING"
@@ -705,6 +706,10 @@ label chapter_two:
         c "AGAIN ITS GOTTA BE HIM"
         t "chill out"
         t "we still have some clues to look at"
+        t "and wouldnt you be watermaxxing too since you are also cody?"
+        march "I was thinking about that too..."
+        march "This makes me even more suspicious of Cody"
+        c "..."
         c "FORGET ABOUT THAT"
         c "WE NEED TO FIGURE OUT HOW HE DIED"
         pw "I found a puncture wound in the side of his neck"
@@ -779,8 +784,94 @@ label chapter_two:
         t "thats it?"
         t "but thats still important"
         t "we dont know who took that"
-        #TODO write rest of trial
-        "test"
+        t "..."
+        t "but thats everything"
+        t "we dont have any more clues"
+        pw "We don't?"
+        t "no, thats everything that was found"
+        b "damn yall suck"
+        t "YOU DIDNT DO ANYTHING"
+        call chapter_two_trial_kody
+        k "but what about the tape i found?"
+        ev "..."
+        pw "WHAT TAPE"
+        k "the one i found in the gym"
+        t "..."
+        t "I FUCKING TOLD YOU TO NOT TALK ABOUT THAT"
+        window auto hide
+        play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+        show monokuma:
+            subpixel True pos (0.54, 0.6) xzoom 0.7 yzoom 0.7
+            ypos 1.0
+            yzoom 0.0
+            linear 0.35 ypos 0.66 yzoom 0.7
+        pause 1.5  
+        show gun2:
+            subpixel True pos (0.49, 0.75) zoom 0.3 rotate 9.0  
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        pause 2.0
+        m "give me the fucking tape"
+        m "NOW"
+        k "OK OK"  
+        window auto hide 
+        show ipad:
+            subpixel True pos (966, 456) zoom 0.3
+        pause 0.3    
+        show ipad:
+            subpixel True pos (966, 456) zoom 0.3
+            linear 0.2 xpos 1183 ypos 888
+        pause 0.4
+        play sound "audio/sound/chapter_two/monokuma_appear.ogg"
+        pause 0.2
+        show monokuma:
+            subpixel True pos (0.54, 0.6) xzoom 0.7 yzoom 0.7
+            linear 0.2 ypos 1.1 
+        show ipad:
+            subpixel True pos (1183, 888) zoom 0.3
+            linear 0.2 ypos 1200 
+        show gun2:
+            subpixel True pos (0.49, 0.75) zoom 0.3 rotate 9.0
+            linear 0.2 ypos 1.1
+        pause 1.6
+        k "..."
+        t "NOW YOU FUCKED EVERYTHING UP"
+        t "THAT WAS OUR LAST CLUE"
+        t "EVERYTHING WOULD BE SOLVED WITH THAT"
+        pw "What was it?"
+        march "Yeah, why was that so important?"
+        b "i thought that was just his goon shit"
+        t "NO IT HAD FOOTAGE OF THE MURDER"
+        t "WE WOULD HAVE KNOWN WHO DID IT"
+        ev "..."
+        ev "WHAT THE FUCK KODY"
+        k "..."
+        k "my b"
+        t "BROTHA"
+        t "..."
+        t "well..."
+        t "now what?"
+        t "we dont have any more clues"
+        t "so the only thing we have left is to vote"
+        c "YES"
+        c "NOW ITS TIME TO VOTE FOR KODY"
+        c "HE JUST GAVE UP THE MOST IMPORTANT EVIDENCE"
+        c "ITS OBVIOUS THAT ITS HIM"
+        t "shut up cody"
+        t "i think we have everything we need"
+        call chapter_two_trial_thang
+        t "given all of the clues..."
+        t "its obvious who it is"
+        t "they put the blame on someone else..."
+        t "could have had the picture..."
+        t "has a relation to the water..."
+        t "and monokuma never went to their room"
+        t "..."
+        t "do we all agree on this?"
+        ev "Yes"
+        window auto hide
+        pause 1.5
+        $ count = 1
+        call chapter_two_vote     
 
     label chapter_two_vote:
         m "looks like everyone is ready to vote"
@@ -845,7 +936,59 @@ label chapter_two:
             subpixel True zoom 0.77
         pause 0.6
         m "lets see who everyone voted for!"
+        window auto hide
         if choice == 1:
-            "test"
-            #TODO add stuff for picking cody
-        #TODO add stuff for picking march
+            hide danganronpa_trial_monokuma with dissolve
+            pause 1.0
+            show danganronpa_final_vote_cody with dissolve:
+                subpixel True xzoom 0.95 yzoom 0.81 
+            pause 1.0
+            m "..."
+            m "wow"
+            m "looks like everyone except for two people voted for march"
+            t "WHAT THE FUCK ARE YOU GUYS DOING"
+            t "YOU ARE LITERALLY THROWING"
+            m "most of you got it!"
+            m "except for thang"
+            m "his dumbass chose kody"
+            m "but ill let it slide"
+            m "cause it was expected"
+            t "..."
+            t "what"
+            t "what do you mean they got it"
+            t "its cody"
+            play sound "audio/sound/chapter_two/monokuma_wrong.ogg"
+            m "mmm no"
+            m "its march"
+            t "..."
+            t "WWWWWHHHHHAAAAAATTTTTTTT"
+            march "..."
+            hide danganronpa_final_vote_cody with dissolve
+            #TODO finish march stuff
+        else:
+            hide danganronpa_trial_monokuma with dissolve
+            pause 1.0     
+            show danganronpa_final_vote_march with dissolve:
+                subpixel True xzoom 0.95 yzoom 0.81 
+            pause 1.0
+            m "..."
+            m "wow"
+            m "looks like everyone except for one person voted for march"
+            m "you guys got it!"
+            b "dang thang i didnt think you would get that"
+            k "me neither"
+            c "or me"
+            mt "or me"
+            pw "..."
+            heavy "heavy think thang dumb"
+            t "CMON GUYS"
+            t "I TOTALLY KNEW THE WHOLE TIME"
+            t "I WAS DEFINITELY THE ONE WHO CHOSE MARCH"
+            t "..."
+            t "wait"
+            t "wtf do you mean its march"
+            k "AND WHY DID I GET A VOTE"
+            march "..."
+            hide danganronpa_final_vote_march with dissolve
+            #TODO finish march stuff
+        "test"
