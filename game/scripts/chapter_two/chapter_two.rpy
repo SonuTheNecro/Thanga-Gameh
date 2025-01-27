@@ -962,9 +962,36 @@ label chapter_two:
             m "its march"
             t "..."
             t "WWWWWHHHHHAAAAAATTTTTTTT"
+            t "HOW"
+            t "ALL OF THE CLUES POINTED TO CODY"
+            t "THE WATERMAXXING"
+            t "THE BLAMING IT ON KODY"
+            t "HAVING THE PICTURE"
+            t "AND YOU NOT BEING ABLE TO GET INTO HIS ROOM"
+            t "HOW IS IT NOT HIM"
+            ev "..."
+            pw "Well..."
+            pw "I don't recall Monokuma ever going into March's room either"
+            pw "And her taking pictures would make sense"
+            pw "Also, she was pinning the blame on cody the whole time"
+            pw "And the water being there would be from her ice powers"
+            pw "I realized that the puncture wound was from her arrow..."
+            pw "That's why there was no blood..."
+            pw "And why March said the body was cold..."
+            pw "Even though he died less than 1 hour before we found him"
+            pw "All of the clues that you said pointed to cody..."
+            pw "Were the ones that pointed to March"
+            t "..."
+            b "yea thang we all got that"
+            b "how did you not?"
+            b "you literally layed everything out"
+            b "and your dumbass still couldnt get it"
+            t "..."
+            t "thats not important anymore"
+            t "whats important now is why march did this"
             march "..."
+            window auto hide
             hide danganronpa_final_vote_cody with dissolve
-            #TODO finish march stuff
         else:
             hide danganronpa_trial_monokuma with dissolve
             pause 1.0     
@@ -987,8 +1014,174 @@ label chapter_two:
             t "..."
             t "wait"
             t "wtf do you mean its march"
+            pw "Well..."
+            pw "All of the clues you just said all pointed to March"
+            pw "As well as the puncture wound and body being cold"
+            k "THATS NOT IMPORTANT"
+            k "WHY WOULD MY QUEEN DO THIS"
             k "AND WHY DID I GET A VOTE"
             march "..."
+            window auto hide
             hide danganronpa_final_vote_march with dissolve
-            #TODO finish march stuff
-        "test"
+        pause 1.0
+        show danganronpa_full_trial with dissolve:
+            subpixel True xpos -838 zoom 1.88 
+        pause 0.6
+        m "..."
+        t "uh..."
+        k "PLEASE TELL ME I WAS WRONG"
+        k "I DIDNT WANT TO VOTE YOU"
+        window auto hide
+        pause 0.6
+        play sound "audio/sound/general/dramatic_violin.ogg"  
+        show danganronpa_trial_scary_march with Dissolve(2.0):
+            subpixel True xpos 362 zoom 1.88
+        pause 1.0
+        emarch "shut the fuck up kody"
+        emarch "it was me"
+        emarch "i killed that stupid fucking dog"
+        k "NNNNOOOOOOO"
+        mt "..."
+        mt "it cant be"
+        mt "you are my waifu"
+        mt "you cant do this to me"
+        emarch "shut your stupid mouth"
+        emarch "that dog was annoying the fuck out of me"
+        emarch "so i killed him"
+        emarch "easy as that"
+        mt "..."
+        mt "no..."
+        mt "WHERE AM I GOING TO FIND A NEW DOG NOW"
+        mt "NNNNNNNNNOOOOOOOOOOOOOO"
+        t "..."
+        t "is that why you were sad the whole time"
+        mt "..."
+        mt "yes"
+        t "SO YOU DIDNT CARE EITHER?"
+        t "YOU JUST DIDNT WANT TO LOOK FOR A NEW DOG?"
+        mt "..."
+        t "OH MY FUCKING GOD"
+        t "WHY ARE WE EVEN DOING THIS"
+        play sound "audio/sound/chapter_two/monokuma_mad.ogg"
+        m "DONT YOU SPEAK BADLY OF OCHO"
+        c "HE WAS THE BEST DOG"
+        t "..."
+        t "why do you guys love him so much more than everyone else"
+        emarch "i sure didnt"
+        emarch "im glad i killed his ass"
+        pw "How could you do this march?"
+        heavy "heavy thought he loved you"
+        heavy "guess heavy was wrong"
+        k "WAIT WAIT WAIT"
+        k "ARE YOU TRYING TO STEAL MY GIRL"
+        k "GET THE FUCK OVER HERE"
+        play sound "audio/sound/chapter_two/monokuma_angry.ogg"
+        m "EVERYONE SHUT THE FUCK UP"
+        m "THE VOTING IS OVER"
+        m "THE TRIAL IS OVER"
+        m "MARCH IS GOING TO GET WHAT SHE FUCKING DESERVES"
+        emarch "im fine with that"
+        emarch "as long as that fucking dog is dead"
+        emarch "i dont care what happens next"
+        k "march..."
+        play sound "audio/sound/chapter_two/monokuma_punishment.ogg"
+        m "LETS GIVE IT EVERYTHING WEVE GOT! ITS PUNISHMENT TIME!"
+        scene black with Dissolve(2.5)
+        play sound "audio/sound/chapter_one/glock_magchange.ogg"
+        pause 2.0
+        $ baldi_shoot(50)
+        pause 1.0
+        show danganronpa_trial_monokuma with dissolve:
+            subpixel True zoom 0.77
+        pause 0.6
+        m "..."
+        m "well shes dead"
+        t "..."
+        t "thats it?"
+        t "theres no elaborate punishment?"
+        t "like getting hit by a train?"
+        t "or being frozen in a block of ice?"
+        m "hell no"
+        m "i aint got time to set up something like that"
+        b "BORING"
+        play sound "audio/sound/chapter_two/monokuma_angry.ogg"
+        m "SHUT THE FUCK UP OR YOU ARE NEXT"
+        b "..."
+        m "..."
+        m "well thats it"
+        m "get the fuck out of here"
+        m "i dont want to do this anymore"
+        m "without ocho being here..." 
+        m "there is no point in continuing the killing game"
+        play sound "audio/sound/chapter_two/monokuma_laugh.ogg"
+        m "See you all next time!"
+        scene black with Dissolve(2.0)
+        play sound "audio/sound/chapter_two/vault_open.ogg"
+        pause 5.0
+        jump chapter_two_after_trial
+
+    label chapter_two_after_trial:
+        scene street1 with fade:
+            subpixel True yzoom 1.06   
+        show thanga2:
+            subpixel True pos (0.02, 486) 
+        show kody:
+            subpixel True pos (0.14, 548) 
+        show brian1:
+            subpixel True pos (0.27, 576) zoom 0.87 
+        show matt2:
+            subpixel True pos (1043, 495) xzoom 0.55 yzoom 0.55 
+        show phoenix_wright:
+            subpixel True pos (1235, 445) xzoom 0.72 yzoom 0.72 
+        show heavy_tf2:
+            subpixel True pos (1493, 420) xzoom 0.45 yzoom 0.45
+        pause 1.0
+        t "wow..."
+        t "that sucked"
+        k "MY GIRL IS GONE"
+        mt "MY WAIFUUUU"
+        mt "AND DOGGG"
+        pw "Well..."
+        pw "Now that we're out..."
+        pw "I gotta head back to Wright Anything Agency"
+        pw "Seeya!"
+        window auto hide
+        hide phoenix_wright with dissolve
+        pause 1.0
+        heavy "..."
+        heavy "heavy going to go too"
+        window auto hide
+        hide heavy_tf2 with dissolve
+        pause 1.0
+        k "WAIT YOU BITCH"
+        k "YOU TRIED TO TAKE MY GIRL"
+        window auto hide
+        show kody:
+            subpixel True pos (0.14, 548)
+            linear 0.2 xpos 1.1
+        pause 1.0
+        b "ill get his bitch ass"
+        window auto hide
+        show brian1:
+            subpixel True pos (0.27, 576) zoom 0.87 
+            linear 1.0 xpos 1.1
+        pause 2.0 
+        show thanga2:
+            subpixel True pos (0.02, 486)
+            linear 2.5 xpos 0.4
+        t "please matt"
+        t "this is like the 3rd time"
+        mt "..."
+        mt "i gotta buy a new dog" 
+        window auto hide
+        show matt2:
+            subpixel True pos (1043, 495) xzoom 0.55 yzoom 0.55 
+            linear 0.4 xpos 1.1
+        pause 1.0
+        t "..."
+        t "im done"
+        t "FUCK ALL OF YOU"
+        t "THIS FUCKING CHAPTER IS OVER"
+        $ persistent.ch02 = True
+        $ renpy.quit()
+        return

@@ -207,7 +207,13 @@ label chapter_two_march2:
     t "couldnt they have just cleaned it up?"
     march "Yes, but there should have been some kind of residue or something left behind"
     march "But everything around Ocho is spotless"
-    #TODO:make clue picture
+    window auto hide
+    show danganronpa_stainless_clue:
+        subpixel True
+    play sound "audio/sound/chapter_two/obtain_evidence.ogg"
+    pause 1.0
+    "Clue Obtained! - No blood residue"
+    hide danganronpa_stainless_clue
     t "Does that mean he was killed somewhere else?"
     march "That's what I'm thinking"
     march "But I haven't checked any of the other rooms yet"
@@ -240,7 +246,13 @@ label chapter_two_phoenix2:
     pw "There's a chance, but it's unlikely"
     pw "I would just keep this in mind"
     t "whatever you say bro"
-    #TODO:make clue picture
+    window auto hide
+    show danganronpa_water_clue:
+        subpixel True
+    play sound "audio/sound/chapter_two/obtain_evidence.ogg"
+    pause 1.0
+    "Clue Obtained! - Water under bench"
+    hide danganronpa_water_clue
     pw "Well I'm probably gonna go to my room to think some stuff through"
     t "alright, ill look for more stuff then"
     if count2 == 0:
@@ -814,6 +826,7 @@ label chapter_two_events:
         m "wow he really made us do all that work just to say like 4 lines"
         k "it was 5"
         m "LITERALLY SHUT THE FUCK UP"
+        play sound "audio/sound/chapter_two/obtain_evidence.ogg"
         show ipad_screen:
             subpixel True
         m "alright guys here is the monokuma file"
@@ -964,7 +977,13 @@ label chapter_two_events:
             heavy "ok that makes sense"
             heavy "you take photo"
             t "alright"
-            #TODO: add clue picture
+            window auto hide
+            show danganronpa_ocho_photo_clue:
+                subpixel True
+            play sound "audio/sound/chapter_two/obtain_evidence.ogg"
+            pause 1.0
+            "Clue Obtained! - Picture of Ocho"
+            hide danganronpa_ocho_photo_clue
             t "guess I should look for matt or brian"
             $ count = 5
             call chapter_two_restore_movement(3)
@@ -1026,7 +1045,13 @@ label chapter_two_events:
             mt "but i did notice that all of the toilet paper and paper towels are gone"
             t "that is kind of interesting"
             t "might as well take note of it"
-            #TODO: add clue picture
+            window auto hide
+            show danganronpa_towels_clue:
+                subpixel True
+            play sound "audio/sound/chapter_two/obtain_evidence.ogg"
+            pause 1.0
+            "Clue Obtained! - Missing toilet paper and paper towels"
+            hide danganronpa_towels_clue
             t "well is there anything else you found?"
             mt "no thats it"
             mt "this is the only place that i have checked"
@@ -1085,7 +1110,13 @@ label chapter_two_events:
             t "how the fuck is he gooning more"
             t "anyway, that tape is super important"
             t "i should keep track of it"
-            #TODO: make clue picture
+            window auto hide
+            show ipad_screen:
+                subpixel True
+            play sound "audio/sound/chapter_two/obtain_evidence.ogg"
+            pause 1.0
+            "Clue Obtained! - Monokumas tape"
+            hide ipad_screen
             t "guess i should wait until something happens"
             pause 7.0
             t "..."
